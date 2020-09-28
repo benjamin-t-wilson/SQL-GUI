@@ -12,13 +12,6 @@ namespace SQL_GUI
 {
     public partial class ConnectionBox : Form
     {
-        public string host;
-        public string username;
-        public string database;
-        public string port;
-        public string password;
-        public Dashboard dashboard = new Dashboard();
-
         public ConnectionBox()
         {
             InitializeComponent();
@@ -31,13 +24,10 @@ namespace SQL_GUI
 
         private void con_connect_button_Click(object sender, EventArgs e)
         {
-            this.host = this.con_host_textBox.Text;
-            this.username = this.con_user_textBox.Text;
-            this.database = this.con_database_textBox.Text;
-            this.port = this.con_port_textBox.Text;
-            this.password = this.con_password_textBox.Text;
+            var dashboard = new Dashboard(this.con_host_textBox.Text, this.con_user_textBox.Text, this.con_database_textBox.Text, this.con_port_textBox.Text, this.con_password_textBox.Text);
 
             this.Hide();
+
             dashboard.Show();
         }
     }
