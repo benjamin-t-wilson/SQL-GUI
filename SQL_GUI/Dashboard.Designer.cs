@@ -53,8 +53,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tables_add_valueTypes_textBox = new System.Windows.Forms.ListBox();
-            this.tables_add_selectValueTypes_listBox = new System.Windows.Forms.ListBox();
             this.tables_add_tip_label = new System.Windows.Forms.Label();
+            this.tables_add_addValueType_comboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,9 +190,9 @@
             // 
             this.tables_add_columnNames_listBox.FormattingEnabled = true;
             this.tables_add_columnNames_listBox.ItemHeight = 16;
-            this.tables_add_columnNames_listBox.Location = new System.Drawing.Point(364, 131);
+            this.tables_add_columnNames_listBox.Location = new System.Drawing.Point(373, 131);
             this.tables_add_columnNames_listBox.Name = "tables_add_columnNames_listBox";
-            this.tables_add_columnNames_listBox.Size = new System.Drawing.Size(129, 148);
+            this.tables_add_columnNames_listBox.Size = new System.Drawing.Size(120, 148);
             this.tables_add_columnNames_listBox.TabIndex = 6;
             // 
             // tables_add_columnNames_label
@@ -272,12 +272,21 @@
             this.tables_add_valueTypes_textBox.Size = new System.Drawing.Size(129, 148);
             this.tables_add_valueTypes_textBox.TabIndex = 11;
             // 
-            // tables_add_selectValueTypes_listBox
+            // tables_add_tip_label
             // 
-            this.tables_add_selectValueTypes_listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_selectValueTypes_listBox.FormattingEnabled = true;
-            this.tables_add_selectValueTypes_listBox.ItemHeight = 20;
-            this.tables_add_selectValueTypes_listBox.Items.AddRange(new object[] {
+            this.tables_add_tip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_add_tip_label.Location = new System.Drawing.Point(456, 43);
+            this.tables_add_tip_label.Name = "tables_add_tip_label";
+            this.tables_add_tip_label.Size = new System.Drawing.Size(306, 65);
+            this.tables_add_tip_label.TabIndex = 17;
+            this.tables_add_tip_label.Text = "Please add columns and values in the desired order. The first column will be pair" +
+    "ed with the first value type, and so on.";
+            // 
+            // tables_add_addValueType_comboBox
+            // 
+            this.tables_add_addValueType_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_add_addValueType_comboBox.FormattingEnabled = true;
+            this.tables_add_addValueType_comboBox.Items.AddRange(new object[] {
             "CHAR",
             "VARCHAR",
             "TEXT",
@@ -289,28 +298,18 @@
             "DATE",
             "DATETIME",
             "TIMESTAMP"});
-            this.tables_add_selectValueTypes_listBox.Location = new System.Drawing.Point(508, 142);
-            this.tables_add_selectValueTypes_listBox.Name = "tables_add_selectValueTypes_listBox";
-            this.tables_add_selectValueTypes_listBox.Size = new System.Drawing.Size(120, 24);
-            this.tables_add_selectValueTypes_listBox.TabIndex = 16;
-            // 
-            // tables_add_tip_label
-            // 
-            this.tables_add_tip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_tip_label.Location = new System.Drawing.Point(456, 43);
-            this.tables_add_tip_label.Name = "tables_add_tip_label";
-            this.tables_add_tip_label.Size = new System.Drawing.Size(306, 65);
-            this.tables_add_tip_label.TabIndex = 17;
-            this.tables_add_tip_label.Text = "Please add columns and values in the desired order. The first column will be pair" +
-    "ed with the first value type, and so on.";
+            this.tables_add_addValueType_comboBox.Location = new System.Drawing.Point(507, 140);
+            this.tables_add_addValueType_comboBox.Name = "tables_add_addValueType_comboBox";
+            this.tables_add_addValueType_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.tables_add_addValueType_comboBox.TabIndex = 18;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 541);
+            this.Controls.Add(this.tables_add_addValueType_comboBox);
             this.Controls.Add(this.tables_add_tip_label);
-            this.Controls.Add(this.tables_add_selectValueTypes_listBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
@@ -363,7 +362,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox tables_add_valueTypes_textBox;
-        private System.Windows.Forms.ListBox tables_add_selectValueTypes_listBox;
         private System.Windows.Forms.Label tables_add_tip_label;
+        private System.Windows.Forms.ComboBox tables_add_addValueType_comboBox;
     }
 }

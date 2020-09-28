@@ -143,6 +143,7 @@
             this.con_connect_button.TabIndex = 10;
             this.con_connect_button.Text = "Connect";
             this.con_connect_button.UseVisualStyleBackColor = true;
+            this.con_connect_button.Click += new System.EventHandler(this.con_connect_button_Click);
             // 
             // con_cancel_button
             // 
@@ -153,6 +154,7 @@
             this.con_cancel_button.TabIndex = 11;
             this.con_cancel_button.Text = "Cancel";
             this.con_cancel_button.UseVisualStyleBackColor = true;
+            this.con_cancel_button.Click += new System.EventHandler(this.con_cancel_button_Click);
             // 
             // ConnectionBox
             // 
