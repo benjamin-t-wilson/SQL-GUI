@@ -54,6 +54,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tables_add_valueTypes_textBox = new System.Windows.Forms.ListBox();
             this.tables_add_selectValueTypes_listBox = new System.Windows.Forms.ListBox();
+            this.tables_add_tip_label = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -293,11 +294,22 @@
             this.tables_add_selectValueTypes_listBox.Size = new System.Drawing.Size(120, 24);
             this.tables_add_selectValueTypes_listBox.TabIndex = 16;
             // 
+            // tables_add_tip_label
+            // 
+            this.tables_add_tip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_add_tip_label.Location = new System.Drawing.Point(456, 43);
+            this.tables_add_tip_label.Name = "tables_add_tip_label";
+            this.tables_add_tip_label.Size = new System.Drawing.Size(306, 65);
+            this.tables_add_tip_label.TabIndex = 17;
+            this.tables_add_tip_label.Text = "Please add columns and values in the desired order. The first column will be pair" +
+    "ed with the first value type, and so on.";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 541);
+            this.Controls.Add(this.tables_add_tip_label);
             this.Controls.Add(this.tables_add_selectValueTypes_listBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -352,5 +364,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox tables_add_valueTypes_textBox;
         private System.Windows.Forms.ListBox tables_add_selectValueTypes_listBox;
+        private System.Windows.Forms.Label tables_add_tip_label;
     }
 }
