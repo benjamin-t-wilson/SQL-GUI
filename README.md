@@ -18,8 +18,8 @@ These are, in semi-particular order, my immediate goals. This list will have new
 - ~~Create connection window~~
 - ~~Create dashboard~~
 - ~~Attempt database connection~~
- - Add functionality to add tables
- - On successful connect, fetch a list of tables and display them on the left
+ - ~~Add functionality to add tables~~
+ - ~~On successful connect, fetch a list of tables and display them on the left~~
  - Add functionality to delete tables
  - Included in previous objective, show/hide features on the dashboard relative to the tab you're on
  - Create a function for writing to the log ( so I don't have to do excessive in-line += )
