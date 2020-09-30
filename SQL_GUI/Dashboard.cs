@@ -1,6 +1,8 @@
 ﻿using SQL_GUI.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SQL_GUI
@@ -19,29 +21,28 @@ namespace SQL_GUI
             connDto.Port = port;
             connDto.Password = password;
 
+            resetControlDisplay();
+
             try
             {
                 var version = _sql.CheckDatabaseVersion(connDto);
 
-                dash_log_richTextBox.Text += "Successfully connected to database";
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += version;
+                WriteToLog("Successfully connected to database");
+                WriteToLog(version);
 
                 resetTableList();
             }
             catch (Exception ex)
             {
-                dash_log_richTextBox.Text += "Error connecting to database:";
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += ex.Message;
+                WriteToLog("Error connecting to database:");
+                WriteToLog(ex.Message);
             }
         }
 
         private void resetTableList()
         {
             var tablesList = _sql.GetListOfTables(connDto);
-            dash_log_richTextBox.Text += Environment.NewLine;
-            dash_log_richTextBox.Text += "Reset tables list...";
+            WriteToLog("Reset tables list...");
 
             dash_tables_listBox.Items.Clear();
 
@@ -49,6 +50,27 @@ namespace SQL_GUI
             {
                 dash_tables_listBox.Items.Add(tableName);
             }
+        }
+
+        private void resetControlDisplay()
+        {
+            foreach (Control ctrl in Controls.OfType<Panel>())
+            {
+                ctrl.Hide();
+            }
+        }
+
+        private void WriteToLog(string text)
+        {
+            var rtb = dash_log_richTextBox;
+
+            if (rtb.Lines.Length > 1000)
+            {
+                rtb.Select(0, rtb.GetFirstCharIndexFromLine(rtb.Lines.Length - 1000));
+                rtb.SelectedText = "";
+            }
+
+            rtb.AppendText($"{text}\r");
         }
 
         private void tables_add_addColumnNames_button_Click(object sender, EventArgs e)
@@ -80,8 +102,7 @@ namespace SQL_GUI
 
             if (string.IsNullOrWhiteSpace(tableName) || columns.Count == 0 || valueTypes.Count == 0 || columns.Count != valueTypes.Count)
             {
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += "Table name, columns, and value types must not be empty. Column and values count must match.";
+                WriteToLog("Table name, columns, and value types must not be empty. Column and values count must match.");
                 return;
             }
 
@@ -104,19 +125,49 @@ namespace SQL_GUI
             {
                 var addTable = _sql.CreateDatabaseTable(newTableDto, connDto);
 
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += "Successfully created new table:";
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += tableName;
+                WriteToLog("Successfully created new table:");
+                WriteToLog(tableName);
 
                 resetTableList();
             }
             catch (Exception ex)
             {
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += "Error creating new table:";
-                dash_log_richTextBox.Text += Environment.NewLine;
-                dash_log_richTextBox.Text += ex.Message;
+                WriteToLog("Error creating new table:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void addTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            tables_add_panel.Show();
+        }
+
+        private void deleteTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            tables_delete_panel.Show();
+        }
+
+        private void tables_delete_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            if (string.IsNullOrWhiteSpace(tableName))
+            {
+                WriteToLog("You must make a selection first.");
+                return;
+            }
+
+            try
+            {
+                _sql.DropTableIfExists(tableName, connDto);
+                WriteToLog($"Successfully dropped table: {tableName}");
+                resetTableList();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog($"Error while dropping table: {tableName}");
+                WriteToLog(ex.Message);
             }
         }
     }

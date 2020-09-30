@@ -56,14 +56,20 @@
             this.tables_add_tip_label = new System.Windows.Forms.Label();
             this.tables_add_addValueType_comboBox = new System.Windows.Forms.ComboBox();
             this.tables_add_addTable_button = new System.Windows.Forms.Button();
+            this.tables_add_panel = new System.Windows.Forms.Panel();
+            this.tables_delete_panel = new System.Windows.Forms.Panel();
+            this.tables_delete_label = new System.Windows.Forms.Label();
+            this.tables_delete_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.tables_add_panel.SuspendLayout();
+            this.tables_delete_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
             // 
-            this.dash_log_richTextBox.Location = new System.Drawing.Point(236, 303);
+            this.dash_log_richTextBox.Location = new System.Drawing.Point(232, 393);
             this.dash_log_richTextBox.Name = "dash_log_richTextBox";
-            this.dash_log_richTextBox.Size = new System.Drawing.Size(526, 226);
+            this.dash_log_richTextBox.Size = new System.Drawing.Size(918, 297);
             this.dash_log_richTextBox.TabIndex = 0;
             this.dash_log_richTextBox.Text = "";
             // 
@@ -73,7 +79,7 @@
             this.dash_tables_listBox.ItemHeight = 16;
             this.dash_tables_listBox.Location = new System.Drawing.Point(12, 77);
             this.dash_tables_listBox.Name = "dash_tables_listBox";
-            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 452);
+            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 612);
             this.dash_tables_listBox.TabIndex = 1;
             // 
             // dash_tables_label
@@ -95,7 +101,7 @@
             this.rowsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(774, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,14 +117,16 @@
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
+            this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
+            this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
             // 
             // columnsToolStripMenuItem
             // 
@@ -172,7 +180,7 @@
             // tables_add_tableName_textBox
             // 
             this.tables_add_tableName_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_tableName_textBox.Location = new System.Drawing.Point(457, 71);
+            this.tables_add_tableName_textBox.Location = new System.Drawing.Point(142, 49);
             this.tables_add_tableName_textBox.Name = "tables_add_tableName_textBox";
             this.tables_add_tableName_textBox.Size = new System.Drawing.Size(198, 26);
             this.tables_add_tableName_textBox.TabIndex = 4;
@@ -181,7 +189,7 @@
             // 
             this.tables_add_tableName_label.AutoSize = true;
             this.tables_add_tableName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_tableName_label.Location = new System.Drawing.Point(453, 48);
+            this.tables_add_tableName_label.Location = new System.Drawing.Point(22, 52);
             this.tables_add_tableName_label.Name = "tables_add_tableName_label";
             this.tables_add_tableName_label.Size = new System.Drawing.Size(101, 20);
             this.tables_add_tableName_label.TabIndex = 5;
@@ -191,16 +199,16 @@
             // 
             this.tables_add_columnNames_listBox.FormattingEnabled = true;
             this.tables_add_columnNames_listBox.ItemHeight = 16;
-            this.tables_add_columnNames_listBox.Location = new System.Drawing.Point(373, 131);
+            this.tables_add_columnNames_listBox.Location = new System.Drawing.Point(364, 149);
             this.tables_add_columnNames_listBox.Name = "tables_add_columnNames_listBox";
-            this.tables_add_columnNames_listBox.Size = new System.Drawing.Size(120, 148);
+            this.tables_add_columnNames_listBox.Size = new System.Drawing.Size(142, 196);
             this.tables_add_columnNames_listBox.TabIndex = 6;
             // 
             // tables_add_columnNames_label
             // 
             this.tables_add_columnNames_label.AutoSize = true;
             this.tables_add_columnNames_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_columnNames_label.Location = new System.Drawing.Point(234, 117);
+            this.tables_add_columnNames_label.Location = new System.Drawing.Point(221, 150);
             this.tables_add_columnNames_label.Name = "tables_add_columnNames_label";
             this.tables_add_columnNames_label.Size = new System.Drawing.Size(124, 20);
             this.tables_add_columnNames_label.TabIndex = 7;
@@ -209,17 +217,17 @@
             // tables_add_columnNames_textBox
             // 
             this.tables_add_columnNames_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_columnNames_textBox.Location = new System.Drawing.Point(239, 140);
+            this.tables_add_columnNames_textBox.Location = new System.Drawing.Point(217, 174);
             this.tables_add_columnNames_textBox.Name = "tables_add_columnNames_textBox";
-            this.tables_add_columnNames_textBox.Size = new System.Drawing.Size(120, 26);
+            this.tables_add_columnNames_textBox.Size = new System.Drawing.Size(133, 26);
             this.tables_add_columnNames_textBox.TabIndex = 8;
             // 
             // tables_add_addColumnNames_button
             // 
             this.tables_add_addColumnNames_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_addColumnNames_button.Location = new System.Drawing.Point(236, 179);
+            this.tables_add_addColumnNames_button.Location = new System.Drawing.Point(217, 228);
             this.tables_add_addColumnNames_button.Name = "tables_add_addColumnNames_button";
-            this.tables_add_addColumnNames_button.Size = new System.Drawing.Size(120, 28);
+            this.tables_add_addColumnNames_button.Size = new System.Drawing.Size(133, 28);
             this.tables_add_addColumnNames_button.TabIndex = 9;
             this.tables_add_addColumnNames_button.Text = "Add";
             this.tables_add_addColumnNames_button.UseVisualStyleBackColor = true;
@@ -228,9 +236,9 @@
             // tables_add_removeColumnNames_button
             // 
             this.tables_add_removeColumnNames_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_removeColumnNames_button.Location = new System.Drawing.Point(238, 251);
+            this.tables_add_removeColumnNames_button.Location = new System.Drawing.Point(217, 262);
             this.tables_add_removeColumnNames_button.Name = "tables_add_removeColumnNames_button";
-            this.tables_add_removeColumnNames_button.Size = new System.Drawing.Size(120, 28);
+            this.tables_add_removeColumnNames_button.Size = new System.Drawing.Size(133, 28);
             this.tables_add_removeColumnNames_button.TabIndex = 10;
             this.tables_add_removeColumnNames_button.Text = "Remove";
             this.tables_add_removeColumnNames_button.UseVisualStyleBackColor = true;
@@ -239,9 +247,9 @@
             // tables_add_removeValueType_button
             // 
             this.tables_add_removeValueType_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_removeValueType_button.Location = new System.Drawing.Point(508, 251);
+            this.tables_add_removeValueType_button.Location = new System.Drawing.Point(592, 262);
             this.tables_add_removeValueType_button.Name = "tables_add_removeValueType_button";
-            this.tables_add_removeValueType_button.Size = new System.Drawing.Size(120, 28);
+            this.tables_add_removeValueType_button.Size = new System.Drawing.Size(133, 28);
             this.tables_add_removeValueType_button.TabIndex = 15;
             this.tables_add_removeValueType_button.Text = "Remove";
             this.tables_add_removeValueType_button.UseVisualStyleBackColor = true;
@@ -250,9 +258,9 @@
             // tables_add_addValueType_button
             // 
             this.tables_add_addValueType_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_addValueType_button.Location = new System.Drawing.Point(508, 179);
+            this.tables_add_addValueType_button.Location = new System.Drawing.Point(592, 228);
             this.tables_add_addValueType_button.Name = "tables_add_addValueType_button";
-            this.tables_add_addValueType_button.Size = new System.Drawing.Size(120, 28);
+            this.tables_add_addValueType_button.Size = new System.Drawing.Size(133, 28);
             this.tables_add_addValueType_button.TabIndex = 14;
             this.tables_add_addValueType_button.Text = "Add";
             this.tables_add_addValueType_button.UseVisualStyleBackColor = true;
@@ -262,7 +270,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(504, 117);
+            this.label1.Location = new System.Drawing.Point(611, 149);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 12;
@@ -272,17 +280,17 @@
             // 
             this.tables_add_valueTypes_listBox.FormattingEnabled = true;
             this.tables_add_valueTypes_listBox.ItemHeight = 16;
-            this.tables_add_valueTypes_listBox.Location = new System.Drawing.Point(634, 131);
+            this.tables_add_valueTypes_listBox.Location = new System.Drawing.Point(739, 150);
             this.tables_add_valueTypes_listBox.Name = "tables_add_valueTypes_listBox";
-            this.tables_add_valueTypes_listBox.Size = new System.Drawing.Size(129, 148);
+            this.tables_add_valueTypes_listBox.Size = new System.Drawing.Size(142, 196);
             this.tables_add_valueTypes_listBox.TabIndex = 11;
             // 
             // tables_add_tip_label
             // 
             this.tables_add_tip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_tip_label.Location = new System.Drawing.Point(236, 28);
+            this.tables_add_tip_label.Location = new System.Drawing.Point(20, 140);
             this.tables_add_tip_label.Name = "tables_add_tip_label";
-            this.tables_add_tip_label.Size = new System.Drawing.Size(215, 93);
+            this.tables_add_tip_label.Size = new System.Drawing.Size(142, 196);
             this.tables_add_tip_label.TabIndex = 17;
             this.tables_add_tip_label.Text = "Please add columns and values in the desired order. The first column will be pair" +
     "ed with the first value type, and so on.";
@@ -303,15 +311,15 @@
             "DATE",
             "DATETIME",
             "TIMESTAMP"});
-            this.tables_add_addValueType_comboBox.Location = new System.Drawing.Point(507, 140);
+            this.tables_add_addValueType_comboBox.Location = new System.Drawing.Point(592, 172);
             this.tables_add_addValueType_comboBox.Name = "tables_add_addValueType_comboBox";
-            this.tables_add_addValueType_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.tables_add_addValueType_comboBox.Size = new System.Drawing.Size(133, 28);
             this.tables_add_addValueType_comboBox.TabIndex = 18;
             // 
             // tables_add_addTable_button
             // 
             this.tables_add_addTable_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_addTable_button.Location = new System.Drawing.Point(664, 61);
+            this.tables_add_addTable_button.Location = new System.Drawing.Point(375, 43);
             this.tables_add_addTable_button.Name = "tables_add_addTable_button";
             this.tables_add_addTable_button.Size = new System.Drawing.Size(97, 38);
             this.tables_add_addTable_button.TabIndex = 19;
@@ -319,34 +327,77 @@
             this.tables_add_addTable_button.UseVisualStyleBackColor = true;
             this.tables_add_addTable_button.Click += new System.EventHandler(this.tables_add_addTable_button_Click);
             // 
+            // tables_add_panel
+            // 
+            this.tables_add_panel.Controls.Add(this.tables_add_addTable_button);
+            this.tables_add_panel.Controls.Add(this.tables_add_tip_label);
+            this.tables_add_panel.Controls.Add(this.tables_add_removeColumnNames_button);
+            this.tables_add_panel.Controls.Add(this.tables_add_addValueType_comboBox);
+            this.tables_add_panel.Controls.Add(this.tables_add_addColumnNames_button);
+            this.tables_add_panel.Controls.Add(this.tables_add_valueTypes_listBox);
+            this.tables_add_panel.Controls.Add(this.tables_add_columnNames_textBox);
+            this.tables_add_panel.Controls.Add(this.tables_add_tableName_label);
+            this.tables_add_panel.Controls.Add(this.tables_add_columnNames_label);
+            this.tables_add_panel.Controls.Add(this.tables_add_removeValueType_button);
+            this.tables_add_panel.Controls.Add(this.tables_add_tableName_textBox);
+            this.tables_add_panel.Controls.Add(this.tables_add_columnNames_listBox);
+            this.tables_add_panel.Controls.Add(this.tables_add_addValueType_button);
+            this.tables_add_panel.Controls.Add(this.label1);
+            this.tables_add_panel.Location = new System.Drawing.Point(235, 28);
+            this.tables_add_panel.Name = "tables_add_panel";
+            this.tables_add_panel.Size = new System.Drawing.Size(918, 358);
+            this.tables_add_panel.TabIndex = 20;
+            // 
+            // tables_delete_panel
+            // 
+            this.tables_delete_panel.Controls.Add(this.tables_delete_button);
+            this.tables_delete_panel.Controls.Add(this.tables_delete_label);
+            this.tables_delete_panel.Location = new System.Drawing.Point(235, 28);
+            this.tables_delete_panel.Name = "tables_delete_panel";
+            this.tables_delete_panel.Size = new System.Drawing.Size(918, 358);
+            this.tables_delete_panel.TabIndex = 20;
+            // 
+            // tables_delete_label
+            // 
+            this.tables_delete_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_delete_label.Location = new System.Drawing.Point(22, 72);
+            this.tables_delete_label.Name = "tables_delete_label";
+            this.tables_delete_label.Size = new System.Drawing.Size(223, 212);
+            this.tables_delete_label.TabIndex = 0;
+            this.tables_delete_label.Text = "Please beware! There is no confirmation for this.\r\n\r\nSelect a table from the list" +
+    " on the left, then you may click the delete button.\r\n\r\nThis may cause irreversib" +
+    "le loss of data. Use this tool wisely.";
+            // 
+            // tables_delete_button
+            // 
+            this.tables_delete_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_delete_button.Location = new System.Drawing.Point(692, 138);
+            this.tables_delete_button.Name = "tables_delete_button";
+            this.tables_delete_button.Size = new System.Drawing.Size(189, 62);
+            this.tables_delete_button.TabIndex = 1;
+            this.tables_delete_button.Text = "DROP TABLE";
+            this.tables_delete_button.UseVisualStyleBackColor = true;
+            this.tables_delete_button.Click += new System.EventHandler(this.tables_delete_button_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 541);
-            this.Controls.Add(this.tables_add_addTable_button);
-            this.Controls.Add(this.tables_add_addValueType_comboBox);
-            this.Controls.Add(this.tables_add_tip_label);
-            this.Controls.Add(this.tables_add_removeValueType_button);
-            this.Controls.Add(this.tables_add_addValueType_button);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tables_add_valueTypes_listBox);
-            this.Controls.Add(this.tables_add_removeColumnNames_button);
-            this.Controls.Add(this.tables_add_addColumnNames_button);
-            this.Controls.Add(this.tables_add_columnNames_textBox);
-            this.Controls.Add(this.tables_add_columnNames_label);
-            this.Controls.Add(this.tables_add_columnNames_listBox);
-            this.Controls.Add(this.tables_add_tableName_label);
-            this.Controls.Add(this.tables_add_tableName_textBox);
+            this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.dash_log_richTextBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tables_delete_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tables_add_panel.ResumeLayout(false);
+            this.tables_add_panel.PerformLayout();
+            this.tables_delete_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,5 +433,9 @@
         private System.Windows.Forms.Label tables_add_tip_label;
         private System.Windows.Forms.ComboBox tables_add_addValueType_comboBox;
         private System.Windows.Forms.Button tables_add_addTable_button;
+        private System.Windows.Forms.Panel tables_add_panel;
+        private System.Windows.Forms.Panel tables_delete_panel;
+        private System.Windows.Forms.Button tables_delete_button;
+        private System.Windows.Forms.Label tables_delete_label;
     }
 }

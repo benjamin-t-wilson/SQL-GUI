@@ -26,6 +26,25 @@ namespace SQL_GUI
             return version;
         }
 
+        public void DropTableIfExists(string tableName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"DROP TABLE IF EXISTS {tableName}";
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public bool CreateDatabaseTable(AddNewTableDto tableDto, ConnectionDto connDto)
         {
             try
