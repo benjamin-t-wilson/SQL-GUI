@@ -31,6 +31,12 @@ These are, in semi-particular order, my immediate goals. This list will have new
 - ~~Included in previous objective, show/hide features on the dashboard relative to the tab you're on~~
 - ~~Create a function for writing to the log ( so I don't have to do excessive in-line += )~~
 - ~~Handle empty values in existing form controls~~
+- ~~Migrate a database for holding connection info on start~~
+- Add Nickname to connection box
+- Make font sizing less weird on connection box?
+- Add drop down for stored connection info
+- Add an option to store connection info in the connection box to db
+- Add ability to retrieve connection info from the db
 - Create an override for log writing function to take a color ( for fun :D )
 - Evaluate list of options on columns tab, maybe add more
 - Begin work on columns tab ( detail objectives here )
