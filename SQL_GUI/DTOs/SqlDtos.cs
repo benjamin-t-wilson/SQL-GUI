@@ -9,6 +9,7 @@ namespace SQL_GUI.DTOs
         public string Database { get; set; }
         public string Password { get; set; }
         public string Port { get; set; }
+        public string Nickname { get; set; }
     }
 
     public class AddNewTableDto

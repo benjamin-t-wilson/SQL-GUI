@@ -112,6 +112,7 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="DTOs\SqlDtos.cs" />
+    <Compile Include="Functions\SqliteConnStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Functions\SqlFunctions.cs" />
