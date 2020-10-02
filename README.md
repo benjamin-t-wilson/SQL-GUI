@@ -14,7 +14,7 @@ Simply building the project will create a .exe file in the _/bin_ folder, that c
 
 #### Removing a saved connection --
 
-I will add functionality for this later. Note, the info is stored in the local database in **plain text**. These fields auto populate into the connection box in **plain text**. This is not encrypted and is not totally secure. Please exercise your own caution when saving/handling sensitive information.
+I will add functionality for this later, currently you would need to delete the local database file ( connDb.sqlite ). Note, the info is stored in the local database in **plain text**. These fields auto populate into the connection box in **plain text**. This is not encrypted and is not totally secure. Please exercise your own caution when saving/handling sensitive information.
 
 #
 
