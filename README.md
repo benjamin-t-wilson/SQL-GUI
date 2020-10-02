@@ -18,28 +18,6 @@ I will add functionality for this later, currently you would need to delete the 
 
 #
 
-### To-do --
+### To-do & Updates --
 
-These are, in semi-particular order, my immediate goals. This list will have new objectives appended as the project continues, and I will cross off features as I go, leaving notes as necessary.
-
-- ~~Create connection window~~
-- ~~Create dashboard~~
-- ~~Attempt database connection~~
-- ~~Add functionality to add tables~~
-- ~~On successful connect, fetch a list of tables and display them on the left~~
-- ~~Add functionality to delete tables~~
-- ~~Included in previous objective, show/hide features on the dashboard relative to the tab you're on~~
-- ~~Create a function for writing to the log ( so I don't have to do excessive in-line += )~~
-- ~~Handle empty values in existing form controls~~
-- ~~Migrate a database for holding connection info on start~~
-- ~~Add Nickname to connection box~~
-- ~~Make font sizing less weird on connection box?~~
-- ~~Add drop down for stored connection info~~
-- ~~Add an option to store connection info in the connection box to db~~
-- ~~Add ability to retrieve connection info from the db~~
-- ~~Begin work on columns tab ( detail objectives here )~~
-- ~~Added ability to add columns to existing table~~
-- Create an override for log writing function to take a color ( for fun :D )
-- Evaluate list of options on columns tab, maybe add more
-- Add ability to remove saved connections
-- Encrpyt connection info saved to db?
+With the addition of another team member, our [updates are now held in clickup](https://app.clickup.com/8485502/v/l/li/44207667)
