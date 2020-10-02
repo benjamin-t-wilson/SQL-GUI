@@ -77,6 +77,35 @@ namespace SQL_GUI.Functions
             }
         }
 
+        public bool AddColumnToTable(AddNewTableDto tableDto, ConnectionDto connDto) 
+        {
+            try 
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"IF TABLE EXISTS {tableDto.TableName} ALTER TABLE";
+
+                foreach(var column in tableDto.Columns)
+                {
+                    cmd.CommandText += $" ADD COLUMN {column.ColumnName} {column.ValueType},"
+                }
+                
+                cmd.CommandText.TrimEnd(',');
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<string> GetListOfTables(ConnectionDto connDto)
         {
             try
