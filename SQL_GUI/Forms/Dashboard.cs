@@ -12,14 +12,10 @@ namespace SQL_GUI.Forms
         private ConnectionDto connDto = new ConnectionDto();
         private SqlFunctions _sql = new SqlFunctions();
 
-        public Dashboard(string host, string username, string database, string port, string password)
+        public Dashboard(ConnectionDto _connDto)
         {
             InitializeComponent();
-            connDto.Host = host;
-            connDto.Username = username;
-            connDto.Database = database;
-            connDto.Port = port;
-            connDto.Password = password;
+            connDto = _connDto;
 
             resetControlDisplay();
 
