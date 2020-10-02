@@ -62,7 +62,7 @@ namespace SQL_GUI.Functions
         public ConnectionDto GetConnectionInfo(string nickname)
         {
             con = new SQLiteConnection("Data Source=connDb.sqlite;Version=3;");
-            cmd = new SQLiteCommand($"Select Host, Username, Password, Port, Nickname, Database From Connections Where Nickname = '{nickname}'", con);
+            cmd = new SQLiteCommand($"SELECT Host, Username, Password, Port, Nickname, Database From Connections WHERE Nickname = '{nickname}'", con);
 
             con.Open();
             dr = cmd.ExecuteReader();
