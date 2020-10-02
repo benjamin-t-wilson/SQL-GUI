@@ -104,7 +104,7 @@ namespace SQL_GUI.Forms
 
             var newTableDto = new AddNewTableDto()
             {
-                TableName = tables_add_tableName_textBox.Text,
+                TableName = tableName,
                 Columns = new List<ColumnDto>()
             };
 
@@ -125,6 +125,8 @@ namespace SQL_GUI.Forms
                 WriteToLog(tableName);
 
                 resetTableList();
+                tables_add_columnNames_listBox.Items.Clear();
+                tables_add_valueTypes_listBox.Items.Clear();
             }
             catch (Exception ex)
             {
@@ -163,6 +165,78 @@ namespace SQL_GUI.Forms
             catch (Exception ex)
             {
                 WriteToLog($"Error while dropping table: {tableName}");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void columns_add_addColumn_button_Click(object sender, EventArgs e)
+        {
+            columns_add_columnNames_listBox.Items.Add(columns_add_columnName_textBox.Text);
+            columns_add_columnName_textBox.Text = string.Empty;
+        }
+
+        private void addColumnToTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_addColumn_panel.Show();
+        }
+
+        private void columns_add_removeColumn_button_Click(object sender, EventArgs e)
+        {
+            columns_add_columnNames_listBox.Items.RemoveAt(columns_add_columnNames_listBox.SelectedIndex);
+        }
+
+        private void columns_add_addValueType_button_Click(object sender, EventArgs e)
+        {
+            columns_add_valueTypes_listBox.Items.Add(columns_add_valueTypes_comboBox.SelectedItem.ToString());
+        }
+
+        private void columns_add_removeValueType_button_Click(object sender, EventArgs e)
+        {
+            columns_add_valueTypes_listBox.Items.RemoveAt(columns_add_valueTypes_listBox.SelectedIndex);
+        }
+
+        private void columns_add_column_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem.ToString();
+            var columns = columns_add_columnNames_listBox.Items;
+            var valueTypes = columns_add_valueTypes_listBox.Items;
+
+            if (string.IsNullOrWhiteSpace(tableName) || columns.Count == 0 || valueTypes.Count == 0 || columns.Count != valueTypes.Count)
+            {
+                WriteToLog("Table name, columns, and value types must not be empty. Column and values count must match.");
+                return;
+            }
+
+            var newTableDto = new AddNewTableDto()
+            {
+                TableName = tableName,
+                Columns = new List<ColumnDto>()
+            };
+
+            for (var i = 0; i < columns.Count; i++)
+            {
+                newTableDto.Columns.Add(new ColumnDto
+                {
+                    ColumnName = columns[i].ToString(),
+                    ValueType = valueTypes[i].ToString()
+                });
+            }
+
+            try
+            {
+                var addTable = _sql.AddColumnToTable(newTableDto, connDto);
+
+                WriteToLog("Successfully added columns to table:");
+                WriteToLog(tableName);
+
+                resetTableList();
+                columns_add_columnNames_listBox.Items.Clear();
+                columns_add_valueTypes_listBox.Items.Clear();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error adding columns to table:");
                 WriteToLog(ex.Message);
             }
         }

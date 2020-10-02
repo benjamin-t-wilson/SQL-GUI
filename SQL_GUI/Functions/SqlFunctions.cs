@@ -84,17 +84,17 @@ namespace SQL_GUI.Functions
                 using var con = new NpgsqlConnection(ConnectionString(connDto));
                 con.Open();
 
-                using var cmd = NpgsqlCommand();
+                using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"IF TABLE EXISTS {tableDto.TableName} ALTER TABLE";
+                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName}";
 
                 foreach(var column in tableDto.Columns)
                 {
-                    cmd.CommandText += $" ADD COLUMN {column.ColumnName} {column.ValueType},"
+                    cmd.CommandText += $" ADD COLUMN {column.ColumnName} {column.ValueType},";
                 }
                 
-                cmd.CommandText.TrimEnd(',');
+                cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
                 cmd.ExecuteNonQuery();
 

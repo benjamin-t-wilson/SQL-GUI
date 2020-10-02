@@ -1,6 +1,7 @@
 ﻿using SQL_GUI.DTOs;
 using SQL_GUI.Functions;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SQL_GUI.Forms
