@@ -37,8 +37,9 @@ These are, in semi-particular order, my immediate goals. This list will have new
 - ~~Add drop down for stored connection info~~
 - ~~Add an option to store connection info in the connection box to db~~
 - ~~Add ability to retrieve connection info from the db~~
+- ~~Begin work on columns tab ( detail objectives here )~~
+- ~~Added ability to add columns to existing table~~
 - Create an override for log writing function to take a color ( for fun :D )
 - Evaluate list of options on columns tab, maybe add more
-- Begin work on columns tab ( detail objectives here )
 - Add ability to remove saved connections
 - Encrpyt connection info saved to db?
