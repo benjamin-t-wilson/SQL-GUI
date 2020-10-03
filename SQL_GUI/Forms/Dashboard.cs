@@ -277,5 +277,11 @@ namespace SQL_GUI.Forms
             resetControlDisplay();
             columns_dataType_panel.Show();
         }
+
+        private void changeColumnConstraintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_addConstraint_panel.Show();
+        }
     }
 }

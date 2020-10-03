@@ -277,6 +277,7 @@
             this.changeColumnConstraintToolStripMenuItem.Name = "changeColumnConstraintToolStripMenuItem";
             this.changeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
             this.changeColumnConstraintToolStripMenuItem.Text = "Add column constraint";
+            this.changeColumnConstraintToolStripMenuItem.Click += new System.EventHandler(this.changeColumnConstraintToolStripMenuItem_Click);
             // 
             // rowsToolStripMenuItem
             // 
