@@ -120,6 +120,15 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="columns_dataType_toolTip_label.Text" xml:space="preserve">
+    <value>Warning! This can cause irreversible data loss
+
+Any existing data in this column can become corrupted. Any column that relies on data from this column can become corrupted. This can cause cascading errors
+
+There is not a confirmation for this change
+
+Select a table from the left, then a column, then change type using the interface to the right</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

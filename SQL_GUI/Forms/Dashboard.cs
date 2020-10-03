@@ -271,5 +271,11 @@ namespace SQL_GUI.Forms
             resetControlDisplay();
             columns_rename_panel.Show();
         }
+
+        private void changeColumnDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_dataType_panel.Show();
+        }
     }
 }

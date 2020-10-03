@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.dash_log_richTextBox = new System.Windows.Forms.RichTextBox();
             this.dash_tables_listBox = new System.Windows.Forms.ListBox();
             this.dash_tables_label = new System.Windows.Forms.Label();
@@ -98,6 +99,11 @@
             this.columns_remove_panel = new System.Windows.Forms.Panel();
             this.columns_remove_removeColumn_button = new System.Windows.Forms.Button();
             this.columns_remove_toolTip_label = new System.Windows.Forms.Label();
+            this.columns_dataType_panel = new System.Windows.Forms.Panel();
+            this.columns_dataType_valueTypes_comboBox = new System.Windows.Forms.ComboBox();
+            this.columns_dataType_valueTypes_label = new System.Windows.Forms.Label();
+            this.columns_dataType_toolTip_label = new System.Windows.Forms.Label();
+            this.columns_dataType_changeType_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -105,6 +111,7 @@
             this.tables_rename_panel.SuspendLayout();
             this.columns_rename_panel.SuspendLayout();
             this.columns_remove_panel.SuspendLayout();
+            this.columns_dataType_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -145,7 +152,7 @@
             this.freeTypeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -155,7 +162,7 @@
             this.disconnectToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // disconnectToolStripMenuItem
@@ -179,7 +186,7 @@
             this.deleteTableToolStripMenuItem,
             this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // addTableToolStripMenuItem
@@ -212,7 +219,7 @@
             this.changeColumnDataTypeToolStripMenuItem,
             this.changeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // addColumnToTableToolStripMenuItem
@@ -241,6 +248,7 @@
             this.changeColumnDataTypeToolStripMenuItem.Name = "changeColumnDataTypeToolStripMenuItem";
             this.changeColumnDataTypeToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
             this.changeColumnDataTypeToolStripMenuItem.Text = "Change column data type";
+            this.changeColumnDataTypeToolStripMenuItem.Click += new System.EventHandler(this.changeColumnDataTypeToolStripMenuItem_Click);
             // 
             // changeColumnConstraintToolStripMenuItem
             // 
@@ -256,7 +264,7 @@
             this.updateRowsInTableToolStripMenuItem,
             this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
-            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
+            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.rowsToolStripMenuItem.Text = "Rows";
             // 
             // addRowToTableToolStripMenuItem
@@ -286,7 +294,7 @@
             // freeTypeToolStripMenuItem
             // 
             this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
-            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.freeTypeToolStripMenuItem.Text = "Free type";
             // 
             // tables_add_tableName_textBox
@@ -799,23 +807,85 @@
     "irreversible data loss.\r\n\r\nSelect a table, then a column from the left, then cli" +
     "ck the button to the right\r\n";
             // 
+            // columns_dataType_panel
+            // 
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_changeType_button);
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_toolTip_label);
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_valueTypes_comboBox);
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_valueTypes_label);
+            this.columns_dataType_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_dataType_panel.Name = "columns_dataType_panel";
+            this.columns_dataType_panel.Size = new System.Drawing.Size(920, 360);
+            this.columns_dataType_panel.TabIndex = 26;
+            // 
+            // columns_dataType_valueTypes_comboBox
+            // 
+            this.columns_dataType_valueTypes_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_valueTypes_comboBox.FormattingEnabled = true;
+            this.columns_dataType_valueTypes_comboBox.Items.AddRange(new object[] {
+            "CHAR",
+            "VARCHAR",
+            "TEXT",
+            "BOOLEAN",
+            "INT",
+            "FLOAT",
+            "DOUBLE",
+            "DECIMAL",
+            "DATE",
+            "DATETIME",
+            "TIMESTAMP"});
+            this.columns_dataType_valueTypes_comboBox.Location = new System.Drawing.Point(683, 136);
+            this.columns_dataType_valueTypes_comboBox.Name = "columns_dataType_valueTypes_comboBox";
+            this.columns_dataType_valueTypes_comboBox.Size = new System.Drawing.Size(133, 28);
+            this.columns_dataType_valueTypes_comboBox.TabIndex = 20;
+            // 
+            // columns_dataType_valueTypes_label
+            // 
+            this.columns_dataType_valueTypes_label.AutoSize = true;
+            this.columns_dataType_valueTypes_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_valueTypes_label.Location = new System.Drawing.Point(699, 113);
+            this.columns_dataType_valueTypes_label.Name = "columns_dataType_valueTypes_label";
+            this.columns_dataType_valueTypes_label.Size = new System.Drawing.Size(101, 20);
+            this.columns_dataType_valueTypes_label.TabIndex = 19;
+            this.columns_dataType_valueTypes_label.Text = "Value Types";
+            // 
+            // columns_dataType_toolTip_label
+            // 
+            this.columns_dataType_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_toolTip_label.Location = new System.Drawing.Point(19, 23);
+            this.columns_dataType_toolTip_label.Name = "columns_dataType_toolTip_label";
+            this.columns_dataType_toolTip_label.Size = new System.Drawing.Size(279, 305);
+            this.columns_dataType_toolTip_label.TabIndex = 21;
+            this.columns_dataType_toolTip_label.Text = resources.GetString("columns_dataType_toolTip_label.Text");
+            // 
+            // columns_dataType_changeType_button
+            // 
+            this.columns_dataType_changeType_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_changeType_button.Location = new System.Drawing.Point(683, 186);
+            this.columns_dataType_changeType_button.Name = "columns_dataType_changeType_button";
+            this.columns_dataType_changeType_button.Size = new System.Drawing.Size(133, 34);
+            this.columns_dataType_changeType_button.TabIndex = 22;
+            this.columns_dataType_changeType_button.Text = "Change Type";
+            this.columns_dataType_changeType_button.UseVisualStyleBackColor = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.Controls.Add(this.columns_dataType_panel);
             this.Controls.Add(this.dash_columns_label);
             this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.columns_addColumn_panel);
             this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.columns_remove_panel);
             this.Controls.Add(this.columns_rename_panel);
             this.Controls.Add(this.tables_delete_panel);
+            this.Controls.Add(this.tables_rename_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
@@ -831,6 +901,8 @@
             this.columns_rename_panel.ResumeLayout(false);
             this.columns_rename_panel.PerformLayout();
             this.columns_remove_panel.ResumeLayout(false);
+            this.columns_dataType_panel.ResumeLayout(false);
+            this.columns_dataType_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -908,5 +980,10 @@
         private System.Windows.Forms.Panel columns_remove_panel;
         private System.Windows.Forms.Button columns_remove_removeColumn_button;
         private System.Windows.Forms.Label columns_remove_toolTip_label;
+        private System.Windows.Forms.Panel columns_dataType_panel;
+        private System.Windows.Forms.Button columns_dataType_changeType_button;
+        private System.Windows.Forms.Label columns_dataType_toolTip_label;
+        private System.Windows.Forms.ComboBox columns_dataType_valueTypes_comboBox;
+        private System.Windows.Forms.Label columns_dataType_valueTypes_label;
     }
 }
