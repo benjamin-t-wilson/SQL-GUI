@@ -37,7 +37,7 @@ namespace SQL_GUI.Functions
             cmd = new SQLiteCommand();
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = $"insert into Connections(Host, Username, Password, Port, Nickname, Database) values ('{dto.Host}', '{dto.Username}', '{dto.Password}', '{dto.Port}', '{dto.Nickname}', '{dto.Database}')";
+            cmd.CommandText = $"INSERT INTO Connections(Host, Username, Password, Port, Nickname, Database) VALUES ('{dto.Host}', '{dto.Username}', '{dto.Password}', '{dto.Port}', '{dto.Nickname}', '{dto.Database}')";
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -45,7 +45,7 @@ namespace SQL_GUI.Functions
         public List<string> GetNickNames()
         {
             con = new SQLiteConnection("Data Source=connDb.sqlite;Version=3;");
-            cmd = new SQLiteCommand("Select Nickname From Connections", con);
+            cmd = new SQLiteCommand("SELECT Nickname FROM Connections", con);
             con.Open();
             dr = cmd.ExecuteReader();
 
@@ -62,7 +62,7 @@ namespace SQL_GUI.Functions
         public ConnectionDto GetConnectionInfo(string nickname)
         {
             con = new SQLiteConnection("Data Source=connDb.sqlite;Version=3;");
-            cmd = new SQLiteCommand($"SELECT Host, Username, Password, Port, Nickname, Database From Connections WHERE Nickname = '{nickname}'", con);
+            cmd = new SQLiteCommand($"SELECT Host, Username, Password, Port, Nickname, Database FROM Connections WHERE Nickname = '{nickname}'", con);
 
             con.Open();
             dr = cmd.ExecuteReader();
