@@ -17,7 +17,7 @@ namespace SQL_GUI.Functions
             using var con = new NpgsqlConnection(ConnectionString(connDto));
             con.Open();
 
-            var sql = "SELECT version()";
+            var sql = "SELECT VERSION()";
 
             using var cmd = new NpgsqlCommand(sql, con);
 
@@ -116,7 +116,7 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"select TABLE_NAME from {connDto.Database}.information_schema.tables where table_type = 'BASE TABLE'";
+                cmd.CommandText = $"SELECT TABLE_NAME FROM {connDto.Database}.information_schema.tables WHERE table_type = 'BASE TABLE'";
 
                 using NpgsqlDataReader rdr = cmd.ExecuteReader();
 
