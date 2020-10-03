@@ -90,11 +90,15 @@
             this.tables_rename_newName_button = new System.Windows.Forms.Button();
             this.dash_columns_label = new System.Windows.Forms.Label();
             this.dash_columns_listBox = new System.Windows.Forms.ListBox();
+            this.columns_remove_panel = new System.Windows.Forms.Panel();
+            this.columns_remove_toolTip_label = new System.Windows.Forms.Label();
+            this.columns_remove_removeColumn_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
             this.columns_addColumn_panel.SuspendLayout();
             this.tables_rename_panel.SuspendLayout();
+            this.columns_remove_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -708,6 +712,36 @@
             this.dash_columns_listBox.Size = new System.Drawing.Size(202, 292);
             this.dash_columns_listBox.TabIndex = 22;
             // 
+            // columns_remove_panel
+            // 
+            this.columns_remove_panel.Controls.Add(this.columns_remove_removeColumn_button);
+            this.columns_remove_panel.Controls.Add(this.columns_remove_toolTip_label);
+            this.columns_remove_panel.Location = new System.Drawing.Point(230, 29);
+            this.columns_remove_panel.Name = "columns_remove_panel";
+            this.columns_remove_panel.Size = new System.Drawing.Size(920, 358);
+            this.columns_remove_panel.TabIndex = 2;
+            // 
+            // columns_remove_toolTip_label
+            // 
+            this.columns_remove_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_remove_toolTip_label.Location = new System.Drawing.Point(24, 57);
+            this.columns_remove_toolTip_label.Name = "columns_remove_toolTip_label";
+            this.columns_remove_toolTip_label.Size = new System.Drawing.Size(220, 224);
+            this.columns_remove_toolTip_label.TabIndex = 0;
+            this.columns_remove_toolTip_label.Text = "Please beware! There is no confirmation for this.\r\n\r\nDropping a column can cause " +
+    "irreversible data loss.\r\n\r\nSelect a table, then a column from the left, then cli" +
+    "ck the button to the right\r\n";
+            // 
+            // columns_remove_removeColumn_button
+            // 
+            this.columns_remove_removeColumn_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_remove_removeColumn_button.Location = new System.Drawing.Point(683, 137);
+            this.columns_remove_removeColumn_button.Name = "columns_remove_removeColumn_button";
+            this.columns_remove_removeColumn_button.Size = new System.Drawing.Size(189, 62);
+            this.columns_remove_removeColumn_button.TabIndex = 1;
+            this.columns_remove_removeColumn_button.Text = "DROP COLUMN";
+            this.columns_remove_removeColumn_button.UseVisualStyleBackColor = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -719,10 +753,11 @@
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.dash_log_richTextBox);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.columns_addColumn_panel);
-            this.Controls.Add(this.tables_add_panel);
+            this.Controls.Add(this.columns_remove_panel);
             this.Controls.Add(this.tables_delete_panel);
             this.Controls.Add(this.tables_rename_panel);
+            this.Controls.Add(this.columns_addColumn_panel);
+            this.Controls.Add(this.tables_add_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
@@ -735,6 +770,7 @@
             this.columns_addColumn_panel.PerformLayout();
             this.tables_rename_panel.ResumeLayout(false);
             this.tables_rename_panel.PerformLayout();
+            this.columns_remove_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -804,5 +840,8 @@
         private System.Windows.Forms.TextBox tables_rename_newName_textbox;
         private System.Windows.Forms.Label dash_columns_label;
         private System.Windows.Forms.ListBox dash_columns_listBox;
+        private System.Windows.Forms.Panel columns_remove_panel;
+        private System.Windows.Forms.Button columns_remove_removeColumn_button;
+        private System.Windows.Forms.Label columns_remove_toolTip_label;
     }
 }
