@@ -27,7 +27,7 @@ With the addition of another team member, our [updates are now held in clickup](
 
 ### The Team --
 
-![photo of Ben](https://i.imgur.com/uwz4ChK.png)
+![photo of Chris](https://i.imgur.com/8cr4d8y.jpg)
 
 #### Christopher Cruz --
 
