@@ -27,6 +27,18 @@ With the addition of another team member, our [updates are now held in clickup](
 
 ### The Team --
 
+![photo of Chris](https://i.imgur.com/8cr4d8y.jpg)
+
+#### Christopher Cruz --
+
+Chris really enjoys body building and playing video games. He also enjoys learning about machine learning concepts and taking online data science courses in his spare time. He have about 2 years of experience building Full Stack web applications using React and Node JS. He also have over 4 years of experience programming in Python.
+
+##### Find Chris on:
+
+- [LinkedIn](https://www.linkedin.com/in/christopherc1331/)
+- [GitHub](https://github.com/christopherc1331)
+- or email at [christopherc1331@gmail.com](mailto:christopherc1331@gmail.com)
+
 ![photo of Ben](https://i.imgur.com/uwz4ChK.png)
 
 #### Benjamin Wilson --
