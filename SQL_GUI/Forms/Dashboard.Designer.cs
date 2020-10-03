@@ -61,6 +61,7 @@
             this.tables_delete_button = new System.Windows.Forms.Button();
             this.tables_delete_label = new System.Windows.Forms.Label();
             this.columns_addColumn_panel = new System.Windows.Forms.Panel();
+            this.columns_add_columnTableNote_label = new System.Windows.Forms.Label();
             this.columns_add_column_button = new System.Windows.Forms.Button();
             this.columns_add_columnColumnNote_label = new System.Windows.Forms.Label();
             this.columns_add_removeColumn_button = new System.Windows.Forms.Button();
@@ -73,7 +74,15 @@
             this.columns_add_columnNames_listBox = new System.Windows.Forms.ListBox();
             this.columns_add_addValueType_button = new System.Windows.Forms.Button();
             this.columns_add_valueTypes_label = new System.Windows.Forms.Label();
-            this.columns_add_columnTableNote_label = new System.Windows.Forms.Label();
+            this.renameTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColumnDataTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColumnConstraintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRowFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.freeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -111,9 +120,11 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
             this.tablesToolStripMenuItem,
             this.columnsToolStripMenuItem,
-            this.rowsToolStripMenuItem});
+            this.rowsToolStripMenuItem,
+            this.freeTypeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
@@ -124,7 +135,8 @@
             // 
             this.tablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addTableToolStripMenuItem,
-            this.deleteTableToolStripMenuItem});
+            this.deleteTableToolStripMenuItem,
+            this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
             this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.tablesToolStripMenuItem.Text = "Tables";
@@ -132,14 +144,14 @@
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
             this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
             // 
@@ -147,7 +159,10 @@
             // 
             this.columnsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addColumnToTableToolStripMenuItem,
-            this.removeColumnFromTableToolStripMenuItem});
+            this.removeColumnFromTableToolStripMenuItem,
+            this.renameColumnToolStripMenuItem,
+            this.changeColumnDataTypeToolStripMenuItem,
+            this.changeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
             this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.columnsToolStripMenuItem.Text = "Columns";
@@ -170,7 +185,8 @@
             this.rowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addRowToTableToolStripMenuItem,
             this.selectRowsFromTableToolStripMenuItem,
-            this.updateRowsInTableToolStripMenuItem});
+            this.updateRowsInTableToolStripMenuItem,
+            this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
             this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.rowsToolStripMenuItem.Text = "Rows";
@@ -415,6 +431,15 @@
             this.columns_addColumn_panel.Size = new System.Drawing.Size(918, 358);
             this.columns_addColumn_panel.TabIndex = 21;
             // 
+            // columns_add_columnTableNote_label
+            // 
+            this.columns_add_columnTableNote_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_add_columnTableNote_label.Location = new System.Drawing.Point(19, 42);
+            this.columns_add_columnTableNote_label.Name = "columns_add_columnTableNote_label";
+            this.columns_add_columnTableNote_label.Size = new System.Drawing.Size(166, 54);
+            this.columns_add_columnTableNote_label.TabIndex = 20;
+            this.columns_add_columnTableNote_label.Text = "Select a table from the list on the left";
+            // 
             // columns_add_column_button
             // 
             this.columns_add_column_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -547,14 +572,62 @@
             this.columns_add_valueTypes_label.TabIndex = 12;
             this.columns_add_valueTypes_label.Text = "Value Types";
             // 
-            // columns_add_columnTableNote_label
+            // renameTableToolStripMenuItem
             // 
-            this.columns_add_columnTableNote_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_add_columnTableNote_label.Location = new System.Drawing.Point(19, 42);
-            this.columns_add_columnTableNote_label.Name = "columns_add_columnTableNote_label";
-            this.columns_add_columnTableNote_label.Size = new System.Drawing.Size(166, 54);
-            this.columns_add_columnTableNote_label.TabIndex = 20;
-            this.columns_add_columnTableNote_label.Text = "Select a table from the list on the left";
+            this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
+            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.renameTableToolStripMenuItem.Text = "Rename table";
+            // 
+            // renameColumnToolStripMenuItem
+            // 
+            this.renameColumnToolStripMenuItem.Name = "renameColumnToolStripMenuItem";
+            this.renameColumnToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.renameColumnToolStripMenuItem.Text = "Rename column";
+            // 
+            // changeColumnDataTypeToolStripMenuItem
+            // 
+            this.changeColumnDataTypeToolStripMenuItem.Name = "changeColumnDataTypeToolStripMenuItem";
+            this.changeColumnDataTypeToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.changeColumnDataTypeToolStripMenuItem.Text = "Change column data type";
+            // 
+            // changeColumnConstraintToolStripMenuItem
+            // 
+            this.changeColumnConstraintToolStripMenuItem.Name = "changeColumnConstraintToolStripMenuItem";
+            this.changeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.changeColumnConstraintToolStripMenuItem.Text = "Change column constraint";
+            // 
+            // deleteRowFromTableToolStripMenuItem
+            // 
+            this.deleteRowFromTableToolStripMenuItem.Name = "deleteRowFromTableToolStripMenuItem";
+            this.deleteRowFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.deleteRowFromTableToolStripMenuItem.Text = "Delete row from table";
+            // 
+            // freeTypeToolStripMenuItem
+            // 
+            this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.freeTypeToolStripMenuItem.Text = "Free type";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.disconnectToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // disconnectToolStripMenuItem
+            // 
+            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Text = "Close";
             // 
             // Dashboard
             // 
@@ -631,5 +704,14 @@
         private System.Windows.Forms.ListBox columns_add_columnNames_listBox;
         private System.Windows.Forms.Button columns_add_addValueType_button;
         private System.Windows.Forms.Label columns_add_valueTypes_label;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameColumnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeColumnDataTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeColumnConstraintToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteRowFromTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem freeTypeToolStripMenuItem;
     }
 }
