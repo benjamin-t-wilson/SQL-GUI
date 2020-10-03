@@ -83,10 +83,16 @@
             this.columns_add_columnNames_listBox = new System.Windows.Forms.ListBox();
             this.columns_add_addValueType_button = new System.Windows.Forms.Button();
             this.columns_add_valueTypes_label = new System.Windows.Forms.Label();
+            this.tables_rename_panel = new System.Windows.Forms.Panel();
+            this.tables_rename_toolTip_label = new System.Windows.Forms.Label();
+            this.tables_rename_newName_label = new System.Windows.Forms.Label();
+            this.tables_rename_newName_textbox = new System.Windows.Forms.TextBox();
+            this.tables_rename_newName_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
             this.columns_addColumn_panel.SuspendLayout();
+            this.tables_rename_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -101,16 +107,16 @@
             // 
             this.dash_tables_listBox.FormattingEnabled = true;
             this.dash_tables_listBox.ItemHeight = 16;
-            this.dash_tables_listBox.Location = new System.Drawing.Point(12, 77);
+            this.dash_tables_listBox.Location = new System.Drawing.Point(12, 61);
             this.dash_tables_listBox.Name = "dash_tables_listBox";
-            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 612);
+            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 628);
             this.dash_tables_listBox.TabIndex = 1;
             // 
             // dash_tables_label
             // 
             this.dash_tables_label.AutoSize = true;
             this.dash_tables_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dash_tables_label.Location = new System.Drawing.Point(7, 49);
+            this.dash_tables_label.Location = new System.Drawing.Point(12, 29);
             this.dash_tables_label.Name = "dash_tables_label";
             this.dash_tables_label.Size = new System.Drawing.Size(78, 25);
             this.dash_tables_label.TabIndex = 2;
@@ -143,14 +149,14 @@
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -181,8 +187,9 @@
             // renameTableToolStripMenuItem
             // 
             this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
-            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.renameTableToolStripMenuItem.Text = "Rename table";
+            this.renameTableToolStripMenuItem.Click += new System.EventHandler(this.renameTableToolStripMenuItem_Click);
             // 
             // columnsToolStripMenuItem
             // 
@@ -631,11 +638,61 @@
             this.columns_add_valueTypes_label.TabIndex = 12;
             this.columns_add_valueTypes_label.Text = "Value Types";
             // 
+            // tables_rename_panel
+            // 
+            this.tables_rename_panel.Controls.Add(this.tables_rename_newName_button);
+            this.tables_rename_panel.Controls.Add(this.tables_rename_newName_textbox);
+            this.tables_rename_panel.Controls.Add(this.tables_rename_newName_label);
+            this.tables_rename_panel.Controls.Add(this.tables_rename_toolTip_label);
+            this.tables_rename_panel.Location = new System.Drawing.Point(232, 28);
+            this.tables_rename_panel.Name = "tables_rename_panel";
+            this.tables_rename_panel.Size = new System.Drawing.Size(921, 359);
+            this.tables_rename_panel.TabIndex = 21;
+            // 
+            // tables_rename_toolTip_label
+            // 
+            this.tables_rename_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_toolTip_label.Location = new System.Drawing.Point(25, 33);
+            this.tables_rename_toolTip_label.Name = "tables_rename_toolTip_label";
+            this.tables_rename_toolTip_label.Size = new System.Drawing.Size(173, 84);
+            this.tables_rename_toolTip_label.TabIndex = 0;
+            this.tables_rename_toolTip_label.Text = "Select a table on the left to be renamed, then rename it using the interface belo" +
+    "w";
+            // 
+            // tables_rename_newName_label
+            // 
+            this.tables_rename_newName_label.AutoSize = true;
+            this.tables_rename_newName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_newName_label.Location = new System.Drawing.Point(22, 151);
+            this.tables_rename_newName_label.Name = "tables_rename_newName_label";
+            this.tables_rename_newName_label.Size = new System.Drawing.Size(93, 20);
+            this.tables_rename_newName_label.TabIndex = 1;
+            this.tables_rename_newName_label.Text = "New name:";
+            // 
+            // tables_rename_newName_textbox
+            // 
+            this.tables_rename_newName_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_newName_textbox.Location = new System.Drawing.Point(26, 175);
+            this.tables_rename_newName_textbox.Name = "tables_rename_newName_textbox";
+            this.tables_rename_newName_textbox.Size = new System.Drawing.Size(172, 26);
+            this.tables_rename_newName_textbox.TabIndex = 2;
+            // 
+            // tables_rename_newName_button
+            // 
+            this.tables_rename_newName_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_newName_button.Location = new System.Drawing.Point(204, 175);
+            this.tables_rename_newName_button.Name = "tables_rename_newName_button";
+            this.tables_rename_newName_button.Size = new System.Drawing.Size(108, 26);
+            this.tables_rename_newName_button.TabIndex = 3;
+            this.tables_rename_newName_button.Text = "Rename";
+            this.tables_rename_newName_button.UseVisualStyleBackColor = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.columns_addColumn_panel);
             this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.dash_tables_label);
@@ -653,6 +710,8 @@
             this.tables_delete_panel.ResumeLayout(false);
             this.columns_addColumn_panel.ResumeLayout(false);
             this.columns_addColumn_panel.PerformLayout();
+            this.tables_rename_panel.ResumeLayout(false);
+            this.tables_rename_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -715,5 +774,10 @@
         private System.Windows.Forms.ToolStripMenuItem changeColumnConstraintToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteRowFromTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freeTypeToolStripMenuItem;
+        private System.Windows.Forms.Panel tables_rename_panel;
+        private System.Windows.Forms.Label tables_rename_toolTip_label;
+        private System.Windows.Forms.Label tables_rename_newName_label;
+        private System.Windows.Forms.Button tables_rename_newName_button;
+        private System.Windows.Forms.TextBox tables_rename_newName_textbox;
     }
 }

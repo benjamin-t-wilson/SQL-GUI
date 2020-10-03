@@ -253,5 +253,11 @@ namespace SQL_GUI.Forms
         {
             Close();
         }
+
+        private void renameTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            tables_rename_panel.Show();
+        }
     }
 }
