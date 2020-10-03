@@ -11,11 +11,13 @@ namespace SQL_GUI.Forms
     {
         private ConnectionDto connDto = new ConnectionDto();
         private SqlFunctions _sql = new SqlFunctions();
+        private ConnectionBox _connBox = null;
 
-        public Dashboard(ConnectionDto _connDto)
+        public Dashboard(ConnectionDto _connDto, ConnectionBox connBox)
         {
             InitializeComponent();
             connDto = _connDto;
+            _connBox = connBox;
 
             resetControlDisplay();
 
@@ -239,6 +241,17 @@ namespace SQL_GUI.Forms
                 WriteToLog("Error adding columns to table:");
                 WriteToLog(ex.Message);
             }
+        }
+
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _connBox.Show();
+            Close();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -32,16 +32,25 @@
             this.dash_tables_listBox = new System.Windows.Forms.ListBox();
             this.dash_tables_label = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addColumnToTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeColumnFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColumnDataTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColumnConstraintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRowToTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectRowsFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateRowsInTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRowFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.freeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tables_add_tableName_textBox = new System.Windows.Forms.TextBox();
             this.tables_add_tableName_label = new System.Windows.Forms.Label();
             this.tables_add_columnNames_listBox = new System.Windows.Forms.ListBox();
@@ -74,15 +83,6 @@
             this.columns_add_columnNames_listBox = new System.Windows.Forms.ListBox();
             this.columns_add_addValueType_button = new System.Windows.Forms.Button();
             this.columns_add_valueTypes_label = new System.Windows.Forms.Label();
-            this.renameTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeColumnDataTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeColumnConstraintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteRowFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.freeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -131,6 +131,29 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.disconnectToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // disconnectToolStripMenuItem
+            // 
+            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
             // tablesToolStripMenuItem
             // 
             this.tablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -144,16 +167,22 @@
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
             this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
+            // 
+            // renameTableToolStripMenuItem
+            // 
+            this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
+            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.renameTableToolStripMenuItem.Text = "Rename table";
             // 
             // columnsToolStripMenuItem
             // 
@@ -179,6 +208,24 @@
             this.removeColumnFromTableToolStripMenuItem.Name = "removeColumnFromTableToolStripMenuItem";
             this.removeColumnFromTableToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
             this.removeColumnFromTableToolStripMenuItem.Text = "Remove column from table";
+            // 
+            // renameColumnToolStripMenuItem
+            // 
+            this.renameColumnToolStripMenuItem.Name = "renameColumnToolStripMenuItem";
+            this.renameColumnToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.renameColumnToolStripMenuItem.Text = "Rename column";
+            // 
+            // changeColumnDataTypeToolStripMenuItem
+            // 
+            this.changeColumnDataTypeToolStripMenuItem.Name = "changeColumnDataTypeToolStripMenuItem";
+            this.changeColumnDataTypeToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.changeColumnDataTypeToolStripMenuItem.Text = "Change column data type";
+            // 
+            // changeColumnConstraintToolStripMenuItem
+            // 
+            this.changeColumnConstraintToolStripMenuItem.Name = "changeColumnConstraintToolStripMenuItem";
+            this.changeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.changeColumnConstraintToolStripMenuItem.Text = "Change column constraint";
             // 
             // rowsToolStripMenuItem
             // 
@@ -208,6 +255,18 @@
             this.updateRowsInTableToolStripMenuItem.Name = "updateRowsInTableToolStripMenuItem";
             this.updateRowsInTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.updateRowsInTableToolStripMenuItem.Text = "Update row(s) in table";
+            // 
+            // deleteRowFromTableToolStripMenuItem
+            // 
+            this.deleteRowFromTableToolStripMenuItem.Name = "deleteRowFromTableToolStripMenuItem";
+            this.deleteRowFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.deleteRowFromTableToolStripMenuItem.Text = "Delete row from table";
+            // 
+            // freeTypeToolStripMenuItem
+            // 
+            this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.freeTypeToolStripMenuItem.Text = "Free type";
             // 
             // tables_add_tableName_textBox
             // 
@@ -571,63 +630,6 @@
             this.columns_add_valueTypes_label.Size = new System.Drawing.Size(101, 20);
             this.columns_add_valueTypes_label.TabIndex = 12;
             this.columns_add_valueTypes_label.Text = "Value Types";
-            // 
-            // renameTableToolStripMenuItem
-            // 
-            this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
-            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.renameTableToolStripMenuItem.Text = "Rename table";
-            // 
-            // renameColumnToolStripMenuItem
-            // 
-            this.renameColumnToolStripMenuItem.Name = "renameColumnToolStripMenuItem";
-            this.renameColumnToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
-            this.renameColumnToolStripMenuItem.Text = "Rename column";
-            // 
-            // changeColumnDataTypeToolStripMenuItem
-            // 
-            this.changeColumnDataTypeToolStripMenuItem.Name = "changeColumnDataTypeToolStripMenuItem";
-            this.changeColumnDataTypeToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
-            this.changeColumnDataTypeToolStripMenuItem.Text = "Change column data type";
-            // 
-            // changeColumnConstraintToolStripMenuItem
-            // 
-            this.changeColumnConstraintToolStripMenuItem.Name = "changeColumnConstraintToolStripMenuItem";
-            this.changeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
-            this.changeColumnConstraintToolStripMenuItem.Text = "Change column constraint";
-            // 
-            // deleteRowFromTableToolStripMenuItem
-            // 
-            this.deleteRowFromTableToolStripMenuItem.Name = "deleteRowFromTableToolStripMenuItem";
-            this.deleteRowFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
-            this.deleteRowFromTableToolStripMenuItem.Text = "Delete row from table";
-            // 
-            // freeTypeToolStripMenuItem
-            // 
-            this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
-            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
-            this.freeTypeToolStripMenuItem.Text = "Free type";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.disconnectToolStripMenuItem,
-            this.closeToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // disconnectToolStripMenuItem
-            // 
-            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.disconnectToolStripMenuItem.Text = "Disconnect";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.closeToolStripMenuItem.Text = "Close";
             // 
             // Dashboard
             // 

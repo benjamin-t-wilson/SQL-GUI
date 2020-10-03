@@ -2,6 +2,7 @@
 using SQL_GUI.Functions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SQL_GUI.Forms
@@ -48,7 +49,14 @@ namespace SQL_GUI.Forms
                 _sqlite.AddData(dto);
             }
 
-            var dashboard = new Dashboard(dto);
+            foreach(Control ctrl in Controls.OfType<TextBox>())
+            {
+                ctrl.Text = string.Empty;
+            }
+
+            con_savedConnections_comboBox.ResetText();
+
+            var dashboard = new Dashboard(dto, this);
 
             Hide();
 
