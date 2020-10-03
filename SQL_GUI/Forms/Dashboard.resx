@@ -129,6 +129,13 @@ There is not a confirmation for this change
 
 Select a table from the left, then a column, then change type using the interface to the right</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Select a table from the left, then a column below
+
+Select one or more check boxes for constraints. If you are adding reference or check type constraint, please fill out additional forms
+
+Click the add constraint button when finished</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
