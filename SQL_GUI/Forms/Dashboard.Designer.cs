@@ -88,6 +88,8 @@
             this.tables_rename_newName_label = new System.Windows.Forms.Label();
             this.tables_rename_newName_textbox = new System.Windows.Forms.TextBox();
             this.tables_rename_newName_button = new System.Windows.Forms.Button();
+            this.dash_columns_label = new System.Windows.Forms.Label();
+            this.dash_columns_listBox = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -109,7 +111,7 @@
             this.dash_tables_listBox.ItemHeight = 16;
             this.dash_tables_listBox.Location = new System.Drawing.Point(12, 61);
             this.dash_tables_listBox.Name = "dash_tables_listBox";
-            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 628);
+            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 292);
             this.dash_tables_listBox.TabIndex = 1;
             // 
             // dash_tables_label
@@ -133,7 +135,7 @@
             this.freeTypeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -143,7 +145,7 @@
             this.disconnectToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // disconnectToolStripMenuItem
@@ -167,20 +169,20 @@
             this.deleteTableToolStripMenuItem,
             this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
             this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
             // 
@@ -200,7 +202,7 @@
             this.changeColumnDataTypeToolStripMenuItem,
             this.changeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // addColumnToTableToolStripMenuItem
@@ -242,7 +244,7 @@
             this.updateRowsInTableToolStripMenuItem,
             this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
-            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
             this.rowsToolStripMenuItem.Text = "Rows";
             // 
             // addRowToTableToolStripMenuItem
@@ -272,7 +274,7 @@
             // freeTypeToolStripMenuItem
             // 
             this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
-            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
             this.freeTypeToolStripMenuItem.Text = "Free type";
             // 
             // tables_add_tableName_textBox
@@ -687,19 +689,40 @@
             this.tables_rename_newName_button.Text = "Rename";
             this.tables_rename_newName_button.UseVisualStyleBackColor = true;
             // 
+            // dash_columns_label
+            // 
+            this.dash_columns_label.AutoSize = true;
+            this.dash_columns_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dash_columns_label.Location = new System.Drawing.Point(12, 366);
+            this.dash_columns_label.Name = "dash_columns_label";
+            this.dash_columns_label.Size = new System.Drawing.Size(96, 25);
+            this.dash_columns_label.TabIndex = 23;
+            this.dash_columns_label.Text = "Columns:";
+            // 
+            // dash_columns_listBox
+            // 
+            this.dash_columns_listBox.FormattingEnabled = true;
+            this.dash_columns_listBox.ItemHeight = 16;
+            this.dash_columns_listBox.Location = new System.Drawing.Point(12, 398);
+            this.dash_columns_listBox.Name = "dash_columns_listBox";
+            this.dash_columns_listBox.Size = new System.Drawing.Size(202, 292);
+            this.dash_columns_listBox.TabIndex = 22;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
-            this.Controls.Add(this.tables_rename_panel);
-            this.Controls.Add(this.columns_addColumn_panel);
-            this.Controls.Add(this.tables_add_panel);
+            this.Controls.Add(this.dash_columns_label);
+            this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.dash_log_richTextBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.columns_addColumn_panel);
+            this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.tables_delete_panel);
+            this.Controls.Add(this.tables_rename_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
@@ -779,5 +802,7 @@
         private System.Windows.Forms.Label tables_rename_newName_label;
         private System.Windows.Forms.Button tables_rename_newName_button;
         private System.Windows.Forms.TextBox tables_rename_newName_textbox;
+        private System.Windows.Forms.Label dash_columns_label;
+        private System.Windows.Forms.ListBox dash_columns_listBox;
     }
 }
