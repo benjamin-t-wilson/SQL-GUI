@@ -259,5 +259,17 @@ namespace SQL_GUI.Forms
             resetControlDisplay();
             tables_rename_panel.Show();
         }
+
+        private void removeColumnFromTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_remove_panel.Show();
+        }
+
+        private void renameColumnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_rename_panel.Show();
+        }
     }
 }
