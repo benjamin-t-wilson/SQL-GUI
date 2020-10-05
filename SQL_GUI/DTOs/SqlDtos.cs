@@ -26,11 +26,6 @@ namespace SQL_GUI.DTOs
 
     public class AddNewRowDto : AddNewTableDto
     {
-        public List<RowDto> Rows { get; set; }
-    }
-
-    public class RowDto
-    {
-        public dynamic RowValue { get; set; }
+        public List<string> Rows { get; set; }
     }
 }

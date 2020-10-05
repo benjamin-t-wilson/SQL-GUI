@@ -129,6 +129,15 @@
             this.columns_removeConstraint_constraints_label = new System.Windows.Forms.Label();
             this.columns_removeConstraint_constraints_listBox = new System.Windows.Forms.ListBox();
             this.columns_removeConstraint_toolTip_label = new System.Windows.Forms.Label();
+            this.rows_add_panel = new System.Windows.Forms.Panel();
+            this.rows_add_rowValues_label = new System.Windows.Forms.Label();
+            this.rows_add_addRow_button = new System.Windows.Forms.Button();
+            this.rows_add_removeRowValue_button = new System.Windows.Forms.Button();
+            this.rows_add_addRowValue_button = new System.Windows.Forms.Button();
+            this.rows_add_rowValues_listBox = new System.Windows.Forms.ListBox();
+            this.rows_add_rowValue_textBox = new System.Windows.Forms.TextBox();
+            this.rows_add_rowValue_label = new System.Windows.Forms.Label();
+            this.rows_add_toolTip_label = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -139,6 +148,7 @@
             this.columns_dataType_panel.SuspendLayout();
             this.columns_addConstraint_panel.SuspendLayout();
             this.columns_removeConstraint_panel.SuspendLayout();
+            this.rows_add_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -157,6 +167,7 @@
             this.dash_tables_listBox.Name = "dash_tables_listBox";
             this.dash_tables_listBox.Size = new System.Drawing.Size(202, 292);
             this.dash_tables_listBox.TabIndex = 1;
+            this.dash_tables_listBox.SelectedIndexChanged += new System.EventHandler(this.dash_tables_listBox_SelectedIndexChanged);
             // 
             // dash_tables_label
             // 
@@ -308,6 +319,7 @@
             this.addRowToTableToolStripMenuItem.Name = "addRowToTableToolStripMenuItem";
             this.addRowToTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.addRowToTableToolStripMenuItem.Text = "Add row to table";
+            this.addRowToTableToolStripMenuItem.Click += new System.EventHandler(this.addRowToTableToolStripMenuItem_Click);
             // 
             // selectRowsFromTableToolStripMenuItem
             // 
@@ -1153,11 +1165,101 @@
     " of constraints present on the column on the right\r\n\r\nSelect a constraint and cl" +
     "ick the button to drop it";
             // 
+            // rows_add_panel
+            // 
+            this.rows_add_panel.Controls.Add(this.rows_add_rowValues_label);
+            this.rows_add_panel.Controls.Add(this.rows_add_addRow_button);
+            this.rows_add_panel.Controls.Add(this.rows_add_removeRowValue_button);
+            this.rows_add_panel.Controls.Add(this.rows_add_addRowValue_button);
+            this.rows_add_panel.Controls.Add(this.rows_add_rowValues_listBox);
+            this.rows_add_panel.Controls.Add(this.rows_add_rowValue_textBox);
+            this.rows_add_panel.Controls.Add(this.rows_add_rowValue_label);
+            this.rows_add_panel.Controls.Add(this.rows_add_toolTip_label);
+            this.rows_add_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rows_add_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_add_panel.Name = "rows_add_panel";
+            this.rows_add_panel.Size = new System.Drawing.Size(920, 360);
+            this.rows_add_panel.TabIndex = 29;
+            // 
+            // rows_add_rowValues_label
+            // 
+            this.rows_add_rowValues_label.AutoSize = true;
+            this.rows_add_rowValues_label.Location = new System.Drawing.Point(474, 49);
+            this.rows_add_rowValues_label.Name = "rows_add_rowValues_label";
+            this.rows_add_rowValues_label.Size = new System.Drawing.Size(65, 20);
+            this.rows_add_rowValues_label.TabIndex = 7;
+            this.rows_add_rowValues_label.Text = "Values:";
+            // 
+            // rows_add_addRow_button
+            // 
+            this.rows_add_addRow_button.Location = new System.Drawing.Point(737, 155);
+            this.rows_add_addRow_button.Name = "rows_add_addRow_button";
+            this.rows_add_addRow_button.Size = new System.Drawing.Size(122, 44);
+            this.rows_add_addRow_button.TabIndex = 6;
+            this.rows_add_addRow_button.Text = "Add Row";
+            this.rows_add_addRow_button.UseVisualStyleBackColor = true;
+            this.rows_add_addRow_button.Click += new System.EventHandler(this.rows_add_addRow_button_Click);
+            // 
+            // rows_add_removeRowValue_button
+            // 
+            this.rows_add_removeRowValue_button.Location = new System.Drawing.Point(322, 195);
+            this.rows_add_removeRowValue_button.Name = "rows_add_removeRowValue_button";
+            this.rows_add_removeRowValue_button.Size = new System.Drawing.Size(90, 28);
+            this.rows_add_removeRowValue_button.TabIndex = 5;
+            this.rows_add_removeRowValue_button.Text = "Remove";
+            this.rows_add_removeRowValue_button.UseVisualStyleBackColor = true;
+            this.rows_add_removeRowValue_button.Click += new System.EventHandler(this.rows_add_removeRowValue_button_Click);
+            // 
+            // rows_add_addRowValue_button
+            // 
+            this.rows_add_addRowValue_button.Location = new System.Drawing.Point(322, 155);
+            this.rows_add_addRowValue_button.Name = "rows_add_addRowValue_button";
+            this.rows_add_addRowValue_button.Size = new System.Drawing.Size(90, 28);
+            this.rows_add_addRowValue_button.TabIndex = 4;
+            this.rows_add_addRowValue_button.Text = "Add";
+            this.rows_add_addRowValue_button.UseVisualStyleBackColor = true;
+            this.rows_add_addRowValue_button.Click += new System.EventHandler(this.rows_add_addRowValue_button_Click);
+            // 
+            // rows_add_rowValues_listBox
+            // 
+            this.rows_add_rowValues_listBox.FormattingEnabled = true;
+            this.rows_add_rowValues_listBox.ItemHeight = 20;
+            this.rows_add_rowValues_listBox.Location = new System.Drawing.Point(478, 72);
+            this.rows_add_rowValues_listBox.Name = "rows_add_rowValues_listBox";
+            this.rows_add_rowValues_listBox.Size = new System.Drawing.Size(153, 204);
+            this.rows_add_rowValues_listBox.TabIndex = 3;
+            // 
+            // rows_add_rowValue_textBox
+            // 
+            this.rows_add_rowValue_textBox.Location = new System.Drawing.Point(298, 115);
+            this.rows_add_rowValue_textBox.Name = "rows_add_rowValue_textBox";
+            this.rows_add_rowValue_textBox.Size = new System.Drawing.Size(139, 26);
+            this.rows_add_rowValue_textBox.TabIndex = 2;
+            // 
+            // rows_add_rowValue_label
+            // 
+            this.rows_add_rowValue_label.AutoSize = true;
+            this.rows_add_rowValue_label.Location = new System.Drawing.Point(294, 92);
+            this.rows_add_rowValue_label.Name = "rows_add_rowValue_label";
+            this.rows_add_rowValue_label.Size = new System.Drawing.Size(94, 20);
+            this.rows_add_rowValue_label.TabIndex = 1;
+            this.rows_add_rowValue_label.Text = "Row Value:";
+            // 
+            // rows_add_toolTip_label
+            // 
+            this.rows_add_toolTip_label.Location = new System.Drawing.Point(24, 77);
+            this.rows_add_toolTip_label.Name = "rows_add_toolTip_label";
+            this.rows_add_toolTip_label.Size = new System.Drawing.Size(208, 213);
+            this.rows_add_toolTip_label.TabIndex = 0;
+            this.rows_add_toolTip_label.Text = "Select a table from the left\r\n\r\nThen use the provided textbox to enter values\r\n\r\n" +
+    "Please ensure to enter a value for each column in the table ( shown below )";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
             this.Controls.Add(this.columns_addConstraint_panel);
             this.Controls.Add(this.columns_dataType_panel);
@@ -1194,6 +1296,8 @@
             this.columns_addConstraint_panel.PerformLayout();
             this.columns_removeConstraint_panel.ResumeLayout(false);
             this.columns_removeConstraint_panel.PerformLayout();
+            this.rows_add_panel.ResumeLayout(false);
+            this.rows_add_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1301,5 +1405,14 @@
         private System.Windows.Forms.Label columns_removeConstraint_constraints_label;
         private System.Windows.Forms.ListBox columns_removeConstraint_constraints_listBox;
         private System.Windows.Forms.Label columns_removeConstraint_toolTip_label;
+        private System.Windows.Forms.Panel rows_add_panel;
+        private System.Windows.Forms.Label rows_add_rowValues_label;
+        private System.Windows.Forms.Button rows_add_addRow_button;
+        private System.Windows.Forms.Button rows_add_removeRowValue_button;
+        private System.Windows.Forms.Button rows_add_addRowValue_button;
+        private System.Windows.Forms.ListBox rows_add_rowValues_listBox;
+        private System.Windows.Forms.TextBox rows_add_rowValue_textBox;
+        private System.Windows.Forms.Label rows_add_rowValue_label;
+        private System.Windows.Forms.Label rows_add_toolTip_label;
     }
 }

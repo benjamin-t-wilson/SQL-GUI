@@ -289,5 +289,65 @@ namespace SQL_GUI.Forms
             resetControlDisplay();
             columns_removeConstraint_panel.Show();
         }
+
+        private void addRowToTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            rows_add_panel.Show();
+        }
+
+        private void rows_add_addRowValue_button_Click(object sender, EventArgs e)
+        {
+            rows_add_rowValues_listBox.Items.Add(rows_add_rowValue_textBox.Text);
+            rows_add_rowValue_textBox.Text = string.Empty;
+        }
+
+        private void rows_add_removeRowValue_button_Click(object sender, EventArgs e)
+        {
+            rows_add_rowValues_listBox.Items.RemoveAt(rows_add_rowValues_listBox.SelectedIndex);
+        }
+
+        private void rows_add_addRow_button_Click(object sender, EventArgs e)
+        {
+            var table = dash_tables_listBox.SelectedItem.ToString();
+
+            var columns = new List<ColumnDto>();
+            foreach (var col in dash_columns_listBox.Items)
+            {
+                var name = col.ToString().Split(' ')[0];
+                var type = col.ToString().Split(' ')[1].Trim(new char[] { '(', ')' });
+
+                columns.Add(new ColumnDto()
+                {
+                    ColumnName = name,
+                    ValueType = type
+                });
+            }
+            var rows = new List<string>();
+
+            foreach (var row in rows_add_rowValues_listBox.Items)
+            {
+                rows.Add(row.ToString());
+            }
+
+            var dto = new AddNewRowDto()
+            {
+                TableName = table,
+                Columns = columns,
+                Rows = rows
+            };
+
+            _sql.AddRowToTable(dto, connDto);
+        }
+
+        private void dash_tables_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem.ToString(), connDto);
+
+            foreach (var col in columns)
+            {
+                dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.ValueType})");
+            }
+        }
     }
 }
