@@ -28,20 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.dash_log_richTextBox = new System.Windows.Forms.RichTextBox();
             this.dash_tables_listBox = new System.Windows.Forms.ListBox();
             this.dash_tables_label = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addColumnToTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeColumnFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColumnDataTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColumnConstraintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeColumnConstraintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRowToTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectRowsFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateRowsInTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRowFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.freeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tables_add_tableName_textBox = new System.Windows.Forms.TextBox();
             this.tables_add_tableName_label = new System.Windows.Forms.Label();
             this.tables_add_columnNames_listBox = new System.Windows.Forms.ListBox();
@@ -51,7 +62,7 @@
             this.tables_add_removeColumnNames_button = new System.Windows.Forms.Button();
             this.tables_add_removeValueType_button = new System.Windows.Forms.Button();
             this.tables_add_addValueType_button = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tables_add_valueTypes_label = new System.Windows.Forms.Label();
             this.tables_add_valueTypes_listBox = new System.Windows.Forms.ListBox();
             this.tables_add_tip_label = new System.Windows.Forms.Label();
             this.tables_add_addValueType_comboBox = new System.Windows.Forms.ComboBox();
@@ -76,19 +87,60 @@
             this.columns_add_columnNames_listBox = new System.Windows.Forms.ListBox();
             this.columns_add_addValueType_button = new System.Windows.Forms.Button();
             this.columns_add_valueTypes_label = new System.Windows.Forms.Label();
-            this.renameTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeColumnDataTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeColumnConstraintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteRowFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.freeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tables_rename_panel = new System.Windows.Forms.Panel();
+            this.tables_rename_newName_button = new System.Windows.Forms.Button();
+            this.tables_rename_newName_textbox = new System.Windows.Forms.TextBox();
+            this.tables_rename_newName_label = new System.Windows.Forms.Label();
+            this.tables_rename_toolTip_label = new System.Windows.Forms.Label();
+            this.dash_columns_label = new System.Windows.Forms.Label();
+            this.dash_columns_listBox = new System.Windows.Forms.ListBox();
+            this.columns_rename_panel = new System.Windows.Forms.Panel();
+            this.columns_rename_newName_button = new System.Windows.Forms.Button();
+            this.columns_rename_newName_textbox = new System.Windows.Forms.TextBox();
+            this.columns_rename_newName_label = new System.Windows.Forms.Label();
+            this.columns_rename_toolTip_label = new System.Windows.Forms.Label();
+            this.columns_remove_panel = new System.Windows.Forms.Panel();
+            this.columns_remove_removeColumn_button = new System.Windows.Forms.Button();
+            this.columns_remove_toolTip_label = new System.Windows.Forms.Label();
+            this.columns_dataType_panel = new System.Windows.Forms.Panel();
+            this.columns_dataType_changeType_button = new System.Windows.Forms.Button();
+            this.columns_dataType_toolTip_label = new System.Windows.Forms.Label();
+            this.columns_dataType_valueTypes_comboBox = new System.Windows.Forms.ComboBox();
+            this.columns_dataType_valueTypes_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_panel = new System.Windows.Forms.Panel();
+            this.columns_addConstraint_add_button = new System.Windows.Forms.Button();
+            this.columns_addConstraint_references_column_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_references_table_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_check_value_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_check_operators_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_check_column_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_check_checkName_label = new System.Windows.Forms.Label();
+            this.columns_addConstraint_check_value_textBox = new System.Windows.Forms.TextBox();
+            this.columns_addConstraint_check_operators_comboBox = new System.Windows.Forms.ComboBox();
+            this.columns_addConstraint_check_columns_comboBox = new System.Windows.Forms.ComboBox();
+            this.columns_addConstraint_check_checkName_textBox = new System.Windows.Forms.TextBox();
+            this.columns_addConstraint_references_column_comboBox = new System.Windows.Forms.ComboBox();
+            this.columns_addConstraint_references_table_comboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.columns_addConstraint_check_checkBox = new System.Windows.Forms.CheckBox();
+            this.columns_addConstraint_references_checkBox = new System.Windows.Forms.CheckBox();
+            this.columns_addConstraint_notNull_checkBox = new System.Windows.Forms.CheckBox();
+            this.columns_addConstraint_unique_checkBox = new System.Windows.Forms.CheckBox();
+            this.columns_removeConstraint_panel = new System.Windows.Forms.Panel();
+            this.columns_removeConstraint_remove_button = new System.Windows.Forms.Button();
+            this.columns_removeConstraint_constraints_label = new System.Windows.Forms.Label();
+            this.columns_removeConstraint_constraints_listBox = new System.Windows.Forms.ListBox();
+            this.columns_removeConstraint_toolTip_label = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
             this.columns_addColumn_panel.SuspendLayout();
+            this.tables_rename_panel.SuspendLayout();
+            this.columns_rename_panel.SuspendLayout();
+            this.columns_remove_panel.SuspendLayout();
+            this.columns_dataType_panel.SuspendLayout();
+            this.columns_addConstraint_panel.SuspendLayout();
+            this.columns_removeConstraint_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -103,16 +155,16 @@
             // 
             this.dash_tables_listBox.FormattingEnabled = true;
             this.dash_tables_listBox.ItemHeight = 16;
-            this.dash_tables_listBox.Location = new System.Drawing.Point(12, 77);
+            this.dash_tables_listBox.Location = new System.Drawing.Point(12, 61);
             this.dash_tables_listBox.Name = "dash_tables_listBox";
-            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 612);
+            this.dash_tables_listBox.Size = new System.Drawing.Size(202, 292);
             this.dash_tables_listBox.TabIndex = 1;
             // 
             // dash_tables_label
             // 
             this.dash_tables_label.AutoSize = true;
             this.dash_tables_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dash_tables_label.Location = new System.Drawing.Point(7, 49);
+            this.dash_tables_label.Location = new System.Drawing.Point(12, 29);
             this.dash_tables_label.Name = "dash_tables_label";
             this.dash_tables_label.Size = new System.Drawing.Size(78, 25);
             this.dash_tables_label.TabIndex = 2;
@@ -133,6 +185,29 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.disconnectToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // disconnectToolStripMenuItem
+            // 
+            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
             // tablesToolStripMenuItem
             // 
             this.tablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -146,16 +221,23 @@
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
             this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
+            // 
+            // renameTableToolStripMenuItem
+            // 
+            this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
+            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.renameTableToolStripMenuItem.Text = "Rename table";
+            this.renameTableToolStripMenuItem.Click += new System.EventHandler(this.renameTableToolStripMenuItem_Click);
             // 
             // columnsToolStripMenuItem
             // 
@@ -164,7 +246,8 @@
             this.removeColumnFromTableToolStripMenuItem,
             this.renameColumnToolStripMenuItem,
             this.changeColumnDataTypeToolStripMenuItem,
-            this.changeColumnConstraintToolStripMenuItem});
+            this.changeColumnConstraintToolStripMenuItem,
+            this.removeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
             this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.columnsToolStripMenuItem.Text = "Columns";
@@ -181,6 +264,35 @@
             this.removeColumnFromTableToolStripMenuItem.Name = "removeColumnFromTableToolStripMenuItem";
             this.removeColumnFromTableToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
             this.removeColumnFromTableToolStripMenuItem.Text = "Remove column from table";
+            this.removeColumnFromTableToolStripMenuItem.Click += new System.EventHandler(this.removeColumnFromTableToolStripMenuItem_Click);
+            // 
+            // renameColumnToolStripMenuItem
+            // 
+            this.renameColumnToolStripMenuItem.Name = "renameColumnToolStripMenuItem";
+            this.renameColumnToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.renameColumnToolStripMenuItem.Text = "Rename column";
+            this.renameColumnToolStripMenuItem.Click += new System.EventHandler(this.renameColumnToolStripMenuItem_Click);
+            // 
+            // changeColumnDataTypeToolStripMenuItem
+            // 
+            this.changeColumnDataTypeToolStripMenuItem.Name = "changeColumnDataTypeToolStripMenuItem";
+            this.changeColumnDataTypeToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.changeColumnDataTypeToolStripMenuItem.Text = "Change column data type";
+            this.changeColumnDataTypeToolStripMenuItem.Click += new System.EventHandler(this.changeColumnDataTypeToolStripMenuItem_Click);
+            // 
+            // changeColumnConstraintToolStripMenuItem
+            // 
+            this.changeColumnConstraintToolStripMenuItem.Name = "changeColumnConstraintToolStripMenuItem";
+            this.changeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.changeColumnConstraintToolStripMenuItem.Text = "Add column constraint";
+            this.changeColumnConstraintToolStripMenuItem.Click += new System.EventHandler(this.changeColumnConstraintToolStripMenuItem_Click);
+            // 
+            // removeColumnConstraintToolStripMenuItem
+            // 
+            this.removeColumnConstraintToolStripMenuItem.Name = "removeColumnConstraintToolStripMenuItem";
+            this.removeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
+            this.removeColumnConstraintToolStripMenuItem.Text = "Remove column constraint";
+            this.removeColumnConstraintToolStripMenuItem.Click += new System.EventHandler(this.removeColumnConstraintToolStripMenuItem_Click);
             // 
             // rowsToolStripMenuItem
             // 
@@ -210,6 +322,18 @@
             this.updateRowsInTableToolStripMenuItem.Name = "updateRowsInTableToolStripMenuItem";
             this.updateRowsInTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.updateRowsInTableToolStripMenuItem.Text = "Update row(s) in table";
+            // 
+            // deleteRowFromTableToolStripMenuItem
+            // 
+            this.deleteRowFromTableToolStripMenuItem.Name = "deleteRowFromTableToolStripMenuItem";
+            this.deleteRowFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.deleteRowFromTableToolStripMenuItem.Text = "Delete row from table";
+            // 
+            // freeTypeToolStripMenuItem
+            // 
+            this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.freeTypeToolStripMenuItem.Text = "Free type";
             // 
             // tables_add_tableName_textBox
             // 
@@ -300,15 +424,15 @@
             this.tables_add_addValueType_button.UseVisualStyleBackColor = true;
             this.tables_add_addValueType_button.Click += new System.EventHandler(this.tables_add_addValueType_button_Click);
             // 
-            // label1
+            // tables_add_valueTypes_label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(611, 149);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Value Types";
+            this.tables_add_valueTypes_label.AutoSize = true;
+            this.tables_add_valueTypes_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_add_valueTypes_label.Location = new System.Drawing.Point(611, 149);
+            this.tables_add_valueTypes_label.Name = "tables_add_valueTypes_label";
+            this.tables_add_valueTypes_label.Size = new System.Drawing.Size(101, 20);
+            this.tables_add_valueTypes_label.TabIndex = 12;
+            this.tables_add_valueTypes_label.Text = "Value Types";
             // 
             // tables_add_valueTypes_listBox
             // 
@@ -376,19 +500,19 @@
             this.tables_add_panel.Controls.Add(this.tables_add_tableName_textBox);
             this.tables_add_panel.Controls.Add(this.tables_add_columnNames_listBox);
             this.tables_add_panel.Controls.Add(this.tables_add_addValueType_button);
-            this.tables_add_panel.Controls.Add(this.label1);
-            this.tables_add_panel.Location = new System.Drawing.Point(235, 28);
+            this.tables_add_panel.Controls.Add(this.tables_add_valueTypes_label);
+            this.tables_add_panel.Location = new System.Drawing.Point(235, 30);
             this.tables_add_panel.Name = "tables_add_panel";
-            this.tables_add_panel.Size = new System.Drawing.Size(918, 358);
+            this.tables_add_panel.Size = new System.Drawing.Size(920, 360);
             this.tables_add_panel.TabIndex = 20;
             // 
             // tables_delete_panel
             // 
             this.tables_delete_panel.Controls.Add(this.tables_delete_button);
             this.tables_delete_panel.Controls.Add(this.tables_delete_label);
-            this.tables_delete_panel.Location = new System.Drawing.Point(235, 28);
+            this.tables_delete_panel.Location = new System.Drawing.Point(235, 30);
             this.tables_delete_panel.Name = "tables_delete_panel";
-            this.tables_delete_panel.Size = new System.Drawing.Size(918, 358);
+            this.tables_delete_panel.Size = new System.Drawing.Size(920, 360);
             this.tables_delete_panel.TabIndex = 20;
             // 
             // tables_delete_button
@@ -428,7 +552,7 @@
             this.columns_addColumn_panel.Controls.Add(this.columns_add_columnNames_listBox);
             this.columns_addColumn_panel.Controls.Add(this.columns_add_addValueType_button);
             this.columns_addColumn_panel.Controls.Add(this.columns_add_valueTypes_label);
-            this.columns_addColumn_panel.Location = new System.Drawing.Point(235, 29);
+            this.columns_addColumn_panel.Location = new System.Drawing.Point(235, 30);
             this.columns_addColumn_panel.Name = "columns_addColumn_panel";
             this.columns_addColumn_panel.Size = new System.Drawing.Size(918, 358);
             this.columns_addColumn_panel.TabIndex = 21;
@@ -574,75 +698,483 @@
             this.columns_add_valueTypes_label.TabIndex = 12;
             this.columns_add_valueTypes_label.Text = "Value Types";
             // 
-            // renameTableToolStripMenuItem
+            // tables_rename_panel
             // 
-            this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
-            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.renameTableToolStripMenuItem.Text = "Rename table";
+            this.tables_rename_panel.Controls.Add(this.tables_rename_newName_button);
+            this.tables_rename_panel.Controls.Add(this.tables_rename_newName_textbox);
+            this.tables_rename_panel.Controls.Add(this.tables_rename_newName_label);
+            this.tables_rename_panel.Controls.Add(this.tables_rename_toolTip_label);
+            this.tables_rename_panel.Location = new System.Drawing.Point(235, 30);
+            this.tables_rename_panel.Name = "tables_rename_panel";
+            this.tables_rename_panel.Size = new System.Drawing.Size(920, 360);
+            this.tables_rename_panel.TabIndex = 21;
             // 
-            // renameColumnToolStripMenuItem
+            // tables_rename_newName_button
             // 
-            this.renameColumnToolStripMenuItem.Name = "renameColumnToolStripMenuItem";
-            this.renameColumnToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
-            this.renameColumnToolStripMenuItem.Text = "Rename column";
+            this.tables_rename_newName_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_newName_button.Location = new System.Drawing.Point(204, 175);
+            this.tables_rename_newName_button.Name = "tables_rename_newName_button";
+            this.tables_rename_newName_button.Size = new System.Drawing.Size(108, 26);
+            this.tables_rename_newName_button.TabIndex = 3;
+            this.tables_rename_newName_button.Text = "Rename";
+            this.tables_rename_newName_button.UseVisualStyleBackColor = true;
             // 
-            // changeColumnDataTypeToolStripMenuItem
+            // tables_rename_newName_textbox
             // 
-            this.changeColumnDataTypeToolStripMenuItem.Name = "changeColumnDataTypeToolStripMenuItem";
-            this.changeColumnDataTypeToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
-            this.changeColumnDataTypeToolStripMenuItem.Text = "Change column data type";
+            this.tables_rename_newName_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_newName_textbox.Location = new System.Drawing.Point(26, 175);
+            this.tables_rename_newName_textbox.Name = "tables_rename_newName_textbox";
+            this.tables_rename_newName_textbox.Size = new System.Drawing.Size(172, 26);
+            this.tables_rename_newName_textbox.TabIndex = 2;
             // 
-            // changeColumnConstraintToolStripMenuItem
+            // tables_rename_newName_label
             // 
-            this.changeColumnConstraintToolStripMenuItem.Name = "changeColumnConstraintToolStripMenuItem";
-            this.changeColumnConstraintToolStripMenuItem.Size = new System.Drawing.Size(273, 26);
-            this.changeColumnConstraintToolStripMenuItem.Text = "Change column constraint";
+            this.tables_rename_newName_label.AutoSize = true;
+            this.tables_rename_newName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_newName_label.Location = new System.Drawing.Point(22, 151);
+            this.tables_rename_newName_label.Name = "tables_rename_newName_label";
+            this.tables_rename_newName_label.Size = new System.Drawing.Size(93, 20);
+            this.tables_rename_newName_label.TabIndex = 1;
+            this.tables_rename_newName_label.Text = "New name:";
             // 
-            // deleteRowFromTableToolStripMenuItem
+            // tables_rename_toolTip_label
             // 
-            this.deleteRowFromTableToolStripMenuItem.Name = "deleteRowFromTableToolStripMenuItem";
-            this.deleteRowFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
-            this.deleteRowFromTableToolStripMenuItem.Text = "Delete row from table";
+            this.tables_rename_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tables_rename_toolTip_label.Location = new System.Drawing.Point(25, 33);
+            this.tables_rename_toolTip_label.Name = "tables_rename_toolTip_label";
+            this.tables_rename_toolTip_label.Size = new System.Drawing.Size(173, 84);
+            this.tables_rename_toolTip_label.TabIndex = 0;
+            this.tables_rename_toolTip_label.Text = "Select a table on the left to be renamed, then rename it using the interface belo" +
+    "w";
             // 
-            // freeTypeToolStripMenuItem
+            // dash_columns_label
             // 
-            this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
-            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
-            this.freeTypeToolStripMenuItem.Text = "Free type";
+            this.dash_columns_label.AutoSize = true;
+            this.dash_columns_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dash_columns_label.Location = new System.Drawing.Point(12, 366);
+            this.dash_columns_label.Name = "dash_columns_label";
+            this.dash_columns_label.Size = new System.Drawing.Size(96, 25);
+            this.dash_columns_label.TabIndex = 23;
+            this.dash_columns_label.Text = "Columns:";
             // 
-            // fileToolStripMenuItem
+            // dash_columns_listBox
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.disconnectToolStripMenuItem,
-            this.closeToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "File";
+            this.dash_columns_listBox.FormattingEnabled = true;
+            this.dash_columns_listBox.ItemHeight = 16;
+            this.dash_columns_listBox.Location = new System.Drawing.Point(12, 398);
+            this.dash_columns_listBox.Name = "dash_columns_listBox";
+            this.dash_columns_listBox.Size = new System.Drawing.Size(202, 292);
+            this.dash_columns_listBox.TabIndex = 22;
             // 
-            // disconnectToolStripMenuItem
+            // columns_rename_panel
             // 
-            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            this.columns_rename_panel.Controls.Add(this.columns_rename_newName_button);
+            this.columns_rename_panel.Controls.Add(this.columns_rename_newName_textbox);
+            this.columns_rename_panel.Controls.Add(this.columns_rename_newName_label);
+            this.columns_rename_panel.Controls.Add(this.columns_rename_toolTip_label);
+            this.columns_rename_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_rename_panel.Name = "columns_rename_panel";
+            this.columns_rename_panel.Size = new System.Drawing.Size(920, 360);
+            this.columns_rename_panel.TabIndex = 24;
             // 
-            // closeToolStripMenuItem
+            // columns_rename_newName_button
             // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.closeToolStripMenuItem.Text = "Close";
+            this.columns_rename_newName_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_rename_newName_button.Location = new System.Drawing.Point(204, 175);
+            this.columns_rename_newName_button.Name = "columns_rename_newName_button";
+            this.columns_rename_newName_button.Size = new System.Drawing.Size(108, 26);
+            this.columns_rename_newName_button.TabIndex = 3;
+            this.columns_rename_newName_button.Text = "Rename";
+            this.columns_rename_newName_button.UseVisualStyleBackColor = true;
+            // 
+            // columns_rename_newName_textbox
+            // 
+            this.columns_rename_newName_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_rename_newName_textbox.Location = new System.Drawing.Point(26, 175);
+            this.columns_rename_newName_textbox.Name = "columns_rename_newName_textbox";
+            this.columns_rename_newName_textbox.Size = new System.Drawing.Size(172, 26);
+            this.columns_rename_newName_textbox.TabIndex = 2;
+            // 
+            // columns_rename_newName_label
+            // 
+            this.columns_rename_newName_label.AutoSize = true;
+            this.columns_rename_newName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_rename_newName_label.Location = new System.Drawing.Point(22, 151);
+            this.columns_rename_newName_label.Name = "columns_rename_newName_label";
+            this.columns_rename_newName_label.Size = new System.Drawing.Size(93, 20);
+            this.columns_rename_newName_label.TabIndex = 1;
+            this.columns_rename_newName_label.Text = "New name:";
+            // 
+            // columns_rename_toolTip_label
+            // 
+            this.columns_rename_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_rename_toolTip_label.Location = new System.Drawing.Point(25, 33);
+            this.columns_rename_toolTip_label.Name = "columns_rename_toolTip_label";
+            this.columns_rename_toolTip_label.Size = new System.Drawing.Size(173, 110);
+            this.columns_rename_toolTip_label.TabIndex = 0;
+            this.columns_rename_toolTip_label.Text = "Select a table on the left, then a column to be renamed, then rename it using the" +
+    " interface below";
+            // 
+            // columns_remove_panel
+            // 
+            this.columns_remove_panel.Controls.Add(this.columns_remove_removeColumn_button);
+            this.columns_remove_panel.Controls.Add(this.columns_remove_toolTip_label);
+            this.columns_remove_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_remove_panel.Name = "columns_remove_panel";
+            this.columns_remove_panel.Size = new System.Drawing.Size(920, 360);
+            this.columns_remove_panel.TabIndex = 25;
+            // 
+            // columns_remove_removeColumn_button
+            // 
+            this.columns_remove_removeColumn_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_remove_removeColumn_button.Location = new System.Drawing.Point(683, 137);
+            this.columns_remove_removeColumn_button.Name = "columns_remove_removeColumn_button";
+            this.columns_remove_removeColumn_button.Size = new System.Drawing.Size(189, 62);
+            this.columns_remove_removeColumn_button.TabIndex = 1;
+            this.columns_remove_removeColumn_button.Text = "DROP COLUMN";
+            this.columns_remove_removeColumn_button.UseVisualStyleBackColor = true;
+            // 
+            // columns_remove_toolTip_label
+            // 
+            this.columns_remove_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_remove_toolTip_label.Location = new System.Drawing.Point(24, 57);
+            this.columns_remove_toolTip_label.Name = "columns_remove_toolTip_label";
+            this.columns_remove_toolTip_label.Size = new System.Drawing.Size(220, 224);
+            this.columns_remove_toolTip_label.TabIndex = 0;
+            this.columns_remove_toolTip_label.Text = "Please beware! There is no confirmation for this.\r\n\r\nDropping a column can cause " +
+    "irreversible data loss.\r\n\r\nSelect a table, then a column from the left, then cli" +
+    "ck the button to the right\r\n";
+            // 
+            // columns_dataType_panel
+            // 
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_changeType_button);
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_toolTip_label);
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_valueTypes_comboBox);
+            this.columns_dataType_panel.Controls.Add(this.columns_dataType_valueTypes_label);
+            this.columns_dataType_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_dataType_panel.Name = "columns_dataType_panel";
+            this.columns_dataType_panel.Size = new System.Drawing.Size(920, 360);
+            this.columns_dataType_panel.TabIndex = 26;
+            // 
+            // columns_dataType_changeType_button
+            // 
+            this.columns_dataType_changeType_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_changeType_button.Location = new System.Drawing.Point(683, 186);
+            this.columns_dataType_changeType_button.Name = "columns_dataType_changeType_button";
+            this.columns_dataType_changeType_button.Size = new System.Drawing.Size(133, 34);
+            this.columns_dataType_changeType_button.TabIndex = 22;
+            this.columns_dataType_changeType_button.Text = "Change Type";
+            this.columns_dataType_changeType_button.UseVisualStyleBackColor = true;
+            // 
+            // columns_dataType_toolTip_label
+            // 
+            this.columns_dataType_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_toolTip_label.Location = new System.Drawing.Point(19, 23);
+            this.columns_dataType_toolTip_label.Name = "columns_dataType_toolTip_label";
+            this.columns_dataType_toolTip_label.Size = new System.Drawing.Size(279, 305);
+            this.columns_dataType_toolTip_label.TabIndex = 21;
+            this.columns_dataType_toolTip_label.Text = resources.GetString("columns_dataType_toolTip_label.Text");
+            // 
+            // columns_dataType_valueTypes_comboBox
+            // 
+            this.columns_dataType_valueTypes_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_valueTypes_comboBox.FormattingEnabled = true;
+            this.columns_dataType_valueTypes_comboBox.Items.AddRange(new object[] {
+            "CHAR",
+            "VARCHAR",
+            "TEXT",
+            "BOOLEAN",
+            "INT",
+            "FLOAT",
+            "DOUBLE",
+            "DECIMAL",
+            "DATE",
+            "DATETIME",
+            "TIMESTAMP"});
+            this.columns_dataType_valueTypes_comboBox.Location = new System.Drawing.Point(683, 136);
+            this.columns_dataType_valueTypes_comboBox.Name = "columns_dataType_valueTypes_comboBox";
+            this.columns_dataType_valueTypes_comboBox.Size = new System.Drawing.Size(133, 28);
+            this.columns_dataType_valueTypes_comboBox.TabIndex = 20;
+            // 
+            // columns_dataType_valueTypes_label
+            // 
+            this.columns_dataType_valueTypes_label.AutoSize = true;
+            this.columns_dataType_valueTypes_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_dataType_valueTypes_label.Location = new System.Drawing.Point(699, 113);
+            this.columns_dataType_valueTypes_label.Name = "columns_dataType_valueTypes_label";
+            this.columns_dataType_valueTypes_label.Size = new System.Drawing.Size(101, 20);
+            this.columns_dataType_valueTypes_label.TabIndex = 19;
+            this.columns_dataType_valueTypes_label.Text = "Value Types";
+            // 
+            // columns_addConstraint_panel
+            // 
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_add_button);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_references_column_label);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_references_table_label);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_value_label);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_operators_label);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_column_label);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_checkName_label);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_value_textBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_operators_comboBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_columns_comboBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_checkName_textBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_references_column_comboBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_references_table_comboBox);
+            this.columns_addConstraint_panel.Controls.Add(this.label1);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_check_checkBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_references_checkBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_notNull_checkBox);
+            this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_unique_checkBox);
+            this.columns_addConstraint_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_addConstraint_panel.Name = "columns_addConstraint_panel";
+            this.columns_addConstraint_panel.Size = new System.Drawing.Size(920, 360);
+            this.columns_addConstraint_panel.TabIndex = 27;
+            // 
+            // columns_addConstraint_add_button
+            // 
+            this.columns_addConstraint_add_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_add_button.Location = new System.Drawing.Point(713, 296);
+            this.columns_addConstraint_add_button.Name = "columns_addConstraint_add_button";
+            this.columns_addConstraint_add_button.Size = new System.Drawing.Size(159, 40);
+            this.columns_addConstraint_add_button.TabIndex = 17;
+            this.columns_addConstraint_add_button.Text = "Add Constraint";
+            this.columns_addConstraint_add_button.UseVisualStyleBackColor = true;
+            // 
+            // columns_addConstraint_references_column_label
+            // 
+            this.columns_addConstraint_references_column_label.AutoSize = true;
+            this.columns_addConstraint_references_column_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_references_column_label.Location = new System.Drawing.Point(619, 118);
+            this.columns_addConstraint_references_column_label.Name = "columns_addConstraint_references_column_label";
+            this.columns_addConstraint_references_column_label.Size = new System.Drawing.Size(66, 20);
+            this.columns_addConstraint_references_column_label.TabIndex = 16;
+            this.columns_addConstraint_references_column_label.Text = "Column";
+            // 
+            // columns_addConstraint_references_table_label
+            // 
+            this.columns_addConstraint_references_table_label.AutoSize = true;
+            this.columns_addConstraint_references_table_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_references_table_label.Location = new System.Drawing.Point(475, 118);
+            this.columns_addConstraint_references_table_label.Name = "columns_addConstraint_references_table_label";
+            this.columns_addConstraint_references_table_label.Size = new System.Drawing.Size(50, 20);
+            this.columns_addConstraint_references_table_label.TabIndex = 15;
+            this.columns_addConstraint_references_table_label.Text = "Table";
+            // 
+            // columns_addConstraint_check_value_label
+            // 
+            this.columns_addConstraint_check_value_label.AutoSize = true;
+            this.columns_addConstraint_check_value_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_value_label.Location = new System.Drawing.Point(782, 232);
+            this.columns_addConstraint_check_value_label.Name = "columns_addConstraint_check_value_label";
+            this.columns_addConstraint_check_value_label.Size = new System.Drawing.Size(51, 20);
+            this.columns_addConstraint_check_value_label.TabIndex = 14;
+            this.columns_addConstraint_check_value_label.Text = "Value";
+            // 
+            // columns_addConstraint_check_operators_label
+            // 
+            this.columns_addConstraint_check_operators_label.AutoSize = true;
+            this.columns_addConstraint_check_operators_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_operators_label.Location = new System.Drawing.Point(666, 232);
+            this.columns_addConstraint_check_operators_label.Name = "columns_addConstraint_check_operators_label";
+            this.columns_addConstraint_check_operators_label.Size = new System.Drawing.Size(75, 20);
+            this.columns_addConstraint_check_operators_label.TabIndex = 13;
+            this.columns_addConstraint_check_operators_label.Text = "Operator";
+            // 
+            // columns_addConstraint_check_column_label
+            // 
+            this.columns_addConstraint_check_column_label.AutoSize = true;
+            this.columns_addConstraint_check_column_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_column_label.Location = new System.Drawing.Point(564, 232);
+            this.columns_addConstraint_check_column_label.Name = "columns_addConstraint_check_column_label";
+            this.columns_addConstraint_check_column_label.Size = new System.Drawing.Size(66, 20);
+            this.columns_addConstraint_check_column_label.TabIndex = 12;
+            this.columns_addConstraint_check_column_label.Text = "Column";
+            // 
+            // columns_addConstraint_check_checkName_label
+            // 
+            this.columns_addConstraint_check_checkName_label.AutoSize = true;
+            this.columns_addConstraint_check_checkName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_checkName_label.Location = new System.Drawing.Point(405, 232);
+            this.columns_addConstraint_check_checkName_label.Name = "columns_addConstraint_check_checkName_label";
+            this.columns_addConstraint_check_checkName_label.Size = new System.Drawing.Size(102, 20);
+            this.columns_addConstraint_check_checkName_label.TabIndex = 11;
+            this.columns_addConstraint_check_checkName_label.Text = "Check name";
+            // 
+            // columns_addConstraint_check_value_textBox
+            // 
+            this.columns_addConstraint_check_value_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_value_textBox.Location = new System.Drawing.Point(759, 199);
+            this.columns_addConstraint_check_value_textBox.Name = "columns_addConstraint_check_value_textBox";
+            this.columns_addConstraint_check_value_textBox.Size = new System.Drawing.Size(100, 26);
+            this.columns_addConstraint_check_value_textBox.TabIndex = 10;
+            // 
+            // columns_addConstraint_check_operators_comboBox
+            // 
+            this.columns_addConstraint_check_operators_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_operators_comboBox.FormattingEnabled = true;
+            this.columns_addConstraint_check_operators_comboBox.Location = new System.Drawing.Point(679, 198);
+            this.columns_addConstraint_check_operators_comboBox.Name = "columns_addConstraint_check_operators_comboBox";
+            this.columns_addConstraint_check_operators_comboBox.Size = new System.Drawing.Size(46, 28);
+            this.columns_addConstraint_check_operators_comboBox.TabIndex = 9;
+            // 
+            // columns_addConstraint_check_columns_comboBox
+            // 
+            this.columns_addConstraint_check_columns_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_columns_comboBox.FormattingEnabled = true;
+            this.columns_addConstraint_check_columns_comboBox.Location = new System.Drawing.Point(537, 198);
+            this.columns_addConstraint_check_columns_comboBox.Name = "columns_addConstraint_check_columns_comboBox";
+            this.columns_addConstraint_check_columns_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.columns_addConstraint_check_columns_comboBox.TabIndex = 8;
+            // 
+            // columns_addConstraint_check_checkName_textBox
+            // 
+            this.columns_addConstraint_check_checkName_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_checkName_textBox.Location = new System.Drawing.Point(405, 198);
+            this.columns_addConstraint_check_checkName_textBox.Name = "columns_addConstraint_check_checkName_textBox";
+            this.columns_addConstraint_check_checkName_textBox.Size = new System.Drawing.Size(100, 26);
+            this.columns_addConstraint_check_checkName_textBox.TabIndex = 7;
+            // 
+            // columns_addConstraint_references_column_comboBox
+            // 
+            this.columns_addConstraint_references_column_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_references_column_comboBox.FormattingEnabled = true;
+            this.columns_addConstraint_references_column_comboBox.Location = new System.Drawing.Point(592, 141);
+            this.columns_addConstraint_references_column_comboBox.Name = "columns_addConstraint_references_column_comboBox";
+            this.columns_addConstraint_references_column_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.columns_addConstraint_references_column_comboBox.TabIndex = 6;
+            // 
+            // columns_addConstraint_references_table_comboBox
+            // 
+            this.columns_addConstraint_references_table_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_references_table_comboBox.FormattingEnabled = true;
+            this.columns_addConstraint_references_table_comboBox.Location = new System.Drawing.Point(443, 141);
+            this.columns_addConstraint_references_table_comboBox.Name = "columns_addConstraint_references_table_comboBox";
+            this.columns_addConstraint_references_table_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.columns_addConstraint_references_table_comboBox.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(261, 233);
+            this.label1.TabIndex = 4;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
+            // columns_addConstraint_check_checkBox
+            // 
+            this.columns_addConstraint_check_checkBox.AutoSize = true;
+            this.columns_addConstraint_check_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_check_checkBox.Location = new System.Drawing.Point(320, 200);
+            this.columns_addConstraint_check_checkBox.Name = "columns_addConstraint_check_checkBox";
+            this.columns_addConstraint_check_checkBox.Size = new System.Drawing.Size(78, 24);
+            this.columns_addConstraint_check_checkBox.TabIndex = 3;
+            this.columns_addConstraint_check_checkBox.Text = "Check";
+            this.columns_addConstraint_check_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // columns_addConstraint_references_checkBox
+            // 
+            this.columns_addConstraint_references_checkBox.AutoSize = true;
+            this.columns_addConstraint_references_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_references_checkBox.Location = new System.Drawing.Point(320, 145);
+            this.columns_addConstraint_references_checkBox.Name = "columns_addConstraint_references_checkBox";
+            this.columns_addConstraint_references_checkBox.Size = new System.Drawing.Size(117, 24);
+            this.columns_addConstraint_references_checkBox.TabIndex = 2;
+            this.columns_addConstraint_references_checkBox.Text = "References";
+            this.columns_addConstraint_references_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // columns_addConstraint_notNull_checkBox
+            // 
+            this.columns_addConstraint_notNull_checkBox.AutoSize = true;
+            this.columns_addConstraint_notNull_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_notNull_checkBox.Location = new System.Drawing.Point(320, 90);
+            this.columns_addConstraint_notNull_checkBox.Name = "columns_addConstraint_notNull_checkBox";
+            this.columns_addConstraint_notNull_checkBox.Size = new System.Drawing.Size(88, 24);
+            this.columns_addConstraint_notNull_checkBox.TabIndex = 1;
+            this.columns_addConstraint_notNull_checkBox.Text = "Not null";
+            this.columns_addConstraint_notNull_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // columns_addConstraint_unique_checkBox
+            // 
+            this.columns_addConstraint_unique_checkBox.AutoSize = true;
+            this.columns_addConstraint_unique_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_addConstraint_unique_checkBox.Location = new System.Drawing.Point(320, 50);
+            this.columns_addConstraint_unique_checkBox.Name = "columns_addConstraint_unique_checkBox";
+            this.columns_addConstraint_unique_checkBox.Size = new System.Drawing.Size(83, 24);
+            this.columns_addConstraint_unique_checkBox.TabIndex = 0;
+            this.columns_addConstraint_unique_checkBox.Text = "Unique";
+            this.columns_addConstraint_unique_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // columns_removeConstraint_panel
+            // 
+            this.columns_removeConstraint_panel.Controls.Add(this.columns_removeConstraint_remove_button);
+            this.columns_removeConstraint_panel.Controls.Add(this.columns_removeConstraint_constraints_label);
+            this.columns_removeConstraint_panel.Controls.Add(this.columns_removeConstraint_constraints_listBox);
+            this.columns_removeConstraint_panel.Controls.Add(this.columns_removeConstraint_toolTip_label);
+            this.columns_removeConstraint_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columns_removeConstraint_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_removeConstraint_panel.Name = "columns_removeConstraint_panel";
+            this.columns_removeConstraint_panel.Size = new System.Drawing.Size(920, 360);
+            this.columns_removeConstraint_panel.TabIndex = 28;
+            // 
+            // columns_removeConstraint_remove_button
+            // 
+            this.columns_removeConstraint_remove_button.Location = new System.Drawing.Point(502, 145);
+            this.columns_removeConstraint_remove_button.Name = "columns_removeConstraint_remove_button";
+            this.columns_removeConstraint_remove_button.Size = new System.Drawing.Size(139, 45);
+            this.columns_removeConstraint_remove_button.TabIndex = 3;
+            this.columns_removeConstraint_remove_button.Text = "Drop Constraint";
+            this.columns_removeConstraint_remove_button.UseVisualStyleBackColor = true;
+            // 
+            // columns_removeConstraint_constraints_label
+            // 
+            this.columns_removeConstraint_constraints_label.AutoSize = true;
+            this.columns_removeConstraint_constraints_label.Location = new System.Drawing.Point(304, 10);
+            this.columns_removeConstraint_constraints_label.Name = "columns_removeConstraint_constraints_label";
+            this.columns_removeConstraint_constraints_label.Size = new System.Drawing.Size(95, 20);
+            this.columns_removeConstraint_constraints_label.TabIndex = 2;
+            this.columns_removeConstraint_constraints_label.Text = "Constraints";
+            // 
+            // columns_removeConstraint_constraints_listBox
+            // 
+            this.columns_removeConstraint_constraints_listBox.FormattingEnabled = true;
+            this.columns_removeConstraint_constraints_listBox.ItemHeight = 20;
+            this.columns_removeConstraint_constraints_listBox.Location = new System.Drawing.Point(255, 33);
+            this.columns_removeConstraint_constraints_listBox.Name = "columns_removeConstraint_constraints_listBox";
+            this.columns_removeConstraint_constraints_listBox.Size = new System.Drawing.Size(202, 284);
+            this.columns_removeConstraint_constraints_listBox.TabIndex = 1;
+            // 
+            // columns_removeConstraint_toolTip_label
+            // 
+            this.columns_removeConstraint_toolTip_label.Location = new System.Drawing.Point(18, 65);
+            this.columns_removeConstraint_toolTip_label.Name = "columns_removeConstraint_toolTip_label";
+            this.columns_removeConstraint_toolTip_label.Size = new System.Drawing.Size(215, 216);
+            this.columns_removeConstraint_toolTip_label.TabIndex = 0;
+            this.columns_removeConstraint_toolTip_label.Text = "Select a table from the left, then a column\r\n\r\nThat action will populate the list" +
+    " of constraints present on the column on the right\r\n\r\nSelect a constraint and cl" +
+    "ick the button to drop it";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
-            this.Controls.Add(this.columns_addColumn_panel);
-            this.Controls.Add(this.tables_add_panel);
+            this.Controls.Add(this.columns_removeConstraint_panel);
+            this.Controls.Add(this.columns_addConstraint_panel);
+            this.Controls.Add(this.columns_dataType_panel);
+            this.Controls.Add(this.dash_columns_label);
+            this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
-            this.Controls.Add(this.dash_log_richTextBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.dash_log_richTextBox);
+            this.Controls.Add(this.columns_addColumn_panel);
+            this.Controls.Add(this.tables_add_panel);
+            this.Controls.Add(this.columns_remove_panel);
+            this.Controls.Add(this.columns_rename_panel);
             this.Controls.Add(this.tables_delete_panel);
+            this.Controls.Add(this.tables_rename_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
@@ -653,6 +1185,17 @@
             this.tables_delete_panel.ResumeLayout(false);
             this.columns_addColumn_panel.ResumeLayout(false);
             this.columns_addColumn_panel.PerformLayout();
+            this.tables_rename_panel.ResumeLayout(false);
+            this.tables_rename_panel.PerformLayout();
+            this.columns_rename_panel.ResumeLayout(false);
+            this.columns_rename_panel.PerformLayout();
+            this.columns_remove_panel.ResumeLayout(false);
+            this.columns_dataType_panel.ResumeLayout(false);
+            this.columns_dataType_panel.PerformLayout();
+            this.columns_addConstraint_panel.ResumeLayout(false);
+            this.columns_addConstraint_panel.PerformLayout();
+            this.columns_removeConstraint_panel.ResumeLayout(false);
+            this.columns_removeConstraint_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,7 +1226,7 @@
         private System.Windows.Forms.Button tables_add_removeColumnNames_button;
         private System.Windows.Forms.Button tables_add_removeValueType_button;
         private System.Windows.Forms.Button tables_add_addValueType_button;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tables_add_valueTypes_label;
         private System.Windows.Forms.ListBox tables_add_valueTypes_listBox;
         private System.Windows.Forms.Label tables_add_tip_label;
         private System.Windows.Forms.ComboBox tables_add_addValueType_comboBox;
@@ -715,5 +1258,50 @@
         private System.Windows.Forms.ToolStripMenuItem changeColumnConstraintToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteRowFromTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freeTypeToolStripMenuItem;
+        private System.Windows.Forms.Panel tables_rename_panel;
+        private System.Windows.Forms.Label tables_rename_toolTip_label;
+        private System.Windows.Forms.Label tables_rename_newName_label;
+        private System.Windows.Forms.Button tables_rename_newName_button;
+        private System.Windows.Forms.TextBox tables_rename_newName_textbox;
+        private System.Windows.Forms.Label dash_columns_label;
+        private System.Windows.Forms.ListBox dash_columns_listBox;
+        private System.Windows.Forms.Panel columns_rename_panel;
+        private System.Windows.Forms.Button columns_rename_newName_button;
+        private System.Windows.Forms.TextBox columns_rename_newName_textbox;
+        private System.Windows.Forms.Label columns_rename_newName_label;
+        private System.Windows.Forms.Label columns_rename_toolTip_label;
+        private System.Windows.Forms.Panel columns_remove_panel;
+        private System.Windows.Forms.Button columns_remove_removeColumn_button;
+        private System.Windows.Forms.Label columns_remove_toolTip_label;
+        private System.Windows.Forms.Panel columns_dataType_panel;
+        private System.Windows.Forms.Button columns_dataType_changeType_button;
+        private System.Windows.Forms.Label columns_dataType_toolTip_label;
+        private System.Windows.Forms.ComboBox columns_dataType_valueTypes_comboBox;
+        private System.Windows.Forms.Label columns_dataType_valueTypes_label;
+        private System.Windows.Forms.Panel columns_addConstraint_panel;
+        private System.Windows.Forms.Label columns_addConstraint_references_column_label;
+        private System.Windows.Forms.Label columns_addConstraint_references_table_label;
+        private System.Windows.Forms.Label columns_addConstraint_check_value_label;
+        private System.Windows.Forms.Label columns_addConstraint_check_operators_label;
+        private System.Windows.Forms.Label columns_addConstraint_check_column_label;
+        private System.Windows.Forms.Label columns_addConstraint_check_checkName_label;
+        private System.Windows.Forms.TextBox columns_addConstraint_check_value_textBox;
+        private System.Windows.Forms.ComboBox columns_addConstraint_check_operators_comboBox;
+        private System.Windows.Forms.ComboBox columns_addConstraint_check_columns_comboBox;
+        private System.Windows.Forms.TextBox columns_addConstraint_check_checkName_textBox;
+        private System.Windows.Forms.ComboBox columns_addConstraint_references_column_comboBox;
+        private System.Windows.Forms.ComboBox columns_addConstraint_references_table_comboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox columns_addConstraint_check_checkBox;
+        private System.Windows.Forms.CheckBox columns_addConstraint_references_checkBox;
+        private System.Windows.Forms.CheckBox columns_addConstraint_notNull_checkBox;
+        private System.Windows.Forms.CheckBox columns_addConstraint_unique_checkBox;
+        private System.Windows.Forms.ToolStripMenuItem removeColumnConstraintToolStripMenuItem;
+        private System.Windows.Forms.Button columns_addConstraint_add_button;
+        private System.Windows.Forms.Panel columns_removeConstraint_panel;
+        private System.Windows.Forms.Button columns_removeConstraint_remove_button;
+        private System.Windows.Forms.Label columns_removeConstraint_constraints_label;
+        private System.Windows.Forms.ListBox columns_removeConstraint_constraints_listBox;
+        private System.Windows.Forms.Label columns_removeConstraint_toolTip_label;
     }
 }

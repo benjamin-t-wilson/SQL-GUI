@@ -11,11 +11,13 @@ namespace SQL_GUI.Forms
     {
         private ConnectionDto connDto = new ConnectionDto();
         private SqlFunctions _sql = new SqlFunctions();
+        private ConnectionBox _connBox = null;
 
-        public Dashboard(ConnectionDto _connDto)
+        public Dashboard(ConnectionDto _connDto, ConnectionBox connBox)
         {
             InitializeComponent();
             connDto = _connDto;
+            _connBox = connBox;
 
             resetControlDisplay();
 
@@ -239,6 +241,53 @@ namespace SQL_GUI.Forms
                 WriteToLog("Error adding columns to table:");
                 WriteToLog(ex.Message);
             }
+        }
+
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _connBox.Show();
+            Close();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void renameTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            tables_rename_panel.Show();
+        }
+
+        private void removeColumnFromTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_remove_panel.Show();
+        }
+
+        private void renameColumnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_rename_panel.Show();
+        }
+
+        private void changeColumnDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_dataType_panel.Show();
+        }
+
+        private void changeColumnConstraintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_addConstraint_panel.Show();
+        }
+
+        private void removeColumnConstraintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            columns_removeConstraint_panel.Show();
         }
     }
 }
