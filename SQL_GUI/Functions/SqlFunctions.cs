@@ -132,7 +132,7 @@ namespace SQL_GUI.Functions
                 for (int i = 0; i < tableDto.Rows.Count; i++)
                 {
 
-                    switch (tableDto.Columns[i].ValueType)
+                    switch (tableDto.Columns[i + 1].ValueType.ToUpper())
                     {
                         case "CHAR":
                         case "VARCHAR":
@@ -140,7 +140,7 @@ namespace SQL_GUI.Functions
                         case "DATETIME":
                         case "DATE":
                         case "TIMESTAMP":
-                            cmd.CommandText += $"'tableDto.Rows[i]'";
+                            cmd.CommandText += $"'{tableDto.Rows[i]}'";
                             break;
 
                         default:

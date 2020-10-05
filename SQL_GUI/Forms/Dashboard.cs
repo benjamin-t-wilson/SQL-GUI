@@ -338,11 +338,14 @@ namespace SQL_GUI.Forms
             };
 
             _sql.AddRowToTable(dto, connDto);
+            rows_add_rowValues_listBox.Items.Clear();
         }
 
         private void dash_tables_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem.ToString(), connDto);
+
+            dash_columns_listBox.Items.Clear();
 
             foreach (var col in columns)
             {
