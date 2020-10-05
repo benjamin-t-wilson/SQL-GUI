@@ -121,8 +121,8 @@ namespace SQL_GUI.Functions
                 // switch statement on col.valueType
                 for (int i = 1; i < tableDto.Columns.Count; i++)
                 {
-                    cmd.CommandText += "@c,";
-                    cmd.Parameters.AddWithValue("c", tableDto.Columns[i].ColumnName);
+                    cmd.CommandText += tableDto.Columns[i].ColumnName.ToString();
+                    cmd.CommandText += ",";
                 }
 
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
@@ -131,65 +131,31 @@ namespace SQL_GUI.Functions
 
                 for (int i = 0; i < tableDto.Rows.Count; i++)
                 {
-                    cmd.CommandText += "@v,";
 
                     switch (tableDto.Columns[i].ValueType)
                     {
                         case "CHAR":
-                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i]);
-                            break;
-
                         case "VARCHAR":
-                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i]);
-                            break;
-
                         case "TEXT":
-                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i]);
-                            break;
-
-                        case "BOOLEAN":
-                            cmd.Parameters.AddWithValue("v", bool.Parse(tableDto.Rows[i]));
-                            break;
-
-                        case "INT":
-                            cmd.Parameters.AddWithValue("v", int.Parse(tableDto.Rows[i]));
-                            break;
-
-                        case "FLOAT":
-                            cmd.Parameters.AddWithValue("v", float.Parse(tableDto.Rows[i]));
-                            break;
-
-                        case "DOUBLE":
-                            cmd.Parameters.AddWithValue("v", double.Parse(tableDto.Rows[i]));
-                            break;
-
-                        case "DECIMAL":
-                            cmd.Parameters.AddWithValue("v", decimal.Parse(tableDto.Rows[i]));
-                            break;
-
-                        case "DATE":
-                            cmd.Parameters.AddWithValue("v", DateTime.Parse(tableDto.Rows[i]));
-                            break;
-
                         case "DATETIME":
-                            cmd.Parameters.AddWithValue("v", DateTime.Parse(tableDto.Rows[i]));
-                            break;
-
+                        case "DATE":
                         case "TIMESTAMP":
-                            cmd.Parameters.AddWithValue("v", TimeSpan.Parse(tableDto.Rows[i]));
+                            cmd.CommandText += $"'tableDto.Rows[i]'";
                             break;
 
                         default:
-                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i]);
+                            cmd.CommandText += tableDto.Rows[i];
                             break;
                     }
 
+                    cmd.CommandText += ",";
+
+                }
                     cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
                     cmd.CommandText += ")";
 
                     cmd.ExecuteNonQuery();
-                }
 
                 return true;
             }
