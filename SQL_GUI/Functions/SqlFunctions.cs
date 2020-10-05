@@ -7,6 +7,8 @@ namespace SQL_GUI.Functions
 {
     public class SqlFunctions
     {
+        
+
         private string ConnectionString(ConnectionDto connDto)
         {
             return $"Host={connDto.Host};Username={connDto.Username};Password={connDto.Password};Database={connDto.Database};Port={connDto.Port};SSL Mode=Prefer;Trust Server Certificate=true";
@@ -89,6 +91,8 @@ namespace SQL_GUI.Functions
 
                 cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName}";
 
+
+
                 foreach(var column in tableDto.Columns)
                 {
                     cmd.CommandText += $" ADD COLUMN {column.ColumnName} {column.ValueType},";
@@ -105,6 +109,96 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool AddRowToTable(AddNewRowDto tableDto, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"INSERT INTO {tableDto.TableName} (";
+                //for loop to index list of columns and row values
+                // switch statement on col.valueType
+                for (int i = 0; i < tableDto.Columns.Count; i++)    
+                {
+                    cmd.CommandText += "@c,";
+                    cmd.Parameters.AddWithValue("c", tableDto.Columns[i]);
+
+                }
+
+                cmd.CommandText = cmd.CommandText.TrimEnd(',');
+
+                cmd.CommandText += ") VALUES (";
+
+                for (int i = 0; i < tableDto.Rows.Count; i++)
+                {
+                    cmd.CommandText += "@v,";
+
+                    switch(tableDto.Columns[i].ValueType)
+                    {
+                        case "CHAR":
+                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i].RowValue);
+                            break;
+                        case "VARCHAR":
+                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i].RowValue);
+                            break;
+                        case "TEXT":
+                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i].RowValue);
+                            break;
+                        case "BOOLEAN":
+                            cmd.Parameters.AddWithValue("v", bool.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "INT":
+                            cmd.Parameters.AddWithValue("v", int.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "FLOAT":
+                            cmd.Parameters.AddWithValue("v", float.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "DOUBLE":
+                            cmd.Parameters.AddWithValue("v", double.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "DECIMAL":
+                            cmd.Parameters.AddWithValue("v", decimal.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "DATE":
+                            cmd.Parameters.AddWithValue("v", DateTime.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "DATETIME":
+                            cmd.Parameters.AddWithValue("v", DateTime.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        case "TIMESTAMP":
+                            cmd.Parameters.AddWithValue("v", TimeSpan.Parse(tableDto.Rows[i].RowValue));
+                            break;
+                        default:
+                            cmd.Parameters.AddWithValue("v", tableDto.Rows[i].RowValue);
+                            break;
+                    }
+
+
+                    cmd.CommandText = cmd.CommandText.TrimEnd(',');
+
+                    cmd.CommandText += ")";
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+
+                return true;
+            }
+
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
 
         public List<string> GetListOfTables(ConnectionDto connDto)
         {

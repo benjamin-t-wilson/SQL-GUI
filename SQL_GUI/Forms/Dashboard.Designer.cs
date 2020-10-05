@@ -65,7 +65,9 @@
             this.columns_add_column_button = new System.Windows.Forms.Button();
             this.columns_add_columnColumnNote_label = new System.Windows.Forms.Label();
             this.columns_add_removeColumn_button = new System.Windows.Forms.Button();
-            this.columns_add_valueTypes_comboBox = new System.Windows.Forms.ComboBox();
+            this.columns_add_
+                
+                _comboBox = new System.Windows.Forms.ComboBox();
             this.columns_add_addColumn_button = new System.Windows.Forms.Button();
             this.columns_add_valueTypes_listBox = new System.Windows.Forms.ListBox();
             this.columns_add_columnName_textBox = new System.Windows.Forms.TextBox();

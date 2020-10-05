@@ -23,4 +23,14 @@ namespace SQL_GUI.DTOs
         public string ColumnName { get; set; }
         public string ValueType { get; set; }
     }
+
+    public class AddNewRowDto : AddNewTableDto
+    {
+        public List<RowDto> Rows { get; set; }
+    }
+
+    public class RowDto
+    {
+        public dynamic RowValue { get; set; }
+    }
 }
