@@ -106,7 +106,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool RenameColumn(AddNewTableDto tableDto, string columnName, string newTableName, ConnectionDto connDto)
+        public bool RenameColumn(AddNewTableDto tableDto, string columnName, string newColumnName, ConnectionDto connDto)
         {
             try
             {
@@ -116,7 +116,29 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName} RENAME {columnName} TO {newTableName}";
+                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName} RENAME {columnName} TO {newColumnName}";
+
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool RenameTable(AddNewTableDto tableDto, string newTableName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName} RENAME TO {newTableName}";
 
 
                 cmd.ExecuteNonQuery();
