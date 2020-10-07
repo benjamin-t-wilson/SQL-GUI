@@ -106,6 +106,29 @@ namespace SQL_GUI.Functions
             }
         }
 
+        public bool RenameColumn(AddNewTableDto tableDto, string columnName, string newTableName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName} RENAME {columnName} TO {newTableName}";
+
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public bool AddRowToTable(AddNewRowDto tableDto, ConnectionDto connDto)
         {
             try
