@@ -352,5 +352,24 @@ namespace SQL_GUI.Forms
                 dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.ValueType})");
             }
         }
+
+        private void columns_rename_newName_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var columnName = dash_columns_listBox.SelectedItem?.ToString();
+            var newColumnName = columns_rename_newName_textbox.Text;
+
+            if(string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(newColumnName))
+            {
+                WriteToLog("You must have a table and column selected. You must have a column name typed.");
+                return;
+            }
+
+            tableName = tableName.Replace(' ', '_');
+
+            columns_rename_newName_textbox.Text = string.Empty;
+
+            _sql.RenameColumn(tableName, columnName, newColumnName, connDto);
+        }
     }
 }

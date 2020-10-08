@@ -190,7 +190,7 @@
             this.freeTypeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -200,7 +200,7 @@
             this.disconnectToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // disconnectToolStripMenuItem
@@ -224,7 +224,7 @@
             this.deleteTableToolStripMenuItem,
             this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // addTableToolStripMenuItem
@@ -258,7 +258,7 @@
             this.changeColumnConstraintToolStripMenuItem,
             this.removeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // addColumnToTableToolStripMenuItem
@@ -311,7 +311,7 @@
             this.updateRowsInTableToolStripMenuItem,
             this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
-            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
             this.rowsToolStripMenuItem.Text = "Rows";
             // 
             // addRowToTableToolStripMenuItem
@@ -342,7 +342,7 @@
             // freeTypeToolStripMenuItem
             // 
             this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
-            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
             this.freeTypeToolStripMenuItem.Text = "Free type";
             // 
             // tables_add_tableName_textBox
@@ -796,6 +796,7 @@
             this.columns_rename_newName_button.TabIndex = 3;
             this.columns_rename_newName_button.Text = "Rename";
             this.columns_rename_newName_button.UseVisualStyleBackColor = true;
+            this.columns_rename_newName_button.Click += new System.EventHandler(this.columns_rename_newName_button_Click);
             // 
             // columns_rename_newName_textbox
             // 
@@ -1259,22 +1260,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
-            this.Controls.Add(this.rows_add_panel);
-            this.Controls.Add(this.columns_removeConstraint_panel);
-            this.Controls.Add(this.columns_addConstraint_panel);
-            this.Controls.Add(this.columns_dataType_panel);
             this.Controls.Add(this.dash_columns_label);
             this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.columns_addColumn_panel);
-            this.Controls.Add(this.tables_add_panel);
-            this.Controls.Add(this.columns_remove_panel);
             this.Controls.Add(this.columns_rename_panel);
             this.Controls.Add(this.tables_delete_panel);
             this.Controls.Add(this.tables_rename_panel);
+            this.Controls.Add(this.rows_add_panel);
+            this.Controls.Add(this.columns_removeConstraint_panel);
+            this.Controls.Add(this.columns_addConstraint_panel);
+            this.Controls.Add(this.columns_dataType_panel);
+            this.Controls.Add(this.columns_addColumn_panel);
+            this.Controls.Add(this.tables_add_panel);
+            this.Controls.Add(this.columns_remove_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
