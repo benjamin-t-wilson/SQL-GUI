@@ -547,10 +547,34 @@ namespace SQL_GUI.Forms
 
             try
             {
-                var columns = _sql.GetRows(dto, connDto);
+                var rows = _sql.GetRows(dto, connDto);
 
-                WriteToLog($"Successfully retrieved {columns.Count} rows");
+                WriteToLog($"Successfully retrieved {rows.Count} rows");
                 WriteToLog("Opening data grid");
+
+                var data = new DataViewerDto()
+                {
+                    Columns = new List<string>(),
+                    Values = new List<List<string>>()
+                };
+
+                var uniqueColumns = rows.Select(x => x.ColumnName).Distinct();
+
+                data.Columns.AddRange(uniqueColumns);
+
+                var listToAdd = new List<string>();
+                for(int i = 0; i < rows.Count; i++)
+                {
+                    listToAdd.Add(rows[i].Value);
+                    if(i % uniqueColumns.Count() == 0)
+                    {
+                        data.Values.Add(listToAdd);
+                        listToAdd = new List<string>();
+                    }
+                }
+
+                var dataGrid = new DataViewer(data);
+                dataGrid.Show();
             }
             catch(Exception ex)
             {

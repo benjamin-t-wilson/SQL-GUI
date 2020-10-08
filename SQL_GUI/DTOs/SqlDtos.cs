@@ -38,4 +38,10 @@ namespace SQL_GUI.DTOs
         public string WhereOperator { get; set; }
         public string WhereValue { get; set; }
     }
+
+    public class DataViewerDto
+    {
+        public List<string> Columns { get; set; }
+        public List<List<string>> Values { get; set; }
+    }
 }
