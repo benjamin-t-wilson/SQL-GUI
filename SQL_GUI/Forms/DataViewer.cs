@@ -16,9 +16,6 @@ namespace SQL_GUI.Forms
         public DataViewer(DataViewerDto dto)
         {
             InitializeComponent();
-            //var index = this.dataGridView1.Rows.Add();
-            //this.dataGridView1.Rows[index].Cells[1].Value = "1";
-            //this.dataGridView1.Rows[index].Cells[2].Value = "Baqar";
 
             var table = new DataTable();
             foreach(var col in dto.Columns)
