@@ -508,5 +508,55 @@ namespace SQL_GUI.Forms
             }
             rows_select_selectedColumns_listBox.Items.RemoveAt(rows_select_selectedColumns_listBox.SelectedIndex);
         }
+
+        private void rows_select_select_button_Click(object sender, EventArgs e)
+        {
+            if(rows_select_selectedColumns_listBox.Items.Count == 0 || string.IsNullOrWhiteSpace(dash_tables_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select a table columns.");
+                return;
+            }
+
+            if (rows_select_where_checkBox.Checked)
+            {
+                if(string.IsNullOrWhiteSpace(rows_select_whereColumn_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereOperator_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereValue_textBox.Text))
+                {
+                    WriteToLog("All 'where' forms must have value.");
+                    return;
+                }
+            }
+
+            var dto = new FormSelectDto() 
+            {
+                TableName = dash_tables_listBox.SelectedItem?.ToString(),
+                Columns = new List<string>()
+            };
+
+            foreach(var col in rows_select_selectedColumns_listBox.Items)
+            {
+                dto.Columns.Add(col.ToString());
+            }
+
+            if (rows_select_where_checkBox.Checked)
+            {
+                dto.Where = true;
+                dto.WhereColumn = rows_select_whereColumn_comboBox.SelectedItem?.ToString();
+                dto.WhereOperator = rows_select_whereOperator_comboBox.SelectedItem?.ToString();
+                dto.WhereValue = rows_select_whereValue_textBox.Text;
+            }
+
+            try
+            {
+                var columns = _sql.GetRows(dto, connDto);
+
+                WriteToLog($"Successfully retrieved {columns.Count} rows");
+                WriteToLog("Opening data grid");
+            }
+            catch(Exception ex)
+            {
+                WriteToLog("Error getting rows:");
+                WriteToLog(ex.Message);
+            }
+        }
     }
 }

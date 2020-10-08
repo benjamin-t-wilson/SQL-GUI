@@ -1370,6 +1370,7 @@
             this.rows_select_select_button.TabIndex = 7;
             this.rows_select_select_button.Text = "Select";
             this.rows_select_select_button.UseVisualStyleBackColor = true;
+            this.rows_select_select_button.Click += new System.EventHandler(this.rows_select_select_button_Click);
             // 
             // rows_select_where_checkBox
             // 
