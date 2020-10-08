@@ -135,7 +135,7 @@ namespace SQL_GUI.Forms
                 newTableDto.Columns.Add(new ColumnDto
                 {
                     ColumnName = columns[i].ToString(),
-                    ValueType = valueTypes[i].ToString()
+                    Value = valueTypes[i].ToString()
                 });
             }
 
@@ -261,7 +261,7 @@ namespace SQL_GUI.Forms
                 newTableDto.Columns.Add(new ColumnDto
                 {
                     ColumnName = columns[i].ToString(),
-                    ValueType = valueTypes[i].ToString()
+                    Value = valueTypes[i].ToString()
                 });
             }
 
@@ -370,7 +370,7 @@ namespace SQL_GUI.Forms
                 columns.Add(new ColumnDto()
                 {
                     ColumnName = name,
-                    ValueType = type
+                    Value = type
                 });
             }
             var rows = new List<string>();
@@ -414,7 +414,7 @@ namespace SQL_GUI.Forms
 
                 foreach (var col in columns)
                 {
-                    dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.ValueType})");
+                    dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.Value})");
                     rows_select_availableColumns_listBox.Items.Add(col.ColumnName);
                     rows_select_whereColumn_comboBox.Items.Add(col.ColumnName);
                 }

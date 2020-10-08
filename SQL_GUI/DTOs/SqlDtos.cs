@@ -21,11 +21,21 @@ namespace SQL_GUI.DTOs
     public class ColumnDto
     {
         public string ColumnName { get; set; }
-        public string ValueType { get; set; }
+        public string Value { get; set; }
     }
 
     public class AddNewRowDto : AddNewTableDto
     {
         public List<string> Rows { get; set; }
+    }
+
+    public class FormSelectDto
+    {
+        public string TableName { get; set; }
+        public List<string> Columns { get; set; }
+        public bool Where { get; set; }
+        public string WhereColumn { get; set; }
+        public string WhereOperator { get; set; }
+        public string WhereValue { get; set; }
     }
 }

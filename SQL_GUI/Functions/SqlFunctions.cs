@@ -62,7 +62,7 @@ namespace SQL_GUI.Functions
 
                 foreach (var column in tableDto.Columns)
                 {
-                    cmd.CommandText += $", {column.ColumnName} {column.ValueType}";
+                    cmd.CommandText += $", {column.ColumnName} {column.Value}";
                 }
 
                 cmd.CommandText += ")";
@@ -91,7 +91,7 @@ namespace SQL_GUI.Functions
 
                 foreach (var column in tableDto.Columns)
                 {
-                    cmd.CommandText += $" ADD COLUMN {column.ColumnName} {column.ValueType},";
+                    cmd.CommandText += $" ADD COLUMN {column.ColumnName} {column.Value},";
                 }
 
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
@@ -175,7 +175,7 @@ namespace SQL_GUI.Functions
 
                 for (int i = 0; i < tableDto.Rows.Count; i++)
                 {
-                    switch (tableDto.Columns[i + 1].ValueType.ToUpper())
+                    switch (tableDto.Columns[i + 1].Value.ToUpper())
                     {
                         case "CHAR":
                         case "VARCHAR":
@@ -257,8 +257,69 @@ namespace SQL_GUI.Functions
                     columns.Add(new ColumnDto()
                     {
                         ColumnName = rdr.GetString(0),
-                        ValueType = rdr.GetString(1)
+                        Value = rdr.GetString(1)
                     });
+                }
+
+                return columns;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<ColumnDto> GetRows(FormSelectDto dto, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT";
+
+                foreach (var col in dto.Columns)
+                {
+                    cmd.CommandText += $" {col},";
+                }
+
+                cmd.CommandText.TrimEnd(',');
+
+                cmd.CommandText += $" FROM {dto.TableName}";
+
+                if (dto.Where)
+                {
+                    cmd.CommandText += $" WHERE {dto.WhereColumn} {dto.WhereOperator}";
+
+                    if (dto.WhereValue.GetType().Name.Equals("string", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        cmd.CommandText += $" '{dto.WhereValue}'";
+                    }
+                    else
+                    {
+                        cmd.CommandText += $" {dto.WhereValue}";
+                    }
+                }
+
+                cmd.CommandText += ";";
+
+                using NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+                var columns = new List<ColumnDto>();
+
+                while (rdr.Read())
+                {
+                    for (int i = 0; i < dto.Columns.Count; i++)
+                    {
+                        columns.Add(new ColumnDto()
+                        {
+                            ColumnName = dto.Columns[i],
+                            Value = rdr.GetString(i)
+                        });
+                    }
                 }
 
                 return columns;
