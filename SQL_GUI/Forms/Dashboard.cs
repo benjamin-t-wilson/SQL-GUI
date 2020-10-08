@@ -372,57 +372,95 @@ namespace SQL_GUI.Forms
                 Rows = rows
             };
 
-            _sql.AddRowToTable(dto, connDto);
-            rows_add_rowValues_listBox.Items.Clear();
+            try
+            {
+                _sql.AddRowToTable(dto, connDto);
+
+                WriteToLog("Successfully added values");
+                rows_add_rowValues_listBox.Items.Clear();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error adding values:");
+                WriteToLog(ex.Message);
+            }
         }
 
         private void dash_tables_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem?.ToString(), connDto);
-
-            dash_columns_listBox.Items.Clear();
-
-            foreach (var col in columns)
+            try
             {
-                dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.ValueType})");
+                var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem?.ToString(), connDto);
+
+                dash_columns_listBox.Items.Clear();
+
+                foreach (var col in columns)
+                {
+                    dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.ValueType})");
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error getting columns for table:");
+                WriteToLog(ex.Message);
             }
         }
 
         private void columns_rename_newName_button_Click(object sender, EventArgs e)
         {
-            var tableName = dash_tables_listBox.SelectedItem?.ToString();
-            var columnName = dash_columns_listBox.SelectedItem?.ToString();
-            var newColumnName = columns_rename_newName_textbox.Text;
-
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(newColumnName))
+            try
             {
-                WriteToLog("You must have a table and column selected. You must have a column name typed.");
-                return;
+                var tableName = dash_tables_listBox.SelectedItem?.ToString();
+                var columnName = dash_columns_listBox.SelectedItem?.ToString();
+                var newColumnName = columns_rename_newName_textbox.Text;
+
+                if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(newColumnName))
+                {
+                    WriteToLog("You must have a table and column selected. You must have a column name typed.");
+                    return;
+                }
+
+                tableName = tableName.Replace(' ', '_');
+
+                _sql.RenameColumn(tableName, columnName, newColumnName, connDto);
+
+                WriteToLog("Successfully renamed column");
+                dash_tables_listBox_SelectedIndexChanged(sender, e);
+                columns_rename_newName_textbox.Text = string.Empty;
             }
-
-            tableName = tableName.Replace(' ', '_');
-
-            _sql.RenameColumn(tableName, columnName, newColumnName, connDto);
-
-            columns_rename_newName_textbox.Text = string.Empty;
+            catch (Exception ex)
+            {
+                WriteToLog("Error renaming column:");
+                WriteToLog(ex.Message);
+            }
         }
 
         private void tables_rename_newName_button_Click(object sender, EventArgs e)
         {
-            var tableName = dash_tables_listBox.SelectedItem?.ToString();
-            var newTableName = tables_rename_newName_textbox.Text;
-
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(newTableName))
+            try
             {
-                WriteToLog("You must have a table selected. You must have a table name typed");
-                return;
+                var tableName = dash_tables_listBox.SelectedItem?.ToString();
+                var newTableName = tables_rename_newName_textbox.Text;
+
+                if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(newTableName))
+                {
+                    WriteToLog("You must have a table selected. You must have a table name typed");
+                    return;
+                }
+
+                newTableName = newTableName.Replace(' ', '_');
+
+                _sql.RenameTable(tableName, newTableName, connDto);
+
+                WriteToLog("Successfully renamed table");
+                resetTableList();
+                tables_rename_newName_textbox.Text = string.Empty;
             }
-
-            newTableName = newTableName.Replace(' ', '_');
-
-            _sql.RenameTable(tableName, newTableName, connDto);
-
-            tables_rename_newName_textbox.Text = string.Empty;
+            catch (Exception ex)
+            {
+                WriteToLog("Error renaming table:");
+                WriteToLog(ex.Message);
+            }
         }
     }
 }
