@@ -359,7 +359,7 @@ namespace SQL_GUI.Forms
             var columnName = dash_columns_listBox.SelectedItem?.ToString();
             var newColumnName = columns_rename_newName_textbox.Text;
 
-            if(string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(newColumnName))
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(newColumnName))
             {
                 WriteToLog("You must have a table and column selected. You must have a column name typed.");
                 return;
@@ -367,9 +367,27 @@ namespace SQL_GUI.Forms
 
             tableName = tableName.Replace(' ', '_');
 
-            columns_rename_newName_textbox.Text = string.Empty;
-
             _sql.RenameColumn(tableName, columnName, newColumnName, connDto);
+
+            columns_rename_newName_textbox.Text = string.Empty;
+        }
+
+        private void tables_rename_newName_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var newTableName = tables_rename_newName_textbox?.Text;
+
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(newTableName))
+            {
+                WriteToLog("You must have a table selected. You must have a table name typed");
+                return;
+            }
+
+            newTableName = newTableName.Replace(' ', '_');
+
+            _sql.RenameTable(tableName, newTableName, connDto);
+
+            tables_rename_newName_textbox.Text = string.Empty;
         }
     }
 }

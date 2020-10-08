@@ -728,6 +728,7 @@
             this.tables_rename_newName_button.TabIndex = 3;
             this.tables_rename_newName_button.Text = "Rename";
             this.tables_rename_newName_button.UseVisualStyleBackColor = true;
+            this.tables_rename_newName_button.Click += new System.EventHandler(this.tables_rename_newName_button_Click);
             // 
             // tables_rename_newName_textbox
             // 
@@ -1266,8 +1267,6 @@
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.columns_rename_panel);
-            this.Controls.Add(this.tables_delete_panel);
             this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
@@ -1276,6 +1275,8 @@
             this.Controls.Add(this.columns_addColumn_panel);
             this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.columns_remove_panel);
+            this.Controls.Add(this.columns_rename_panel);
+            this.Controls.Add(this.tables_delete_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";

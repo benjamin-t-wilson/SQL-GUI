@@ -118,7 +118,6 @@ namespace SQL_GUI.Functions
 
                 cmd.CommandText = $"ALTER TABLE IF EXISTS {tableName} RENAME {columnName} TO {newColumnName}";
 
-
                 cmd.ExecuteNonQuery();
 
                 return true;
@@ -128,7 +127,8 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
-        public bool RenameTable(AddNewTableDto tableDto, string newTableName, ConnectionDto connDto)
+
+        public bool RenameTable(string tableName, string newTableName, ConnectionDto connDto)
         {
             try
             {
@@ -138,8 +138,7 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableDto.TableName} RENAME TO {newTableName}";
-
+                cmd.CommandText = $"ALTER TABLE IF EXISTS {tableName} RENAME TO {newTableName}";
 
                 cmd.ExecuteNonQuery();
 
@@ -176,7 +175,6 @@ namespace SQL_GUI.Functions
 
                 for (int i = 0; i < tableDto.Rows.Count; i++)
                 {
-
                     switch (tableDto.Columns[i + 1].ValueType.ToUpper())
                     {
                         case "CHAR":
@@ -194,13 +192,12 @@ namespace SQL_GUI.Functions
                     }
 
                     cmd.CommandText += ",";
-
                 }
-                    cmd.CommandText = cmd.CommandText.TrimEnd(',');
+                cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
-                    cmd.CommandText += ")";
+                cmd.CommandText += ")";
 
-                    cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
                 return true;
             }
