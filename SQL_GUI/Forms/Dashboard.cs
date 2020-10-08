@@ -511,7 +511,7 @@ namespace SQL_GUI.Forms
 
         private void rows_select_select_button_Click(object sender, EventArgs e)
         {
-            if(rows_select_selectedColumns_listBox.Items.Count == 0 || string.IsNullOrWhiteSpace(dash_tables_listBox.SelectedItem?.ToString()))
+            if (rows_select_selectedColumns_listBox.Items.Count == 0 || string.IsNullOrWhiteSpace(dash_tables_listBox.SelectedItem?.ToString()))
             {
                 WriteToLog("You must select a table columns.");
                 return;
@@ -519,20 +519,20 @@ namespace SQL_GUI.Forms
 
             if (rows_select_where_checkBox.Checked)
             {
-                if(string.IsNullOrWhiteSpace(rows_select_whereColumn_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereOperator_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereValue_textBox.Text))
+                if (string.IsNullOrWhiteSpace(rows_select_whereColumn_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereOperator_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereValue_textBox.Text))
                 {
                     WriteToLog("All 'where' forms must have value.");
                     return;
                 }
             }
 
-            var dto = new FormSelectDto() 
+            var dto = new FormSelectDto()
             {
                 TableName = dash_tables_listBox.SelectedItem?.ToString(),
                 Columns = new List<string>()
             };
 
-            foreach(var col in rows_select_selectedColumns_listBox.Items)
+            foreach (var col in rows_select_selectedColumns_listBox.Items)
             {
                 dto.Columns.Add(col.ToString());
             }
@@ -563,10 +563,10 @@ namespace SQL_GUI.Forms
                 data.Columns.AddRange(uniqueColumns);
 
                 var listToAdd = new List<string>();
-                for(int i = 0; i < rows.Count; i++)
+                for (int i = 0; i < rows.Count; i++)
                 {
                     listToAdd.Add(rows[i].Value);
-                    if(i % uniqueColumns.Count() == 0)
+                    if (i == uniqueColumns.Count() || i % uniqueColumns.Count() == 0)
                     {
                         data.Values.Add(listToAdd);
                         listToAdd = new List<string>();
@@ -576,7 +576,7 @@ namespace SQL_GUI.Forms
                 var dataGrid = new DataViewer(data);
                 dataGrid.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 WriteToLog("Error getting rows:");
                 WriteToLog(ex.Message);

@@ -294,13 +294,13 @@ namespace SQL_GUI.Functions
                 {
                     cmd.CommandText += $" WHERE {dto.WhereColumn} {dto.WhereOperator}";
 
-                    if (dto.WhereValue.GetType().Name.Equals("string", StringComparison.InvariantCultureIgnoreCase))
+                    if (bool.TryParse(dto.WhereValue, out var boolWhere) || decimal.TryParse(dto.WhereValue, out var numWhere) || DateTime.TryParse(dto.WhereValue, out var dateWhere) || TimeSpan.TryParse(dto.WhereValue, out var timeWhere))
                     {
-                        cmd.CommandText += $" '{dto.WhereValue}'";
+                        cmd.CommandText += $" {dto.WhereValue}";
                     }
                     else
                     {
-                        cmd.CommandText += $" {dto.WhereValue}";
+                        cmd.CommandText += $" '{dto.WhereValue}'";
                     }
                 }
 
