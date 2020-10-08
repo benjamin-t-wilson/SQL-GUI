@@ -73,22 +73,42 @@ namespace SQL_GUI.Forms
 
         private void tables_add_addColumnNames_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tables_add_columnNames_textBox.Text))
+            {
+                WriteToLog("You must type a value.");
+                return;
+            }
             tables_add_columnNames_listBox.Items.Add(tables_add_columnNames_textBox.Text);
             tables_add_columnNames_textBox.Text = string.Empty;
         }
 
         private void tables_add_removeColumnNames_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tables_add_columnNames_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item.");
+                return;
+            }
             tables_add_columnNames_listBox.Items.RemoveAt(tables_add_columnNames_listBox.SelectedIndex);
         }
 
         private void tables_add_addValueType_button_Click(object sender, EventArgs e)
         {
-            tables_add_valueTypes_listBox.Items.Add(tables_add_addValueType_comboBox.SelectedItem.ToString());
+            if (string.IsNullOrWhiteSpace(tables_add_addValueType_comboBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item.");
+                return;
+            }
+            tables_add_valueTypes_listBox.Items.Add(tables_add_addValueType_comboBox.SelectedItem?.ToString());
         }
 
         private void tables_add_removeValueType_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tables_add_valueTypes_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item");
+                return;
+            }
             tables_add_valueTypes_listBox.Items.RemoveAt(tables_add_valueTypes_listBox.SelectedIndex);
         }
 
@@ -173,6 +193,11 @@ namespace SQL_GUI.Forms
 
         private void columns_add_addColumn_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(columns_add_columnName_textBox.Text))
+            {
+                WriteToLog("You must type a value");
+                return;
+            }
             columns_add_columnNames_listBox.Items.Add(columns_add_columnName_textBox.Text);
             columns_add_columnName_textBox.Text = string.Empty;
         }
@@ -200,7 +225,7 @@ namespace SQL_GUI.Forms
 
         private void columns_add_column_button_Click(object sender, EventArgs e)
         {
-            var tableName = dash_tables_listBox.SelectedItem.ToString();
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
             var columns = columns_add_columnNames_listBox.Items;
             var valueTypes = columns_add_valueTypes_listBox.Items;
 
@@ -298,18 +323,28 @@ namespace SQL_GUI.Forms
 
         private void rows_add_addRowValue_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(rows_add_rowValue_textBox.Text))
+            {
+                WriteToLog("You must type a value");
+                return;
+            }
             rows_add_rowValues_listBox.Items.Add(rows_add_rowValue_textBox.Text);
             rows_add_rowValue_textBox.Text = string.Empty;
         }
 
         private void rows_add_removeRowValue_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(rows_add_rowValues_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item");
+                return;
+            }
             rows_add_rowValues_listBox.Items.RemoveAt(rows_add_rowValues_listBox.SelectedIndex);
         }
 
         private void rows_add_addRow_button_Click(object sender, EventArgs e)
         {
-            var table = dash_tables_listBox.SelectedItem.ToString();
+            var table = dash_tables_listBox.SelectedItem?.ToString();
 
             var columns = new List<ColumnDto>();
             foreach (var col in dash_columns_listBox.Items)
@@ -343,7 +378,7 @@ namespace SQL_GUI.Forms
 
         private void dash_tables_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem.ToString(), connDto);
+            var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem?.ToString(), connDto);
 
             dash_columns_listBox.Items.Clear();
 
@@ -375,7 +410,7 @@ namespace SQL_GUI.Forms
         private void tables_rename_newName_button_Click(object sender, EventArgs e)
         {
             var tableName = dash_tables_listBox.SelectedItem?.ToString();
-            var newTableName = tables_rename_newName_textbox?.Text;
+            var newTableName = tables_rename_newName_textbox.Text;
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(newTableName))
             {
