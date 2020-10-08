@@ -138,6 +138,22 @@
             this.rows_add_rowValue_textBox = new System.Windows.Forms.TextBox();
             this.rows_add_rowValue_label = new System.Windows.Forms.Label();
             this.rows_add_toolTip_label = new System.Windows.Forms.Label();
+            this.rows_select_panel = new System.Windows.Forms.Panel();
+            this.rows_select_toolTip_label = new System.Windows.Forms.Label();
+            this.rows_select_availableColumns_label = new System.Windows.Forms.Label();
+            this.rows_select_availableColumns_listBox = new System.Windows.Forms.ListBox();
+            this.rows_select_selectedRows_label = new System.Windows.Forms.Label();
+            this.rows_select_selectedColumns_listBox = new System.Windows.Forms.ListBox();
+            this.rows_select_addSelectedRow_button = new System.Windows.Forms.Button();
+            this.rows_select_removeSelectedRow_button = new System.Windows.Forms.Button();
+            this.rows_select_select_button = new System.Windows.Forms.Button();
+            this.rows_select_where_checkBox = new System.Windows.Forms.CheckBox();
+            this.rows_select_whereOperator_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_select_whereValue_textBox = new System.Windows.Forms.TextBox();
+            this.rows_select_whereOperator_label = new System.Windows.Forms.Label();
+            this.rows_select_whereColumn_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_select_whereColumn_label = new System.Windows.Forms.Label();
+            this.rows_select_whereValue_label = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -149,6 +165,7 @@
             this.columns_addConstraint_panel.SuspendLayout();
             this.columns_removeConstraint_panel.SuspendLayout();
             this.rows_add_panel.SuspendLayout();
+            this.rows_select_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -326,6 +343,7 @@
             this.selectRowsFromTableToolStripMenuItem.Name = "selectRowsFromTableToolStripMenuItem";
             this.selectRowsFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.selectRowsFromTableToolStripMenuItem.Text = "Select row(s) from table";
+            this.selectRowsFromTableToolStripMenuItem.Click += new System.EventHandler(this.selectRowsFromTableToolStripMenuItem_Click);
             // 
             // updateRowsInTableToolStripMenuItem
             // 
@@ -1255,17 +1273,185 @@
             this.rows_add_toolTip_label.TabIndex = 0;
             this.rows_add_toolTip_label.Text = resources.GetString("rows_add_toolTip_label.Text");
             // 
+            // rows_select_panel
+            // 
+            this.rows_select_panel.Controls.Add(this.rows_select_whereValue_label);
+            this.rows_select_panel.Controls.Add(this.rows_select_whereColumn_label);
+            this.rows_select_panel.Controls.Add(this.rows_select_whereColumn_comboBox);
+            this.rows_select_panel.Controls.Add(this.rows_select_whereOperator_label);
+            this.rows_select_panel.Controls.Add(this.rows_select_whereValue_textBox);
+            this.rows_select_panel.Controls.Add(this.rows_select_whereOperator_comboBox);
+            this.rows_select_panel.Controls.Add(this.rows_select_where_checkBox);
+            this.rows_select_panel.Controls.Add(this.rows_select_select_button);
+            this.rows_select_panel.Controls.Add(this.rows_select_removeSelectedRow_button);
+            this.rows_select_panel.Controls.Add(this.rows_select_addSelectedRow_button);
+            this.rows_select_panel.Controls.Add(this.rows_select_selectedColumns_listBox);
+            this.rows_select_panel.Controls.Add(this.rows_select_selectedRows_label);
+            this.rows_select_panel.Controls.Add(this.rows_select_availableColumns_listBox);
+            this.rows_select_panel.Controls.Add(this.rows_select_availableColumns_label);
+            this.rows_select_panel.Controls.Add(this.rows_select_toolTip_label);
+            this.rows_select_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rows_select_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_select_panel.Name = "rows_select_panel";
+            this.rows_select_panel.Size = new System.Drawing.Size(920, 360);
+            this.rows_select_panel.TabIndex = 30;
+            // 
+            // rows_select_toolTip_label
+            // 
+            this.rows_select_toolTip_label.Location = new System.Drawing.Point(25, 60);
+            this.rows_select_toolTip_label.Name = "rows_select_toolTip_label";
+            this.rows_select_toolTip_label.Size = new System.Drawing.Size(197, 227);
+            this.rows_select_toolTip_label.TabIndex = 0;
+            this.rows_select_toolTip_label.Text = "Select a table from the left\r\n\r\nThen pick which columns you would like to select " +
+    "from\r\n\r\nCheck the \"where\" box and fill out those forms if you are seeking specif" +
+    "ic values";
+            // 
+            // rows_select_availableColumns_label
+            // 
+            this.rows_select_availableColumns_label.AutoSize = true;
+            this.rows_select_availableColumns_label.Location = new System.Drawing.Point(274, 40);
+            this.rows_select_availableColumns_label.Name = "rows_select_availableColumns_label";
+            this.rows_select_availableColumns_label.Size = new System.Drawing.Size(147, 20);
+            this.rows_select_availableColumns_label.TabIndex = 1;
+            this.rows_select_availableColumns_label.Text = "Available Columns";
+            // 
+            // rows_select_availableColumns_listBox
+            // 
+            this.rows_select_availableColumns_listBox.FormattingEnabled = true;
+            this.rows_select_availableColumns_listBox.ItemHeight = 20;
+            this.rows_select_availableColumns_listBox.Location = new System.Drawing.Point(280, 72);
+            this.rows_select_availableColumns_listBox.Name = "rows_select_availableColumns_listBox";
+            this.rows_select_availableColumns_listBox.Size = new System.Drawing.Size(132, 164);
+            this.rows_select_availableColumns_listBox.TabIndex = 2;
+            // 
+            // rows_select_selectedRows_label
+            // 
+            this.rows_select_selectedRows_label.AutoSize = true;
+            this.rows_select_selectedRows_label.Location = new System.Drawing.Point(529, 43);
+            this.rows_select_selectedRows_label.Name = "rows_select_selectedRows_label";
+            this.rows_select_selectedRows_label.Size = new System.Drawing.Size(145, 20);
+            this.rows_select_selectedRows_label.TabIndex = 3;
+            this.rows_select_selectedRows_label.Text = "Selected Columns";
+            // 
+            // rows_select_selectedColumns_listBox
+            // 
+            this.rows_select_selectedColumns_listBox.FormattingEnabled = true;
+            this.rows_select_selectedColumns_listBox.ItemHeight = 20;
+            this.rows_select_selectedColumns_listBox.Location = new System.Drawing.Point(537, 72);
+            this.rows_select_selectedColumns_listBox.Name = "rows_select_selectedColumns_listBox";
+            this.rows_select_selectedColumns_listBox.Size = new System.Drawing.Size(132, 164);
+            this.rows_select_selectedColumns_listBox.TabIndex = 4;
+            // 
+            // rows_select_addSelectedRow_button
+            // 
+            this.rows_select_addSelectedRow_button.Location = new System.Drawing.Point(425, 115);
+            this.rows_select_addSelectedRow_button.Name = "rows_select_addSelectedRow_button";
+            this.rows_select_addSelectedRow_button.Size = new System.Drawing.Size(100, 29);
+            this.rows_select_addSelectedRow_button.TabIndex = 5;
+            this.rows_select_addSelectedRow_button.Text = "Add";
+            this.rows_select_addSelectedRow_button.UseVisualStyleBackColor = true;
+            this.rows_select_addSelectedRow_button.Click += new System.EventHandler(this.rows_select_addSelectedRow_button_Click);
+            // 
+            // rows_select_removeSelectedRow_button
+            // 
+            this.rows_select_removeSelectedRow_button.Location = new System.Drawing.Point(425, 158);
+            this.rows_select_removeSelectedRow_button.Name = "rows_select_removeSelectedRow_button";
+            this.rows_select_removeSelectedRow_button.Size = new System.Drawing.Size(100, 29);
+            this.rows_select_removeSelectedRow_button.TabIndex = 6;
+            this.rows_select_removeSelectedRow_button.Text = "Remove";
+            this.rows_select_removeSelectedRow_button.UseVisualStyleBackColor = true;
+            this.rows_select_removeSelectedRow_button.Click += new System.EventHandler(this.rows_select_removeSelectedRow_button_Click);
+            // 
+            // rows_select_select_button
+            // 
+            this.rows_select_select_button.Location = new System.Drawing.Point(759, 128);
+            this.rows_select_select_button.Name = "rows_select_select_button";
+            this.rows_select_select_button.Size = new System.Drawing.Size(100, 36);
+            this.rows_select_select_button.TabIndex = 7;
+            this.rows_select_select_button.Text = "Select";
+            this.rows_select_select_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_select_where_checkBox
+            // 
+            this.rows_select_where_checkBox.AutoSize = true;
+            this.rows_select_where_checkBox.Location = new System.Drawing.Point(280, 297);
+            this.rows_select_where_checkBox.Name = "rows_select_where_checkBox";
+            this.rows_select_where_checkBox.Size = new System.Drawing.Size(80, 24);
+            this.rows_select_where_checkBox.TabIndex = 8;
+            this.rows_select_where_checkBox.Text = "Where";
+            this.rows_select_where_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // rows_select_whereOperator_comboBox
+            // 
+            this.rows_select_whereOperator_comboBox.FormattingEnabled = true;
+            this.rows_select_whereOperator_comboBox.Items.AddRange(new object[] {
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">="});
+            this.rows_select_whereOperator_comboBox.Location = new System.Drawing.Point(548, 293);
+            this.rows_select_whereOperator_comboBox.Name = "rows_select_whereOperator_comboBox";
+            this.rows_select_whereOperator_comboBox.Size = new System.Drawing.Size(64, 28);
+            this.rows_select_whereOperator_comboBox.TabIndex = 10;
+            // 
+            // rows_select_whereValue_textBox
+            // 
+            this.rows_select_whereValue_textBox.Location = new System.Drawing.Point(637, 293);
+            this.rows_select_whereValue_textBox.Name = "rows_select_whereValue_textBox";
+            this.rows_select_whereValue_textBox.Size = new System.Drawing.Size(147, 26);
+            this.rows_select_whereValue_textBox.TabIndex = 11;
+            // 
+            // rows_select_whereOperator_label
+            // 
+            this.rows_select_whereOperator_label.AutoSize = true;
+            this.rows_select_whereOperator_label.Location = new System.Drawing.Point(542, 270);
+            this.rows_select_whereOperator_label.Name = "rows_select_whereOperator_label";
+            this.rows_select_whereOperator_label.Size = new System.Drawing.Size(75, 20);
+            this.rows_select_whereOperator_label.TabIndex = 12;
+            this.rows_select_whereOperator_label.Text = "Operator";
+            // 
+            // rows_select_whereColumn_comboBox
+            // 
+            this.rows_select_whereColumn_comboBox.FormattingEnabled = true;
+            this.rows_select_whereColumn_comboBox.Location = new System.Drawing.Point(404, 293);
+            this.rows_select_whereColumn_comboBox.Name = "rows_select_whereColumn_comboBox";
+            this.rows_select_whereColumn_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.rows_select_whereColumn_comboBox.TabIndex = 13;
+            // 
+            // rows_select_whereColumn_label
+            // 
+            this.rows_select_whereColumn_label.AutoSize = true;
+            this.rows_select_whereColumn_label.Location = new System.Drawing.Point(431, 270);
+            this.rows_select_whereColumn_label.Name = "rows_select_whereColumn_label";
+            this.rows_select_whereColumn_label.Size = new System.Drawing.Size(66, 20);
+            this.rows_select_whereColumn_label.TabIndex = 14;
+            this.rows_select_whereColumn_label.Text = "Column";
+            // 
+            // rows_select_whereValue_label
+            // 
+            this.rows_select_whereValue_label.AutoSize = true;
+            this.rows_select_whereValue_label.Location = new System.Drawing.Point(682, 270);
+            this.rows_select_whereValue_label.Name = "rows_select_whereValue_label";
+            this.rows_select_whereValue_label.Size = new System.Drawing.Size(51, 20);
+            this.rows_select_whereValue_label.TabIndex = 15;
+            this.rows_select_whereValue_label.Text = "Value";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.Controls.Add(this.rows_select_panel);
             this.Controls.Add(this.dash_columns_label);
             this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
+            this.Controls.Add(this.tables_delete_panel);
+            this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
             this.Controls.Add(this.columns_addConstraint_panel);
@@ -1274,8 +1460,6 @@
             this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.columns_remove_panel);
             this.Controls.Add(this.columns_rename_panel);
-            this.Controls.Add(this.tables_delete_panel);
-            this.Controls.Add(this.tables_rename_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
@@ -1299,6 +1483,8 @@
             this.columns_removeConstraint_panel.PerformLayout();
             this.rows_add_panel.ResumeLayout(false);
             this.rows_add_panel.PerformLayout();
+            this.rows_select_panel.ResumeLayout(false);
+            this.rows_select_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1415,5 +1601,21 @@
         private System.Windows.Forms.TextBox rows_add_rowValue_textBox;
         private System.Windows.Forms.Label rows_add_rowValue_label;
         private System.Windows.Forms.Label rows_add_toolTip_label;
+        private System.Windows.Forms.Panel rows_select_panel;
+        private System.Windows.Forms.Label rows_select_whereValue_label;
+        private System.Windows.Forms.Label rows_select_whereColumn_label;
+        private System.Windows.Forms.ComboBox rows_select_whereColumn_comboBox;
+        private System.Windows.Forms.Label rows_select_whereOperator_label;
+        private System.Windows.Forms.TextBox rows_select_whereValue_textBox;
+        private System.Windows.Forms.ComboBox rows_select_whereOperator_comboBox;
+        private System.Windows.Forms.CheckBox rows_select_where_checkBox;
+        private System.Windows.Forms.Button rows_select_select_button;
+        private System.Windows.Forms.Button rows_select_removeSelectedRow_button;
+        private System.Windows.Forms.Button rows_select_addSelectedRow_button;
+        private System.Windows.Forms.ListBox rows_select_selectedColumns_listBox;
+        private System.Windows.Forms.Label rows_select_selectedRows_label;
+        private System.Windows.Forms.ListBox rows_select_availableColumns_listBox;
+        private System.Windows.Forms.Label rows_select_availableColumns_label;
+        private System.Windows.Forms.Label rows_select_toolTip_label;
     }
 }

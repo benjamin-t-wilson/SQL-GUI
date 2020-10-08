@@ -210,16 +210,31 @@ namespace SQL_GUI.Forms
 
         private void columns_add_removeColumn_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(columns_add_columnNames_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item.");
+                return;
+            }
             columns_add_columnNames_listBox.Items.RemoveAt(columns_add_columnNames_listBox.SelectedIndex);
         }
 
         private void columns_add_addValueType_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(columns_add_valueTypes_comboBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item.");
+                return;
+            }
             columns_add_valueTypes_listBox.Items.Add(columns_add_valueTypes_comboBox.SelectedItem.ToString());
         }
 
         private void columns_add_removeValueType_button_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(columns_add_valueTypes_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must select an item.");
+                return;
+            }
             columns_add_valueTypes_listBox.Items.RemoveAt(columns_add_valueTypes_listBox.SelectedIndex);
         }
 
@@ -393,10 +408,15 @@ namespace SQL_GUI.Forms
                 var columns = _sql.GetColumnList(dash_tables_listBox.SelectedItem?.ToString(), connDto);
 
                 dash_columns_listBox.Items.Clear();
+                rows_select_availableColumns_listBox.Items.Clear();
+                rows_select_whereColumn_comboBox.Items.Clear();
+                rows_select_selectedColumns_listBox.Items.Clear();
 
                 foreach (var col in columns)
                 {
                     dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.ValueType})");
+                    rows_select_availableColumns_listBox.Items.Add(col.ColumnName);
+                    rows_select_whereColumn_comboBox.Items.Add(col.ColumnName);
                 }
             }
             catch (Exception ex)
@@ -461,6 +481,32 @@ namespace SQL_GUI.Forms
                 WriteToLog("Error renaming table:");
                 WriteToLog(ex.Message);
             }
+        }
+
+        private void selectRowsFromTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            rows_select_panel.Show();
+        }
+
+        private void rows_select_addSelectedRow_button_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(rows_select_availableColumns_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must type a value");
+                return;
+            }
+            rows_select_selectedColumns_listBox.Items.Add(rows_select_availableColumns_listBox.SelectedItem?.ToString());
+        }
+
+        private void rows_select_removeSelectedRow_button_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(rows_select_selectedColumns_listBox.SelectedItem?.ToString()))
+            {
+                WriteToLog("You must type a value");
+                return;
+            }
+            rows_select_selectedColumns_listBox.Items.RemoveAt(rows_select_selectedColumns_listBox.SelectedIndex);
         }
     }
 }
