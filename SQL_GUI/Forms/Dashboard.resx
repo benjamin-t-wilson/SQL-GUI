@@ -136,6 +136,16 @@ Select one or more check boxes for constraints. If you are adding reference or c
 
 Click the add constraint button when finished</value>
   </data>
+  <data name="rows_add_toolTip_label.Text" xml:space="preserve">
+    <value>Select a table from the left
+
+Then use the provided textbox to enter values
+
+Please ensure to enter a value for each column in the table ( shown below )
+
+Please do not add a value for the ID column
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

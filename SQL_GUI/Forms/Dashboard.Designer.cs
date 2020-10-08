@@ -190,7 +190,7 @@
             this.freeTypeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -200,7 +200,7 @@
             this.disconnectToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // disconnectToolStripMenuItem
@@ -224,7 +224,7 @@
             this.deleteTableToolStripMenuItem,
             this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // addTableToolStripMenuItem
@@ -258,7 +258,7 @@
             this.changeColumnConstraintToolStripMenuItem,
             this.removeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // addColumnToTableToolStripMenuItem
@@ -311,7 +311,7 @@
             this.updateRowsInTableToolStripMenuItem,
             this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
-            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
+            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.rowsToolStripMenuItem.Text = "Rows";
             // 
             // addRowToTableToolStripMenuItem
@@ -342,7 +342,7 @@
             // freeTypeToolStripMenuItem
             // 
             this.freeTypeToolStripMenuItem.Name = "freeTypeToolStripMenuItem";
-            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
+            this.freeTypeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.freeTypeToolStripMenuItem.Text = "Free type";
             // 
             // tables_add_tableName_textBox
@@ -1243,18 +1243,17 @@
             this.rows_add_rowValue_label.AutoSize = true;
             this.rows_add_rowValue_label.Location = new System.Drawing.Point(294, 92);
             this.rows_add_rowValue_label.Name = "rows_add_rowValue_label";
-            this.rows_add_rowValue_label.Size = new System.Drawing.Size(94, 20);
+            this.rows_add_rowValue_label.Size = new System.Drawing.Size(118, 20);
             this.rows_add_rowValue_label.TabIndex = 1;
-            this.rows_add_rowValue_label.Text = "Row Value:";
+            this.rows_add_rowValue_label.Text = "Column Value:";
             // 
             // rows_add_toolTip_label
             // 
-            this.rows_add_toolTip_label.Location = new System.Drawing.Point(24, 77);
+            this.rows_add_toolTip_label.Location = new System.Drawing.Point(25, 65);
             this.rows_add_toolTip_label.Name = "rows_add_toolTip_label";
-            this.rows_add_toolTip_label.Size = new System.Drawing.Size(208, 213);
+            this.rows_add_toolTip_label.Size = new System.Drawing.Size(208, 228);
             this.rows_add_toolTip_label.TabIndex = 0;
-            this.rows_add_toolTip_label.Text = "Select a table from the left\r\n\r\nThen use the provided textbox to enter values\r\n\r\n" +
-    "Please ensure to enter a value for each column in the table ( shown below )";
+            this.rows_add_toolTip_label.Text = resources.GetString("rows_add_toolTip_label.Text");
             // 
             // Dashboard
             // 
@@ -1267,7 +1266,6 @@
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
             this.Controls.Add(this.columns_addConstraint_panel);
@@ -1277,6 +1275,7 @@
             this.Controls.Add(this.columns_remove_panel);
             this.Controls.Add(this.columns_rename_panel);
             this.Controls.Add(this.tables_delete_panel);
+            this.Controls.Add(this.tables_rename_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
