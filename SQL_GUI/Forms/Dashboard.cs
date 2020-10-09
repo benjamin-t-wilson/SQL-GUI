@@ -556,10 +556,10 @@ namespace SQL_GUI.Forms
                 WriteToLog($"Successfully retrieved {rows.Count} rows");
                 WriteToLog("Opening data grid");
 
-                foreach (var item in rows_select_selectedColumns_listBox.Items)
+                while (rows_select_selectedColumns_listBox.Items.Count > 0)
                 {
-                    rows_select_availableColumns_listBox.Items.Add(item);
-                    rows_select_selectedColumns_listBox.Items.Remove(item);
+                    rows_select_availableColumns_listBox.Items.Add(rows_select_selectedColumns_listBox.Items[0]);
+                    rows_select_selectedColumns_listBox.Items.RemoveAt(0);
                 }
 
                 var data = new DataViewerDto()
@@ -576,7 +576,7 @@ namespace SQL_GUI.Forms
                 for (int i = 0; i < rows.Count; i++)
                 {
                     listToAdd.Add(rows[i].Value);
-                    if (i != 0 && (i + 1 == uniqueColumns.Count() || (i + 1) % uniqueColumns.Count() == 0))
+                    if (i + 1 == uniqueColumns.Count() || (i + 1) % uniqueColumns.Count() == 0)
                     {
                         data.Values.Add(listToAdd);
                         listToAdd = new List<string>();
