@@ -150,6 +150,30 @@ namespace SQL_GUI.Functions
             }
         }
 
+        public bool DeleteRowFromTable(string tableName, string columnName, string operatorSymbol, string operatorValue, ConnectionDto connDto )
+        {
+            try
+            {
+
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"DELETE FROM {tableName} WHERE {columnName} {operatorSymbol} {operatorValue}";
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public bool AddRowToTable(AddNewRowDto tableDto, ConnectionDto connDto)
         {
             try
@@ -206,6 +230,7 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
 
         public List<string> GetListOfTables(ConnectionDto connDto)
         {
