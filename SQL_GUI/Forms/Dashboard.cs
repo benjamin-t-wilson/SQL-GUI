@@ -592,5 +592,11 @@ namespace SQL_GUI.Forms
                 WriteToLog(ex.Message);
             }
         }
+
+        private void deleteRowFromTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            rows_delete_panel.Show();
+        }
     }
 }
