@@ -170,7 +170,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool DeleteRowFromTable(string tableName, ColumnDto column, string operatorSymbol, string operatorValue, ConnectionDto connDto)
+        public bool DeleteRowFromTable(string tableName, ColumnDto column, string operatorSymbol, string value, ConnectionDto connDto)
         {
             try
             {
@@ -185,11 +185,11 @@ namespace SQL_GUI.Functions
 
                 if (RequiresQuotes(column.Value))
                 {
-                    cmd.CommandText += $"'{operatorValue}'";
+                    cmd.CommandText += $"'{value}'";
                 }
                 else
                 {
-                    cmd.CommandText += $"{operatorValue}";
+                    cmd.CommandText += $"{value}";
                 }
 
 
@@ -205,7 +205,7 @@ namespace SQL_GUI.Functions
         }
 
 
-        public bool UpdateRowFromTable(string tableName,  List<string> columnNames, List<string> values, string whereColumnName, string operatorSymbol, string value, ConnectionDto connDto)
+        public bool UpdateRowFromTable(string tableName,  List<ColumnDto> columns, List<string> values, string whereColumnName, string operatorSymbol, string operatorValue, ConnectionDto connDto)
         {
             try
             {
@@ -217,14 +217,33 @@ namespace SQL_GUI.Functions
 
                 cmd.CommandText = $"UPDATE {tableName} SET";
 
-                for (int i = 1; i < columnNames.Count; i++)
+                for (int i = 1; i < columns.Count; i++)
                 {
-                    cmd.CommandText += $" {columnNames[i]} = {values[i]},";
+                    cmd.CommandText += $" {columns[i].ColumnName} = ";
+
+                    if (RequiresQuotes(columns[i].Value))
+                    {
+                        cmd.CommandText += $"'{values[i]}'";
+                    }
+                    else
+                    {
+                        cmd.CommandText += $"{values[i]}";
+                    }
+                    cmd.CommandText += ",";
                 }
 
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
-                cmd.CommandText += $" WHERE {whereColumnName} {operatorSymbol} {value}";
+                cmd.CommandText += $" WHERE {whereColumnName} {operatorSymbol} ";
+
+                if (RequiresQuotes(operatorValue))
+                {
+                    cmd.CommandText += $"'{operatorValue}'";
+                }
+                else
+                {
+                    cmd.CommandText += $"{operatorValue}";
+                }
 
                 cmd.ExecuteNonQuery();
 
