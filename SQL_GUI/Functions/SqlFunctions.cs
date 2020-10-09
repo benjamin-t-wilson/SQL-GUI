@@ -6,7 +6,27 @@ using System.Collections.Generic;
 namespace SQL_GUI.Functions
 {
     public class SqlFunctions
+
     {
+        public bool RequiresQuotes(string value)
+        {
+            switch (value.ToUpper())
+            {
+
+                case "CHARACTER":
+                case "VARCHAR":
+                case "TEXT":
+                case "DATETIME":
+                case "DATE":
+                case "TIMESTAMP":
+                    return true;
+
+                default:
+                    return false;
+            }
+
+
+        }
         private string ConnectionString(ConnectionDto connDto)
         {
             return $"Host={connDto.Host};Username={connDto.Username};Password={connDto.Password};Database={connDto.Database};Port={connDto.Port};SSL Mode=Prefer;Trust Server Certificate=true";
@@ -150,7 +170,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool DeleteRowFromTable(string tableName, string columnName, string operatorSymbol, string operatorValue, ConnectionDto connDto )
+        public bool DeleteRowFromTable(string tableName, ColumnDto column, string operatorSymbol, string operatorValue, ConnectionDto connDto)
         {
             try
             {
@@ -161,7 +181,50 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"DELETE FROM {tableName} WHERE {columnName} {operatorSymbol} {operatorValue}";
+                cmd.CommandText = $"DELETE FROM {tableName} WHERE {column.ColumnName} {operatorSymbol} ";
+
+                if (RequiresQuotes(column.Value))
+                {
+                    cmd.CommandText += $"'{operatorValue}'";
+                }
+                else
+                {
+                    cmd.CommandText += $"{operatorValue}";
+                }
+
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public bool UpdateRowFromTable(string tableName,  List<string> columnNames, List<string> values, string whereColumnName, string operatorSymbol, string value, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"UPDATE {tableName} SET";
+
+                for (int i = 1; i < columnNames.Count; i++)
+                {
+                    cmd.CommandText += $" {columnNames[i]} = {values[i]},";
+                }
+
+                cmd.CommandText = cmd.CommandText.TrimEnd(',');
+
+                cmd.CommandText += $" WHERE {whereColumnName} {operatorSymbol} {value}";
 
                 cmd.ExecuteNonQuery();
 
@@ -199,20 +262,14 @@ namespace SQL_GUI.Functions
 
                 for (int i = 0; i < tableDto.Rows.Count; i++)
                 {
-                    switch (tableDto.Columns[i + 1].Value.ToUpper())
-                    {
-                        case "CHARACTER":
-                        case "VARCHAR":
-                        case "TEXT":
-                        case "DATETIME":
-                        case "DATE":
-                        case "TIMESTAMP":
-                            cmd.CommandText += $"'{tableDto.Rows[i]}'";
-                            break;
 
-                        default:
-                            cmd.CommandText += tableDto.Rows[i];
-                            break;
+                    if(RequiresQuotes(tableDto.Columns[i + 1].Value))
+                    {
+                        cmd.CommandText += $"'{tableDto.Rows[i]}'";
+                    } 
+                    else
+                    {
+                        cmd.CommandText += tableDto.Rows[i];
                     }
 
                     cmd.CommandText += ",";
