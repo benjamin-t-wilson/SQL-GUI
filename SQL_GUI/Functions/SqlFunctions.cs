@@ -177,7 +177,7 @@ namespace SQL_GUI.Functions
                 {
                     switch (tableDto.Columns[i + 1].Value.ToUpper())
                     {
-                        case "CHAR":
+                        case "CHARACTER":
                         case "VARCHAR":
                         case "TEXT":
                         case "DATETIME":
@@ -286,7 +286,7 @@ namespace SQL_GUI.Functions
                     cmd.CommandText += $" {col},";
                 }
 
-                cmd.CommandText.TrimEnd(',');
+                cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
                 cmd.CommandText += $" FROM {dto.TableName}";
 
@@ -317,7 +317,7 @@ namespace SQL_GUI.Functions
                         columns.Add(new ColumnDto()
                         {
                             ColumnName = dto.Columns[i],
-                            Value = rdr.GetString(i)
+                            Value = rdr.GetValue(i).ToString()
                         });
                     }
                 }

@@ -25,7 +25,7 @@ namespace SQL_GUI.Forms
 
             foreach(var row in dto.Values)
             {
-                table.Rows.Add(row);
+                table.Rows.Add(row.ToArray());
             }
 
             dataViewer_dataGrid.DataSource = table;

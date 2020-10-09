@@ -149,6 +149,7 @@ namespace SQL_GUI.Forms
                 resetTableList();
                 tables_add_columnNames_listBox.Items.Clear();
                 tables_add_valueTypes_listBox.Items.Clear();
+                tables_add_tableName_textBox.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -393,6 +394,7 @@ namespace SQL_GUI.Forms
 
                 WriteToLog("Successfully added values");
                 rows_add_rowValues_listBox.Items.Clear();
+                rows_add_rowValue_textBox.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -497,6 +499,7 @@ namespace SQL_GUI.Forms
                 return;
             }
             rows_select_selectedColumns_listBox.Items.Add(rows_select_availableColumns_listBox.SelectedItem?.ToString());
+            rows_select_availableColumns_listBox.Items.RemoveAt(rows_select_availableColumns_listBox.SelectedIndex);
         }
 
         private void rows_select_removeSelectedRow_button_Click(object sender, EventArgs e)
@@ -506,6 +509,7 @@ namespace SQL_GUI.Forms
                 WriteToLog("You must type a value");
                 return;
             }
+            rows_select_availableColumns_listBox.Items.Add(rows_select_selectedColumns_listBox.SelectedItem.ToString());
             rows_select_selectedColumns_listBox.Items.RemoveAt(rows_select_selectedColumns_listBox.SelectedIndex);
         }
 
@@ -552,6 +556,12 @@ namespace SQL_GUI.Forms
                 WriteToLog($"Successfully retrieved {rows.Count} rows");
                 WriteToLog("Opening data grid");
 
+                foreach (var item in rows_select_selectedColumns_listBox.Items)
+                {
+                    rows_select_availableColumns_listBox.Items.Add(item);
+                    rows_select_selectedColumns_listBox.Items.Remove(item);
+                }
+
                 var data = new DataViewerDto()
                 {
                     Columns = new List<string>(),
@@ -566,7 +576,7 @@ namespace SQL_GUI.Forms
                 for (int i = 0; i < rows.Count; i++)
                 {
                     listToAdd.Add(rows[i].Value);
-                    if (i == uniqueColumns.Count() || i % uniqueColumns.Count() == 0)
+                    if (i != 0 && (i + 1 == uniqueColumns.Count() || (i + 1) % uniqueColumns.Count() == 0))
                     {
                         data.Values.Add(listToAdd);
                         listToAdd = new List<string>();
