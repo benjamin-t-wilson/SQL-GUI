@@ -150,7 +150,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool DeleteRowFromTable(string tableName, string columnName, string operatorSymbol, string operatorValue, ConnectionDto connDto )
+        public bool DeleteRowFromTable(string tableName, string columnName, string operatorSymbol, string value, ConnectionDto connDto )
         {
             try
             {
@@ -161,7 +161,7 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"DELETE FROM {tableName} WHERE {columnName} {operatorSymbol} {operatorValue}";
+                cmd.CommandText = $"DELETE FROM {tableName} WHERE {columnName} {operatorSymbol} {value}";
 
                 cmd.ExecuteNonQuery();
 

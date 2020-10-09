@@ -413,12 +413,14 @@ namespace SQL_GUI.Forms
                 rows_select_availableColumns_listBox.Items.Clear();
                 rows_select_whereColumn_comboBox.Items.Clear();
                 rows_select_selectedColumns_listBox.Items.Clear();
+                rows_delete_column_comboBox.Items.Clear();
 
                 foreach (var col in columns)
                 {
                     dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.Value})");
                     rows_select_availableColumns_listBox.Items.Add(col.ColumnName);
                     rows_select_whereColumn_comboBox.Items.Add(col.ColumnName);
+                    rows_delete_column_comboBox.Items.Add(col.ColumnName);
                 }
             }
             catch (Exception ex)
@@ -597,6 +599,36 @@ namespace SQL_GUI.Forms
         {
             resetControlDisplay();
             rows_delete_panel.Show();
+        }
+
+        private void rows_delete_delete_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var columnName = rows_delete_column_comboBox.SelectedItem?.ToString();
+            var opSymbol = rows_delete_operator_comboBox.SelectedItem?.ToString();
+            var value = rows_delete_value_textBox.Text;
+
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(opSymbol) || string.IsNullOrWhiteSpace(value))
+            {
+                WriteToLog("Table, column, operator, and value must be selected.");
+                return;
+            }
+
+            try
+            {
+                _sql.DeleteRowFromTable(tableName, columnName, opSymbol, value, connDto);
+
+                rows_delete_value_textBox.Text = string.Empty;
+                rows_delete_column_comboBox.SelectedIndex = -1;
+                rows_delete_operator_comboBox.SelectedIndex = -1;
+
+                WriteToLog("Successfully deleted row(s)");
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error deleting row(s):");
+                WriteToLog(ex.Message);
+            }
         }
     }
 }

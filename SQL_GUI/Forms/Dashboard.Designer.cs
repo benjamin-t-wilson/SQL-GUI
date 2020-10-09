@@ -1504,6 +1504,7 @@
             this.rows_delete_delete_button.TabIndex = 4;
             this.rows_delete_delete_button.Text = "Delete";
             this.rows_delete_delete_button.UseVisualStyleBackColor = true;
+            this.rows_delete_delete_button.Click += new System.EventHandler(this.rows_delete_delete_button_Click);
             // 
             // rows_delete_column_comboBox
             // 
