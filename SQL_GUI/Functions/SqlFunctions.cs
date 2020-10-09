@@ -205,7 +205,7 @@ namespace SQL_GUI.Functions
         }
 
 
-        public bool UpdateRowFromTable(string tableName,  List<ColumnDto> columns, List<string> values, string whereColumnName, string operatorSymbol, string operatorValue, ConnectionDto connDto)
+        public int UpdateRowFromTable(string tableName,  List<ColumnDto> columns, List<string> values, string whereColumnName, string operatorSymbol, string operatorValue, ConnectionDto connDto)
         {
             try
             {
@@ -245,9 +245,17 @@ namespace SQL_GUI.Functions
                     cmd.CommandText += $"{operatorValue}";
                 }
 
-                cmd.ExecuteNonQuery();
 
-                return true;
+                NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                int countRows = 0;
+
+                while (dr.Read())
+                {
+                    countRows += 1;
+                }
+
+                return countRows;
             }
 
             catch (Exception ex)
@@ -256,7 +264,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool AddRowToTable(AddNewRowDto tableDto, ConnectionDto connDto)
+        public int AddRowToTable(AddNewRowDto tableDto, ConnectionDto connDto)
         {
             try
             {
@@ -297,9 +305,16 @@ namespace SQL_GUI.Functions
 
                 cmd.CommandText += ")";
 
-                cmd.ExecuteNonQuery();
+                NpgsqlDataReader dr = cmd.ExecuteReader();
 
-                return true;
+                int countRows = 0;
+
+                while (dr.Read())
+                {
+                    countRows += 1;
+                }
+
+                return countRows;
             }
             catch (Exception ex)
             {
