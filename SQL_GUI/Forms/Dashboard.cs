@@ -780,7 +780,7 @@ namespace SQL_GUI.Forms
         private void columns_remove_removeColumn_button_Click(object sender, EventArgs e)
         {
             var tableName = dash_tables_listBox.SelectedItem?.ToString();
-            var columnName = rows_delete_column_comboBox.SelectedItem?.ToString();
+            var columnName = dash_columns_listBox.SelectedItem?.ToString();
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
             {
@@ -831,7 +831,14 @@ namespace SQL_GUI.Forms
 
         private void columns_dataType_changeType_button_Click(object sender, EventArgs e)
         {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var columnName = dash_columns_listBox.SelectedItem?.ToString();
 
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
+            {
+                WriteToLog("Table and column must be selected.");
+                return;
+            }
         }
     }
 }
