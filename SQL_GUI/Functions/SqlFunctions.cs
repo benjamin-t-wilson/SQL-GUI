@@ -540,5 +540,26 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public void DropTableConstraint(string tableName, string constraintName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER TABLE {tableName} DROP CONSTRAINT {constraintName};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
