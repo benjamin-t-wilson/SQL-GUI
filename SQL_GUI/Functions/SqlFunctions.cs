@@ -510,5 +510,35 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<string> GetConstraints(string tableName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"SELECT c.conname AS constraint_name FROM pg_constraint c JOIN pg_class t ON c.conrelid = t.oid JOIN pg_namespace n ON t.relnamespace = n.oid WHERE t.relname = '{tableName}';";
+
+                using NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+                var constraints = new List<string>();
+
+                while (rdr.Read())
+                {
+                    constraints.Add(rdr.GetString(0));
+                }
+                con.Close();
+
+                return constraints;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
