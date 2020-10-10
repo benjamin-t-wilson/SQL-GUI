@@ -435,5 +435,47 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public void AddColumnConstraint(AddColumnConstraintDto dto, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = string.Empty;
+
+                string alterTable = $"ALTER TABLE {dto.TableName} ";
+
+                if (dto.Unique)
+                {
+                    cmd.CommandText += alterTable + $"ADD UNIQUE ({dto.ColumnName});";
+                }
+
+                if (dto.NotNull)
+                {
+                    cmd.CommandText += alterTable + $"ALTER COLUMN {dto.ColumnName} SET NOT NULL;";
+                }
+
+                if (dto.References)
+                {
+                    cmd.CommandText += alterTable + $"ADD FOREIGN KEY ({dto.ColumnName}) REFERENCES {dto.ReferencesTableName}({dto.ReferencesColumnName}) ON UPDATE CASCADE ON DELETE CASCADE";
+                }
+
+                if (dto.Check)
+                {
+                    cmd.CommandText += alterTable + $"ADD CONSTRAINT {dto.CheckName} CHECK ({dto.CheckColumn} {dto.CheckOperator} {dto.CheckValue});";
+                }
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

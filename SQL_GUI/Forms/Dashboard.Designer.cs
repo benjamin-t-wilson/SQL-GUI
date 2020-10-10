@@ -236,7 +236,7 @@
             this.rowsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1763,14 +1763,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
-            this.Controls.Add(this.rows_update_panel);
-            this.Controls.Add(this.rows_delete_panel);
             this.Controls.Add(this.dash_columns_label);
             this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
+            this.Controls.Add(this.columns_addConstraint_panel);
+            this.Controls.Add(this.columns_dataType_panel);
+            this.Controls.Add(this.columns_addColumn_panel);
+            this.Controls.Add(this.rows_update_panel);
+            this.Controls.Add(this.rows_delete_panel);
             this.Controls.Add(this.tables_add_panel);
             this.Controls.Add(this.columns_remove_panel);
             this.Controls.Add(this.columns_rename_panel);
@@ -1779,9 +1782,6 @@
             this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
-            this.Controls.Add(this.columns_addConstraint_panel);
-            this.Controls.Add(this.columns_dataType_panel);
-            this.Controls.Add(this.columns_addColumn_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";

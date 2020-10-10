@@ -44,4 +44,20 @@ namespace SQL_GUI.DTOs
         public List<string> Columns { get; set; }
         public List<List<string>> Values { get; set; }
     }
+
+    public class AddColumnConstraintDto
+    {
+        public string TableName { get; set; }
+        public string ColumnName { get; set; }
+        public bool Unique { get; set; }
+        public bool NotNull { get; set; }
+        public bool References { get; set; }
+        public string ReferencesTableName { get; set; }
+        public string ReferencesColumnName { get; set; }
+        public bool Check { get; set; }
+        public string CheckName { get; set; }
+        public string CheckColumn { get; set; }
+        public string CheckOperator { get; set; }
+        public string CheckValue { get; set; }
+    }
 }
