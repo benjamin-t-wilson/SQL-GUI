@@ -996,12 +996,13 @@
             this.columns_addConstraint_add_button.TabIndex = 17;
             this.columns_addConstraint_add_button.Text = "Add Constraint";
             this.columns_addConstraint_add_button.UseVisualStyleBackColor = true;
+            this.columns_addConstraint_add_button.Click += new System.EventHandler(this.columns_addConstraint_add_button_Click);
             // 
             // columns_addConstraint_references_column_label
             // 
             this.columns_addConstraint_references_column_label.AutoSize = true;
             this.columns_addConstraint_references_column_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_addConstraint_references_column_label.Location = new System.Drawing.Point(629, 118);
+            this.columns_addConstraint_references_column_label.Location = new System.Drawing.Point(699, 118);
             this.columns_addConstraint_references_column_label.Name = "columns_addConstraint_references_column_label";
             this.columns_addConstraint_references_column_label.Size = new System.Drawing.Size(66, 20);
             this.columns_addConstraint_references_column_label.TabIndex = 16;
@@ -1011,7 +1012,7 @@
             // 
             this.columns_addConstraint_references_table_label.AutoSize = true;
             this.columns_addConstraint_references_table_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_addConstraint_references_table_label.Location = new System.Drawing.Point(485, 118);
+            this.columns_addConstraint_references_table_label.Location = new System.Drawing.Point(527, 119);
             this.columns_addConstraint_references_table_label.Name = "columns_addConstraint_references_table_label";
             this.columns_addConstraint_references_table_label.Size = new System.Drawing.Size(50, 20);
             this.columns_addConstraint_references_table_label.TabIndex = 15;
@@ -1069,6 +1070,13 @@
             // 
             this.columns_addConstraint_check_operators_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.columns_addConstraint_check_operators_comboBox.FormattingEnabled = true;
+            this.columns_addConstraint_check_operators_comboBox.Items.AddRange(new object[] {
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">="});
             this.columns_addConstraint_check_operators_comboBox.Location = new System.Drawing.Point(679, 198);
             this.columns_addConstraint_check_operators_comboBox.Name = "columns_addConstraint_check_operators_comboBox";
             this.columns_addConstraint_check_operators_comboBox.Size = new System.Drawing.Size(46, 28);
@@ -1095,7 +1103,7 @@
             // 
             this.columns_addConstraint_references_column_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.columns_addConstraint_references_column_comboBox.FormattingEnabled = true;
-            this.columns_addConstraint_references_column_comboBox.Location = new System.Drawing.Point(602, 141);
+            this.columns_addConstraint_references_column_comboBox.Location = new System.Drawing.Point(675, 142);
             this.columns_addConstraint_references_column_comboBox.Name = "columns_addConstraint_references_column_comboBox";
             this.columns_addConstraint_references_column_comboBox.Size = new System.Drawing.Size(121, 28);
             this.columns_addConstraint_references_column_comboBox.TabIndex = 6;
@@ -1106,8 +1114,9 @@
             this.columns_addConstraint_references_table_comboBox.FormattingEnabled = true;
             this.columns_addConstraint_references_table_comboBox.Location = new System.Drawing.Point(453, 141);
             this.columns_addConstraint_references_table_comboBox.Name = "columns_addConstraint_references_table_comboBox";
-            this.columns_addConstraint_references_table_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.columns_addConstraint_references_table_comboBox.Size = new System.Drawing.Size(196, 28);
             this.columns_addConstraint_references_table_comboBox.TabIndex = 5;
+            this.columns_addConstraint_references_table_comboBox.SelectionChangeCommitted += new System.EventHandler(this.columns_addConstraint_references_table_comboBox_SelectionChangeCommitted);
             // 
             // label1
             // 

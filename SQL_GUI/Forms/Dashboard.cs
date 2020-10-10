@@ -43,10 +43,12 @@ namespace SQL_GUI.Forms
             WriteToLog("Reset tables list...");
 
             dash_tables_listBox.Items.Clear();
+            columns_addConstraint_references_table_comboBox.Items.Clear();
 
             foreach (var tableName in tablesList)
             {
                 dash_tables_listBox.Items.Add(tableName);
+                columns_addConstraint_references_table_comboBox.Items.Add(tableName);
             }
         }
 
@@ -654,9 +656,108 @@ namespace SQL_GUI.Forms
 
         private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(_connBox != null)
+            if (_connBox != null)
             {
                 _connBox.Show();
+            }
+        }
+
+        private void columns_addConstraint_references_table_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                var columns = _sql.GetColumnList(columns_addConstraint_references_table_comboBox.SelectedItem?.ToString(), connDto);
+
+                columns_addConstraint_references_column_comboBox.Items.Clear();
+
+                foreach (var col in columns)
+                {
+                    columns_addConstraint_references_column_comboBox.Items.Add($"{col.ColumnName} ({col.Value})");
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error retrieving column list:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void columns_addConstraint_add_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var columnName = rows_delete_column_comboBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
+            {
+                WriteToLog("Table and column must be selected.");
+                return;
+            }
+
+            if (!columns_addConstraint_unique_checkBox.Checked && !columns_addConstraint_notNull_checkBox.Checked && !columns_addConstraint_references_checkBox.Checked && !columns_addConstraint_check_checkBox.Checked)
+            {
+                WriteToLog("You must check one constraint");
+                return;
+            }
+
+            if (columns_addConstraint_references_checkBox.Checked && (string.IsNullOrWhiteSpace(columns_addConstraint_references_table_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(columns_addConstraint_references_column_comboBox.SelectedItem?.ToString())))
+            {
+                WriteToLog("You must select a reference table and column.");
+                return;
+            }
+
+            if (columns_addConstraint_check_checkBox.Checked && (string.IsNullOrWhiteSpace(columns_addConstraint_check_checkName_textBox.Text) || string.IsNullOrWhiteSpace(columns_addConstraint_check_columns_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(columns_addConstraint_check_operators_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(columns_addConstraint_check_value_textBox.Text)))
+            {
+                WriteToLog("You must have a check name, column, operator, and value.");
+                return;
+            }
+
+            var dto = new AddColumnConstraintDto()
+            {
+                TableName = tableName,
+                ColumnName = columnName,
+                Unique = columns_addConstraint_unique_checkBox.Checked,
+                NotNull = columns_addConstraint_notNull_checkBox.Checked,
+                References = columns_addConstraint_references_checkBox.Checked,
+                Check = columns_addConstraint_check_checkBox.Checked
+            };
+
+            if (dto.References)
+            {
+                dto.ReferencesTableName = columns_addConstraint_references_table_comboBox.SelectedItem?.ToString();
+                dto.ReferencesColumnName = columns_addConstraint_references_column_comboBox.SelectedItem?.ToString();
+            }
+
+            if (dto.Check)
+            {
+                dto.CheckName = columns_addConstraint_check_checkName_textBox.Text;
+                dto.CheckColumn = columns_addConstraint_check_columns_comboBox.SelectedItem?.ToString();
+                dto.CheckOperator = columns_addConstraint_check_operators_comboBox.SelectedItem?.ToString();
+                dto.CheckValue = columns_addConstraint_check_value_textBox.Text;
+            }
+
+            try
+            {
+                _sql.AddColumnConstraint(dto, connDto);
+
+                WriteToLog("Successfully added constraint(s)");
+
+                columns_addConstraint_check_checkBox.Checked = false;
+                columns_addConstraint_notNull_checkBox.Checked = false;
+                columns_addConstraint_references_checkBox.Checked = false;
+                columns_addConstraint_unique_checkBox.Checked = false;
+
+                columns_addConstraint_check_columns_comboBox.SelectedIndex = -1;
+                columns_addConstraint_check_operators_comboBox.SelectedIndex = -1;
+                columns_addConstraint_references_column_comboBox.SelectedIndex = -1;
+                columns_addConstraint_references_table_comboBox.SelectedIndex = -1;
+
+                columns_addConstraint_check_checkName_textBox.Text = string.Empty;
+                columns_addConstraint_check_value_textBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error adding column constraint:");
+                WriteToLog(ex.Message);
             }
         }
     }
