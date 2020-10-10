@@ -833,11 +833,26 @@ namespace SQL_GUI.Forms
         {
             var tableName = dash_tables_listBox.SelectedItem?.ToString();
             var columnName = dash_columns_listBox.SelectedItem?.ToString();
+            var dataType = columns_dataType_valueTypes_comboBox.SelectedItem?.ToString();
 
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(dataType))
             {
-                WriteToLog("Table and column must be selected.");
+                WriteToLog("Table, column, and data type must be selected.");
                 return;
+            }
+
+            try
+            {
+                _sql.ChangeColumnDataType(tableName, columnName, dataType, connDto);
+
+                WriteToLog("Successfully changed data type");
+                dash_tables_listBox_SelectedIndexChanged(sender, e);
+                columns_dataType_valueTypes_comboBox.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error changing data type:");
+                WriteToLog(ex.Message);
             }
         }
     }
