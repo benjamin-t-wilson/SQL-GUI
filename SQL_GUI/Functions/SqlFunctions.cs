@@ -561,5 +561,26 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public void ChangeColumnDataType(string tableName, string columnName, string dataType, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER TABLE {tableName} ALTER COLUMN {columnName} SET DATA TYPE {dataType};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

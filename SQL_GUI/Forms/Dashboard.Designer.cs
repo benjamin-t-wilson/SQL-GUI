@@ -1780,8 +1780,6 @@
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.columns_removeConstraint_panel);
-            this.Controls.Add(this.columns_addConstraint_panel);
             this.Controls.Add(this.columns_dataType_panel);
             this.Controls.Add(this.columns_addColumn_panel);
             this.Controls.Add(this.rows_update_panel);
@@ -1793,6 +1791,8 @@
             this.Controls.Add(this.tables_delete_panel);
             this.Controls.Add(this.tables_rename_panel);
             this.Controls.Add(this.rows_add_panel);
+            this.Controls.Add(this.columns_removeConstraint_panel);
+            this.Controls.Add(this.columns_addConstraint_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
