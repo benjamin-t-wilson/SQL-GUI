@@ -760,5 +760,30 @@ namespace SQL_GUI.Forms
                 WriteToLog(ex.Message);
             }
         }
+
+        private void columns_remove_removeColumn_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var columnName = rows_delete_column_comboBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
+            {
+                WriteToLog("Table and column must be selected.");
+                return;
+            }
+
+            try
+            {
+                _sql.DropColumnFromTable(tableName, columnName, connDto);
+
+                WriteToLog($"Successfully dropped {columnName} from {tableName}");
+                dash_tables_listBox_SelectedIndexChanged(sender, e);
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error dropping column:");
+                WriteToLog(ex.Message);
+            }
+        }
     }
 }

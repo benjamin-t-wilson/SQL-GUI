@@ -889,6 +889,7 @@
             this.columns_remove_removeColumn_button.TabIndex = 1;
             this.columns_remove_removeColumn_button.Text = "DROP COLUMN";
             this.columns_remove_removeColumn_button.UseVisualStyleBackColor = true;
+            this.columns_remove_removeColumn_button.Click += new System.EventHandler(this.columns_remove_removeColumn_button_Click);
             // 
             // columns_remove_toolTip_label
             // 
