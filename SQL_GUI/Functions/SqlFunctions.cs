@@ -12,7 +12,6 @@ namespace SQL_GUI.Functions
         {
             switch (value.ToUpper())
             {
-
                 case "CHARACTER":
                 case "VARCHAR":
                 case "TEXT":
@@ -24,9 +23,8 @@ namespace SQL_GUI.Functions
                 default:
                     return false;
             }
-
-
         }
+
         private string ConnectionString(ConnectionDto connDto)
         {
             return $"Host={connDto.Host};Username={connDto.Username};Password={connDto.Password};Database={connDto.Database};Port={connDto.Port};SSL Mode=Prefer;Trust Server Certificate=true";
@@ -174,7 +172,6 @@ namespace SQL_GUI.Functions
         {
             try
             {
-
                 using var con = new NpgsqlConnection(ConnectionString(connDto));
                 con.Open();
 
@@ -192,20 +189,17 @@ namespace SQL_GUI.Functions
                     cmd.CommandText += $"{value}";
                 }
 
-
                 cmd.ExecuteNonQuery();
 
                 return true;
             }
-
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
 
-
-        public int UpdateRowFromTable(string tableName,  List<ColumnDto> columns, List<string> values, string whereColumnName, string operatorSymbol, string operatorValue, ConnectionDto connDto)
+        public int UpdateRowFromTable(string tableName, List<ColumnDto> columns, List<string> values, string whereColumnName, string operatorSymbol, string operatorValue, ConnectionDto connDto)
         {
             try
             {
@@ -245,7 +239,6 @@ namespace SQL_GUI.Functions
                     cmd.CommandText += $"{operatorValue}";
                 }
 
-
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
                 int countRows = 0;
@@ -257,7 +250,6 @@ namespace SQL_GUI.Functions
 
                 return countRows;
             }
-
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
@@ -289,11 +281,10 @@ namespace SQL_GUI.Functions
 
                 for (int i = 0; i < tableDto.Rows.Count; i++)
                 {
-
-                    if(RequiresQuotes(tableDto.Columns[i + 1].Value))
+                    if (RequiresQuotes(tableDto.Columns[i + 1].Value))
                     {
                         cmd.CommandText += $"'{tableDto.Rows[i]}'";
-                    } 
+                    }
                     else
                     {
                         cmd.CommandText += tableDto.Rows[i];
@@ -321,7 +312,6 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
-
 
         public List<string> GetListOfTables(ConnectionDto connDto)
         {
@@ -399,7 +389,7 @@ namespace SQL_GUI.Functions
 
                 foreach (var col in dto.Columns)
                 {
-                    cmd.CommandText += $" {col},";
+                    cmd.CommandText += $" {col.ColumnName},";
                 }
 
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
@@ -408,15 +398,15 @@ namespace SQL_GUI.Functions
 
                 if (dto.Where)
                 {
-                    cmd.CommandText += $" WHERE {dto.WhereColumn} {dto.WhereOperator}";
+                    cmd.CommandText += $" WHERE {dto.WhereColumn.ColumnName} {dto.WhereOperator}";
 
-                    if (bool.TryParse(dto.WhereValue, out var boolWhere) || decimal.TryParse(dto.WhereValue, out var numWhere) || DateTime.TryParse(dto.WhereValue, out var dateWhere) || TimeSpan.TryParse(dto.WhereValue, out var timeWhere))
+                    if (RequiresQuotes(dto.WhereColumn.Value))
                     {
-                        cmd.CommandText += $" {dto.WhereValue}";
+                        cmd.CommandText += $" '{dto.WhereValue}'";
                     }
                     else
                     {
-                        cmd.CommandText += $" '{dto.WhereValue}'";
+                        cmd.CommandText += $" {dto.WhereValue}";
                     }
                 }
 
@@ -432,7 +422,7 @@ namespace SQL_GUI.Functions
                     {
                         columns.Add(new ColumnDto()
                         {
-                            ColumnName = dto.Columns[i],
+                            ColumnName = dto.Columns[i].ColumnName,
                             Value = rdr.GetValue(i).ToString()
                         });
                     }

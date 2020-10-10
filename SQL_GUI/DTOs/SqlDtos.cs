@@ -32,9 +32,9 @@ namespace SQL_GUI.DTOs
     public class FormSelectDto
     {
         public string TableName { get; set; }
-        public List<string> Columns { get; set; }
+        public List<ColumnDto> Columns { get; set; }
         public bool Where { get; set; }
-        public string WhereColumn { get; set; }
+        public ColumnDto WhereColumn { get; set; }
         public string WhereOperator { get; set; }
         public string WhereValue { get; set; }
     }

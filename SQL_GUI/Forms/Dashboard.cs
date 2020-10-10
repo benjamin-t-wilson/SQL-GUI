@@ -412,15 +412,16 @@ namespace SQL_GUI.Forms
                 dash_columns_listBox.Items.Clear();
                 rows_select_availableColumns_listBox.Items.Clear();
                 rows_select_whereColumn_comboBox.Items.Clear();
-                rows_select_selectedColumns_listBox.Items.Clear();
                 rows_delete_column_comboBox.Items.Clear();
+
+                rows_select_selectedColumns_listBox.Items.Clear();
 
                 foreach (var col in columns)
                 {
                     dash_columns_listBox.Items.Add($"{col.ColumnName} ({col.Value})");
-                    rows_select_availableColumns_listBox.Items.Add(col.ColumnName);
-                    rows_select_whereColumn_comboBox.Items.Add(col.ColumnName);
-                    rows_delete_column_comboBox.Items.Add(col.ColumnName);
+                    rows_select_availableColumns_listBox.Items.Add($"{col.ColumnName} ({col.Value})");
+                    rows_select_whereColumn_comboBox.Items.Add($"{col.ColumnName} ({col.Value})");
+                    rows_delete_column_comboBox.Items.Add($"{col.ColumnName} ({col.Value})");
                 }
             }
             catch (Exception ex)
@@ -535,18 +536,26 @@ namespace SQL_GUI.Forms
             var dto = new FormSelectDto()
             {
                 TableName = dash_tables_listBox.SelectedItem?.ToString(),
-                Columns = new List<string>()
+                Columns = new List<ColumnDto>()
             };
 
             foreach (var col in rows_select_selectedColumns_listBox.Items)
             {
-                dto.Columns.Add(col.ToString());
+                dto.Columns.Add(new ColumnDto()
+                {
+                    ColumnName = col.ToString().Split('(')[0].Trim(),
+                    Value = col.ToString().Split('(')[1].TrimEnd(')')
+                });
             }
 
             if (rows_select_where_checkBox.Checked)
             {
                 dto.Where = true;
-                dto.WhereColumn = rows_select_whereColumn_comboBox.SelectedItem?.ToString();
+                dto.WhereColumn = new ColumnDto()
+                {
+                    ColumnName = rows_select_whereColumn_comboBox.SelectedItem?.ToString().Split('(')[0].Trim(),
+                    Value = rows_select_whereColumn_comboBox.SelectedItem?.ToString().Split('(')[1].TrimEnd(')')
+                };
                 dto.WhereOperator = rows_select_whereOperator_comboBox.SelectedItem?.ToString();
                 dto.WhereValue = rows_select_whereValue_textBox.Text;
             }
@@ -616,7 +625,13 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.DeleteRowFromTable(tableName, columnName, opSymbol, value, connDto);
+                var column = new ColumnDto()
+                {
+                    ColumnName = columnName.Split('(')[0].Trim(),
+                    Value = columnName.Split('(')[1].TrimEnd(')')
+                };
+
+                _sql.DeleteRowFromTable(tableName, column, opSymbol, value, connDto);
 
                 rows_delete_value_textBox.Text = string.Empty;
                 rows_delete_column_comboBox.SelectedIndex = -1;
