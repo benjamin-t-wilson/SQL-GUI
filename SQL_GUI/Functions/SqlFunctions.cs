@@ -40,6 +40,7 @@ namespace SQL_GUI.Functions
             using var cmd = new NpgsqlCommand(sql, con);
 
             var version = cmd.ExecuteScalar().ToString();
+            con.Close();
 
             return version;
         }
@@ -56,6 +57,7 @@ namespace SQL_GUI.Functions
 
                 cmd.CommandText = $"DROP TABLE IF EXISTS {tableName}";
                 cmd.ExecuteNonQuery();
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -86,6 +88,7 @@ namespace SQL_GUI.Functions
                 cmd.CommandText += ")";
 
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 return true;
             }
@@ -115,6 +118,7 @@ namespace SQL_GUI.Functions
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 return true;
             }
@@ -137,6 +141,7 @@ namespace SQL_GUI.Functions
                 cmd.CommandText = $"ALTER TABLE IF EXISTS {tableName} RENAME {columnName} TO {newColumnName}";
 
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 return true;
             }
@@ -159,6 +164,7 @@ namespace SQL_GUI.Functions
                 cmd.CommandText = $"ALTER TABLE IF EXISTS {tableName} RENAME TO {newTableName}";
 
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 return true;
             }
@@ -190,6 +196,7 @@ namespace SQL_GUI.Functions
                 }
 
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 return true;
             }
@@ -247,6 +254,7 @@ namespace SQL_GUI.Functions
                 {
                     countRows += 1;
                 }
+                con.Close();
 
                 return countRows;
             }
@@ -304,6 +312,7 @@ namespace SQL_GUI.Functions
                 {
                     countRows += 1;
                 }
+                con.Close();
 
                 return countRows;
             }
@@ -333,6 +342,7 @@ namespace SQL_GUI.Functions
                 {
                     tableNames.Add(rdr.GetString(0));
                 }
+                con.Close();
 
                 return tableNames;
             }
@@ -366,6 +376,7 @@ namespace SQL_GUI.Functions
                         Value = rdr.GetString(1)
                     });
                 }
+                con.Close();
 
                 return columns;
             }
@@ -427,6 +438,7 @@ namespace SQL_GUI.Functions
                         });
                     }
                 }
+                con.Close();
 
                 return columns;
             }
