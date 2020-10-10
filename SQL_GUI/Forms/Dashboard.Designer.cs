@@ -163,25 +163,25 @@
             this.rows_delete_column_label = new System.Windows.Forms.Label();
             this.rows_delete_toolTip_label = new System.Windows.Forms.Label();
             this.rows_update_panel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rows_update_availableColumns_label = new System.Windows.Forms.Label();
-            this.rows_update_availableColumns_listBox = new System.Windows.Forms.ListBox();
-            this.rows_update_selectedColumns_listBox = new System.Windows.Forms.ListBox();
-            this.rows_update_selectedColumns_label = new System.Windows.Forms.Label();
+            this.rows_update_whereValue_label = new System.Windows.Forms.Label();
+            this.rows_update_whereOperator_label = new System.Windows.Forms.Label();
+            this.rows_update_whereColumn_label = new System.Windows.Forms.Label();
+            this.rows_update_whereValue_textBox = new System.Windows.Forms.TextBox();
+            this.rows_update_whereOperator_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_update_whereColumn_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_update_where_label = new System.Windows.Forms.Label();
+            this.rows_update_removeColumn_button = new System.Windows.Forms.Button();
+            this.rows_update_addColumn_button = new System.Windows.Forms.Button();
+            this.rows_update_update_button = new System.Windows.Forms.Button();
+            this.rows_update_value_textBox = new System.Windows.Forms.TextBox();
+            this.rows_update_value_label = new System.Windows.Forms.Label();
             this.rows_update_values_listBox = new System.Windows.Forms.ListBox();
             this.rows_update_values_label = new System.Windows.Forms.Label();
-            this.rows_update_value_label = new System.Windows.Forms.Label();
-            this.rows_update_value_textBox = new System.Windows.Forms.TextBox();
-            this.rows_update_update_button = new System.Windows.Forms.Button();
-            this.rows_update_addColumn_button = new System.Windows.Forms.Button();
-            this.rows_update_removeColumn_button = new System.Windows.Forms.Button();
-            this.rows_update_where_label = new System.Windows.Forms.Label();
-            this.rows_update_whereColumn_comboBox = new System.Windows.Forms.ComboBox();
-            this.rows_update_whereOperator_comboBox = new System.Windows.Forms.ComboBox();
-            this.rows_update_whereValue_textBox = new System.Windows.Forms.TextBox();
-            this.rows_update_whereColumn_label = new System.Windows.Forms.Label();
-            this.rows_update_whereOperator_label = new System.Windows.Forms.Label();
-            this.rows_update_whereValue_label = new System.Windows.Forms.Label();
+            this.rows_update_selectedColumns_listBox = new System.Windows.Forms.ListBox();
+            this.rows_update_selectedColumns_label = new System.Windows.Forms.Label();
+            this.rows_update_availableColumns_listBox = new System.Windows.Forms.ListBox();
+            this.rows_update_availableColumns_label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -1585,51 +1585,114 @@
             this.rows_update_panel.Size = new System.Drawing.Size(920, 360);
             this.rows_update_panel.TabIndex = 32;
             // 
-            // label2
+            // rows_update_whereValue_label
             // 
-            this.label2.Location = new System.Drawing.Point(16, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 245);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Warning! There is no confirmation for this\r\n\r\nSelect a table from the left, then " +
-    "compile a list of selected columns and matching number of values\r\n\r\nEnter a wher" +
-    "e condition, then click update";
+            this.rows_update_whereValue_label.AutoSize = true;
+            this.rows_update_whereValue_label.Location = new System.Drawing.Point(598, 236);
+            this.rows_update_whereValue_label.Name = "rows_update_whereValue_label";
+            this.rows_update_whereValue_label.Size = new System.Drawing.Size(51, 20);
+            this.rows_update_whereValue_label.TabIndex = 18;
+            this.rows_update_whereValue_label.Text = "Value";
             // 
-            // rows_update_availableColumns_label
+            // rows_update_whereOperator_label
             // 
-            this.rows_update_availableColumns_label.AutoSize = true;
-            this.rows_update_availableColumns_label.Location = new System.Drawing.Point(213, 23);
-            this.rows_update_availableColumns_label.Name = "rows_update_availableColumns_label";
-            this.rows_update_availableColumns_label.Size = new System.Drawing.Size(147, 20);
-            this.rows_update_availableColumns_label.TabIndex = 1;
-            this.rows_update_availableColumns_label.Text = "Available Columns";
+            this.rows_update_whereOperator_label.AutoSize = true;
+            this.rows_update_whereOperator_label.Location = new System.Drawing.Point(458, 236);
+            this.rows_update_whereOperator_label.Name = "rows_update_whereOperator_label";
+            this.rows_update_whereOperator_label.Size = new System.Drawing.Size(75, 20);
+            this.rows_update_whereOperator_label.TabIndex = 17;
+            this.rows_update_whereOperator_label.Text = "Operator";
             // 
-            // rows_update_availableColumns_listBox
+            // rows_update_whereColumn_label
             // 
-            this.rows_update_availableColumns_listBox.FormattingEnabled = true;
-            this.rows_update_availableColumns_listBox.ItemHeight = 20;
-            this.rows_update_availableColumns_listBox.Location = new System.Drawing.Point(228, 52);
-            this.rows_update_availableColumns_listBox.Name = "rows_update_availableColumns_listBox";
-            this.rows_update_availableColumns_listBox.Size = new System.Drawing.Size(120, 164);
-            this.rows_update_availableColumns_listBox.TabIndex = 2;
+            this.rows_update_whereColumn_label.AutoSize = true;
+            this.rows_update_whereColumn_label.Location = new System.Drawing.Point(335, 236);
+            this.rows_update_whereColumn_label.Name = "rows_update_whereColumn_label";
+            this.rows_update_whereColumn_label.Size = new System.Drawing.Size(66, 20);
+            this.rows_update_whereColumn_label.TabIndex = 16;
+            this.rows_update_whereColumn_label.Text = "Column";
             // 
-            // rows_update_selectedColumns_listBox
+            // rows_update_whereValue_textBox
             // 
-            this.rows_update_selectedColumns_listBox.FormattingEnabled = true;
-            this.rows_update_selectedColumns_listBox.ItemHeight = 20;
-            this.rows_update_selectedColumns_listBox.Location = new System.Drawing.Point(471, 52);
-            this.rows_update_selectedColumns_listBox.Name = "rows_update_selectedColumns_listBox";
-            this.rows_update_selectedColumns_listBox.Size = new System.Drawing.Size(120, 164);
-            this.rows_update_selectedColumns_listBox.TabIndex = 4;
+            this.rows_update_whereValue_textBox.Location = new System.Drawing.Point(558, 263);
+            this.rows_update_whereValue_textBox.Name = "rows_update_whereValue_textBox";
+            this.rows_update_whereValue_textBox.Size = new System.Drawing.Size(137, 26);
+            this.rows_update_whereValue_textBox.TabIndex = 15;
             // 
-            // rows_update_selectedColumns_label
+            // rows_update_whereOperator_comboBox
             // 
-            this.rows_update_selectedColumns_label.AutoSize = true;
-            this.rows_update_selectedColumns_label.Location = new System.Drawing.Point(458, 23);
-            this.rows_update_selectedColumns_label.Name = "rows_update_selectedColumns_label";
-            this.rows_update_selectedColumns_label.Size = new System.Drawing.Size(145, 20);
-            this.rows_update_selectedColumns_label.TabIndex = 3;
-            this.rows_update_selectedColumns_label.Text = "Selected Columns";
+            this.rows_update_whereOperator_comboBox.FormattingEnabled = true;
+            this.rows_update_whereOperator_comboBox.Items.AddRange(new object[] {
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">="});
+            this.rows_update_whereOperator_comboBox.Location = new System.Drawing.Point(467, 263);
+            this.rows_update_whereOperator_comboBox.Name = "rows_update_whereOperator_comboBox";
+            this.rows_update_whereOperator_comboBox.Size = new System.Drawing.Size(55, 28);
+            this.rows_update_whereOperator_comboBox.TabIndex = 14;
+            // 
+            // rows_update_whereColumn_comboBox
+            // 
+            this.rows_update_whereColumn_comboBox.FormattingEnabled = true;
+            this.rows_update_whereColumn_comboBox.Location = new System.Drawing.Point(300, 263);
+            this.rows_update_whereColumn_comboBox.Name = "rows_update_whereColumn_comboBox";
+            this.rows_update_whereColumn_comboBox.Size = new System.Drawing.Size(137, 28);
+            this.rows_update_whereColumn_comboBox.TabIndex = 13;
+            // 
+            // rows_update_where_label
+            // 
+            this.rows_update_where_label.AutoSize = true;
+            this.rows_update_where_label.Location = new System.Drawing.Point(224, 266);
+            this.rows_update_where_label.Name = "rows_update_where_label";
+            this.rows_update_where_label.Size = new System.Drawing.Size(58, 20);
+            this.rows_update_where_label.TabIndex = 12;
+            this.rows_update_where_label.Text = "Where";
+            // 
+            // rows_update_removeColumn_button
+            // 
+            this.rows_update_removeColumn_button.Location = new System.Drawing.Point(364, 137);
+            this.rows_update_removeColumn_button.Name = "rows_update_removeColumn_button";
+            this.rows_update_removeColumn_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_removeColumn_button.TabIndex = 11;
+            this.rows_update_removeColumn_button.Text = "Remove";
+            this.rows_update_removeColumn_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_update_addColumn_button
+            // 
+            this.rows_update_addColumn_button.Location = new System.Drawing.Point(364, 90);
+            this.rows_update_addColumn_button.Name = "rows_update_addColumn_button";
+            this.rows_update_addColumn_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_addColumn_button.TabIndex = 10;
+            this.rows_update_addColumn_button.Text = "Add";
+            this.rows_update_addColumn_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_update_update_button
+            // 
+            this.rows_update_update_button.Location = new System.Drawing.Point(769, 253);
+            this.rows_update_update_button.Name = "rows_update_update_button";
+            this.rows_update_update_button.Size = new System.Drawing.Size(120, 37);
+            this.rows_update_update_button.TabIndex = 9;
+            this.rows_update_update_button.Text = "Update";
+            this.rows_update_update_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_update_value_textBox
+            // 
+            this.rows_update_value_textBox.Location = new System.Drawing.Point(611, 116);
+            this.rows_update_value_textBox.Name = "rows_update_value_textBox";
+            this.rows_update_value_textBox.Size = new System.Drawing.Size(130, 26);
+            this.rows_update_value_textBox.TabIndex = 8;
+            // 
+            // rows_update_value_label
+            // 
+            this.rows_update_value_label.AutoSize = true;
+            this.rows_update_value_label.Location = new System.Drawing.Point(650, 90);
+            this.rows_update_value_label.Name = "rows_update_value_label";
+            this.rows_update_value_label.Size = new System.Drawing.Size(51, 20);
+            this.rows_update_value_label.TabIndex = 7;
+            this.rows_update_value_label.Text = "Value";
             // 
             // rows_update_values_listBox
             // 
@@ -1649,114 +1712,51 @@
             this.rows_update_values_label.TabIndex = 5;
             this.rows_update_values_label.Text = "Values";
             // 
-            // rows_update_value_label
+            // rows_update_selectedColumns_listBox
             // 
-            this.rows_update_value_label.AutoSize = true;
-            this.rows_update_value_label.Location = new System.Drawing.Point(650, 90);
-            this.rows_update_value_label.Name = "rows_update_value_label";
-            this.rows_update_value_label.Size = new System.Drawing.Size(51, 20);
-            this.rows_update_value_label.TabIndex = 7;
-            this.rows_update_value_label.Text = "Value";
+            this.rows_update_selectedColumns_listBox.FormattingEnabled = true;
+            this.rows_update_selectedColumns_listBox.ItemHeight = 20;
+            this.rows_update_selectedColumns_listBox.Location = new System.Drawing.Point(471, 52);
+            this.rows_update_selectedColumns_listBox.Name = "rows_update_selectedColumns_listBox";
+            this.rows_update_selectedColumns_listBox.Size = new System.Drawing.Size(120, 164);
+            this.rows_update_selectedColumns_listBox.TabIndex = 4;
             // 
-            // rows_update_value_textBox
+            // rows_update_selectedColumns_label
             // 
-            this.rows_update_value_textBox.Location = new System.Drawing.Point(611, 116);
-            this.rows_update_value_textBox.Name = "rows_update_value_textBox";
-            this.rows_update_value_textBox.Size = new System.Drawing.Size(130, 26);
-            this.rows_update_value_textBox.TabIndex = 8;
+            this.rows_update_selectedColumns_label.AutoSize = true;
+            this.rows_update_selectedColumns_label.Location = new System.Drawing.Point(458, 23);
+            this.rows_update_selectedColumns_label.Name = "rows_update_selectedColumns_label";
+            this.rows_update_selectedColumns_label.Size = new System.Drawing.Size(145, 20);
+            this.rows_update_selectedColumns_label.TabIndex = 3;
+            this.rows_update_selectedColumns_label.Text = "Selected Columns";
             // 
-            // rows_update_update_button
+            // rows_update_availableColumns_listBox
             // 
-            this.rows_update_update_button.Location = new System.Drawing.Point(769, 253);
-            this.rows_update_update_button.Name = "rows_update_update_button";
-            this.rows_update_update_button.Size = new System.Drawing.Size(120, 37);
-            this.rows_update_update_button.TabIndex = 9;
-            this.rows_update_update_button.Text = "Update";
-            this.rows_update_update_button.UseVisualStyleBackColor = true;
+            this.rows_update_availableColumns_listBox.FormattingEnabled = true;
+            this.rows_update_availableColumns_listBox.ItemHeight = 20;
+            this.rows_update_availableColumns_listBox.Location = new System.Drawing.Point(228, 52);
+            this.rows_update_availableColumns_listBox.Name = "rows_update_availableColumns_listBox";
+            this.rows_update_availableColumns_listBox.Size = new System.Drawing.Size(120, 164);
+            this.rows_update_availableColumns_listBox.TabIndex = 2;
             // 
-            // rows_update_addColumn_button
+            // rows_update_availableColumns_label
             // 
-            this.rows_update_addColumn_button.Location = new System.Drawing.Point(364, 90);
-            this.rows_update_addColumn_button.Name = "rows_update_addColumn_button";
-            this.rows_update_addColumn_button.Size = new System.Drawing.Size(90, 35);
-            this.rows_update_addColumn_button.TabIndex = 10;
-            this.rows_update_addColumn_button.Text = "Add";
-            this.rows_update_addColumn_button.UseVisualStyleBackColor = true;
+            this.rows_update_availableColumns_label.AutoSize = true;
+            this.rows_update_availableColumns_label.Location = new System.Drawing.Point(213, 23);
+            this.rows_update_availableColumns_label.Name = "rows_update_availableColumns_label";
+            this.rows_update_availableColumns_label.Size = new System.Drawing.Size(147, 20);
+            this.rows_update_availableColumns_label.TabIndex = 1;
+            this.rows_update_availableColumns_label.Text = "Available Columns";
             // 
-            // rows_update_removeColumn_button
+            // label2
             // 
-            this.rows_update_removeColumn_button.Location = new System.Drawing.Point(364, 137);
-            this.rows_update_removeColumn_button.Name = "rows_update_removeColumn_button";
-            this.rows_update_removeColumn_button.Size = new System.Drawing.Size(90, 35);
-            this.rows_update_removeColumn_button.TabIndex = 11;
-            this.rows_update_removeColumn_button.Text = "Remove";
-            this.rows_update_removeColumn_button.UseVisualStyleBackColor = true;
-            // 
-            // rows_update_where_label
-            // 
-            this.rows_update_where_label.AutoSize = true;
-            this.rows_update_where_label.Location = new System.Drawing.Point(224, 266);
-            this.rows_update_where_label.Name = "rows_update_where_label";
-            this.rows_update_where_label.Size = new System.Drawing.Size(58, 20);
-            this.rows_update_where_label.TabIndex = 12;
-            this.rows_update_where_label.Text = "Where";
-            // 
-            // rows_update_whereColumn_comboBox
-            // 
-            this.rows_update_whereColumn_comboBox.FormattingEnabled = true;
-            this.rows_update_whereColumn_comboBox.Location = new System.Drawing.Point(300, 263);
-            this.rows_update_whereColumn_comboBox.Name = "rows_update_whereColumn_comboBox";
-            this.rows_update_whereColumn_comboBox.Size = new System.Drawing.Size(137, 28);
-            this.rows_update_whereColumn_comboBox.TabIndex = 13;
-            // 
-            // rows_update_whereOperator_comboBox
-            // 
-            this.rows_update_whereOperator_comboBox.FormattingEnabled = true;
-            this.rows_update_whereOperator_comboBox.Items.AddRange(new object[] {
-            "=",
-            "!=",
-            "<",
-            "<=",
-            ">",
-            ">="});
-            this.rows_update_whereOperator_comboBox.Location = new System.Drawing.Point(467, 263);
-            this.rows_update_whereOperator_comboBox.Name = "rows_update_whereOperator_comboBox";
-            this.rows_update_whereOperator_comboBox.Size = new System.Drawing.Size(55, 28);
-            this.rows_update_whereOperator_comboBox.TabIndex = 14;
-            // 
-            // rows_update_whereValue_textBox
-            // 
-            this.rows_update_whereValue_textBox.Location = new System.Drawing.Point(558, 263);
-            this.rows_update_whereValue_textBox.Name = "rows_update_whereValue_textBox";
-            this.rows_update_whereValue_textBox.Size = new System.Drawing.Size(137, 26);
-            this.rows_update_whereValue_textBox.TabIndex = 15;
-            // 
-            // rows_update_whereColumn_label
-            // 
-            this.rows_update_whereColumn_label.AutoSize = true;
-            this.rows_update_whereColumn_label.Location = new System.Drawing.Point(335, 236);
-            this.rows_update_whereColumn_label.Name = "rows_update_whereColumn_label";
-            this.rows_update_whereColumn_label.Size = new System.Drawing.Size(66, 20);
-            this.rows_update_whereColumn_label.TabIndex = 16;
-            this.rows_update_whereColumn_label.Text = "Column";
-            // 
-            // rows_update_whereOperator_label
-            // 
-            this.rows_update_whereOperator_label.AutoSize = true;
-            this.rows_update_whereOperator_label.Location = new System.Drawing.Point(458, 236);
-            this.rows_update_whereOperator_label.Name = "rows_update_whereOperator_label";
-            this.rows_update_whereOperator_label.Size = new System.Drawing.Size(75, 20);
-            this.rows_update_whereOperator_label.TabIndex = 17;
-            this.rows_update_whereOperator_label.Text = "Operator";
-            // 
-            // rows_update_whereValue_label
-            // 
-            this.rows_update_whereValue_label.AutoSize = true;
-            this.rows_update_whereValue_label.Location = new System.Drawing.Point(598, 236);
-            this.rows_update_whereValue_label.Name = "rows_update_whereValue_label";
-            this.rows_update_whereValue_label.Size = new System.Drawing.Size(51, 20);
-            this.rows_update_whereValue_label.TabIndex = 18;
-            this.rows_update_whereValue_label.Text = "Value";
+            this.label2.Location = new System.Drawing.Point(16, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 245);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Warning! There is no confirmation for this\r\n\r\nSelect a table from the left, then " +
+    "compile a list of selected columns and matching number of values\r\n\r\nEnter a wher" +
+    "e condition, then click update";
             // 
             // Dashboard
             // 
@@ -1785,6 +1785,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tables_add_panel.ResumeLayout(false);

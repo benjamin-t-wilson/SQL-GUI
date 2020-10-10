@@ -42,7 +42,7 @@ namespace SQL_GUI.Functions
             con.Close();
         }
 
-        public void AddData(string nickName)
+        public void RemoveData(string nickName)
         {
             con = new SQLiteConnection("Data Source=connDb.sqlite;Version=3;");
             cmd = new SQLiteCommand();

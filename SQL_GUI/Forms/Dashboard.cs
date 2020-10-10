@@ -651,5 +651,13 @@ namespace SQL_GUI.Forms
             resetControlDisplay();
             rows_update_panel.Show();
         }
+
+        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(_connBox != null)
+            {
+                _connBox.Show();
+            }
+        }
     }
 }

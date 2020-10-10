@@ -1,7 +1,6 @@
 ﻿using SQL_GUI.DTOs;
 using SQL_GUI.Functions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -10,16 +9,12 @@ namespace SQL_GUI.Forms
     public partial class ConnectionBox : Form
     {
         private readonly SqliteConnStorage _sqlite = new SqliteConnStorage();
+
         public ConnectionBox()
         {
             InitializeComponent();
 
-            var names = _sqlite.GetNickNames();
-
-            foreach (var name in names)
-            {
-                con_savedConnections_comboBox.Items.Add(name);
-            }
+            ResetNickNames();
         }
 
         private void con_cancel_button_Click(object sender, EventArgs e)
@@ -49,7 +44,7 @@ namespace SQL_GUI.Forms
                 _sqlite.AddData(dto);
             }
 
-            foreach(Control ctrl in Controls.OfType<TextBox>())
+            foreach (Control ctrl in Controls.OfType<TextBox>())
             {
                 ctrl.Text = string.Empty;
             }
@@ -73,6 +68,29 @@ namespace SQL_GUI.Forms
             con_port_textBox.Text = dto.Port;
             con_password_textBox.Text = dto.Password;
             con_nickname_textbox.Text = dto.Nickname;
+
+            con_forget_button.Visible = true;
+        }
+
+        private void con_forget_button_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(con_nickname_textbox.Text))
+            {
+                _sqlite.RemoveData(con_nickname_textbox.Text);
+                ResetNickNames();
+                con_forget_button.Visible = false;
+                con_savedConnections_comboBox.SelectedIndex = -1;
+            }
+        }
+
+        private void ResetNickNames()
+        {
+            var names = _sqlite.GetNickNames();
+
+            foreach (var name in names)
+            {
+                con_savedConnections_comboBox.Items.Add(name);
+            }
         }
     }
 }

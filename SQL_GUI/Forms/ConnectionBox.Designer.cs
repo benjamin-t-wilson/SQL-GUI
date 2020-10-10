@@ -45,6 +45,7 @@
             this.con_savedConnections_label = new System.Windows.Forms.Label();
             this.con_saveConnection_checkbox = new System.Windows.Forms.CheckBox();
             this.con_savedConnections_comboBox = new System.Windows.Forms.ComboBox();
+            this.con_forget_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // con_host_label
@@ -210,11 +211,24 @@
             this.con_savedConnections_comboBox.TabIndex = 16;
             this.con_savedConnections_comboBox.SelectionChangeCommitted += new System.EventHandler(this.con_savedConnections_comboBox_SelectionChangeCommitted);
             // 
+            // con_forget_button
+            // 
+            this.con_forget_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.con_forget_button.Location = new System.Drawing.Point(236, 326);
+            this.con_forget_button.Name = "con_forget_button";
+            this.con_forget_button.Size = new System.Drawing.Size(203, 32);
+            this.con_forget_button.TabIndex = 17;
+            this.con_forget_button.Text = "Forget Connection";
+            this.con_forget_button.UseVisualStyleBackColor = true;
+            this.con_forget_button.Visible = false;
+            this.con_forget_button.Click += new System.EventHandler(this.con_forget_button_Click);
+            // 
             // ConnectionBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 487);
+            this.Controls.Add(this.con_forget_button);
             this.Controls.Add(this.con_savedConnections_comboBox);
             this.Controls.Add(this.con_saveConnection_checkbox);
             this.Controls.Add(this.con_savedConnections_label);
@@ -260,6 +274,7 @@
         private System.Windows.Forms.Label con_savedConnections_label;
         private System.Windows.Forms.CheckBox con_saveConnection_checkbox;
         private System.Windows.Forms.ComboBox con_savedConnections_comboBox;
+        private System.Windows.Forms.Button con_forget_button;
     }
 }
 
