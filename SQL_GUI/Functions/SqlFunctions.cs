@@ -489,5 +489,26 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public void DropColumnFromTable(string tableName, string columnName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER TABLE {tableName} DROP COLUMN {columnName} CASCADE;";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
