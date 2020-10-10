@@ -1712,7 +1712,14 @@
             // rows_update_whereOperator_comboBox
             // 
             this.rows_update_whereOperator_comboBox.FormattingEnabled = true;
-            this.rows_update_whereOperator_comboBox.Location = new System.Drawing.Point(467, 262);
+            this.rows_update_whereOperator_comboBox.Items.AddRange(new object[] {
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">="});
+            this.rows_update_whereOperator_comboBox.Location = new System.Drawing.Point(467, 263);
             this.rows_update_whereOperator_comboBox.Name = "rows_update_whereOperator_comboBox";
             this.rows_update_whereOperator_comboBox.Size = new System.Drawing.Size(55, 28);
             this.rows_update_whereOperator_comboBox.TabIndex = 14;
