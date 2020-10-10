@@ -1192,6 +1192,7 @@
             this.columns_removeConstraint_remove_button.TabIndex = 3;
             this.columns_removeConstraint_remove_button.Text = "Drop Constraint";
             this.columns_removeConstraint_remove_button.UseVisualStyleBackColor = true;
+            this.columns_removeConstraint_remove_button.Click += new System.EventHandler(this.columns_removeConstraint_remove_button_Click);
             // 
             // columns_removeConstraint_constraints_label
             // 
@@ -1217,9 +1218,9 @@
             this.columns_removeConstraint_toolTip_label.Name = "columns_removeConstraint_toolTip_label";
             this.columns_removeConstraint_toolTip_label.Size = new System.Drawing.Size(215, 216);
             this.columns_removeConstraint_toolTip_label.TabIndex = 0;
-            this.columns_removeConstraint_toolTip_label.Text = "Select a table from the left, then a column\r\n\r\nThat action will populate the list" +
-    " of constraints present on the column on the right\r\n\r\nSelect a constraint and cl" +
-    "ick the button to drop it";
+            this.columns_removeConstraint_toolTip_label.Text = "Select a table from the left\r\n\r\nThat action will populate the list of constraints" +
+    " present on the column on the right\r\n\r\nSelect a constraint and click the button " +
+    "to drop it";
             // 
             // rows_add_panel
             // 
@@ -1779,12 +1780,6 @@
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.columns_remove_panel);
-            this.Controls.Add(this.columns_rename_panel);
-            this.Controls.Add(this.rows_select_panel);
-            this.Controls.Add(this.tables_delete_panel);
-            this.Controls.Add(this.tables_rename_panel);
-            this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
             this.Controls.Add(this.columns_addConstraint_panel);
             this.Controls.Add(this.columns_dataType_panel);
@@ -1792,6 +1787,12 @@
             this.Controls.Add(this.rows_update_panel);
             this.Controls.Add(this.rows_delete_panel);
             this.Controls.Add(this.tables_add_panel);
+            this.Controls.Add(this.columns_remove_panel);
+            this.Controls.Add(this.columns_rename_panel);
+            this.Controls.Add(this.rows_select_panel);
+            this.Controls.Add(this.tables_delete_panel);
+            this.Controls.Add(this.tables_rename_panel);
+            this.Controls.Add(this.rows_add_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";

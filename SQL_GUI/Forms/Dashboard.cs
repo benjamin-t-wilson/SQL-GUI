@@ -415,7 +415,6 @@ namespace SQL_GUI.Forms
                 rows_select_availableColumns_listBox.Items.Clear();
                 rows_select_whereColumn_comboBox.Items.Clear();
                 rows_delete_column_comboBox.Items.Clear();
-
                 rows_select_selectedColumns_listBox.Items.Clear();
 
                 foreach (var col in columns)
@@ -429,6 +428,23 @@ namespace SQL_GUI.Forms
             catch (Exception ex)
             {
                 WriteToLog("Error getting columns for table:");
+                WriteToLog(ex.Message);
+            }
+
+            try
+            {
+                var constraints = _sql.GetConstraints(dash_tables_listBox.SelectedItem?.ToString(), connDto);
+
+                columns_removeConstraint_constraints_listBox.Items.Clear();
+
+                foreach (var constraint in constraints)
+                {
+                    columns_removeConstraint_constraints_listBox.Items.Add(constraint);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error getting constraints from table:");
                 WriteToLog(ex.Message);
             }
         }
@@ -782,6 +798,33 @@ namespace SQL_GUI.Forms
             catch (Exception ex)
             {
                 WriteToLog("Error dropping column:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void columns_removeConstraint_remove_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+            var constraint = columns_removeConstraint_constraints_listBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(constraint))
+            {
+                WriteToLog("Table and constraint must be selected.");
+                return;
+            }
+
+            try
+            {
+                _sql.DropTableConstraint(tableName, constraint, connDto);
+
+                WriteToLog("Successfully dropped constraint from table.");
+
+                dash_tables_listBox_SelectedIndexChanged(sender, e);
+                columns_removeConstraint_constraints_listBox.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error dropping table constraint:");
                 WriteToLog(ex.Message);
             }
         }
