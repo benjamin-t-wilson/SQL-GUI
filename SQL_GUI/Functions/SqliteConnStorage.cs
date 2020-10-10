@@ -42,6 +42,17 @@ namespace SQL_GUI.Functions
             con.Close();
         }
 
+        public void AddData(string nickName)
+        {
+            con = new SQLiteConnection("Data Source=connDb.sqlite;Version=3;");
+            cmd = new SQLiteCommand();
+            con.Open();
+            cmd.Connection = con;
+            cmd.CommandText = $"DELETE FROM Connections WHERE Nickname = '{nickName}'";
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         public List<string> GetNickNames()
         {
             con = new SQLiteConnection("Data Source=connDb.sqlite;Version=3;");
