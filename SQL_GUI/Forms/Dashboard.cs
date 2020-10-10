@@ -645,5 +645,11 @@ namespace SQL_GUI.Forms
                 WriteToLog(ex.Message);
             }
         }
+
+        private void updateRowsInTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            rows_update_panel.Show();
+        }
     }
 }

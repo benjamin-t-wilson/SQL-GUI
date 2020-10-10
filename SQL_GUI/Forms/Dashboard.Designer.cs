@@ -154,14 +154,34 @@
             this.rows_select_availableColumns_label = new System.Windows.Forms.Label();
             this.rows_select_toolTip_label = new System.Windows.Forms.Label();
             this.rows_delete_panel = new System.Windows.Forms.Panel();
-            this.rows_delete_toolTip_label = new System.Windows.Forms.Label();
-            this.rows_delete_column_label = new System.Windows.Forms.Label();
-            this.rows_delete_operator_label = new System.Windows.Forms.Label();
-            this.rows_delete_value_label = new System.Windows.Forms.Label();
-            this.rows_delete_delete_button = new System.Windows.Forms.Button();
-            this.rows_delete_column_comboBox = new System.Windows.Forms.ComboBox();
-            this.rows_delete_operator_comboBox = new System.Windows.Forms.ComboBox();
             this.rows_delete_value_textBox = new System.Windows.Forms.TextBox();
+            this.rows_delete_operator_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_delete_column_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_delete_delete_button = new System.Windows.Forms.Button();
+            this.rows_delete_value_label = new System.Windows.Forms.Label();
+            this.rows_delete_operator_label = new System.Windows.Forms.Label();
+            this.rows_delete_column_label = new System.Windows.Forms.Label();
+            this.rows_delete_toolTip_label = new System.Windows.Forms.Label();
+            this.rows_update_panel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rows_update_availableColumns_label = new System.Windows.Forms.Label();
+            this.rows_update_availableColumns_listBox = new System.Windows.Forms.ListBox();
+            this.rows_update_selectedColumns_listBox = new System.Windows.Forms.ListBox();
+            this.rows_update_selectedColumns_label = new System.Windows.Forms.Label();
+            this.rows_update_values_listBox = new System.Windows.Forms.ListBox();
+            this.rows_update_values_label = new System.Windows.Forms.Label();
+            this.rows_update_value_label = new System.Windows.Forms.Label();
+            this.rows_update_value_textBox = new System.Windows.Forms.TextBox();
+            this.rows_update_update_button = new System.Windows.Forms.Button();
+            this.rows_update_addColumn_button = new System.Windows.Forms.Button();
+            this.rows_update_removeColumn_button = new System.Windows.Forms.Button();
+            this.rows_update_where_label = new System.Windows.Forms.Label();
+            this.rows_update_whereColumn_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_update_whereOperator_comboBox = new System.Windows.Forms.ComboBox();
+            this.rows_update_whereValue_textBox = new System.Windows.Forms.TextBox();
+            this.rows_update_whereColumn_label = new System.Windows.Forms.Label();
+            this.rows_update_whereOperator_label = new System.Windows.Forms.Label();
+            this.rows_update_whereValue_label = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -175,6 +195,7 @@
             this.rows_add_panel.SuspendLayout();
             this.rows_select_panel.SuspendLayout();
             this.rows_delete_panel.SuspendLayout();
+            this.rows_update_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -231,14 +252,14 @@
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -358,6 +379,7 @@
             this.updateRowsInTableToolStripMenuItem.Name = "updateRowsInTableToolStripMenuItem";
             this.updateRowsInTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.updateRowsInTableToolStripMenuItem.Text = "Update row(s) in table";
+            this.updateRowsInTableToolStripMenuItem.Click += new System.EventHandler(this.updateRowsInTableToolStripMenuItem_Click);
             // 
             // deleteRowFromTableToolStripMenuItem
             // 
@@ -1459,60 +1481,12 @@
             this.rows_delete_panel.Size = new System.Drawing.Size(920, 360);
             this.rows_delete_panel.TabIndex = 31;
             // 
-            // rows_delete_toolTip_label
+            // rows_delete_value_textBox
             // 
-            this.rows_delete_toolTip_label.Location = new System.Drawing.Point(25, 60);
-            this.rows_delete_toolTip_label.Name = "rows_delete_toolTip_label";
-            this.rows_delete_toolTip_label.Size = new System.Drawing.Size(174, 234);
-            this.rows_delete_toolTip_label.TabIndex = 0;
-            this.rows_delete_toolTip_label.Text = "Warning! This does not have a confirmation\r\n\r\nSelect a table on the left, then en" +
-    "ter a column and condition on the right\r\n\r\nThen you can click delete to drop the" +
-    " row";
-            // 
-            // rows_delete_column_label
-            // 
-            this.rows_delete_column_label.AutoSize = true;
-            this.rows_delete_column_label.Location = new System.Drawing.Point(304, 131);
-            this.rows_delete_column_label.Name = "rows_delete_column_label";
-            this.rows_delete_column_label.Size = new System.Drawing.Size(66, 20);
-            this.rows_delete_column_label.TabIndex = 1;
-            this.rows_delete_column_label.Text = "Column";
-            // 
-            // rows_delete_operator_label
-            // 
-            this.rows_delete_operator_label.AutoSize = true;
-            this.rows_delete_operator_label.Location = new System.Drawing.Point(425, 132);
-            this.rows_delete_operator_label.Name = "rows_delete_operator_label";
-            this.rows_delete_operator_label.Size = new System.Drawing.Size(75, 20);
-            this.rows_delete_operator_label.TabIndex = 2;
-            this.rows_delete_operator_label.Text = "Operator";
-            // 
-            // rows_delete_value_label
-            // 
-            this.rows_delete_value_label.AutoSize = true;
-            this.rows_delete_value_label.Location = new System.Drawing.Point(566, 132);
-            this.rows_delete_value_label.Name = "rows_delete_value_label";
-            this.rows_delete_value_label.Size = new System.Drawing.Size(51, 20);
-            this.rows_delete_value_label.TabIndex = 3;
-            this.rows_delete_value_label.Text = "Value";
-            // 
-            // rows_delete_delete_button
-            // 
-            this.rows_delete_delete_button.Location = new System.Drawing.Point(759, 144);
-            this.rows_delete_delete_button.Name = "rows_delete_delete_button";
-            this.rows_delete_delete_button.Size = new System.Drawing.Size(130, 51);
-            this.rows_delete_delete_button.TabIndex = 4;
-            this.rows_delete_delete_button.Text = "Delete";
-            this.rows_delete_delete_button.UseVisualStyleBackColor = true;
-            this.rows_delete_delete_button.Click += new System.EventHandler(this.rows_delete_delete_button_Click);
-            // 
-            // rows_delete_column_comboBox
-            // 
-            this.rows_delete_column_comboBox.FormattingEnabled = true;
-            this.rows_delete_column_comboBox.Location = new System.Drawing.Point(277, 155);
-            this.rows_delete_column_comboBox.Name = "rows_delete_column_comboBox";
-            this.rows_delete_column_comboBox.Size = new System.Drawing.Size(121, 28);
-            this.rows_delete_column_comboBox.TabIndex = 5;
+            this.rows_delete_value_textBox.Location = new System.Drawing.Point(531, 155);
+            this.rows_delete_value_textBox.Name = "rows_delete_value_textBox";
+            this.rows_delete_value_textBox.Size = new System.Drawing.Size(119, 26);
+            this.rows_delete_value_textBox.TabIndex = 7;
             // 
             // rows_delete_operator_comboBox
             // 
@@ -1529,18 +1503,260 @@
             this.rows_delete_operator_comboBox.Size = new System.Drawing.Size(57, 28);
             this.rows_delete_operator_comboBox.TabIndex = 6;
             // 
-            // rows_delete_value_textBox
+            // rows_delete_column_comboBox
             // 
-            this.rows_delete_value_textBox.Location = new System.Drawing.Point(531, 155);
-            this.rows_delete_value_textBox.Name = "rows_delete_value_textBox";
-            this.rows_delete_value_textBox.Size = new System.Drawing.Size(119, 26);
-            this.rows_delete_value_textBox.TabIndex = 7;
+            this.rows_delete_column_comboBox.FormattingEnabled = true;
+            this.rows_delete_column_comboBox.Location = new System.Drawing.Point(277, 155);
+            this.rows_delete_column_comboBox.Name = "rows_delete_column_comboBox";
+            this.rows_delete_column_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.rows_delete_column_comboBox.TabIndex = 5;
+            // 
+            // rows_delete_delete_button
+            // 
+            this.rows_delete_delete_button.Location = new System.Drawing.Point(759, 144);
+            this.rows_delete_delete_button.Name = "rows_delete_delete_button";
+            this.rows_delete_delete_button.Size = new System.Drawing.Size(130, 51);
+            this.rows_delete_delete_button.TabIndex = 4;
+            this.rows_delete_delete_button.Text = "Delete";
+            this.rows_delete_delete_button.UseVisualStyleBackColor = true;
+            this.rows_delete_delete_button.Click += new System.EventHandler(this.rows_delete_delete_button_Click);
+            // 
+            // rows_delete_value_label
+            // 
+            this.rows_delete_value_label.AutoSize = true;
+            this.rows_delete_value_label.Location = new System.Drawing.Point(566, 132);
+            this.rows_delete_value_label.Name = "rows_delete_value_label";
+            this.rows_delete_value_label.Size = new System.Drawing.Size(51, 20);
+            this.rows_delete_value_label.TabIndex = 3;
+            this.rows_delete_value_label.Text = "Value";
+            // 
+            // rows_delete_operator_label
+            // 
+            this.rows_delete_operator_label.AutoSize = true;
+            this.rows_delete_operator_label.Location = new System.Drawing.Point(425, 132);
+            this.rows_delete_operator_label.Name = "rows_delete_operator_label";
+            this.rows_delete_operator_label.Size = new System.Drawing.Size(75, 20);
+            this.rows_delete_operator_label.TabIndex = 2;
+            this.rows_delete_operator_label.Text = "Operator";
+            // 
+            // rows_delete_column_label
+            // 
+            this.rows_delete_column_label.AutoSize = true;
+            this.rows_delete_column_label.Location = new System.Drawing.Point(304, 131);
+            this.rows_delete_column_label.Name = "rows_delete_column_label";
+            this.rows_delete_column_label.Size = new System.Drawing.Size(66, 20);
+            this.rows_delete_column_label.TabIndex = 1;
+            this.rows_delete_column_label.Text = "Column";
+            // 
+            // rows_delete_toolTip_label
+            // 
+            this.rows_delete_toolTip_label.Location = new System.Drawing.Point(25, 60);
+            this.rows_delete_toolTip_label.Name = "rows_delete_toolTip_label";
+            this.rows_delete_toolTip_label.Size = new System.Drawing.Size(174, 234);
+            this.rows_delete_toolTip_label.TabIndex = 0;
+            this.rows_delete_toolTip_label.Text = "Warning! This does not have a confirmation\r\n\r\nSelect a table on the left, then en" +
+    "ter a column and condition on the right\r\n\r\nThen you can click delete to drop the" +
+    " row";
+            // 
+            // rows_update_panel
+            // 
+            this.rows_update_panel.Controls.Add(this.rows_update_whereValue_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_whereOperator_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_whereColumn_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_whereValue_textBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_whereOperator_comboBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_whereColumn_comboBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_where_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_removeColumn_button);
+            this.rows_update_panel.Controls.Add(this.rows_update_addColumn_button);
+            this.rows_update_panel.Controls.Add(this.rows_update_update_button);
+            this.rows_update_panel.Controls.Add(this.rows_update_value_textBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_value_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_values_listBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_values_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_selectedColumns_listBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_selectedColumns_label);
+            this.rows_update_panel.Controls.Add(this.rows_update_availableColumns_listBox);
+            this.rows_update_panel.Controls.Add(this.rows_update_availableColumns_label);
+            this.rows_update_panel.Controls.Add(this.label2);
+            this.rows_update_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rows_update_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_update_panel.Name = "rows_update_panel";
+            this.rows_update_panel.Size = new System.Drawing.Size(920, 360);
+            this.rows_update_panel.TabIndex = 32;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(16, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 245);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Warning! There is no confirmation for this\r\n\r\nSelect a table from the left, then " +
+    "compile a list of selected columns and matching number of values\r\n\r\nEnter a wher" +
+    "e condition, then click update";
+            // 
+            // rows_update_availableColumns_label
+            // 
+            this.rows_update_availableColumns_label.AutoSize = true;
+            this.rows_update_availableColumns_label.Location = new System.Drawing.Point(213, 23);
+            this.rows_update_availableColumns_label.Name = "rows_update_availableColumns_label";
+            this.rows_update_availableColumns_label.Size = new System.Drawing.Size(147, 20);
+            this.rows_update_availableColumns_label.TabIndex = 1;
+            this.rows_update_availableColumns_label.Text = "Available Columns";
+            // 
+            // rows_update_availableColumns_listBox
+            // 
+            this.rows_update_availableColumns_listBox.FormattingEnabled = true;
+            this.rows_update_availableColumns_listBox.ItemHeight = 20;
+            this.rows_update_availableColumns_listBox.Location = new System.Drawing.Point(228, 52);
+            this.rows_update_availableColumns_listBox.Name = "rows_update_availableColumns_listBox";
+            this.rows_update_availableColumns_listBox.Size = new System.Drawing.Size(120, 164);
+            this.rows_update_availableColumns_listBox.TabIndex = 2;
+            // 
+            // rows_update_selectedColumns_listBox
+            // 
+            this.rows_update_selectedColumns_listBox.FormattingEnabled = true;
+            this.rows_update_selectedColumns_listBox.ItemHeight = 20;
+            this.rows_update_selectedColumns_listBox.Location = new System.Drawing.Point(471, 52);
+            this.rows_update_selectedColumns_listBox.Name = "rows_update_selectedColumns_listBox";
+            this.rows_update_selectedColumns_listBox.Size = new System.Drawing.Size(120, 164);
+            this.rows_update_selectedColumns_listBox.TabIndex = 4;
+            // 
+            // rows_update_selectedColumns_label
+            // 
+            this.rows_update_selectedColumns_label.AutoSize = true;
+            this.rows_update_selectedColumns_label.Location = new System.Drawing.Point(458, 23);
+            this.rows_update_selectedColumns_label.Name = "rows_update_selectedColumns_label";
+            this.rows_update_selectedColumns_label.Size = new System.Drawing.Size(145, 20);
+            this.rows_update_selectedColumns_label.TabIndex = 3;
+            this.rows_update_selectedColumns_label.Text = "Selected Columns";
+            // 
+            // rows_update_values_listBox
+            // 
+            this.rows_update_values_listBox.FormattingEnabled = true;
+            this.rows_update_values_listBox.ItemHeight = 20;
+            this.rows_update_values_listBox.Location = new System.Drawing.Point(769, 52);
+            this.rows_update_values_listBox.Name = "rows_update_values_listBox";
+            this.rows_update_values_listBox.Size = new System.Drawing.Size(120, 164);
+            this.rows_update_values_listBox.TabIndex = 6;
+            // 
+            // rows_update_values_label
+            // 
+            this.rows_update_values_label.AutoSize = true;
+            this.rows_update_values_label.Location = new System.Drawing.Point(796, 23);
+            this.rows_update_values_label.Name = "rows_update_values_label";
+            this.rows_update_values_label.Size = new System.Drawing.Size(60, 20);
+            this.rows_update_values_label.TabIndex = 5;
+            this.rows_update_values_label.Text = "Values";
+            // 
+            // rows_update_value_label
+            // 
+            this.rows_update_value_label.AutoSize = true;
+            this.rows_update_value_label.Location = new System.Drawing.Point(650, 90);
+            this.rows_update_value_label.Name = "rows_update_value_label";
+            this.rows_update_value_label.Size = new System.Drawing.Size(51, 20);
+            this.rows_update_value_label.TabIndex = 7;
+            this.rows_update_value_label.Text = "Value";
+            // 
+            // rows_update_value_textBox
+            // 
+            this.rows_update_value_textBox.Location = new System.Drawing.Point(611, 116);
+            this.rows_update_value_textBox.Name = "rows_update_value_textBox";
+            this.rows_update_value_textBox.Size = new System.Drawing.Size(130, 26);
+            this.rows_update_value_textBox.TabIndex = 8;
+            // 
+            // rows_update_update_button
+            // 
+            this.rows_update_update_button.Location = new System.Drawing.Point(769, 253);
+            this.rows_update_update_button.Name = "rows_update_update_button";
+            this.rows_update_update_button.Size = new System.Drawing.Size(120, 37);
+            this.rows_update_update_button.TabIndex = 9;
+            this.rows_update_update_button.Text = "Update";
+            this.rows_update_update_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_update_addColumn_button
+            // 
+            this.rows_update_addColumn_button.Location = new System.Drawing.Point(364, 90);
+            this.rows_update_addColumn_button.Name = "rows_update_addColumn_button";
+            this.rows_update_addColumn_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_addColumn_button.TabIndex = 10;
+            this.rows_update_addColumn_button.Text = "Add";
+            this.rows_update_addColumn_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_update_removeColumn_button
+            // 
+            this.rows_update_removeColumn_button.Location = new System.Drawing.Point(364, 137);
+            this.rows_update_removeColumn_button.Name = "rows_update_removeColumn_button";
+            this.rows_update_removeColumn_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_removeColumn_button.TabIndex = 11;
+            this.rows_update_removeColumn_button.Text = "Remove";
+            this.rows_update_removeColumn_button.UseVisualStyleBackColor = true;
+            // 
+            // rows_update_where_label
+            // 
+            this.rows_update_where_label.AutoSize = true;
+            this.rows_update_where_label.Location = new System.Drawing.Point(224, 266);
+            this.rows_update_where_label.Name = "rows_update_where_label";
+            this.rows_update_where_label.Size = new System.Drawing.Size(58, 20);
+            this.rows_update_where_label.TabIndex = 12;
+            this.rows_update_where_label.Text = "Where";
+            // 
+            // rows_update_whereColumn_comboBox
+            // 
+            this.rows_update_whereColumn_comboBox.FormattingEnabled = true;
+            this.rows_update_whereColumn_comboBox.Location = new System.Drawing.Point(300, 263);
+            this.rows_update_whereColumn_comboBox.Name = "rows_update_whereColumn_comboBox";
+            this.rows_update_whereColumn_comboBox.Size = new System.Drawing.Size(137, 28);
+            this.rows_update_whereColumn_comboBox.TabIndex = 13;
+            // 
+            // rows_update_whereOperator_comboBox
+            // 
+            this.rows_update_whereOperator_comboBox.FormattingEnabled = true;
+            this.rows_update_whereOperator_comboBox.Location = new System.Drawing.Point(467, 262);
+            this.rows_update_whereOperator_comboBox.Name = "rows_update_whereOperator_comboBox";
+            this.rows_update_whereOperator_comboBox.Size = new System.Drawing.Size(55, 28);
+            this.rows_update_whereOperator_comboBox.TabIndex = 14;
+            // 
+            // rows_update_whereValue_textBox
+            // 
+            this.rows_update_whereValue_textBox.Location = new System.Drawing.Point(558, 263);
+            this.rows_update_whereValue_textBox.Name = "rows_update_whereValue_textBox";
+            this.rows_update_whereValue_textBox.Size = new System.Drawing.Size(137, 26);
+            this.rows_update_whereValue_textBox.TabIndex = 15;
+            // 
+            // rows_update_whereColumn_label
+            // 
+            this.rows_update_whereColumn_label.AutoSize = true;
+            this.rows_update_whereColumn_label.Location = new System.Drawing.Point(335, 236);
+            this.rows_update_whereColumn_label.Name = "rows_update_whereColumn_label";
+            this.rows_update_whereColumn_label.Size = new System.Drawing.Size(66, 20);
+            this.rows_update_whereColumn_label.TabIndex = 16;
+            this.rows_update_whereColumn_label.Text = "Column";
+            // 
+            // rows_update_whereOperator_label
+            // 
+            this.rows_update_whereOperator_label.AutoSize = true;
+            this.rows_update_whereOperator_label.Location = new System.Drawing.Point(458, 236);
+            this.rows_update_whereOperator_label.Name = "rows_update_whereOperator_label";
+            this.rows_update_whereOperator_label.Size = new System.Drawing.Size(75, 20);
+            this.rows_update_whereOperator_label.TabIndex = 17;
+            this.rows_update_whereOperator_label.Text = "Operator";
+            // 
+            // rows_update_whereValue_label
+            // 
+            this.rows_update_whereValue_label.AutoSize = true;
+            this.rows_update_whereValue_label.Location = new System.Drawing.Point(598, 236);
+            this.rows_update_whereValue_label.Name = "rows_update_whereValue_label";
+            this.rows_update_whereValue_label.Size = new System.Drawing.Size(51, 20);
+            this.rows_update_whereValue_label.TabIndex = 18;
+            this.rows_update_whereValue_label.Text = "Value";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.Controls.Add(this.rows_update_panel);
             this.Controls.Add(this.rows_delete_panel);
             this.Controls.Add(this.dash_columns_label);
             this.Controls.Add(this.dash_columns_listBox);
@@ -1586,6 +1802,8 @@
             this.rows_select_panel.PerformLayout();
             this.rows_delete_panel.ResumeLayout(false);
             this.rows_delete_panel.PerformLayout();
+            this.rows_update_panel.ResumeLayout(false);
+            this.rows_update_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1726,5 +1944,25 @@
         private System.Windows.Forms.Label rows_delete_operator_label;
         private System.Windows.Forms.Label rows_delete_column_label;
         private System.Windows.Forms.Label rows_delete_toolTip_label;
+        private System.Windows.Forms.Panel rows_update_panel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button rows_update_removeColumn_button;
+        private System.Windows.Forms.Button rows_update_addColumn_button;
+        private System.Windows.Forms.Button rows_update_update_button;
+        private System.Windows.Forms.TextBox rows_update_value_textBox;
+        private System.Windows.Forms.Label rows_update_value_label;
+        private System.Windows.Forms.ListBox rows_update_values_listBox;
+        private System.Windows.Forms.Label rows_update_values_label;
+        private System.Windows.Forms.ListBox rows_update_selectedColumns_listBox;
+        private System.Windows.Forms.Label rows_update_selectedColumns_label;
+        private System.Windows.Forms.ListBox rows_update_availableColumns_listBox;
+        private System.Windows.Forms.Label rows_update_availableColumns_label;
+        private System.Windows.Forms.Label rows_update_whereValue_label;
+        private System.Windows.Forms.Label rows_update_whereOperator_label;
+        private System.Windows.Forms.Label rows_update_whereColumn_label;
+        private System.Windows.Forms.TextBox rows_update_whereValue_textBox;
+        private System.Windows.Forms.ComboBox rows_update_whereOperator_comboBox;
+        private System.Windows.Forms.ComboBox rows_update_whereColumn_comboBox;
+        private System.Windows.Forms.Label rows_update_where_label;
     }
 }
