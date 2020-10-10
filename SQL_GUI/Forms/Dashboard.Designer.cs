@@ -922,6 +922,7 @@
             this.columns_dataType_changeType_button.TabIndex = 22;
             this.columns_dataType_changeType_button.Text = "Change Type";
             this.columns_dataType_changeType_button.UseVisualStyleBackColor = true;
+            this.columns_dataType_changeType_button.Click += new System.EventHandler(this.columns_dataType_changeType_button_Click);
             // 
             // columns_dataType_toolTip_label
             // 
