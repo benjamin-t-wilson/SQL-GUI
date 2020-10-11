@@ -197,15 +197,9 @@ namespace SQL_GUI.Functions
 
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
-                int countRows = 0;
-
-                while (dr.Read())
-                {
-                    countRows += 1;
-                }
                 con.Close();
 
-                return countRows;
+                return dr.RecordsAffected;
             }
             catch (Exception ex)
             {
@@ -225,7 +219,7 @@ namespace SQL_GUI.Functions
 
                 cmd.CommandText = $"UPDATE {dto.TableName} SET";
 
-                for (int i = 1; i < dto.Columns.Count; i++)
+                for (int i = 0; i < dto.Columns.Count; i++)
                 {
                     cmd.CommandText += $" {dto.Columns[i].ColumnName} = ";
 
@@ -255,15 +249,9 @@ namespace SQL_GUI.Functions
 
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
-                int countRows = 0;
-
-                while (dr.Read())
-                {
-                    countRows += 1;
-                }
                 con.Close();
 
-                return countRows;
+                return dr.RecordsAffected;
             }
             catch (Exception ex)
             {

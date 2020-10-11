@@ -364,6 +364,18 @@ namespace SQL_GUI.Forms
         {
             var table = dash_tables_listBox.SelectedItem?.ToString();
 
+            if (string.IsNullOrWhiteSpace(table))
+            {
+                WriteToLog("Must select table");
+                return;
+            }
+
+            if (dash_columns_listBox.Items.Count - 1 != rows_add_rowValues_listBox.Items.Count)
+            {
+                WriteToLog("Must provide a value for every column except ID");
+                return;
+            }
+
             var columns = new List<ColumnDto>();
             foreach (var col in dash_columns_listBox.Items)
             {
@@ -469,7 +481,7 @@ namespace SQL_GUI.Forms
 
                 tableName = tableName.Replace(' ', '_');
 
-                _sql.RenameColumn(tableName, columnName, newColumnName, connDto);
+                _sql.RenameColumn(tableName, columnName.Split(' ')[0], newColumnName, connDto);
 
                 WriteToLog("Successfully renamed column");
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
@@ -594,6 +606,11 @@ namespace SQL_GUI.Forms
                     rows_select_availableColumns_listBox.Items.Add(rows_select_selectedColumns_listBox.Items[0]);
                     rows_select_selectedColumns_listBox.Items.RemoveAt(0);
                 }
+
+                rows_select_where_checkBox.Checked = false;
+                rows_select_whereColumn_comboBox.SelectedIndex = -1;
+                rows_select_whereOperator_comboBox.SelectedIndex = -1;
+                rows_select_whereValue_textBox.Text = string.Empty;
 
                 var data = new DataViewerDto()
                 {
@@ -734,7 +751,7 @@ namespace SQL_GUI.Forms
             var dto = new AddColumnConstraintDto()
             {
                 TableName = tableName,
-                ColumnName = columnName,
+                ColumnName = columnName.Split(' ')[0],
                 Unique = columns_addConstraint_unique_checkBox.Checked,
                 NotNull = columns_addConstraint_notNull_checkBox.Checked,
                 References = columns_addConstraint_references_checkBox.Checked,
@@ -760,6 +777,8 @@ namespace SQL_GUI.Forms
                 _sql.AddColumnConstraint(dto, connDto);
 
                 WriteToLog("Successfully added constraint(s)");
+
+                dash_tables_listBox_SelectedIndexChanged(sender, e);
 
                 columns_addConstraint_check_checkBox.Checked = false;
                 columns_addConstraint_notNull_checkBox.Checked = false;
@@ -794,7 +813,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.DropColumnFromTable(tableName, columnName, connDto);
+                _sql.DropColumnFromTable(tableName, columnName.Split(' ')[0], connDto);
 
                 WriteToLog($"Successfully dropped {columnName} from {tableName}");
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
@@ -847,7 +866,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.ChangeColumnDataType(tableName, columnName, dataType, connDto);
+                _sql.ChangeColumnDataType(tableName, columnName.Split(' ')[0], dataType, connDto);
 
                 WriteToLog("Successfully changed data type");
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
@@ -898,7 +917,7 @@ namespace SQL_GUI.Forms
                 return;
             }
 
-            rows_update_values_listBox.Items.Add(Text);
+            rows_update_values_listBox.Items.Add(value);
             rows_update_value_textBox.Text = string.Empty;
         }
 
@@ -967,8 +986,8 @@ namespace SQL_GUI.Forms
                 {
                     dto.Columns.Add(new ColumnDto()
                     {
-                        ColumnName = whereColumn.Split(' ')[0],
-                        Value = whereColumn.Split(' ')[1].Trim(new char[] { '(', ')' })
+                        ColumnName = col.ToString().Split(' ')[0],
+                        Value = col.ToString().Split(' ')[1].Trim(new char[] { '(', ')' })
                     });
                 }
 
@@ -976,10 +995,10 @@ namespace SQL_GUI.Forms
 
                 WriteToLog($"Successfully updated {count} row(s).");
 
+                rows_update_whereColumn_comboBox.SelectedIndex = -1;
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
                 rows_update_selectedColumns_listBox.Items.Clear();
                 rows_update_values_listBox.Items.Clear();
-                rows_update_whereColumn_comboBox.SelectedIndex = -1;
                 rows_update_whereOperator_comboBox.SelectedIndex = -1;
                 rows_update_whereValue_textBox.Text = string.Empty;
             }

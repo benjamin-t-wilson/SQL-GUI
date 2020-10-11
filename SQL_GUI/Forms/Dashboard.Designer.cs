@@ -501,9 +501,9 @@
             // tables_add_tip_label
             // 
             this.tables_add_tip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_add_tip_label.Location = new System.Drawing.Point(20, 123);
+            this.tables_add_tip_label.Location = new System.Drawing.Point(24, 86);
             this.tables_add_tip_label.Name = "tables_add_tip_label";
-            this.tables_add_tip_label.Size = new System.Drawing.Size(191, 205);
+            this.tables_add_tip_label.Size = new System.Drawing.Size(207, 253);
             this.tables_add_tip_label.TabIndex = 17;
             this.tables_add_tip_label.Text = "Please add columns and values in the desired order. The first column will be pair" +
     "ed with the first value type, and so on.\r\n\r\nDo not add an \"ID\" column. This is h" +
@@ -520,7 +520,6 @@
             "BOOLEAN",
             "INT",
             "FLOAT",
-            "DOUBLE",
             "DECIMAL",
             "DATE",
             "DATETIME",
@@ -585,9 +584,9 @@
             // tables_delete_label
             // 
             this.tables_delete_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_delete_label.Location = new System.Drawing.Point(22, 72);
+            this.tables_delete_label.Location = new System.Drawing.Point(22, 33);
             this.tables_delete_label.Name = "tables_delete_label";
-            this.tables_delete_label.Size = new System.Drawing.Size(223, 212);
+            this.tables_delete_label.Size = new System.Drawing.Size(248, 273);
             this.tables_delete_label.TabIndex = 0;
             this.tables_delete_label.Text = "Please beware! There is no confirmation for this.\r\n\r\nSelect a table from the list" +
     " on the left, then you may click the delete button.\r\n\r\nThis may cause irreversib" +
@@ -665,7 +664,6 @@
             "BOOLEAN",
             "INT",
             "FLOAT",
-            "DOUBLE",
             "DECIMAL",
             "DATE",
             "DATETIME",
@@ -768,7 +766,7 @@
             // tables_rename_newName_button
             // 
             this.tables_rename_newName_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_rename_newName_button.Location = new System.Drawing.Point(204, 172);
+            this.tables_rename_newName_button.Location = new System.Drawing.Point(204, 231);
             this.tables_rename_newName_button.Name = "tables_rename_newName_button";
             this.tables_rename_newName_button.Size = new System.Drawing.Size(108, 32);
             this.tables_rename_newName_button.TabIndex = 3;
@@ -779,7 +777,7 @@
             // tables_rename_newName_textbox
             // 
             this.tables_rename_newName_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_rename_newName_textbox.Location = new System.Drawing.Point(26, 175);
+            this.tables_rename_newName_textbox.Location = new System.Drawing.Point(26, 234);
             this.tables_rename_newName_textbox.Name = "tables_rename_newName_textbox";
             this.tables_rename_newName_textbox.Size = new System.Drawing.Size(172, 26);
             this.tables_rename_newName_textbox.TabIndex = 2;
@@ -788,7 +786,7 @@
             // 
             this.tables_rename_newName_label.AutoSize = true;
             this.tables_rename_newName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tables_rename_newName_label.Location = new System.Drawing.Point(22, 151);
+            this.tables_rename_newName_label.Location = new System.Drawing.Point(22, 210);
             this.tables_rename_newName_label.Name = "tables_rename_newName_label";
             this.tables_rename_newName_label.Size = new System.Drawing.Size(93, 20);
             this.tables_rename_newName_label.TabIndex = 1;
@@ -799,7 +797,7 @@
             this.tables_rename_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tables_rename_toolTip_label.Location = new System.Drawing.Point(25, 33);
             this.tables_rename_toolTip_label.Name = "tables_rename_toolTip_label";
-            this.tables_rename_toolTip_label.Size = new System.Drawing.Size(173, 84);
+            this.tables_rename_toolTip_label.Size = new System.Drawing.Size(206, 162);
             this.tables_rename_toolTip_label.TabIndex = 0;
             this.tables_rename_toolTip_label.Text = "Select a table on the left to be renamed, then rename it using the interface belo" +
     "w";
@@ -837,7 +835,7 @@
             // columns_rename_newName_button
             // 
             this.columns_rename_newName_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_rename_newName_button.Location = new System.Drawing.Point(204, 172);
+            this.columns_rename_newName_button.Location = new System.Drawing.Point(204, 247);
             this.columns_rename_newName_button.Name = "columns_rename_newName_button";
             this.columns_rename_newName_button.Size = new System.Drawing.Size(108, 33);
             this.columns_rename_newName_button.TabIndex = 3;
@@ -848,7 +846,7 @@
             // columns_rename_newName_textbox
             // 
             this.columns_rename_newName_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_rename_newName_textbox.Location = new System.Drawing.Point(26, 175);
+            this.columns_rename_newName_textbox.Location = new System.Drawing.Point(26, 250);
             this.columns_rename_newName_textbox.Name = "columns_rename_newName_textbox";
             this.columns_rename_newName_textbox.Size = new System.Drawing.Size(172, 26);
             this.columns_rename_newName_textbox.TabIndex = 2;
@@ -857,7 +855,7 @@
             // 
             this.columns_rename_newName_label.AutoSize = true;
             this.columns_rename_newName_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_rename_newName_label.Location = new System.Drawing.Point(22, 151);
+            this.columns_rename_newName_label.Location = new System.Drawing.Point(22, 226);
             this.columns_rename_newName_label.Name = "columns_rename_newName_label";
             this.columns_rename_newName_label.Size = new System.Drawing.Size(93, 20);
             this.columns_rename_newName_label.TabIndex = 1;
@@ -868,7 +866,7 @@
             this.columns_rename_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.columns_rename_toolTip_label.Location = new System.Drawing.Point(25, 33);
             this.columns_rename_toolTip_label.Name = "columns_rename_toolTip_label";
-            this.columns_rename_toolTip_label.Size = new System.Drawing.Size(173, 110);
+            this.columns_rename_toolTip_label.Size = new System.Drawing.Size(206, 162);
             this.columns_rename_toolTip_label.TabIndex = 0;
             this.columns_rename_toolTip_label.Text = "Select a table on the left, then a column to be renamed, then rename it using the" +
     " interface below";
@@ -931,7 +929,7 @@
             this.columns_dataType_toolTip_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.columns_dataType_toolTip_label.Location = new System.Drawing.Point(19, 23);
             this.columns_dataType_toolTip_label.Name = "columns_dataType_toolTip_label";
-            this.columns_dataType_toolTip_label.Size = new System.Drawing.Size(279, 305);
+            this.columns_dataType_toolTip_label.Size = new System.Drawing.Size(359, 305);
             this.columns_dataType_toolTip_label.TabIndex = 21;
             this.columns_dataType_toolTip_label.Text = resources.GetString("columns_dataType_toolTip_label.Text");
             // 
@@ -946,7 +944,6 @@
             "BOOLEAN",
             "INT",
             "FLOAT",
-            "DOUBLE",
             "DECIMAL",
             "DATE",
             "DATETIME",
@@ -1125,9 +1122,9 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 60);
+            this.label1.Location = new System.Drawing.Point(22, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 233);
+            this.label1.Size = new System.Drawing.Size(261, 263);
             this.label1.TabIndex = 4;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -1307,9 +1304,9 @@
             // 
             // rows_add_toolTip_label
             // 
-            this.rows_add_toolTip_label.Location = new System.Drawing.Point(25, 65);
+            this.rows_add_toolTip_label.Location = new System.Drawing.Point(30, 26);
             this.rows_add_toolTip_label.Name = "rows_add_toolTip_label";
-            this.rows_add_toolTip_label.Size = new System.Drawing.Size(208, 228);
+            this.rows_add_toolTip_label.Size = new System.Drawing.Size(240, 300);
             this.rows_add_toolTip_label.TabIndex = 0;
             this.rows_add_toolTip_label.Text = resources.GetString("rows_add_toolTip_label.Text");
             // 
@@ -1471,9 +1468,9 @@
             // 
             // rows_select_toolTip_label
             // 
-            this.rows_select_toolTip_label.Location = new System.Drawing.Point(25, 60);
+            this.rows_select_toolTip_label.Location = new System.Drawing.Point(25, 40);
             this.rows_select_toolTip_label.Name = "rows_select_toolTip_label";
-            this.rows_select_toolTip_label.Size = new System.Drawing.Size(197, 227);
+            this.rows_select_toolTip_label.Size = new System.Drawing.Size(219, 296);
             this.rows_select_toolTip_label.TabIndex = 0;
             this.rows_select_toolTip_label.Text = "Select a table from the left\r\n\r\nThen pick which columns you would like to select " +
     "from\r\n\r\nCheck the \"where\" box and fill out those forms if you are seeking specif" +
@@ -1564,9 +1561,9 @@
             // 
             // rows_delete_toolTip_label
             // 
-            this.rows_delete_toolTip_label.Location = new System.Drawing.Point(25, 60);
+            this.rows_delete_toolTip_label.Location = new System.Drawing.Point(24, 33);
             this.rows_delete_toolTip_label.Name = "rows_delete_toolTip_label";
-            this.rows_delete_toolTip_label.Size = new System.Drawing.Size(174, 234);
+            this.rows_delete_toolTip_label.Size = new System.Drawing.Size(211, 268);
             this.rows_delete_toolTip_label.TabIndex = 0;
             this.rows_delete_toolTip_label.Text = "Warning! This does not have a confirmation\r\n\r\nSelect a table on the left, then en" +
     "ter a column and condition on the right\r\n\r\nThen you can click delete to drop the" +
@@ -1769,9 +1766,9 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(16, 48);
+            this.label2.Location = new System.Drawing.Point(20, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 245);
+            this.label2.Size = new System.Drawing.Size(195, 297);
             this.label2.TabIndex = 0;
             this.label2.Text = "Warning! There is no confirmation for this\r\n\r\nSelect a table from the left, then " +
     "compile a list of selected columns and matching number of values\r\n\r\nEnter a wher" +
