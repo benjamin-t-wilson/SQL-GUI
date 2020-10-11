@@ -1,3 +1,5 @@
 .vs
 SQL_GUI/bin/Debug/*
 SQL_GUI/obj/Debug/*
+SQL_GUI/bin/Release/*
+SQL_GUI/obj/Release/*
