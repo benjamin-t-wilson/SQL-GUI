@@ -270,8 +270,7 @@ namespace SQL_GUI.Functions
                 cmd.Connection = con;
 
                 cmd.CommandText = $"INSERT INTO {tableDto.TableName} (";
-                //for loop to index list of columns and row values
-                // switch statement on col.valueType
+
                 for (int i = 1; i < tableDto.Columns.Count; i++)
                 {
                     cmd.CommandText += tableDto.Columns[i].ColumnName.ToString();
