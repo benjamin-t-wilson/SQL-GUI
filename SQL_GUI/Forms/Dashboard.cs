@@ -143,7 +143,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                var addTable = _sql.CreateDatabaseTable(newTableDto, connDto);
+                _sql.CreateDatabaseTable(newTableDto, connDto);
 
                 WriteToLog("Successfully created new table:");
                 WriteToLog(tableName);
@@ -270,7 +270,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                var addTable = _sql.AddColumnToTable(newTableDto, connDto);
+                _sql.AddColumnToTable(newTableDto, connDto);
 
                 WriteToLog("Successfully added columns to table:");
                 WriteToLog(tableName);

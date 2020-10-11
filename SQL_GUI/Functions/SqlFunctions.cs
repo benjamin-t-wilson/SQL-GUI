@@ -65,7 +65,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool CreateDatabaseTable(AddNewTableDto tableDto, ConnectionDto connDto)
+        public void CreateDatabaseTable(AddNewTableDto tableDto, ConnectionDto connDto)
         {
             try
             {
@@ -89,8 +89,6 @@ namespace SQL_GUI.Functions
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-
-                return true;
             }
             catch (Exception ex)
             {
@@ -98,7 +96,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool AddColumnToTable(AddNewTableDto tableDto, ConnectionDto connDto)
+        public void AddColumnToTable(AddNewTableDto tableDto, ConnectionDto connDto)
         {
             try
             {
@@ -119,8 +117,6 @@ namespace SQL_GUI.Functions
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-
-                return true;
             }
             catch (Exception ex)
             {
@@ -128,7 +124,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool RenameColumn(string tableName, string columnName, string newColumnName, ConnectionDto connDto)
+        public void RenameColumn(string tableName, string columnName, string newColumnName, ConnectionDto connDto)
         {
             try
             {
@@ -142,8 +138,6 @@ namespace SQL_GUI.Functions
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-
-                return true;
             }
             catch (Exception ex)
             {
@@ -151,7 +145,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool RenameTable(string tableName, string newTableName, ConnectionDto connDto)
+        public void RenameTable(string tableName, string newTableName, ConnectionDto connDto)
         {
             try
             {
@@ -165,8 +159,6 @@ namespace SQL_GUI.Functions
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-
-                return true;
             }
             catch (Exception ex)
             {
