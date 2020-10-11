@@ -653,13 +653,13 @@ namespace SQL_GUI.Forms
                     Value = columnName.Split('(')[1].TrimEnd(')')
                 };
 
-                _sql.DeleteRowFromTable(tableName, column, opSymbol, value, connDto);
+                var count = _sql.DeleteRowFromTable(tableName, column, opSymbol, value, connDto);
 
                 rows_delete_value_textBox.Text = string.Empty;
                 rows_delete_column_comboBox.SelectedIndex = -1;
                 rows_delete_operator_comboBox.SelectedIndex = -1;
 
-                WriteToLog("Successfully deleted row(s)");
+                WriteToLog($"Successfully deleted {count} row(s)");
             }
             catch (Exception ex)
             {
@@ -974,7 +974,7 @@ namespace SQL_GUI.Forms
 
                 var count = _sql.UpdateRowFromTable(dto, connDto);
 
-                WriteToLog($"Successfully updated {count} rows.");
+                WriteToLog($"Successfully updated {count} row(s).");
 
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
                 rows_update_selectedColumns_listBox.Items.Clear();

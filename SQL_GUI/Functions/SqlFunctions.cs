@@ -174,7 +174,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public bool DeleteRowFromTable(string tableName, ColumnDto column, string operatorSymbol, string value, ConnectionDto connDto)
+        public int DeleteRowFromTable(string tableName, ColumnDto column, string operatorSymbol, string value, ConnectionDto connDto)
         {
             try
             {
@@ -195,10 +195,17 @@ namespace SQL_GUI.Functions
                     cmd.CommandText += $"{value}";
                 }
 
-                cmd.ExecuteNonQuery();
+                NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                int countRows = 0;
+
+                while (dr.Read())
+                {
+                    countRows += 1;
+                }
                 con.Close();
 
-                return true;
+                return countRows;
             }
             catch (Exception ex)
             {
