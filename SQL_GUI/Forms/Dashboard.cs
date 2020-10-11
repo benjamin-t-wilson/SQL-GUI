@@ -416,6 +416,8 @@ namespace SQL_GUI.Forms
                 rows_select_whereColumn_comboBox.Items.Clear();
                 rows_delete_column_comboBox.Items.Clear();
                 rows_select_selectedColumns_listBox.Items.Clear();
+                rows_update_availableColumns_listBox.Items.Clear();
+                rows_update_whereColumn_comboBox.Items.Clear();
 
                 foreach (var col in columns)
                 {
@@ -423,6 +425,8 @@ namespace SQL_GUI.Forms
                     rows_select_availableColumns_listBox.Items.Add($"{col.ColumnName} ({col.Value})");
                     rows_select_whereColumn_comboBox.Items.Add($"{col.ColumnName} ({col.Value})");
                     rows_delete_column_comboBox.Items.Add($"{col.ColumnName} ({col.Value})");
+                    rows_update_availableColumns_listBox.Items.Add($"{col.ColumnName} ({col.Value})");
+                    rows_update_whereColumn_comboBox.Items.Add($"{col.ColumnName} ({col.Value})");
                 }
             }
             catch (Exception ex)
@@ -852,6 +856,136 @@ namespace SQL_GUI.Forms
             catch (Exception ex)
             {
                 WriteToLog("Error changing data type:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void rows_update_addColumn_button_Click(object sender, EventArgs e)
+        {
+            var column = rows_update_availableColumns_listBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(column))
+            {
+                WriteToLog("You must select a column.");
+                return;
+            }
+
+            rows_update_selectedColumns_listBox.Items.Add(column);
+            rows_update_availableColumns_listBox.Items.RemoveAt(rows_update_availableColumns_listBox.SelectedIndex);
+        }
+
+        private void rows_update_removeColumn_button_Click(object sender, EventArgs e)
+        {
+            var column = rows_update_selectedColumns_listBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(column))
+            {
+                WriteToLog("You must select a column.");
+                return;
+            }
+
+            rows_update_availableColumns_listBox.Items.Add(column);
+            rows_update_selectedColumns_listBox.Items.RemoveAt(rows_update_selectedColumns_listBox.SelectedIndex);
+        }
+
+        private void rows_update_addValue_button_Click(object sender, EventArgs e)
+        {
+            var value = rows_update_value_textBox.Text;
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                WriteToLog("You must enter a value");
+                return;
+            }
+
+            rows_update_values_listBox.Items.Add(Text);
+            rows_update_value_textBox.Text = string.Empty;
+        }
+
+        private void rows_update_removeValue_button_Click(object sender, EventArgs e)
+        {
+            var value = rows_update_values_listBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                WriteToLog("You must select a value");
+                return;
+            }
+
+            rows_update_values_listBox.Items.RemoveAt(rows_update_values_listBox.SelectedIndex);
+        }
+
+        private void rows_update_update_button_Click(object sender, EventArgs e)
+        {
+            var tableName = dash_tables_listBox.SelectedItem?.ToString();
+
+            var selectedColumns = rows_update_selectedColumns_listBox.Items;
+            var values = rows_update_values_listBox.Items;
+
+            var whereColumn = rows_update_whereColumn_comboBox.SelectedItem?.ToString();
+            var whereOperator = rows_update_whereOperator_comboBox.SelectedItem?.ToString();
+            var whereValue = rows_update_whereValue_textBox.Text;
+
+            if (string.IsNullOrWhiteSpace(tableName))
+            {
+                WriteToLog("Must select a table.");
+                return;
+            }
+            if (selectedColumns.Count != values.Count)
+            {
+                WriteToLog("Selected columns and values counts must match");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(whereColumn) || string.IsNullOrWhiteSpace(whereOperator) || string.IsNullOrWhiteSpace(whereValue))
+            {
+                WriteToLog("Must have WHERE column, operator, and value");
+                return;
+            }
+
+            try
+            {
+                var dto = new FormUpdateDto()
+                {
+                    TableName = tableName,
+                    Columns = new List<ColumnDto>(),
+                    WhereColumn = new ColumnDto()
+                    {
+                        ColumnName = whereColumn.Split(' ')[0],
+                        Value = whereColumn.Split(' ')[1].Trim(new char[] { '(', ')' })
+                    },
+                    WhereOperator = whereOperator,
+                    WhereValue = whereValue,
+                    Values = new List<string>()
+                };
+
+                foreach (var val in values)
+                {
+                    dto.Values.Add(val.ToString());
+                }
+                foreach (var col in selectedColumns)
+                {
+                    dto.Columns.Add(new ColumnDto()
+                    {
+                        ColumnName = whereColumn.Split(' ')[0],
+                        Value = whereColumn.Split(' ')[1].Trim(new char[] { '(', ')' })
+                    });
+                }
+
+                var count = _sql.UpdateRowFromTable(dto, connDto);
+
+                WriteToLog($"Successfully updated {count} rows.");
+
+                dash_tables_listBox_SelectedIndexChanged(sender, e);
+                rows_update_selectedColumns_listBox.Items.Clear();
+                rows_update_values_listBox.Items.Clear();
+                rows_update_whereColumn_comboBox.SelectedIndex = -1;
+                rows_update_whereOperator_comboBox.SelectedIndex = -1;
+                rows_update_whereValue_textBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error updating rows:");
                 WriteToLog(ex.Message);
             }
         }

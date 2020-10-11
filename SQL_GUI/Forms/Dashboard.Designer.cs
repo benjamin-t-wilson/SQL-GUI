@@ -182,6 +182,8 @@
             this.rows_update_availableColumns_listBox = new System.Windows.Forms.ListBox();
             this.rows_update_availableColumns_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.rows_update_removeValue_button = new System.Windows.Forms.Button();
+            this.rows_update_addValue_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -246,20 +248,20 @@
             this.disconnectToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -270,27 +272,27 @@
             this.deleteTableToolStripMenuItem,
             this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
             this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
             // 
             // renameTableToolStripMenuItem
             // 
             this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
-            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.renameTableToolStripMenuItem.Text = "Rename table";
             this.renameTableToolStripMenuItem.Click += new System.EventHandler(this.renameTableToolStripMenuItem_Click);
             // 
@@ -304,7 +306,7 @@
             this.changeColumnConstraintToolStripMenuItem,
             this.removeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // addColumnToTableToolStripMenuItem
@@ -357,7 +359,7 @@
             this.updateRowsInTableToolStripMenuItem,
             this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
-            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
             this.rowsToolStripMenuItem.Text = "Rows";
             // 
             // addRowToTableToolStripMenuItem
@@ -1572,6 +1574,8 @@
             // 
             // rows_update_panel
             // 
+            this.rows_update_panel.Controls.Add(this.rows_update_removeValue_button);
+            this.rows_update_panel.Controls.Add(this.rows_update_addValue_button);
             this.rows_update_panel.Controls.Add(this.rows_update_whereValue_label);
             this.rows_update_panel.Controls.Add(this.rows_update_whereOperator_label);
             this.rows_update_panel.Controls.Add(this.rows_update_whereColumn_label);
@@ -1671,6 +1675,7 @@
             this.rows_update_removeColumn_button.TabIndex = 11;
             this.rows_update_removeColumn_button.Text = "Remove";
             this.rows_update_removeColumn_button.UseVisualStyleBackColor = true;
+            this.rows_update_removeColumn_button.Click += new System.EventHandler(this.rows_update_removeColumn_button_Click);
             // 
             // rows_update_addColumn_button
             // 
@@ -1680,6 +1685,7 @@
             this.rows_update_addColumn_button.TabIndex = 10;
             this.rows_update_addColumn_button.Text = "Add";
             this.rows_update_addColumn_button.UseVisualStyleBackColor = true;
+            this.rows_update_addColumn_button.Click += new System.EventHandler(this.rows_update_addColumn_button_Click);
             // 
             // rows_update_update_button
             // 
@@ -1689,10 +1695,11 @@
             this.rows_update_update_button.TabIndex = 9;
             this.rows_update_update_button.Text = "Update";
             this.rows_update_update_button.UseVisualStyleBackColor = true;
+            this.rows_update_update_button.Click += new System.EventHandler(this.rows_update_update_button_Click);
             // 
             // rows_update_value_textBox
             // 
-            this.rows_update_value_textBox.Location = new System.Drawing.Point(611, 116);
+            this.rows_update_value_textBox.Location = new System.Drawing.Point(623, 86);
             this.rows_update_value_textBox.Name = "rows_update_value_textBox";
             this.rows_update_value_textBox.Size = new System.Drawing.Size(130, 26);
             this.rows_update_value_textBox.TabIndex = 8;
@@ -1700,7 +1707,7 @@
             // rows_update_value_label
             // 
             this.rows_update_value_label.AutoSize = true;
-            this.rows_update_value_label.Location = new System.Drawing.Point(650, 90);
+            this.rows_update_value_label.Location = new System.Drawing.Point(662, 60);
             this.rows_update_value_label.Name = "rows_update_value_label";
             this.rows_update_value_label.Size = new System.Drawing.Size(51, 20);
             this.rows_update_value_label.TabIndex = 7;
@@ -1770,6 +1777,26 @@
     "compile a list of selected columns and matching number of values\r\n\r\nEnter a wher" +
     "e condition, then click update";
             // 
+            // rows_update_removeValue_button
+            // 
+            this.rows_update_removeValue_button.Location = new System.Drawing.Point(643, 165);
+            this.rows_update_removeValue_button.Name = "rows_update_removeValue_button";
+            this.rows_update_removeValue_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_removeValue_button.TabIndex = 20;
+            this.rows_update_removeValue_button.Text = "Remove";
+            this.rows_update_removeValue_button.UseVisualStyleBackColor = true;
+            this.rows_update_removeValue_button.Click += new System.EventHandler(this.rows_update_removeValue_button_Click);
+            // 
+            // rows_update_addValue_button
+            // 
+            this.rows_update_addValue_button.Location = new System.Drawing.Point(643, 118);
+            this.rows_update_addValue_button.Name = "rows_update_addValue_button";
+            this.rows_update_addValue_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_addValue_button.TabIndex = 19;
+            this.rows_update_addValue_button.Text = "Add";
+            this.rows_update_addValue_button.UseVisualStyleBackColor = true;
+            this.rows_update_addValue_button.Click += new System.EventHandler(this.rows_update_addValue_button_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1781,8 +1808,6 @@
             this.Controls.Add(this.dash_tables_listBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dash_log_richTextBox);
-            this.Controls.Add(this.columns_dataType_panel);
-            this.Controls.Add(this.columns_addColumn_panel);
             this.Controls.Add(this.rows_update_panel);
             this.Controls.Add(this.rows_delete_panel);
             this.Controls.Add(this.tables_add_panel);
@@ -1794,6 +1819,8 @@
             this.Controls.Add(this.rows_add_panel);
             this.Controls.Add(this.columns_removeConstraint_panel);
             this.Controls.Add(this.columns_addConstraint_panel);
+            this.Controls.Add(this.columns_dataType_panel);
+            this.Controls.Add(this.columns_addColumn_panel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "SQL GUI Dashboard";
@@ -1984,5 +2011,7 @@
         private System.Windows.Forms.ComboBox rows_update_whereOperator_comboBox;
         private System.Windows.Forms.ComboBox rows_update_whereColumn_comboBox;
         private System.Windows.Forms.Label rows_update_where_label;
+        private System.Windows.Forms.Button rows_update_removeValue_button;
+        private System.Windows.Forms.Button rows_update_addValue_button;
     }
 }

@@ -206,7 +206,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public int UpdateRowFromTable(string tableName, List<ColumnDto> columns, List<string> values, string whereColumnName, string operatorSymbol, string operatorValue, ConnectionDto connDto)
+        public int UpdateRowFromTable(FormUpdateDto dto, ConnectionDto connDto)
         {
             try
             {
@@ -216,34 +216,34 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"UPDATE {tableName} SET";
+                cmd.CommandText = $"UPDATE {dto.TableName} SET";
 
-                for (int i = 1; i < columns.Count; i++)
+                for (int i = 1; i < dto.Columns.Count; i++)
                 {
-                    cmd.CommandText += $" {columns[i].ColumnName} = ";
+                    cmd.CommandText += $" {dto.Columns[i].ColumnName} = ";
 
-                    if (RequiresQuotes(columns[i].Value))
+                    if (RequiresQuotes(dto.Columns[i].Value))
                     {
-                        cmd.CommandText += $"'{values[i]}'";
+                        cmd.CommandText += $"'{dto.Values[i]}'";
                     }
                     else
                     {
-                        cmd.CommandText += $"{values[i]}";
+                        cmd.CommandText += $"{dto.Values[i]}";
                     }
                     cmd.CommandText += ",";
                 }
 
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
-                cmd.CommandText += $" WHERE {whereColumnName} {operatorSymbol} ";
+                cmd.CommandText += $" WHERE {dto.WhereColumn.ColumnName} {dto.WhereOperator} ";
 
-                if (RequiresQuotes(operatorValue))
+                if (RequiresQuotes(dto.WhereColumn.Value))
                 {
-                    cmd.CommandText += $"'{operatorValue}'";
+                    cmd.CommandText += $"'{dto.WhereValue}'";
                 }
                 else
                 {
-                    cmd.CommandText += $"{operatorValue}";
+                    cmd.CommandText += $"{dto.WhereValue}";
                 }
 
                 NpgsqlDataReader dr = cmd.ExecuteReader();

@@ -39,6 +39,11 @@ namespace SQL_GUI.DTOs
         public string WhereValue { get; set; }
     }
 
+    public class FormUpdateDto : FormSelectDto
+    {
+        public List<string> Values { get; set; }
+    }
+
     public class DataViewerDto
     {
         public List<string> Columns { get; set; }
