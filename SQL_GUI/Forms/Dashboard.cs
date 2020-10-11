@@ -404,9 +404,9 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.AddRowToTable(dto, connDto);
+                var id = _sql.AddRowToTable(dto, connDto);
 
-                WriteToLog("Successfully added values");
+                WriteToLog($"Successfully added values into row ID: {id}");
                 rows_add_rowValues_listBox.Items.Clear();
                 rows_add_rowValue_textBox.Text = string.Empty;
             }

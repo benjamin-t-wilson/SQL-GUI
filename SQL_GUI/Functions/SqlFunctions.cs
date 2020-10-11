@@ -297,19 +297,19 @@ namespace SQL_GUI.Functions
                 }
                 cmd.CommandText = cmd.CommandText.TrimEnd(',');
 
-                cmd.CommandText += ")";
+                cmd.CommandText += ") RETURNING ID";
 
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
-                int countRows = 0;
+                int id = 0;
 
                 while (dr.Read())
                 {
-                    countRows += 1;
+                    id = dr.GetInt32(0);
                 }
                 con.Close();
 
-                return countRows;
+                return id;
             }
             catch (Exception ex)
             {
