@@ -28,7 +28,8 @@ namespace SQL_GUI.Forms
                 WriteToLog("Successfully connected to database");
                 WriteToLog(version);
 
-                resetTableList();
+                dash_statusStrip_database_value.Text = connDto.Database;
+                setSchemaList();
             }
             catch (Exception ex)
             {
@@ -37,13 +38,37 @@ namespace SQL_GUI.Forms
             }
         }
 
+        private void setSchemaList()
+        {
+            try
+            {
+                var schemas = _sql.GetSchemasForDatabase(connDto);
+
+                dash_statusStrip_schema_value.DropDownItems.Clear();
+
+                foreach (var schema in schemas)
+                {
+                    dash_statusStrip_schema_value.DropDownItems.Add(schema);
+                }
+
+                dash_statusStrip_schema_value.Text = dash_statusStrip_schema_value.DropDownItems[0].ToString();
+                resetTableList();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error fetching database schema:");
+                WriteToLog(ex.Message);
+            }
+        }
+
         private void resetTableList()
         {
-            var tablesList = _sql.GetListOfTables(connDto);
+            var tablesList = _sql.GetListOfTables(dash_statusStrip_schema_value.Text, connDto);
             WriteToLog("Reset tables list...");
 
             dash_tables_listBox.Items.Clear();
             columns_addConstraint_references_table_comboBox.Items.Clear();
+            dash_columns_listBox.Items.Clear();
 
             foreach (var tableName in tablesList)
             {
@@ -128,7 +153,7 @@ namespace SQL_GUI.Forms
 
             var newTableDto = new AddNewTableDto()
             {
-                TableName = tableName,
+                TableName = $"{dash_statusStrip_schema_value.Text}.{tableName}",
                 Columns = new List<ColumnDto>()
             };
 
@@ -183,7 +208,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.DropTableIfExists(tableName, connDto);
+                _sql.DropTableIfExists($"{dash_statusStrip_schema_value.Text}.{tableName}", connDto);
                 WriteToLog($"Successfully dropped table: {tableName}");
                 resetTableList();
             }
@@ -255,7 +280,7 @@ namespace SQL_GUI.Forms
 
             var newTableDto = new AddNewTableDto()
             {
-                TableName = tableName,
+                TableName = $"{dash_statusStrip_schema_value.Text}.{tableName}",
                 Columns = new List<ColumnDto>()
             };
 
@@ -397,7 +422,7 @@ namespace SQL_GUI.Forms
 
             var dto = new AddNewRowDto()
             {
-                TableName = table,
+                TableName = $"{dash_statusStrip_schema_value.Text}.{table}",
                 Columns = columns,
                 Rows = rows
             };
@@ -481,7 +506,7 @@ namespace SQL_GUI.Forms
 
                 tableName = tableName.Replace(' ', '_');
 
-                _sql.RenameColumn(tableName, columnName.Split(' ')[0], newColumnName, connDto);
+                _sql.RenameColumn($"{dash_statusStrip_schema_value.Text}.{tableName}", columnName.Split(' ')[0], newColumnName, connDto);
 
                 WriteToLog("Successfully renamed column");
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
@@ -509,7 +534,7 @@ namespace SQL_GUI.Forms
 
                 newTableName = newTableName.Replace(' ', '_');
 
-                _sql.RenameTable(tableName, newTableName, connDto);
+                _sql.RenameTable($"{dash_statusStrip_schema_value.Text}.{tableName}", newTableName, connDto);
 
                 WriteToLog("Successfully renamed table");
                 resetTableList();
@@ -569,7 +594,7 @@ namespace SQL_GUI.Forms
 
             var dto = new FormSelectDto()
             {
-                TableName = dash_tables_listBox.SelectedItem?.ToString(),
+                TableName = $"{dash_statusStrip_schema_value.Text}.{dash_tables_listBox.SelectedItem?.ToString()}",
                 Columns = new List<ColumnDto>()
             };
 
@@ -670,7 +695,7 @@ namespace SQL_GUI.Forms
                     Value = columnName.Split('(')[1].TrimEnd(')')
                 };
 
-                var count = _sql.DeleteRowFromTable(tableName, column, opSymbol, value, connDto);
+                var count = _sql.DeleteRowFromTable($"{dash_statusStrip_schema_value.Text}.{tableName}", column, opSymbol, value, connDto);
 
                 rows_delete_value_textBox.Text = string.Empty;
                 rows_delete_column_comboBox.SelectedIndex = -1;
@@ -750,7 +775,7 @@ namespace SQL_GUI.Forms
 
             var dto = new AddColumnConstraintDto()
             {
-                TableName = tableName,
+                TableName = $"{dash_statusStrip_schema_value.Text}.{tableName}",
                 ColumnName = columnName.Split(' ')[0],
                 Unique = columns_addConstraint_unique_checkBox.Checked,
                 NotNull = columns_addConstraint_notNull_checkBox.Checked,
@@ -813,7 +838,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.DropColumnFromTable(tableName, columnName.Split(' ')[0], connDto);
+                _sql.DropColumnFromTable($"{dash_statusStrip_schema_value.Text}.{tableName}", columnName.Split(' ')[0], connDto);
 
                 WriteToLog($"Successfully dropped {columnName} from {tableName}");
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
@@ -838,7 +863,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.DropTableConstraint(tableName, constraint, connDto);
+                _sql.DropTableConstraint($"{dash_statusStrip_schema_value.Text}.{tableName}", constraint, connDto);
 
                 WriteToLog("Successfully dropped constraint from table.");
 
@@ -866,7 +891,7 @@ namespace SQL_GUI.Forms
 
             try
             {
-                _sql.ChangeColumnDataType(tableName, columnName.Split(' ')[0], dataType, connDto);
+                _sql.ChangeColumnDataType($"{dash_statusStrip_schema_value.Text}.{tableName}", columnName.Split(' ')[0], dataType, connDto);
 
                 WriteToLog("Successfully changed data type");
                 dash_tables_listBox_SelectedIndexChanged(sender, e);
@@ -966,7 +991,7 @@ namespace SQL_GUI.Forms
             {
                 var dto = new FormUpdateDto()
                 {
-                    TableName = tableName,
+                    TableName = $"{dash_statusStrip_schema_value.Text}.{tableName}",
                     Columns = new List<ColumnDto>(),
                     WhereColumn = new ColumnDto()
                     {
@@ -1005,6 +1030,122 @@ namespace SQL_GUI.Forms
             catch (Exception ex)
             {
                 WriteToLog("Error updating rows:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void dash_statusStrip_schema_value_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            dash_statusStrip_schema_value.Text = e.ClickedItem.Text;
+            resetTableList();
+        }
+
+        private void addSchemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            schemas_add_panel.Show();
+        }
+
+        private void schemas_add_addSchema_button_Click(object sender, EventArgs e)
+        {
+            var schemaName = schemas_add_schemaName_textBox.Text;
+
+            if (string.IsNullOrWhiteSpace(schemaName))
+            {
+                WriteToLog("Must enter a schema name.");
+                return;
+            }
+
+            try
+            {
+                _sql.AddSchemaToDatabase(schemaName, connDto);
+
+                WriteToLog("Successfully added new schema:");
+                WriteToLog(schemaName);
+
+                schemas_add_schemaName_textBox.Text = string.Empty;
+                setSchemaList();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error creating schema:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void renameSchemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetTableList();
+            schemas_rename_panel.Show();
+        }
+
+        private void schemas_rename_rename_button_Click(object sender, EventArgs e)
+        {
+            var oldSchemaName = dash_statusStrip_schema_value.Text;
+            var newSchemaName = schemas_rename_newName_textBox.Text;
+
+            if (string.IsNullOrWhiteSpace(oldSchemaName) || string.IsNullOrWhiteSpace(newSchemaName))
+            {
+                WriteToLog("Must have a schema selected and enter a schema name.");
+                return;
+            }
+
+            if (oldSchemaName.Equals("public", StringComparison.InvariantCultureIgnoreCase))
+            {
+                WriteToLog("Cannot rename public schema");
+                return;
+            }
+
+            try
+            {
+                _sql.RenameSchema(oldSchemaName, newSchemaName, connDto);
+
+                WriteToLog($"Successfully renamed {oldSchemaName} to {newSchemaName}");
+
+                schemas_rename_newName_textBox.Text = string.Empty;
+                setSchemaList();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error creating schema:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void dropSchemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            schemas_delete_panel.Show();
+        }
+
+        private void schemas_delete_delete_button_Click(object sender, EventArgs e)
+        {
+            var schemaName = dash_statusStrip_schema_value.Text;
+
+            if (string.IsNullOrWhiteSpace(schemaName))
+            {
+                WriteToLog("You must select a schema.");
+                return;
+            }
+
+            if (schemaName.Equals("public", StringComparison.InvariantCultureIgnoreCase))
+            {
+                WriteToLog("Cannot drop public schema.");
+                return;
+            }
+
+            try
+            {
+                _sql.DropSchemaFromDatabase(schemaName, connDto);
+
+                WriteToLog($"Successfully dropped {schemaName}");
+
+                dash_statusStrip_schema_value.Text = string.Empty;
+                setSchemaList();
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error creating schema:");
                 WriteToLog(ex.Message);
             }
         }

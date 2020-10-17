@@ -50,6 +50,7 @@ namespace SQL_GUI.Forms
             }
 
             con_savedConnections_comboBox.ResetText();
+            con_forget_button.Visible = false;
 
             var dashboard = new Dashboard(dto, this);
 

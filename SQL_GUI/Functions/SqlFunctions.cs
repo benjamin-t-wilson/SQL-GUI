@@ -308,7 +308,7 @@ namespace SQL_GUI.Functions
             }
         }
 
-        public List<string> GetListOfTables(ConnectionDto connDto)
+        public List<string> GetListOfTables(string schema, ConnectionDto connDto)
         {
             try
             {
@@ -318,7 +318,7 @@ namespace SQL_GUI.Functions
                 using var cmd = new NpgsqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"SELECT TABLE_NAME FROM {connDto.Database}.information_schema.tables WHERE table_type = 'BASE TABLE'";
+                cmd.CommandText = $"SELECT TABLE_NAME FROM {connDto.Database}.information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = '{schema}'";
 
                 using NpgsqlDataReader rdr = cmd.ExecuteReader();
 
@@ -559,6 +559,104 @@ namespace SQL_GUI.Functions
                 cmd.Connection = con;
 
                 cmd.CommandText = $"ALTER TABLE {tableName} ALTER COLUMN {columnName} SET DATA TYPE {dataType};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<string> GetSchemasForDatabase(ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT schema_name FROM information_schema.schemata;";
+
+                using NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+                var schemas = new List<string>();
+
+                while (rdr.Read())
+                {
+                    var name = rdr.GetString(0);
+
+                    if (!name.Contains("pg_") && !name.Equals("information_schema") && !name.Equals("pgagent"))
+                    {
+                        schemas.Add(name);
+                    }
+                }
+                con.Close();
+
+                return schemas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AddSchemaToDatabase(string schemaName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"CREATE SCHEMA {schemaName};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void RenameSchema(string oldSchemaName, string newSchemaName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER SCHEMA {oldSchemaName} RENAME TO {newSchemaName};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DropSchemaFromDatabase(string schemaName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"DROP SCHEMA {schemaName} CASCADE;";
 
                 cmd.ExecuteNonQuery();
                 con.Close();

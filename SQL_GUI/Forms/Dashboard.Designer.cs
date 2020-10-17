@@ -163,6 +163,8 @@
             this.rows_delete_column_label = new System.Windows.Forms.Label();
             this.rows_delete_toolTip_label = new System.Windows.Forms.Label();
             this.rows_update_panel = new System.Windows.Forms.Panel();
+            this.rows_update_removeValue_button = new System.Windows.Forms.Button();
+            this.rows_update_addValue_button = new System.Windows.Forms.Button();
             this.rows_update_whereValue_label = new System.Windows.Forms.Label();
             this.rows_update_whereOperator_label = new System.Windows.Forms.Label();
             this.rows_update_whereColumn_label = new System.Windows.Forms.Label();
@@ -182,8 +184,28 @@
             this.rows_update_availableColumns_listBox = new System.Windows.Forms.ListBox();
             this.rows_update_availableColumns_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.rows_update_removeValue_button = new System.Windows.Forms.Button();
-            this.rows_update_addValue_button = new System.Windows.Forms.Button();
+            this.dash_statusStrip = new System.Windows.Forms.StatusStrip();
+            this.dash_statusStrip_database_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dash_statusStrip_database_value = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dash_statusStrip_schema_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dash_statusStrip_schema_value = new System.Windows.Forms.ToolStripDropDownButton();
+            this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.schemas_add_panel = new System.Windows.Forms.Panel();
+            this.schemas_add_toolTip = new System.Windows.Forms.Label();
+            this.schemas_add_schemaName_label = new System.Windows.Forms.Label();
+            this.schemas_add_schemaName_textBox = new System.Windows.Forms.TextBox();
+            this.schemas_add_addSchema_button = new System.Windows.Forms.Button();
+            this.schemas_rename_panel = new System.Windows.Forms.Panel();
+            this.schemas_rename_toolTip = new System.Windows.Forms.Label();
+            this.schemas_rename_newName_label = new System.Windows.Forms.Label();
+            this.schemas_rename_newName_textBox = new System.Windows.Forms.TextBox();
+            this.schemas_rename_rename_button = new System.Windows.Forms.Button();
+            this.schemas_delete_panel = new System.Windows.Forms.Panel();
+            this.schemas_delete_toolTip = new System.Windows.Forms.Label();
+            this.schemas_delete_delete_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -198,11 +220,15 @@
             this.rows_select_panel.SuspendLayout();
             this.rows_delete_panel.SuspendLayout();
             this.rows_update_panel.SuspendLayout();
+            this.dash_statusStrip.SuspendLayout();
+            this.schemas_add_panel.SuspendLayout();
+            this.schemas_rename_panel.SuspendLayout();
+            this.schemas_delete_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
             // 
-            this.dash_log_richTextBox.Location = new System.Drawing.Point(232, 393);
+            this.dash_log_richTextBox.Location = new System.Drawing.Point(232, 425);
             this.dash_log_richTextBox.Name = "dash_log_richTextBox";
             this.dash_log_richTextBox.Size = new System.Drawing.Size(918, 297);
             this.dash_log_richTextBox.TabIndex = 0;
@@ -212,7 +238,7 @@
             // 
             this.dash_tables_listBox.FormattingEnabled = true;
             this.dash_tables_listBox.ItemHeight = 16;
-            this.dash_tables_listBox.Location = new System.Drawing.Point(12, 61);
+            this.dash_tables_listBox.Location = new System.Drawing.Point(12, 93);
             this.dash_tables_listBox.Name = "dash_tables_listBox";
             this.dash_tables_listBox.Size = new System.Drawing.Size(202, 292);
             this.dash_tables_listBox.TabIndex = 1;
@@ -222,7 +248,7 @@
             // 
             this.dash_tables_label.AutoSize = true;
             this.dash_tables_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dash_tables_label.Location = new System.Drawing.Point(12, 29);
+            this.dash_tables_label.Location = new System.Drawing.Point(12, 61);
             this.dash_tables_label.Name = "dash_tables_label";
             this.dash_tables_label.Size = new System.Drawing.Size(78, 25);
             this.dash_tables_label.TabIndex = 2;
@@ -235,10 +261,11 @@
             this.fileToolStripMenuItem,
             this.tablesToolStripMenuItem,
             this.columnsToolStripMenuItem,
-            this.rowsToolStripMenuItem});
+            this.rowsToolStripMenuItem,
+            this.schemaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -248,20 +275,20 @@
             this.disconnectToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -272,27 +299,27 @@
             this.deleteTableToolStripMenuItem,
             this.renameTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // deleteTableToolStripMenuItem
             // 
             this.deleteTableToolStripMenuItem.Name = "deleteTableToolStripMenuItem";
-            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.deleteTableToolStripMenuItem.Text = "Delete table";
             this.deleteTableToolStripMenuItem.Click += new System.EventHandler(this.deleteTableToolStripMenuItem_Click);
             // 
             // renameTableToolStripMenuItem
             // 
             this.renameTableToolStripMenuItem.Name = "renameTableToolStripMenuItem";
-            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.renameTableToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.renameTableToolStripMenuItem.Text = "Rename table";
             this.renameTableToolStripMenuItem.Click += new System.EventHandler(this.renameTableToolStripMenuItem_Click);
             // 
@@ -306,7 +333,7 @@
             this.changeColumnConstraintToolStripMenuItem,
             this.removeColumnConstraintToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // addColumnToTableToolStripMenuItem
@@ -359,7 +386,7 @@
             this.updateRowsInTableToolStripMenuItem,
             this.deleteRowFromTableToolStripMenuItem});
             this.rowsToolStripMenuItem.Name = "rowsToolStripMenuItem";
-            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
+            this.rowsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.rowsToolStripMenuItem.Text = "Rows";
             // 
             // addRowToTableToolStripMenuItem
@@ -556,7 +583,7 @@
             this.tables_add_panel.Controls.Add(this.tables_add_columnNames_listBox);
             this.tables_add_panel.Controls.Add(this.tables_add_addValueType_button);
             this.tables_add_panel.Controls.Add(this.tables_add_valueTypes_label);
-            this.tables_add_panel.Location = new System.Drawing.Point(235, 30);
+            this.tables_add_panel.Location = new System.Drawing.Point(235, 62);
             this.tables_add_panel.Name = "tables_add_panel";
             this.tables_add_panel.Size = new System.Drawing.Size(920, 360);
             this.tables_add_panel.TabIndex = 20;
@@ -565,7 +592,7 @@
             // 
             this.tables_delete_panel.Controls.Add(this.tables_delete_button);
             this.tables_delete_panel.Controls.Add(this.tables_delete_label);
-            this.tables_delete_panel.Location = new System.Drawing.Point(235, 30);
+            this.tables_delete_panel.Location = new System.Drawing.Point(235, 62);
             this.tables_delete_panel.Name = "tables_delete_panel";
             this.tables_delete_panel.Size = new System.Drawing.Size(920, 360);
             this.tables_delete_panel.TabIndex = 20;
@@ -607,7 +634,7 @@
             this.columns_addColumn_panel.Controls.Add(this.columns_add_columnNames_listBox);
             this.columns_addColumn_panel.Controls.Add(this.columns_add_addValueType_button);
             this.columns_addColumn_panel.Controls.Add(this.columns_add_valueTypes_label);
-            this.columns_addColumn_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_addColumn_panel.Location = new System.Drawing.Point(235, 62);
             this.columns_addColumn_panel.Name = "columns_addColumn_panel";
             this.columns_addColumn_panel.Size = new System.Drawing.Size(918, 358);
             this.columns_addColumn_panel.TabIndex = 21;
@@ -758,7 +785,7 @@
             this.tables_rename_panel.Controls.Add(this.tables_rename_newName_textbox);
             this.tables_rename_panel.Controls.Add(this.tables_rename_newName_label);
             this.tables_rename_panel.Controls.Add(this.tables_rename_toolTip_label);
-            this.tables_rename_panel.Location = new System.Drawing.Point(235, 30);
+            this.tables_rename_panel.Location = new System.Drawing.Point(235, 62);
             this.tables_rename_panel.Name = "tables_rename_panel";
             this.tables_rename_panel.Size = new System.Drawing.Size(920, 360);
             this.tables_rename_panel.TabIndex = 21;
@@ -806,7 +833,7 @@
             // 
             this.dash_columns_label.AutoSize = true;
             this.dash_columns_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dash_columns_label.Location = new System.Drawing.Point(12, 366);
+            this.dash_columns_label.Location = new System.Drawing.Point(12, 398);
             this.dash_columns_label.Name = "dash_columns_label";
             this.dash_columns_label.Size = new System.Drawing.Size(96, 25);
             this.dash_columns_label.TabIndex = 23;
@@ -816,7 +843,7 @@
             // 
             this.dash_columns_listBox.FormattingEnabled = true;
             this.dash_columns_listBox.ItemHeight = 16;
-            this.dash_columns_listBox.Location = new System.Drawing.Point(12, 398);
+            this.dash_columns_listBox.Location = new System.Drawing.Point(12, 430);
             this.dash_columns_listBox.Name = "dash_columns_listBox";
             this.dash_columns_listBox.Size = new System.Drawing.Size(202, 292);
             this.dash_columns_listBox.TabIndex = 22;
@@ -827,7 +854,7 @@
             this.columns_rename_panel.Controls.Add(this.columns_rename_newName_textbox);
             this.columns_rename_panel.Controls.Add(this.columns_rename_newName_label);
             this.columns_rename_panel.Controls.Add(this.columns_rename_toolTip_label);
-            this.columns_rename_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_rename_panel.Location = new System.Drawing.Point(235, 62);
             this.columns_rename_panel.Name = "columns_rename_panel";
             this.columns_rename_panel.Size = new System.Drawing.Size(920, 360);
             this.columns_rename_panel.TabIndex = 24;
@@ -875,7 +902,7 @@
             // 
             this.columns_remove_panel.Controls.Add(this.columns_remove_removeColumn_button);
             this.columns_remove_panel.Controls.Add(this.columns_remove_toolTip_label);
-            this.columns_remove_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_remove_panel.Location = new System.Drawing.Point(235, 62);
             this.columns_remove_panel.Name = "columns_remove_panel";
             this.columns_remove_panel.Size = new System.Drawing.Size(920, 360);
             this.columns_remove_panel.TabIndex = 25;
@@ -908,7 +935,7 @@
             this.columns_dataType_panel.Controls.Add(this.columns_dataType_toolTip_label);
             this.columns_dataType_panel.Controls.Add(this.columns_dataType_valueTypes_comboBox);
             this.columns_dataType_panel.Controls.Add(this.columns_dataType_valueTypes_label);
-            this.columns_dataType_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_dataType_panel.Location = new System.Drawing.Point(235, 62);
             this.columns_dataType_panel.Name = "columns_dataType_panel";
             this.columns_dataType_panel.Size = new System.Drawing.Size(920, 360);
             this.columns_dataType_panel.TabIndex = 26;
@@ -983,7 +1010,7 @@
             this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_references_checkBox);
             this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_notNull_checkBox);
             this.columns_addConstraint_panel.Controls.Add(this.columns_addConstraint_unique_checkBox);
-            this.columns_addConstraint_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_addConstraint_panel.Location = new System.Drawing.Point(235, 62);
             this.columns_addConstraint_panel.Name = "columns_addConstraint_panel";
             this.columns_addConstraint_panel.Size = new System.Drawing.Size(920, 360);
             this.columns_addConstraint_panel.TabIndex = 27;
@@ -1179,7 +1206,7 @@
             this.columns_removeConstraint_panel.Controls.Add(this.columns_removeConstraint_constraints_listBox);
             this.columns_removeConstraint_panel.Controls.Add(this.columns_removeConstraint_toolTip_label);
             this.columns_removeConstraint_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columns_removeConstraint_panel.Location = new System.Drawing.Point(235, 30);
+            this.columns_removeConstraint_panel.Location = new System.Drawing.Point(235, 62);
             this.columns_removeConstraint_panel.Name = "columns_removeConstraint_panel";
             this.columns_removeConstraint_panel.Size = new System.Drawing.Size(920, 360);
             this.columns_removeConstraint_panel.TabIndex = 28;
@@ -1233,7 +1260,7 @@
             this.rows_add_panel.Controls.Add(this.rows_add_rowValue_label);
             this.rows_add_panel.Controls.Add(this.rows_add_toolTip_label);
             this.rows_add_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rows_add_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_add_panel.Location = new System.Drawing.Point(235, 62);
             this.rows_add_panel.Name = "rows_add_panel";
             this.rows_add_panel.Size = new System.Drawing.Size(920, 360);
             this.rows_add_panel.TabIndex = 29;
@@ -1328,7 +1355,7 @@
             this.rows_select_panel.Controls.Add(this.rows_select_availableColumns_label);
             this.rows_select_panel.Controls.Add(this.rows_select_toolTip_label);
             this.rows_select_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rows_select_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_select_panel.Location = new System.Drawing.Point(235, 62);
             this.rows_select_panel.Name = "rows_select_panel";
             this.rows_select_panel.Size = new System.Drawing.Size(920, 360);
             this.rows_select_panel.TabIndex = 30;
@@ -1487,7 +1514,7 @@
             this.rows_delete_panel.Controls.Add(this.rows_delete_column_label);
             this.rows_delete_panel.Controls.Add(this.rows_delete_toolTip_label);
             this.rows_delete_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rows_delete_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_delete_panel.Location = new System.Drawing.Point(235, 62);
             this.rows_delete_panel.Name = "rows_delete_panel";
             this.rows_delete_panel.Size = new System.Drawing.Size(920, 360);
             this.rows_delete_panel.TabIndex = 31;
@@ -1593,10 +1620,30 @@
             this.rows_update_panel.Controls.Add(this.rows_update_availableColumns_label);
             this.rows_update_panel.Controls.Add(this.label2);
             this.rows_update_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rows_update_panel.Location = new System.Drawing.Point(235, 30);
+            this.rows_update_panel.Location = new System.Drawing.Point(235, 62);
             this.rows_update_panel.Name = "rows_update_panel";
             this.rows_update_panel.Size = new System.Drawing.Size(920, 360);
             this.rows_update_panel.TabIndex = 32;
+            // 
+            // rows_update_removeValue_button
+            // 
+            this.rows_update_removeValue_button.Location = new System.Drawing.Point(643, 165);
+            this.rows_update_removeValue_button.Name = "rows_update_removeValue_button";
+            this.rows_update_removeValue_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_removeValue_button.TabIndex = 20;
+            this.rows_update_removeValue_button.Text = "Remove";
+            this.rows_update_removeValue_button.UseVisualStyleBackColor = true;
+            this.rows_update_removeValue_button.Click += new System.EventHandler(this.rows_update_removeValue_button_Click);
+            // 
+            // rows_update_addValue_button
+            // 
+            this.rows_update_addValue_button.Location = new System.Drawing.Point(643, 118);
+            this.rows_update_addValue_button.Name = "rows_update_addValue_button";
+            this.rows_update_addValue_button.Size = new System.Drawing.Size(90, 35);
+            this.rows_update_addValue_button.TabIndex = 19;
+            this.rows_update_addValue_button.Text = "Add";
+            this.rows_update_addValue_button.UseVisualStyleBackColor = true;
+            this.rows_update_addValue_button.Click += new System.EventHandler(this.rows_update_addValue_button_Click);
             // 
             // rows_update_whereValue_label
             // 
@@ -1774,31 +1821,216 @@
     "compile a list of selected columns and matching number of values\r\n\r\nEnter a wher" +
     "e condition, then click update";
             // 
-            // rows_update_removeValue_button
+            // dash_statusStrip
             // 
-            this.rows_update_removeValue_button.Location = new System.Drawing.Point(643, 165);
-            this.rows_update_removeValue_button.Name = "rows_update_removeValue_button";
-            this.rows_update_removeValue_button.Size = new System.Drawing.Size(90, 35);
-            this.rows_update_removeValue_button.TabIndex = 20;
-            this.rows_update_removeValue_button.Text = "Remove";
-            this.rows_update_removeValue_button.UseVisualStyleBackColor = true;
-            this.rows_update_removeValue_button.Click += new System.EventHandler(this.rows_update_removeValue_button_Click);
+            this.dash_statusStrip.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dash_statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.dash_statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dash_statusStrip_database_label,
+            this.dash_statusStrip_database_value,
+            this.dash_statusStrip_schema_label,
+            this.dash_statusStrip_schema_value});
+            this.dash_statusStrip.Location = new System.Drawing.Point(0, 28);
+            this.dash_statusStrip.Name = "dash_statusStrip";
+            this.dash_statusStrip.Size = new System.Drawing.Size(1165, 26);
+            this.dash_statusStrip.TabIndex = 33;
+            this.dash_statusStrip.Text = "dash_statusStrip";
             // 
-            // rows_update_addValue_button
+            // dash_statusStrip_database_label
             // 
-            this.rows_update_addValue_button.Location = new System.Drawing.Point(643, 118);
-            this.rows_update_addValue_button.Name = "rows_update_addValue_button";
-            this.rows_update_addValue_button.Size = new System.Drawing.Size(90, 35);
-            this.rows_update_addValue_button.TabIndex = 19;
-            this.rows_update_addValue_button.Text = "Add";
-            this.rows_update_addValue_button.UseVisualStyleBackColor = true;
-            this.rows_update_addValue_button.Click += new System.EventHandler(this.rows_update_addValue_button_Click);
+            this.dash_statusStrip_database_label.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.dash_statusStrip_database_label.Enabled = false;
+            this.dash_statusStrip_database_label.Name = "dash_statusStrip_database_label";
+            this.dash_statusStrip_database_label.Size = new System.Drawing.Size(75, 20);
+            this.dash_statusStrip_database_label.Text = "Database:";
+            // 
+            // dash_statusStrip_database_value
+            // 
+            this.dash_statusStrip_database_value.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.dash_statusStrip_database_value.Enabled = false;
+            this.dash_statusStrip_database_value.Name = "dash_statusStrip_database_value";
+            this.dash_statusStrip_database_value.Size = new System.Drawing.Size(79, 20);
+            this.dash_statusStrip_database_value.Text = "current_db";
+            // 
+            // dash_statusStrip_schema_label
+            // 
+            this.dash_statusStrip_schema_label.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.dash_statusStrip_schema_label.Enabled = false;
+            this.dash_statusStrip_schema_label.Margin = new System.Windows.Forms.Padding(40, 4, 0, 2);
+            this.dash_statusStrip_schema_label.Name = "dash_statusStrip_schema_label";
+            this.dash_statusStrip_schema_label.Size = new System.Drawing.Size(64, 20);
+            this.dash_statusStrip_schema_label.Text = "Schema:";
+            // 
+            // dash_statusStrip_schema_value
+            // 
+            this.dash_statusStrip_schema_value.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.dash_statusStrip_schema_value.Name = "dash_statusStrip_schema_value";
+            this.dash_statusStrip_schema_value.Size = new System.Drawing.Size(125, 24);
+            this.dash_statusStrip_schema_value.Text = "current_schema";
+            this.dash_statusStrip_schema_value.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dash_statusStrip_schema_value_DropDownItemClicked);
+            // 
+            // schemaToolStripMenuItem
+            // 
+            this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addSchemaToolStripMenuItem,
+            this.renameSchemaToolStripMenuItem,
+            this.dropSchemaToolStripMenuItem});
+            this.schemaToolStripMenuItem.Name = "schemaToolStripMenuItem";
+            this.schemaToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.schemaToolStripMenuItem.Text = "Schemas";
+            // 
+            // addSchemaToolStripMenuItem
+            // 
+            this.addSchemaToolStripMenuItem.Name = "addSchemaToolStripMenuItem";
+            this.addSchemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addSchemaToolStripMenuItem.Text = "Add schema";
+            this.addSchemaToolStripMenuItem.Click += new System.EventHandler(this.addSchemaToolStripMenuItem_Click);
+            // 
+            // renameSchemaToolStripMenuItem
+            // 
+            this.renameSchemaToolStripMenuItem.Name = "renameSchemaToolStripMenuItem";
+            this.renameSchemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.renameSchemaToolStripMenuItem.Text = "Rename schema";
+            this.renameSchemaToolStripMenuItem.Click += new System.EventHandler(this.renameSchemaToolStripMenuItem_Click);
+            // 
+            // dropSchemaToolStripMenuItem
+            // 
+            this.dropSchemaToolStripMenuItem.Name = "dropSchemaToolStripMenuItem";
+            this.dropSchemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dropSchemaToolStripMenuItem.Text = "Drop schema";
+            this.dropSchemaToolStripMenuItem.Click += new System.EventHandler(this.dropSchemaToolStripMenuItem_Click);
+            // 
+            // schemas_add_panel
+            // 
+            this.schemas_add_panel.Controls.Add(this.schemas_add_addSchema_button);
+            this.schemas_add_panel.Controls.Add(this.schemas_add_schemaName_textBox);
+            this.schemas_add_panel.Controls.Add(this.schemas_add_schemaName_label);
+            this.schemas_add_panel.Controls.Add(this.schemas_add_toolTip);
+            this.schemas_add_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.schemas_add_panel.Location = new System.Drawing.Point(235, 62);
+            this.schemas_add_panel.Name = "schemas_add_panel";
+            this.schemas_add_panel.Size = new System.Drawing.Size(920, 360);
+            this.schemas_add_panel.TabIndex = 34;
+            // 
+            // schemas_add_toolTip
+            // 
+            this.schemas_add_toolTip.Location = new System.Drawing.Point(25, 78);
+            this.schemas_add_toolTip.Name = "schemas_add_toolTip";
+            this.schemas_add_toolTip.Size = new System.Drawing.Size(186, 191);
+            this.schemas_add_toolTip.TabIndex = 0;
+            this.schemas_add_toolTip.Text = "Type a name for the new schema, then click the button to add it to the database";
+            // 
+            // schemas_add_schemaName_label
+            // 
+            this.schemas_add_schemaName_label.AutoSize = true;
+            this.schemas_add_schemaName_label.Location = new System.Drawing.Point(279, 90);
+            this.schemas_add_schemaName_label.Name = "schemas_add_schemaName_label";
+            this.schemas_add_schemaName_label.Size = new System.Drawing.Size(124, 20);
+            this.schemas_add_schemaName_label.TabIndex = 1;
+            this.schemas_add_schemaName_label.Text = "Schema Name:";
+            // 
+            // schemas_add_schemaName_textBox
+            // 
+            this.schemas_add_schemaName_textBox.Location = new System.Drawing.Point(283, 123);
+            this.schemas_add_schemaName_textBox.Name = "schemas_add_schemaName_textBox";
+            this.schemas_add_schemaName_textBox.Size = new System.Drawing.Size(154, 26);
+            this.schemas_add_schemaName_textBox.TabIndex = 2;
+            // 
+            // schemas_add_addSchema_button
+            // 
+            this.schemas_add_addSchema_button.Location = new System.Drawing.Point(283, 163);
+            this.schemas_add_addSchema_button.Name = "schemas_add_addSchema_button";
+            this.schemas_add_addSchema_button.Size = new System.Drawing.Size(144, 36);
+            this.schemas_add_addSchema_button.TabIndex = 3;
+            this.schemas_add_addSchema_button.Text = "Add Schema";
+            this.schemas_add_addSchema_button.UseVisualStyleBackColor = true;
+            this.schemas_add_addSchema_button.Click += new System.EventHandler(this.schemas_add_addSchema_button_Click);
+            // 
+            // schemas_rename_panel
+            // 
+            this.schemas_rename_panel.Controls.Add(this.schemas_rename_rename_button);
+            this.schemas_rename_panel.Controls.Add(this.schemas_rename_newName_textBox);
+            this.schemas_rename_panel.Controls.Add(this.schemas_rename_newName_label);
+            this.schemas_rename_panel.Controls.Add(this.schemas_rename_toolTip);
+            this.schemas_rename_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.schemas_rename_panel.Location = new System.Drawing.Point(235, 62);
+            this.schemas_rename_panel.Name = "schemas_rename_panel";
+            this.schemas_rename_panel.Size = new System.Drawing.Size(920, 360);
+            this.schemas_rename_panel.TabIndex = 35;
+            // 
+            // schemas_rename_toolTip
+            // 
+            this.schemas_rename_toolTip.Location = new System.Drawing.Point(22, 33);
+            this.schemas_rename_toolTip.Name = "schemas_rename_toolTip";
+            this.schemas_rename_toolTip.Size = new System.Drawing.Size(246, 290);
+            this.schemas_rename_toolTip.TabIndex = 0;
+            this.schemas_rename_toolTip.Text = "This will rename the currently selected schema.\r\n\r\nSelect the desired schema to r" +
+    "ename from the drop down at the top of the app.\r\n\r\nThen you may enter the new na" +
+    "me and click the button to rename.";
+            // 
+            // schemas_rename_newName_label
+            // 
+            this.schemas_rename_newName_label.AutoSize = true;
+            this.schemas_rename_newName_label.Location = new System.Drawing.Point(308, 91);
+            this.schemas_rename_newName_label.Name = "schemas_rename_newName_label";
+            this.schemas_rename_newName_label.Size = new System.Drawing.Size(96, 20);
+            this.schemas_rename_newName_label.TabIndex = 1;
+            this.schemas_rename_newName_label.Text = "New Name:";
+            // 
+            // schemas_rename_newName_textBox
+            // 
+            this.schemas_rename_newName_textBox.Location = new System.Drawing.Point(312, 122);
+            this.schemas_rename_newName_textBox.Name = "schemas_rename_newName_textBox";
+            this.schemas_rename_newName_textBox.Size = new System.Drawing.Size(160, 26);
+            this.schemas_rename_newName_textBox.TabIndex = 2;
+            // 
+            // schemas_rename_rename_button
+            // 
+            this.schemas_rename_rename_button.Location = new System.Drawing.Point(312, 160);
+            this.schemas_rename_rename_button.Name = "schemas_rename_rename_button";
+            this.schemas_rename_rename_button.Size = new System.Drawing.Size(118, 38);
+            this.schemas_rename_rename_button.TabIndex = 3;
+            this.schemas_rename_rename_button.Text = "Rename";
+            this.schemas_rename_rename_button.UseVisualStyleBackColor = true;
+            this.schemas_rename_rename_button.Click += new System.EventHandler(this.schemas_rename_rename_button_Click);
+            // 
+            // schemas_delete_panel
+            // 
+            this.schemas_delete_panel.Controls.Add(this.schemas_delete_delete_button);
+            this.schemas_delete_panel.Controls.Add(this.schemas_delete_toolTip);
+            this.schemas_delete_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.schemas_delete_panel.Location = new System.Drawing.Point(235, 62);
+            this.schemas_delete_panel.Name = "schemas_delete_panel";
+            this.schemas_delete_panel.Size = new System.Drawing.Size(920, 360);
+            this.schemas_delete_panel.TabIndex = 36;
+            // 
+            // schemas_delete_toolTip
+            // 
+            this.schemas_delete_toolTip.Location = new System.Drawing.Point(22, 31);
+            this.schemas_delete_toolTip.Name = "schemas_delete_toolTip";
+            this.schemas_delete_toolTip.Size = new System.Drawing.Size(281, 290);
+            this.schemas_delete_toolTip.TabIndex = 0;
+            this.schemas_delete_toolTip.Text = resources.GetString("schemas_delete_toolTip.Text");
+            // 
+            // schemas_delete_delete_button
+            // 
+            this.schemas_delete_delete_button.Location = new System.Drawing.Point(713, 130);
+            this.schemas_delete_delete_button.Name = "schemas_delete_delete_button";
+            this.schemas_delete_delete_button.Size = new System.Drawing.Size(167, 51);
+            this.schemas_delete_delete_button.TabIndex = 1;
+            this.schemas_delete_delete_button.Text = "Drop Schema";
+            this.schemas_delete_delete_button.UseVisualStyleBackColor = true;
+            this.schemas_delete_delete_button.Click += new System.EventHandler(this.schemas_delete_delete_button_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 708);
+            this.ClientSize = new System.Drawing.Size(1165, 734);
+            this.Controls.Add(this.schemas_delete_panel);
+            this.Controls.Add(this.schemas_rename_panel);
+            this.Controls.Add(this.schemas_add_panel);
+            this.Controls.Add(this.dash_statusStrip);
             this.Controls.Add(this.dash_columns_label);
             this.Controls.Add(this.dash_columns_listBox);
             this.Controls.Add(this.dash_tables_label);
@@ -1848,6 +2080,13 @@
             this.rows_delete_panel.PerformLayout();
             this.rows_update_panel.ResumeLayout(false);
             this.rows_update_panel.PerformLayout();
+            this.dash_statusStrip.ResumeLayout(false);
+            this.dash_statusStrip.PerformLayout();
+            this.schemas_add_panel.ResumeLayout(false);
+            this.schemas_add_panel.PerformLayout();
+            this.schemas_rename_panel.ResumeLayout(false);
+            this.schemas_rename_panel.PerformLayout();
+            this.schemas_delete_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2010,5 +2249,27 @@
         private System.Windows.Forms.Label rows_update_where_label;
         private System.Windows.Forms.Button rows_update_removeValue_button;
         private System.Windows.Forms.Button rows_update_addValue_button;
+        private System.Windows.Forms.StatusStrip dash_statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel dash_statusStrip_database_label;
+        private System.Windows.Forms.ToolStripStatusLabel dash_statusStrip_database_value;
+        private System.Windows.Forms.ToolStripStatusLabel dash_statusStrip_schema_label;
+        private System.Windows.Forms.ToolStripDropDownButton dash_statusStrip_schema_value;
+        private System.Windows.Forms.ToolStripMenuItem schemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addSchemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameSchemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dropSchemaToolStripMenuItem;
+        private System.Windows.Forms.Panel schemas_add_panel;
+        private System.Windows.Forms.Button schemas_add_addSchema_button;
+        private System.Windows.Forms.TextBox schemas_add_schemaName_textBox;
+        private System.Windows.Forms.Label schemas_add_schemaName_label;
+        private System.Windows.Forms.Label schemas_add_toolTip;
+        private System.Windows.Forms.Panel schemas_rename_panel;
+        private System.Windows.Forms.Button schemas_rename_rename_button;
+        private System.Windows.Forms.TextBox schemas_rename_newName_textBox;
+        private System.Windows.Forms.Label schemas_rename_newName_label;
+        private System.Windows.Forms.Label schemas_rename_toolTip;
+        private System.Windows.Forms.Panel schemas_delete_panel;
+        private System.Windows.Forms.Button schemas_delete_delete_button;
+        private System.Windows.Forms.Label schemas_delete_toolTip;
     }
 }

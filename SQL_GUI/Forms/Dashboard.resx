@@ -146,6 +146,16 @@ Please ensure to enter a value for each column in the table ( shown below )
 Please do not add a value for the ID column
 </value>
   </data>
+  <metadata name="dash_statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>152, 0</value>
+  </metadata>
+  <data name="schemas_delete_toolTip.Text" xml:space="preserve">
+    <value>Warning! There is no confirmation for this action! This can cause irreversible data loss.
+
+Press the button on the right to drop the selected schema.
+
+This includes all tables, columns, and rows that belong to this schema. This cannot be undone.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
