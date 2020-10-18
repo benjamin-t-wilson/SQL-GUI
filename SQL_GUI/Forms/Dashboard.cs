@@ -1149,5 +1149,126 @@ namespace SQL_GUI.Forms
                 WriteToLog(ex.Message);
             }
         }
+
+        private void PopulateDBList(ListBox lb)
+        {
+            try
+            {
+                lb.Items.Clear();
+
+                var dbList = _sql.GetDatabasesInServer(connDto);
+
+                foreach (var db in dbList)
+                {
+                    lb.Items.Add(db);
+                }
+
+                WriteToLog("Successfully grabbed databases from server.");
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error fetching database list:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void addDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            databases_add_panel.Show();
+            PopulateDBList(databases_add_dbList_listBox);
+        }
+
+        private void databases_add_addDb_button_Click(object sender, EventArgs e)
+        {
+            var dbName = databases_add_dbName_textBox.Text;
+
+            if (string.IsNullOrWhiteSpace(dbName))
+            {
+                WriteToLog("Must enter database name.");
+                return;
+            }
+
+            try
+            {
+                _sql.CreateNewDatabase(dbName, connDto);
+
+                WriteToLog($"Successfully created database: {dbName}");
+
+                PopulateDBList(databases_add_dbList_listBox);
+                databases_add_dbName_textBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error creating database:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void renameDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            databases_rename_panel.Show();
+            PopulateDBList(databases_rename_dbList_listBox);
+        }
+
+        private void databases_rename_renameDb_button_Click(object sender, EventArgs e)
+        {
+            var newDbName = databases_rename_dbName_textBox.Text;
+            var oldDbName = databases_rename_dbList_listBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(oldDbName) || string.IsNullOrWhiteSpace(newDbName))
+            {
+                WriteToLog("Must have an existing database selected and a new database name entered.");
+                return;
+            }
+
+            try
+            {
+                _sql.RenameDatabase(oldDbName, newDbName, connDto);
+
+                WriteToLog($"Successfully changed {oldDbName} to {newDbName}.");
+
+                PopulateDBList(databases_rename_dbList_listBox);
+                databases_rename_dbName_textBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error renaming database:");
+                WriteToLog(ex.Message);
+            }
+        }
+
+        private void dropDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetControlDisplay();
+            databases_delete_panel.Show();
+            PopulateDBList(databases_delete_dbList_listBox);
+        }
+
+        private void databases_delete_delete_button_Click(object sender, EventArgs e)
+        {
+            var dbName = databases_delete_dbList_listBox.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(dbName))
+            {
+                WriteToLog("You must select a database.");
+                return;
+            }
+
+            try
+            {
+                _sql.DeleteDatabase(dbName, connDto);
+
+                WriteToLog($"Successfully dropped database: {dbName}.");
+
+                PopulateDBList(databases_delete_dbList_listBox);
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error dropping database:");
+                WriteToLog(ex.Message);
+            }
+        }
     }
 }

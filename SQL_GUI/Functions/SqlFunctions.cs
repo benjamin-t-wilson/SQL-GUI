@@ -666,5 +666,98 @@ namespace SQL_GUI.Functions
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<string> GetDatabasesInServer(ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT datname FROM pg_database WHERE datistemplate = false;";
+
+                using NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+                var dbs = new List<string>();
+
+                while (rdr.Read())
+                {
+                    dbs.Add(rdr.GetString(0));
+                }
+                con.Close();
+
+                return dbs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void CreateNewDatabase(string dbName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"CREATE DATABASE {dbName};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void RenameDatabase(string oldDbName, string newDbName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"ALTER DATABASE {oldDbName} RENAME TO {newDbName};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DeleteDatabase(string dbName, ConnectionDto connDto)
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(ConnectionString(connDto));
+                con.Open();
+
+                using var cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"DROP DATABASE IF EXISTS {dbName};";
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

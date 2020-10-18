@@ -52,6 +52,14 @@
             this.selectRowsFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateRowsInTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRowFromTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.databasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tables_add_tableName_textBox = new System.Windows.Forms.TextBox();
             this.tables_add_tableName_label = new System.Windows.Forms.Label();
             this.tables_add_columnNames_listBox = new System.Windows.Forms.ListBox();
@@ -189,23 +197,38 @@
             this.dash_statusStrip_database_value = new System.Windows.Forms.ToolStripStatusLabel();
             this.dash_statusStrip_schema_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.dash_statusStrip_schema_value = new System.Windows.Forms.ToolStripDropDownButton();
-            this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dropSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schemas_add_panel = new System.Windows.Forms.Panel();
-            this.schemas_add_toolTip = new System.Windows.Forms.Label();
-            this.schemas_add_schemaName_label = new System.Windows.Forms.Label();
-            this.schemas_add_schemaName_textBox = new System.Windows.Forms.TextBox();
             this.schemas_add_addSchema_button = new System.Windows.Forms.Button();
+            this.schemas_add_schemaName_textBox = new System.Windows.Forms.TextBox();
+            this.schemas_add_schemaName_label = new System.Windows.Forms.Label();
+            this.schemas_add_toolTip = new System.Windows.Forms.Label();
             this.schemas_rename_panel = new System.Windows.Forms.Panel();
-            this.schemas_rename_toolTip = new System.Windows.Forms.Label();
-            this.schemas_rename_newName_label = new System.Windows.Forms.Label();
-            this.schemas_rename_newName_textBox = new System.Windows.Forms.TextBox();
             this.schemas_rename_rename_button = new System.Windows.Forms.Button();
+            this.schemas_rename_newName_textBox = new System.Windows.Forms.TextBox();
+            this.schemas_rename_newName_label = new System.Windows.Forms.Label();
+            this.schemas_rename_toolTip = new System.Windows.Forms.Label();
             this.schemas_delete_panel = new System.Windows.Forms.Panel();
-            this.schemas_delete_toolTip = new System.Windows.Forms.Label();
             this.schemas_delete_delete_button = new System.Windows.Forms.Button();
+            this.schemas_delete_toolTip = new System.Windows.Forms.Label();
+            this.databases_add_panel = new System.Windows.Forms.Panel();
+            this.databases_add_addDb_button = new System.Windows.Forms.Button();
+            this.databases_add_dbName_textBox = new System.Windows.Forms.TextBox();
+            this.databases_add_dbName_label = new System.Windows.Forms.Label();
+            this.databases_add_toolTip_label = new System.Windows.Forms.Label();
+            this.databases_add_dbList_label = new System.Windows.Forms.Label();
+            this.databases_add_dbList_listBox = new System.Windows.Forms.ListBox();
+            this.databases_rename_panel = new System.Windows.Forms.Panel();
+            this.databases_rename_renameDb_button = new System.Windows.Forms.Button();
+            this.databases_rename_dbName_textBox = new System.Windows.Forms.TextBox();
+            this.databases_rename_dbName_label = new System.Windows.Forms.Label();
+            this.databases_rename_toolTip_label = new System.Windows.Forms.Label();
+            this.databases_rename_dbList_label = new System.Windows.Forms.Label();
+            this.databases_rename_dbList_listBox = new System.Windows.Forms.ListBox();
+            this.databases_delete_panel = new System.Windows.Forms.Panel();
+            this.databases_delete_delete_button = new System.Windows.Forms.Button();
+            this.databases_delete_toolTip_label = new System.Windows.Forms.Label();
+            this.databases_delete_dbList_label = new System.Windows.Forms.Label();
+            this.databases_delete_dbList_listBox = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.tables_add_panel.SuspendLayout();
             this.tables_delete_panel.SuspendLayout();
@@ -224,6 +247,9 @@
             this.schemas_add_panel.SuspendLayout();
             this.schemas_rename_panel.SuspendLayout();
             this.schemas_delete_panel.SuspendLayout();
+            this.databases_add_panel.SuspendLayout();
+            this.databases_rename_panel.SuspendLayout();
+            this.databases_delete_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dash_log_richTextBox
@@ -262,7 +288,8 @@
             this.tablesToolStripMenuItem,
             this.columnsToolStripMenuItem,
             this.rowsToolStripMenuItem,
-            this.schemaToolStripMenuItem});
+            this.schemaToolStripMenuItem,
+            this.databasesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
@@ -416,6 +443,68 @@
             this.deleteRowFromTableToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.deleteRowFromTableToolStripMenuItem.Text = "Delete row from table";
             this.deleteRowFromTableToolStripMenuItem.Click += new System.EventHandler(this.deleteRowFromTableToolStripMenuItem_Click);
+            // 
+            // schemaToolStripMenuItem
+            // 
+            this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addSchemaToolStripMenuItem,
+            this.renameSchemaToolStripMenuItem,
+            this.dropSchemaToolStripMenuItem});
+            this.schemaToolStripMenuItem.Name = "schemaToolStripMenuItem";
+            this.schemaToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.schemaToolStripMenuItem.Text = "Schemas";
+            // 
+            // addSchemaToolStripMenuItem
+            // 
+            this.addSchemaToolStripMenuItem.Name = "addSchemaToolStripMenuItem";
+            this.addSchemaToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.addSchemaToolStripMenuItem.Text = "Add schema";
+            this.addSchemaToolStripMenuItem.Click += new System.EventHandler(this.addSchemaToolStripMenuItem_Click);
+            // 
+            // renameSchemaToolStripMenuItem
+            // 
+            this.renameSchemaToolStripMenuItem.Name = "renameSchemaToolStripMenuItem";
+            this.renameSchemaToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.renameSchemaToolStripMenuItem.Text = "Rename schema";
+            this.renameSchemaToolStripMenuItem.Click += new System.EventHandler(this.renameSchemaToolStripMenuItem_Click);
+            // 
+            // dropSchemaToolStripMenuItem
+            // 
+            this.dropSchemaToolStripMenuItem.Name = "dropSchemaToolStripMenuItem";
+            this.dropSchemaToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.dropSchemaToolStripMenuItem.Text = "Drop schema";
+            this.dropSchemaToolStripMenuItem.Click += new System.EventHandler(this.dropSchemaToolStripMenuItem_Click);
+            // 
+            // databasesToolStripMenuItem
+            // 
+            this.databasesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addDatabaseToolStripMenuItem,
+            this.renameDatabaseToolStripMenuItem,
+            this.dropDatabaseToolStripMenuItem});
+            this.databasesToolStripMenuItem.Name = "databasesToolStripMenuItem";
+            this.databasesToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
+            this.databasesToolStripMenuItem.Text = "Databases";
+            // 
+            // addDatabaseToolStripMenuItem
+            // 
+            this.addDatabaseToolStripMenuItem.Name = "addDatabaseToolStripMenuItem";
+            this.addDatabaseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addDatabaseToolStripMenuItem.Text = "Add database";
+            this.addDatabaseToolStripMenuItem.Click += new System.EventHandler(this.addDatabaseToolStripMenuItem_Click);
+            // 
+            // renameDatabaseToolStripMenuItem
+            // 
+            this.renameDatabaseToolStripMenuItem.Name = "renameDatabaseToolStripMenuItem";
+            this.renameDatabaseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.renameDatabaseToolStripMenuItem.Text = "Rename database";
+            this.renameDatabaseToolStripMenuItem.Click += new System.EventHandler(this.renameDatabaseToolStripMenuItem_Click);
+            // 
+            // dropDatabaseToolStripMenuItem
+            // 
+            this.dropDatabaseToolStripMenuItem.Name = "dropDatabaseToolStripMenuItem";
+            this.dropDatabaseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dropDatabaseToolStripMenuItem.Text = "Drop database";
+            this.dropDatabaseToolStripMenuItem.Click += new System.EventHandler(this.dropDatabaseToolStripMenuItem_Click);
             // 
             // tables_add_tableName_textBox
             // 
@@ -1869,37 +1958,6 @@
             this.dash_statusStrip_schema_value.Text = "current_schema";
             this.dash_statusStrip_schema_value.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dash_statusStrip_schema_value_DropDownItemClicked);
             // 
-            // schemaToolStripMenuItem
-            // 
-            this.schemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addSchemaToolStripMenuItem,
-            this.renameSchemaToolStripMenuItem,
-            this.dropSchemaToolStripMenuItem});
-            this.schemaToolStripMenuItem.Name = "schemaToolStripMenuItem";
-            this.schemaToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.schemaToolStripMenuItem.Text = "Schemas";
-            // 
-            // addSchemaToolStripMenuItem
-            // 
-            this.addSchemaToolStripMenuItem.Name = "addSchemaToolStripMenuItem";
-            this.addSchemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.addSchemaToolStripMenuItem.Text = "Add schema";
-            this.addSchemaToolStripMenuItem.Click += new System.EventHandler(this.addSchemaToolStripMenuItem_Click);
-            // 
-            // renameSchemaToolStripMenuItem
-            // 
-            this.renameSchemaToolStripMenuItem.Name = "renameSchemaToolStripMenuItem";
-            this.renameSchemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.renameSchemaToolStripMenuItem.Text = "Rename schema";
-            this.renameSchemaToolStripMenuItem.Click += new System.EventHandler(this.renameSchemaToolStripMenuItem_Click);
-            // 
-            // dropSchemaToolStripMenuItem
-            // 
-            this.dropSchemaToolStripMenuItem.Name = "dropSchemaToolStripMenuItem";
-            this.dropSchemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.dropSchemaToolStripMenuItem.Text = "Drop schema";
-            this.dropSchemaToolStripMenuItem.Click += new System.EventHandler(this.dropSchemaToolStripMenuItem_Click);
-            // 
             // schemas_add_panel
             // 
             this.schemas_add_panel.Controls.Add(this.schemas_add_addSchema_button);
@@ -1912,13 +1970,22 @@
             this.schemas_add_panel.Size = new System.Drawing.Size(920, 360);
             this.schemas_add_panel.TabIndex = 34;
             // 
-            // schemas_add_toolTip
+            // schemas_add_addSchema_button
             // 
-            this.schemas_add_toolTip.Location = new System.Drawing.Point(25, 78);
-            this.schemas_add_toolTip.Name = "schemas_add_toolTip";
-            this.schemas_add_toolTip.Size = new System.Drawing.Size(186, 191);
-            this.schemas_add_toolTip.TabIndex = 0;
-            this.schemas_add_toolTip.Text = "Type a name for the new schema, then click the button to add it to the database";
+            this.schemas_add_addSchema_button.Location = new System.Drawing.Point(283, 163);
+            this.schemas_add_addSchema_button.Name = "schemas_add_addSchema_button";
+            this.schemas_add_addSchema_button.Size = new System.Drawing.Size(144, 36);
+            this.schemas_add_addSchema_button.TabIndex = 3;
+            this.schemas_add_addSchema_button.Text = "Add Schema";
+            this.schemas_add_addSchema_button.UseVisualStyleBackColor = true;
+            this.schemas_add_addSchema_button.Click += new System.EventHandler(this.schemas_add_addSchema_button_Click);
+            // 
+            // schemas_add_schemaName_textBox
+            // 
+            this.schemas_add_schemaName_textBox.Location = new System.Drawing.Point(283, 123);
+            this.schemas_add_schemaName_textBox.Name = "schemas_add_schemaName_textBox";
+            this.schemas_add_schemaName_textBox.Size = new System.Drawing.Size(154, 26);
+            this.schemas_add_schemaName_textBox.TabIndex = 2;
             // 
             // schemas_add_schemaName_label
             // 
@@ -1929,22 +1996,13 @@
             this.schemas_add_schemaName_label.TabIndex = 1;
             this.schemas_add_schemaName_label.Text = "Schema Name:";
             // 
-            // schemas_add_schemaName_textBox
+            // schemas_add_toolTip
             // 
-            this.schemas_add_schemaName_textBox.Location = new System.Drawing.Point(283, 123);
-            this.schemas_add_schemaName_textBox.Name = "schemas_add_schemaName_textBox";
-            this.schemas_add_schemaName_textBox.Size = new System.Drawing.Size(154, 26);
-            this.schemas_add_schemaName_textBox.TabIndex = 2;
-            // 
-            // schemas_add_addSchema_button
-            // 
-            this.schemas_add_addSchema_button.Location = new System.Drawing.Point(283, 163);
-            this.schemas_add_addSchema_button.Name = "schemas_add_addSchema_button";
-            this.schemas_add_addSchema_button.Size = new System.Drawing.Size(144, 36);
-            this.schemas_add_addSchema_button.TabIndex = 3;
-            this.schemas_add_addSchema_button.Text = "Add Schema";
-            this.schemas_add_addSchema_button.UseVisualStyleBackColor = true;
-            this.schemas_add_addSchema_button.Click += new System.EventHandler(this.schemas_add_addSchema_button_Click);
+            this.schemas_add_toolTip.Location = new System.Drawing.Point(25, 78);
+            this.schemas_add_toolTip.Name = "schemas_add_toolTip";
+            this.schemas_add_toolTip.Size = new System.Drawing.Size(186, 191);
+            this.schemas_add_toolTip.TabIndex = 0;
+            this.schemas_add_toolTip.Text = "Type a name for the new schema, then click the button to add it to the database";
             // 
             // schemas_rename_panel
             // 
@@ -1958,15 +2016,22 @@
             this.schemas_rename_panel.Size = new System.Drawing.Size(920, 360);
             this.schemas_rename_panel.TabIndex = 35;
             // 
-            // schemas_rename_toolTip
+            // schemas_rename_rename_button
             // 
-            this.schemas_rename_toolTip.Location = new System.Drawing.Point(22, 33);
-            this.schemas_rename_toolTip.Name = "schemas_rename_toolTip";
-            this.schemas_rename_toolTip.Size = new System.Drawing.Size(246, 290);
-            this.schemas_rename_toolTip.TabIndex = 0;
-            this.schemas_rename_toolTip.Text = "This will rename the currently selected schema.\r\n\r\nSelect the desired schema to r" +
-    "ename from the drop down at the top of the app.\r\n\r\nThen you may enter the new na" +
-    "me and click the button to rename.";
+            this.schemas_rename_rename_button.Location = new System.Drawing.Point(312, 160);
+            this.schemas_rename_rename_button.Name = "schemas_rename_rename_button";
+            this.schemas_rename_rename_button.Size = new System.Drawing.Size(118, 38);
+            this.schemas_rename_rename_button.TabIndex = 3;
+            this.schemas_rename_rename_button.Text = "Rename";
+            this.schemas_rename_rename_button.UseVisualStyleBackColor = true;
+            this.schemas_rename_rename_button.Click += new System.EventHandler(this.schemas_rename_rename_button_Click);
+            // 
+            // schemas_rename_newName_textBox
+            // 
+            this.schemas_rename_newName_textBox.Location = new System.Drawing.Point(312, 122);
+            this.schemas_rename_newName_textBox.Name = "schemas_rename_newName_textBox";
+            this.schemas_rename_newName_textBox.Size = new System.Drawing.Size(160, 26);
+            this.schemas_rename_newName_textBox.TabIndex = 2;
             // 
             // schemas_rename_newName_label
             // 
@@ -1977,22 +2042,15 @@
             this.schemas_rename_newName_label.TabIndex = 1;
             this.schemas_rename_newName_label.Text = "New Name:";
             // 
-            // schemas_rename_newName_textBox
+            // schemas_rename_toolTip
             // 
-            this.schemas_rename_newName_textBox.Location = new System.Drawing.Point(312, 122);
-            this.schemas_rename_newName_textBox.Name = "schemas_rename_newName_textBox";
-            this.schemas_rename_newName_textBox.Size = new System.Drawing.Size(160, 26);
-            this.schemas_rename_newName_textBox.TabIndex = 2;
-            // 
-            // schemas_rename_rename_button
-            // 
-            this.schemas_rename_rename_button.Location = new System.Drawing.Point(312, 160);
-            this.schemas_rename_rename_button.Name = "schemas_rename_rename_button";
-            this.schemas_rename_rename_button.Size = new System.Drawing.Size(118, 38);
-            this.schemas_rename_rename_button.TabIndex = 3;
-            this.schemas_rename_rename_button.Text = "Rename";
-            this.schemas_rename_rename_button.UseVisualStyleBackColor = true;
-            this.schemas_rename_rename_button.Click += new System.EventHandler(this.schemas_rename_rename_button_Click);
+            this.schemas_rename_toolTip.Location = new System.Drawing.Point(22, 33);
+            this.schemas_rename_toolTip.Name = "schemas_rename_toolTip";
+            this.schemas_rename_toolTip.Size = new System.Drawing.Size(246, 290);
+            this.schemas_rename_toolTip.TabIndex = 0;
+            this.schemas_rename_toolTip.Text = "This will rename the currently selected schema.\r\n\r\nSelect the desired schema to r" +
+    "ename from the drop down at the top of the app.\r\n\r\nThen you may enter the new na" +
+    "me and click the button to rename.";
             // 
             // schemas_delete_panel
             // 
@@ -2004,14 +2062,6 @@
             this.schemas_delete_panel.Size = new System.Drawing.Size(920, 360);
             this.schemas_delete_panel.TabIndex = 36;
             // 
-            // schemas_delete_toolTip
-            // 
-            this.schemas_delete_toolTip.Location = new System.Drawing.Point(22, 31);
-            this.schemas_delete_toolTip.Name = "schemas_delete_toolTip";
-            this.schemas_delete_toolTip.Size = new System.Drawing.Size(281, 290);
-            this.schemas_delete_toolTip.TabIndex = 0;
-            this.schemas_delete_toolTip.Text = resources.GetString("schemas_delete_toolTip.Text");
-            // 
             // schemas_delete_delete_button
             // 
             this.schemas_delete_delete_button.Location = new System.Drawing.Point(713, 130);
@@ -2022,11 +2072,202 @@
             this.schemas_delete_delete_button.UseVisualStyleBackColor = true;
             this.schemas_delete_delete_button.Click += new System.EventHandler(this.schemas_delete_delete_button_Click);
             // 
+            // schemas_delete_toolTip
+            // 
+            this.schemas_delete_toolTip.Location = new System.Drawing.Point(22, 31);
+            this.schemas_delete_toolTip.Name = "schemas_delete_toolTip";
+            this.schemas_delete_toolTip.Size = new System.Drawing.Size(281, 290);
+            this.schemas_delete_toolTip.TabIndex = 0;
+            this.schemas_delete_toolTip.Text = resources.GetString("schemas_delete_toolTip.Text");
+            // 
+            // databases_add_panel
+            // 
+            this.databases_add_panel.Controls.Add(this.databases_add_addDb_button);
+            this.databases_add_panel.Controls.Add(this.databases_add_dbName_textBox);
+            this.databases_add_panel.Controls.Add(this.databases_add_dbName_label);
+            this.databases_add_panel.Controls.Add(this.databases_add_toolTip_label);
+            this.databases_add_panel.Controls.Add(this.databases_add_dbList_label);
+            this.databases_add_panel.Controls.Add(this.databases_add_dbList_listBox);
+            this.databases_add_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.databases_add_panel.Location = new System.Drawing.Point(235, 62);
+            this.databases_add_panel.Name = "databases_add_panel";
+            this.databases_add_panel.Size = new System.Drawing.Size(920, 360);
+            this.databases_add_panel.TabIndex = 37;
+            // 
+            // databases_add_addDb_button
+            // 
+            this.databases_add_addDb_button.Location = new System.Drawing.Point(541, 180);
+            this.databases_add_addDb_button.Name = "databases_add_addDb_button";
+            this.databases_add_addDb_button.Size = new System.Drawing.Size(145, 40);
+            this.databases_add_addDb_button.TabIndex = 5;
+            this.databases_add_addDb_button.Text = "Add Database";
+            this.databases_add_addDb_button.UseVisualStyleBackColor = true;
+            this.databases_add_addDb_button.Click += new System.EventHandler(this.databases_add_addDb_button_Click);
+            // 
+            // databases_add_dbName_textBox
+            // 
+            this.databases_add_dbName_textBox.Location = new System.Drawing.Point(541, 142);
+            this.databases_add_dbName_textBox.Name = "databases_add_dbName_textBox";
+            this.databases_add_dbName_textBox.Size = new System.Drawing.Size(145, 26);
+            this.databases_add_dbName_textBox.TabIndex = 4;
+            // 
+            // databases_add_dbName_label
+            // 
+            this.databases_add_dbName_label.AutoSize = true;
+            this.databases_add_dbName_label.Location = new System.Drawing.Point(537, 113);
+            this.databases_add_dbName_label.Name = "databases_add_dbName_label";
+            this.databases_add_dbName_label.Size = new System.Drawing.Size(135, 20);
+            this.databases_add_dbName_label.TabIndex = 3;
+            this.databases_add_dbName_label.Text = "Database Name:";
+            // 
+            // databases_add_toolTip_label
+            // 
+            this.databases_add_toolTip_label.Location = new System.Drawing.Point(248, 38);
+            this.databases_add_toolTip_label.Name = "databases_add_toolTip_label";
+            this.databases_add_toolTip_label.Size = new System.Drawing.Size(235, 275);
+            this.databases_add_toolTip_label.TabIndex = 2;
+            this.databases_add_toolTip_label.Text = resources.GetString("databases_add_toolTip_label.Text");
+            // 
+            // databases_add_dbList_label
+            // 
+            this.databases_add_dbList_label.AutoSize = true;
+            this.databases_add_dbList_label.Location = new System.Drawing.Point(22, 6);
+            this.databases_add_dbList_label.Name = "databases_add_dbList_label";
+            this.databases_add_dbList_label.Size = new System.Drawing.Size(95, 20);
+            this.databases_add_dbList_label.TabIndex = 1;
+            this.databases_add_dbList_label.Text = "Databases:";
+            // 
+            // databases_add_dbList_listBox
+            // 
+            this.databases_add_dbList_listBox.FormattingEnabled = true;
+            this.databases_add_dbList_listBox.ItemHeight = 20;
+            this.databases_add_dbList_listBox.Location = new System.Drawing.Point(23, 33);
+            this.databases_add_dbList_listBox.Name = "databases_add_dbList_listBox";
+            this.databases_add_dbList_listBox.Size = new System.Drawing.Size(202, 284);
+            this.databases_add_dbList_listBox.TabIndex = 0;
+            // 
+            // databases_rename_panel
+            // 
+            this.databases_rename_panel.Controls.Add(this.databases_rename_renameDb_button);
+            this.databases_rename_panel.Controls.Add(this.databases_rename_dbName_textBox);
+            this.databases_rename_panel.Controls.Add(this.databases_rename_dbName_label);
+            this.databases_rename_panel.Controls.Add(this.databases_rename_toolTip_label);
+            this.databases_rename_panel.Controls.Add(this.databases_rename_dbList_label);
+            this.databases_rename_panel.Controls.Add(this.databases_rename_dbList_listBox);
+            this.databases_rename_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.databases_rename_panel.Location = new System.Drawing.Point(235, 62);
+            this.databases_rename_panel.Name = "databases_rename_panel";
+            this.databases_rename_panel.Size = new System.Drawing.Size(920, 360);
+            this.databases_rename_panel.TabIndex = 38;
+            // 
+            // databases_rename_renameDb_button
+            // 
+            this.databases_rename_renameDb_button.Location = new System.Drawing.Point(541, 190);
+            this.databases_rename_renameDb_button.Name = "databases_rename_renameDb_button";
+            this.databases_rename_renameDb_button.Size = new System.Drawing.Size(145, 40);
+            this.databases_rename_renameDb_button.TabIndex = 11;
+            this.databases_rename_renameDb_button.Text = "Rename";
+            this.databases_rename_renameDb_button.UseVisualStyleBackColor = true;
+            this.databases_rename_renameDb_button.Click += new System.EventHandler(this.databases_rename_renameDb_button_Click);
+            // 
+            // databases_rename_dbName_textBox
+            // 
+            this.databases_rename_dbName_textBox.Location = new System.Drawing.Point(541, 152);
+            this.databases_rename_dbName_textBox.Name = "databases_rename_dbName_textBox";
+            this.databases_rename_dbName_textBox.Size = new System.Drawing.Size(145, 26);
+            this.databases_rename_dbName_textBox.TabIndex = 10;
+            // 
+            // databases_rename_dbName_label
+            // 
+            this.databases_rename_dbName_label.AutoSize = true;
+            this.databases_rename_dbName_label.Location = new System.Drawing.Point(537, 123);
+            this.databases_rename_dbName_label.Name = "databases_rename_dbName_label";
+            this.databases_rename_dbName_label.Size = new System.Drawing.Size(135, 20);
+            this.databases_rename_dbName_label.TabIndex = 9;
+            this.databases_rename_dbName_label.Text = "Database Name:";
+            // 
+            // databases_rename_toolTip_label
+            // 
+            this.databases_rename_toolTip_label.Location = new System.Drawing.Point(248, 65);
+            this.databases_rename_toolTip_label.Name = "databases_rename_toolTip_label";
+            this.databases_rename_toolTip_label.Size = new System.Drawing.Size(224, 258);
+            this.databases_rename_toolTip_label.TabIndex = 8;
+            this.databases_rename_toolTip_label.Text = resources.GetString("databases_rename_toolTip_label.Text");
+            // 
+            // databases_rename_dbList_label
+            // 
+            this.databases_rename_dbList_label.AutoSize = true;
+            this.databases_rename_dbList_label.Location = new System.Drawing.Point(22, 16);
+            this.databases_rename_dbList_label.Name = "databases_rename_dbList_label";
+            this.databases_rename_dbList_label.Size = new System.Drawing.Size(95, 20);
+            this.databases_rename_dbList_label.TabIndex = 7;
+            this.databases_rename_dbList_label.Text = "Databases:";
+            // 
+            // databases_rename_dbList_listBox
+            // 
+            this.databases_rename_dbList_listBox.FormattingEnabled = true;
+            this.databases_rename_dbList_listBox.ItemHeight = 20;
+            this.databases_rename_dbList_listBox.Location = new System.Drawing.Point(23, 43);
+            this.databases_rename_dbList_listBox.Name = "databases_rename_dbList_listBox";
+            this.databases_rename_dbList_listBox.Size = new System.Drawing.Size(202, 284);
+            this.databases_rename_dbList_listBox.TabIndex = 6;
+            // 
+            // databases_delete_panel
+            // 
+            this.databases_delete_panel.Controls.Add(this.databases_delete_delete_button);
+            this.databases_delete_panel.Controls.Add(this.databases_delete_toolTip_label);
+            this.databases_delete_panel.Controls.Add(this.databases_delete_dbList_label);
+            this.databases_delete_panel.Controls.Add(this.databases_delete_dbList_listBox);
+            this.databases_delete_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.databases_delete_panel.Location = new System.Drawing.Point(235, 62);
+            this.databases_delete_panel.Name = "databases_delete_panel";
+            this.databases_delete_panel.Size = new System.Drawing.Size(920, 360);
+            this.databases_delete_panel.TabIndex = 39;
+            // 
+            // databases_delete_delete_button
+            // 
+            this.databases_delete_delete_button.Location = new System.Drawing.Point(723, 147);
+            this.databases_delete_delete_button.Name = "databases_delete_delete_button";
+            this.databases_delete_delete_button.Size = new System.Drawing.Size(166, 48);
+            this.databases_delete_delete_button.TabIndex = 17;
+            this.databases_delete_delete_button.Text = "Delete Database";
+            this.databases_delete_delete_button.UseVisualStyleBackColor = true;
+            this.databases_delete_delete_button.Click += new System.EventHandler(this.databases_delete_delete_button_Click);
+            // 
+            // databases_delete_toolTip_label
+            // 
+            this.databases_delete_toolTip_label.Location = new System.Drawing.Point(249, 35);
+            this.databases_delete_toolTip_label.Name = "databases_delete_toolTip_label";
+            this.databases_delete_toolTip_label.Size = new System.Drawing.Size(258, 284);
+            this.databases_delete_toolTip_label.TabIndex = 14;
+            this.databases_delete_toolTip_label.Text = resources.GetString("databases_delete_toolTip_label.Text");
+            // 
+            // databases_delete_dbList_label
+            // 
+            this.databases_delete_dbList_label.AutoSize = true;
+            this.databases_delete_dbList_label.Location = new System.Drawing.Point(22, 8);
+            this.databases_delete_dbList_label.Name = "databases_delete_dbList_label";
+            this.databases_delete_dbList_label.Size = new System.Drawing.Size(95, 20);
+            this.databases_delete_dbList_label.TabIndex = 13;
+            this.databases_delete_dbList_label.Text = "Databases:";
+            // 
+            // databases_delete_dbList_listBox
+            // 
+            this.databases_delete_dbList_listBox.FormattingEnabled = true;
+            this.databases_delete_dbList_listBox.ItemHeight = 20;
+            this.databases_delete_dbList_listBox.Location = new System.Drawing.Point(23, 35);
+            this.databases_delete_dbList_listBox.Name = "databases_delete_dbList_listBox";
+            this.databases_delete_dbList_listBox.Size = new System.Drawing.Size(202, 284);
+            this.databases_delete_dbList_listBox.TabIndex = 12;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 734);
+            this.Controls.Add(this.databases_delete_panel);
+            this.Controls.Add(this.databases_rename_panel);
+            this.Controls.Add(this.databases_add_panel);
             this.Controls.Add(this.schemas_delete_panel);
             this.Controls.Add(this.schemas_rename_panel);
             this.Controls.Add(this.schemas_add_panel);
@@ -2087,6 +2328,12 @@
             this.schemas_rename_panel.ResumeLayout(false);
             this.schemas_rename_panel.PerformLayout();
             this.schemas_delete_panel.ResumeLayout(false);
+            this.databases_add_panel.ResumeLayout(false);
+            this.databases_add_panel.PerformLayout();
+            this.databases_rename_panel.ResumeLayout(false);
+            this.databases_rename_panel.PerformLayout();
+            this.databases_delete_panel.ResumeLayout(false);
+            this.databases_delete_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2271,5 +2518,28 @@
         private System.Windows.Forms.Panel schemas_delete_panel;
         private System.Windows.Forms.Button schemas_delete_delete_button;
         private System.Windows.Forms.Label schemas_delete_toolTip;
+        private System.Windows.Forms.ToolStripMenuItem databasesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dropDatabaseToolStripMenuItem;
+        private System.Windows.Forms.Panel databases_add_panel;
+        private System.Windows.Forms.Button databases_add_addDb_button;
+        private System.Windows.Forms.TextBox databases_add_dbName_textBox;
+        private System.Windows.Forms.Label databases_add_dbName_label;
+        private System.Windows.Forms.Label databases_add_toolTip_label;
+        private System.Windows.Forms.Label databases_add_dbList_label;
+        private System.Windows.Forms.ListBox databases_add_dbList_listBox;
+        private System.Windows.Forms.Panel databases_rename_panel;
+        private System.Windows.Forms.Button databases_rename_renameDb_button;
+        private System.Windows.Forms.TextBox databases_rename_dbName_textBox;
+        private System.Windows.Forms.Label databases_rename_dbName_label;
+        private System.Windows.Forms.Label databases_rename_toolTip_label;
+        private System.Windows.Forms.Label databases_rename_dbList_label;
+        private System.Windows.Forms.ListBox databases_rename_dbList_listBox;
+        private System.Windows.Forms.Panel databases_delete_panel;
+        private System.Windows.Forms.Button databases_delete_delete_button;
+        private System.Windows.Forms.Label databases_delete_toolTip_label;
+        private System.Windows.Forms.Label databases_delete_dbList_label;
+        private System.Windows.Forms.ListBox databases_delete_dbList_listBox;
     }
 }

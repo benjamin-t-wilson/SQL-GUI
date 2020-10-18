@@ -156,6 +156,25 @@ Press the button on the right to drop the selected schema.
 
 This includes all tables, columns, and rows that belong to this schema. This cannot be undone.</value>
   </data>
+  <data name="databases_add_toolTip_label.Text" xml:space="preserve">
+    <value>You can see the list of databases currently present in the Postgres server on the left.
+
+To add a new database, type the name in the textbox on the right, then click the button to add.
+
+Note, this operation takes a few moments.</value>
+  </data>
+  <data name="databases_rename_toolTip_label.Text" xml:space="preserve">
+    <value>You can see the list of databases currently present in the Postgres server on the left.
+
+To rename a new database, select a database on the left, then type the new name in the textbox on the right, then click the button to rename.</value>
+  </data>
+  <data name="databases_delete_toolTip_label.Text" xml:space="preserve">
+    <value>Warning! There is no confirmation for this action! This can cause irreversible data loss!
+
+You can see the list of databases currently present in the Postgres server on the left.
+
+Select a database on the left, then you may click the delete button.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
