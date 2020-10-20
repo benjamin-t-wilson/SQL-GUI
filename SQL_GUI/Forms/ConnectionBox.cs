@@ -2,6 +2,7 @@
 using SQL_GUI.Functions;
 using System;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 
 namespace SQL_GUI.Forms
@@ -17,6 +18,13 @@ namespace SQL_GUI.Forms
             ResetNickNames();
         }
 
+        public void PlayErrorSound()
+        {
+            SoundPlayer player = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav");
+            player.Load();
+            player.Play();
+        }
+
         private void con_cancel_button_Click(object sender, EventArgs e)
         {
             Close();
@@ -26,6 +34,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(con_host_textBox.Text) || string.IsNullOrWhiteSpace(con_user_textBox.Text) || string.IsNullOrWhiteSpace(con_database_textBox.Text) || string.IsNullOrWhiteSpace(con_port_textBox.Text) || string.IsNullOrWhiteSpace(con_password_textBox.Text))
             {
+                PlayErrorSound();
                 return;
             }
 

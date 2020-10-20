@@ -33,9 +33,20 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error connecting to database:");
+                HandleError("Error connecting to database:", ex);
+                return;
+            }
+        }
+
+        private void HandleError(string message, Exception ex = null)
+        {
+            _connBox.PlayErrorSound();
+            WriteToLog(message);
+            if (ex != null)
+            {
                 WriteToLog(ex.Message);
             }
+            return;
         }
 
         private void setSchemaList()
@@ -56,8 +67,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error fetching database schema:");
-                WriteToLog(ex.Message);
+                HandleError("Error fetching database schema:", ex);
+                return;
             }
         }
 
@@ -102,7 +113,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(tables_add_columnNames_textBox.Text))
             {
-                WriteToLog("You must type a value.");
+                HandleError("You must type a value.");
                 return;
             }
             tables_add_columnNames_listBox.Items.Add(tables_add_columnNames_textBox.Text);
@@ -113,7 +124,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(tables_add_columnNames_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item.");
+                HandleError("You must select an item.");
                 return;
             }
             tables_add_columnNames_listBox.Items.RemoveAt(tables_add_columnNames_listBox.SelectedIndex);
@@ -123,7 +134,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(tables_add_addValueType_comboBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item.");
+                HandleError("You must select an item.");
                 return;
             }
             tables_add_valueTypes_listBox.Items.Add(tables_add_addValueType_comboBox.SelectedItem?.ToString());
@@ -133,7 +144,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(tables_add_valueTypes_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item");
+                HandleError("You must select an item");
                 return;
             }
             tables_add_valueTypes_listBox.Items.RemoveAt(tables_add_valueTypes_listBox.SelectedIndex);
@@ -147,7 +158,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || columns.Count == 0 || valueTypes.Count == 0 || columns.Count != valueTypes.Count)
             {
-                WriteToLog("Table name, columns, and value types must not be empty. Column and values count must match.");
+                HandleError("Table name, columns, and value types must not be empty. Column and values count must match.");
                 return;
             }
 
@@ -180,8 +191,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error creating new table:");
-                WriteToLog(ex.Message);
+                HandleError("Error creating new table:", ex);
+                return;
             }
         }
 
@@ -202,7 +213,7 @@ namespace SQL_GUI.Forms
             var tableName = dash_tables_listBox.SelectedItem?.ToString();
             if (string.IsNullOrWhiteSpace(tableName))
             {
-                WriteToLog("You must make a selection first.");
+                HandleError("You must make a selection first.");
                 return;
             }
 
@@ -214,8 +225,7 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog($"Error while dropping table: {tableName}");
-                WriteToLog(ex.Message);
+                HandleError($"Error while dropping table: {tableName}", ex);
             }
         }
 
@@ -223,7 +233,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(columns_add_columnName_textBox.Text))
             {
-                WriteToLog("You must type a value");
+                HandleError("You must type a value");
                 return;
             }
             columns_add_columnNames_listBox.Items.Add(columns_add_columnName_textBox.Text);
@@ -240,7 +250,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(columns_add_columnNames_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item.");
+                HandleError("You must select an item.");
                 return;
             }
             columns_add_columnNames_listBox.Items.RemoveAt(columns_add_columnNames_listBox.SelectedIndex);
@@ -250,7 +260,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(columns_add_valueTypes_comboBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item.");
+                HandleError("You must select an item.");
                 return;
             }
             columns_add_valueTypes_listBox.Items.Add(columns_add_valueTypes_comboBox.SelectedItem.ToString());
@@ -260,7 +270,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(columns_add_valueTypes_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item.");
+                HandleError("You must select an item.");
                 return;
             }
             columns_add_valueTypes_listBox.Items.RemoveAt(columns_add_valueTypes_listBox.SelectedIndex);
@@ -274,7 +284,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || columns.Count == 0 || valueTypes.Count == 0 || columns.Count != valueTypes.Count)
             {
-                WriteToLog("Table name, columns, and value types must not be empty. Column and values count must match.");
+                HandleError("Table name, columns, and value types must not be empty. Column and values count must match.");
                 return;
             }
 
@@ -306,8 +316,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error adding columns to table:");
-                WriteToLog(ex.Message);
+                HandleError("Error adding columns to table:", ex);
+                return;
             }
         }
 
@@ -368,7 +378,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(rows_add_rowValue_textBox.Text))
             {
-                WriteToLog("You must type a value");
+                HandleError("You must type a value");
                 return;
             }
             rows_add_rowValues_listBox.Items.Add(rows_add_rowValue_textBox.Text);
@@ -379,7 +389,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(rows_add_rowValues_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select an item");
+                HandleError("You must select an item");
                 return;
             }
             rows_add_rowValues_listBox.Items.RemoveAt(rows_add_rowValues_listBox.SelectedIndex);
@@ -391,13 +401,13 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(table))
             {
-                WriteToLog("Must select table");
+                HandleError("Must select table");
                 return;
             }
 
             if (dash_columns_listBox.Items.Count - 1 != rows_add_rowValues_listBox.Items.Count)
             {
-                WriteToLog("Must provide a value for every column except ID");
+                HandleError("Must provide a value for every column except ID");
                 return;
             }
 
@@ -437,8 +447,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error adding values:");
-                WriteToLog(ex.Message);
+                HandleError("Error adding values:", ex);
+                return;
             }
         }
 
@@ -468,8 +478,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error getting columns for table:");
-                WriteToLog(ex.Message);
+                HandleError("Error getting columns for table:", ex);
+                return;
             }
 
             try
@@ -485,8 +495,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error getting constraints from table:");
-                WriteToLog(ex.Message);
+                HandleError("Error getting constraints from table:", ex);
+                return;
             }
         }
 
@@ -500,7 +510,7 @@ namespace SQL_GUI.Forms
 
                 if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(newColumnName))
                 {
-                    WriteToLog("You must have a table and column selected. You must have a column name typed.");
+                    HandleError("You must have a table and column selected. You must have a column name typed.");
                     return;
                 }
 
@@ -514,8 +524,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error renaming column:");
-                WriteToLog(ex.Message);
+                HandleError("Error renaming column:", ex);
+                return;
             }
         }
 
@@ -528,7 +538,7 @@ namespace SQL_GUI.Forms
 
                 if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(newTableName))
                 {
-                    WriteToLog("You must have a table selected. You must have a table name typed");
+                    HandleError("You must have a table selected. You must have a table name typed");
                     return;
                 }
 
@@ -542,8 +552,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error renaming table:");
-                WriteToLog(ex.Message);
+                HandleError("Error renaming table:", ex);
+                return;
             }
         }
 
@@ -557,7 +567,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(rows_select_availableColumns_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must type a value");
+                HandleError("You must type a value");
                 return;
             }
             rows_select_selectedColumns_listBox.Items.Add(rows_select_availableColumns_listBox.SelectedItem?.ToString());
@@ -568,7 +578,7 @@ namespace SQL_GUI.Forms
         {
             if (string.IsNullOrWhiteSpace(rows_select_selectedColumns_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must type a value");
+                HandleError("You must type a value");
                 return;
             }
             rows_select_availableColumns_listBox.Items.Add(rows_select_selectedColumns_listBox.SelectedItem.ToString());
@@ -579,7 +589,7 @@ namespace SQL_GUI.Forms
         {
             if (rows_select_selectedColumns_listBox.Items.Count == 0 || string.IsNullOrWhiteSpace(dash_tables_listBox.SelectedItem?.ToString()))
             {
-                WriteToLog("You must select a table columns.");
+                HandleError("You must select a table columns.");
                 return;
             }
 
@@ -587,7 +597,7 @@ namespace SQL_GUI.Forms
             {
                 if (string.IsNullOrWhiteSpace(rows_select_whereColumn_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereOperator_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(rows_select_whereValue_textBox.Text))
                 {
-                    WriteToLog("All 'where' forms must have value.");
+                    HandleError("All 'where' forms must have value.");
                     return;
                 }
             }
@@ -663,8 +673,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error getting rows:");
-                WriteToLog(ex.Message);
+                HandleError("Error getting rows:", ex);
+                return;
             }
         }
 
@@ -683,7 +693,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(opSymbol) || string.IsNullOrWhiteSpace(value))
             {
-                WriteToLog("Table, column, operator, and value must be selected.");
+                HandleError("Table, column, operator, and value must be selected.");
                 return;
             }
 
@@ -705,8 +715,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error deleting row(s):");
-                WriteToLog(ex.Message);
+                HandleError("Error deleting row(s):", ex);
+                return;
             }
         }
 
@@ -739,8 +749,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error retrieving column list:");
-                WriteToLog(ex.Message);
+                HandleError("Error retrieving column list:", ex);
+                return;
             }
         }
 
@@ -751,25 +761,25 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
             {
-                WriteToLog("Table and column must be selected.");
+                HandleError("Table and column must be selected.");
                 return;
             }
 
             if (!columns_addConstraint_unique_checkBox.Checked && !columns_addConstraint_notNull_checkBox.Checked && !columns_addConstraint_references_checkBox.Checked && !columns_addConstraint_check_checkBox.Checked)
             {
-                WriteToLog("You must check one constraint");
+                HandleError("You must check one constraint");
                 return;
             }
 
             if (columns_addConstraint_references_checkBox.Checked && (string.IsNullOrWhiteSpace(columns_addConstraint_references_table_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(columns_addConstraint_references_column_comboBox.SelectedItem?.ToString())))
             {
-                WriteToLog("You must select a reference table and column.");
+                HandleError("You must select a reference table and column.");
                 return;
             }
 
             if (columns_addConstraint_check_checkBox.Checked && (string.IsNullOrWhiteSpace(columns_addConstraint_check_checkName_textBox.Text) || string.IsNullOrWhiteSpace(columns_addConstraint_check_columns_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(columns_addConstraint_check_operators_comboBox.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(columns_addConstraint_check_value_textBox.Text)))
             {
-                WriteToLog("You must have a check name, column, operator, and value.");
+                HandleError("You must have a check name, column, operator, and value.");
                 return;
             }
 
@@ -820,8 +830,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error adding column constraint:");
-                WriteToLog(ex.Message);
+                HandleError("Error adding column constraint:", ex);
+                return;
             }
         }
 
@@ -832,7 +842,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName))
             {
-                WriteToLog("Table and column must be selected.");
+                HandleError("Table and column must be selected.");
                 return;
             }
 
@@ -845,8 +855,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error dropping column:");
-                WriteToLog(ex.Message);
+                HandleError("Error dropping column:", ex);
+                return;
             }
         }
 
@@ -857,7 +867,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(constraint))
             {
-                WriteToLog("Table and constraint must be selected.");
+                HandleError("Table and constraint must be selected.");
                 return;
             }
 
@@ -872,8 +882,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error dropping table constraint:");
-                WriteToLog(ex.Message);
+                HandleError("Error dropping table constraint:", ex);
+                return;
             }
         }
 
@@ -885,7 +895,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(columnName) || string.IsNullOrWhiteSpace(dataType))
             {
-                WriteToLog("Table, column, and data type must be selected.");
+                HandleError("Table, column, and data type must be selected.");
                 return;
             }
 
@@ -899,8 +909,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error changing data type:");
-                WriteToLog(ex.Message);
+                HandleError("Error changing data type:", ex);
+                return;
             }
         }
 
@@ -910,7 +920,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(column))
             {
-                WriteToLog("You must select a column.");
+                HandleError("You must select a column.");
                 return;
             }
 
@@ -924,7 +934,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(column))
             {
-                WriteToLog("You must select a column.");
+                HandleError("You must select a column.");
                 return;
             }
 
@@ -938,7 +948,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                WriteToLog("You must enter a value");
+                HandleError("You must enter a value");
                 return;
             }
 
@@ -952,7 +962,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                WriteToLog("You must select a value");
+                HandleError("You must select a value");
                 return;
             }
 
@@ -972,18 +982,18 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(tableName))
             {
-                WriteToLog("Must select a table.");
+                HandleError("Must select a table.");
                 return;
             }
             if (selectedColumns.Count != values.Count)
             {
-                WriteToLog("Selected columns and values counts must match");
+                HandleError("Selected columns and values counts must match");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(whereColumn) || string.IsNullOrWhiteSpace(whereOperator) || string.IsNullOrWhiteSpace(whereValue))
             {
-                WriteToLog("Must have WHERE column, operator, and value");
+                HandleError("Must have WHERE column, operator, and value");
                 return;
             }
 
@@ -1029,8 +1039,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error updating rows:");
-                WriteToLog(ex.Message);
+                HandleError("Error updating rows:", ex);
+                return;
             }
         }
 
@@ -1052,7 +1062,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(schemaName))
             {
-                WriteToLog("Must enter a schema name.");
+                HandleError("Must enter a schema name.");
                 return;
             }
 
@@ -1068,8 +1078,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error creating schema:");
-                WriteToLog(ex.Message);
+                HandleError("Error creating schema:", ex);
+                return;
             }
         }
 
@@ -1086,13 +1096,13 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(oldSchemaName) || string.IsNullOrWhiteSpace(newSchemaName))
             {
-                WriteToLog("Must have a schema selected and enter a schema name.");
+                HandleError("Must have a schema selected and enter a schema name.");
                 return;
             }
 
             if (oldSchemaName.Equals("public", StringComparison.InvariantCultureIgnoreCase))
             {
-                WriteToLog("Cannot rename public schema");
+                HandleError("Cannot rename public schema");
                 return;
             }
 
@@ -1107,8 +1117,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error creating schema:");
-                WriteToLog(ex.Message);
+                HandleError("Error creating schema:", ex);
+                return;
             }
         }
 
@@ -1124,13 +1134,13 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(schemaName))
             {
-                WriteToLog("You must select a schema.");
+                HandleError("You must select a schema.");
                 return;
             }
 
             if (schemaName.Equals("public", StringComparison.InvariantCultureIgnoreCase))
             {
-                WriteToLog("Cannot drop public schema.");
+                HandleError("Cannot drop public schema.");
                 return;
             }
 
@@ -1145,8 +1155,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error creating schema:");
-                WriteToLog(ex.Message);
+                HandleError("Error creating schema:", ex);
+                return;
             }
         }
 
@@ -1167,8 +1177,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error fetching database list:");
-                WriteToLog(ex.Message);
+                HandleError("Error fetching database list:", ex);
+                return;
             }
         }
 
@@ -1185,7 +1195,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(dbName))
             {
-                WriteToLog("Must enter database name.");
+                HandleError("Must enter database name.");
                 return;
             }
 
@@ -1200,8 +1210,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error creating database:");
-                WriteToLog(ex.Message);
+                HandleError("Error creating database:", ex);
+                return;
             }
         }
 
@@ -1219,7 +1229,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(oldDbName) || string.IsNullOrWhiteSpace(newDbName))
             {
-                WriteToLog("Must have an existing database selected and a new database name entered.");
+                HandleError("Must have an existing database selected and a new database name entered.");
                 return;
             }
 
@@ -1234,8 +1244,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error renaming database:");
-                WriteToLog(ex.Message);
+                HandleError("Error renaming database:", ex);
+                return;
             }
         }
 
@@ -1252,7 +1262,7 @@ namespace SQL_GUI.Forms
 
             if (string.IsNullOrWhiteSpace(dbName))
             {
-                WriteToLog("You must select a database.");
+                HandleError("You must select a database.");
                 return;
             }
 
@@ -1266,8 +1276,8 @@ namespace SQL_GUI.Forms
             }
             catch (Exception ex)
             {
-                WriteToLog("Error dropping database:");
-                WriteToLog(ex.Message);
+                HandleError("Error dropping database:", ex);
+                return;
             }
         }
     }
