@@ -1280,5 +1280,25 @@ namespace SQL_GUI.Forms
                 return;
             }
         }
+
+        private void rows_select_addAllCols_button_Click(object sender, EventArgs e)
+        {
+            foreach (var item in rows_select_availableColumns_listBox.Items)
+            {
+                rows_select_selectedColumns_listBox.Items.Add(item.ToString());
+            }
+
+            rows_select_availableColumns_listBox.Items.Clear();
+        }
+
+        private void rows_select_removeAllCols_button_Click(object sender, EventArgs e)
+        {
+            foreach (var item in rows_select_selectedColumns_listBox.Items)
+            {
+                rows_select_availableColumns_listBox.Items.Add(item.ToString());
+            }
+
+            rows_select_selectedColumns_listBox.Items.Clear();
+        }
     }
 }
